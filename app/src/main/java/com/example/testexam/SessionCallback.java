@@ -111,6 +111,7 @@ public class SessionCallback implements ISessionCallback {
                                 Log.d("KAKAO_API", "birthdayType: null");
                             }
 
+
                         }
                     }
                 });

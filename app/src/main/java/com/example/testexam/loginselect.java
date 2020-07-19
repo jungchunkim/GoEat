@@ -32,7 +32,9 @@ import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
+import com.kakao.usermgmt.response.MeV2Response;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -109,6 +111,25 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
             @Override
             public void onClick(View view) {
                 session.open(AuthType.KAKAO_LOGIN_ALL, loginselect.this);
+                UserManagement.getInstance().me(new MeV2ResponseCallback() {
+                    @Override
+                    public void onFailure(ErrorResult errorResult) {
+                        //로그인에 실패했을 때. 인터넷 연결이 불안정한 경우도 여기에 해당한다.
+                    }
+
+                    @Override
+                    public void onSessionClosed(ErrorResult errorResult) {
+                        //로그인 도중 세션이 비정상적인 이유로 닫혔을 때
+                    }
+
+                    @Override
+                    public void onSuccess(MeV2Response result) {
+                        //로그인에 성공했을 때
+                        Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
             }
         });
 
