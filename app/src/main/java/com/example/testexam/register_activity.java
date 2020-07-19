@@ -58,7 +58,7 @@ public class register_activity extends AppCompatActivity {
         tv_women = (TextView) findViewById(R.id.tv_women);
         tv_men = (TextView) findViewById(R.id.tv_men);
 
-        et_name.setOnKeyListener(new View.OnKeyListener() {
+        et_name.setOnKeyListener(new View.OnKeyListener() { //엔터시 키보드 내리는 부분
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -69,7 +69,7 @@ public class register_activity extends AppCompatActivity {
             }
         });
         et_email.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_email.getWindowToken(), 0);
@@ -79,7 +79,7 @@ public class register_activity extends AppCompatActivity {
             }
         });
         et_password.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_password.getWindowToken(), 0);
@@ -89,7 +89,7 @@ public class register_activity extends AppCompatActivity {
             }
         });
         et_re_password.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_re_password.getWindowToken(), 0);
@@ -102,7 +102,7 @@ public class register_activity extends AppCompatActivity {
 
         tv_yearpicker.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { // 생년월일 팝업창 띄우기
                 year_picker pd = new year_picker();
                 pd.setListener(d);
                 pd.show(getSupportFragmentManager(), "YearMonthPickerTest");
@@ -111,7 +111,7 @@ public class register_activity extends AppCompatActivity {
 
         tv_women.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {  // 여자 버튼 클릭
                 tv_women.setBackground(getResources().getDrawable(R.drawable.round_button));
                 tv_men.setBackground(getResources().getDrawable(R.drawable.edge));
                 user_gender = "여자";
@@ -120,7 +120,7 @@ public class register_activity extends AppCompatActivity {
 
         tv_men.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { // 남자 버튼 클릭
                 tv_men.setBackground(getResources().getDrawable(R.drawable.round_button));
                 tv_women.setBackground(getResources().getDrawable(R.drawable.edge));
                 user_gender = "남자";
@@ -129,7 +129,7 @@ public class register_activity extends AppCompatActivity {
 
         btn_regist_account.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {  // 유저 정보 전송 부분
                 String username = et_name.getText().toString();
                 String useremail = et_email.getText().toString();
                 String userpassword = et_password.getText().toString();

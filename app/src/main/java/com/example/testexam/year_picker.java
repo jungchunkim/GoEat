@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-public class year_picker extends DialogFragment {
+public class year_picker extends DialogFragment { // 생년월일 팝업 창
 
     private static final int MAX_YEAR = 2099;
     private static final int MIN_YEAR = 1980;

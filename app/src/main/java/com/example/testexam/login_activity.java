@@ -25,7 +25,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class login_activity extends AppCompatActivity {
+public class login_activity extends AppCompatActivity { // 로그인 화면
 
     private Button btn_sign_up, btn_login;
     private TextView tv_find_account;
@@ -50,7 +50,7 @@ public class login_activity extends AppCompatActivity {
         }
 
         et_login_email.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { // 엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_login_email.getWindowToken(), 0);
@@ -60,7 +60,7 @@ public class login_activity extends AppCompatActivity {
             }
         });
         et_login_password.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {  //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_login_password.getWindowToken(), 0);
@@ -72,7 +72,7 @@ public class login_activity extends AppCompatActivity {
 
         btn_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { // 회원가입 선택 화면
                 Intent intent = new Intent(login_activity.this,loginselect.class);
                 startActivity(intent);
             }
@@ -80,7 +80,7 @@ public class login_activity extends AppCompatActivity {
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) { // 로그인 버튼 클릭 시 정보확인 부분
                 String email = et_login_email.getText().toString();
                 String password = et_login_password.getText().toString();
                 SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);

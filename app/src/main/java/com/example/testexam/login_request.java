@@ -7,7 +7,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class login_request extends StringRequest {
+public class login_request extends StringRequest { //로그인 정보 전송 부분
     final static private String URL = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/login.php";
     private Map<String,String> map;
 
