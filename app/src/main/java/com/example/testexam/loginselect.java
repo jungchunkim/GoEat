@@ -5,7 +5,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -22,25 +27,45 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.kakao.auth.AuthType;
+import com.kakao.auth.Session;
+import com.kakao.network.ErrorResult;
+import com.kakao.usermgmt.UserManagement;
+import com.kakao.usermgmt.callback.LogoutResponseCallback;
+import com.kakao.usermgmt.callback.UnLinkResponseCallback;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class loginselect extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private Button btn_new_account;
     private Button btn_google_login;
+    private Button btn_kakao_login;
+    private Button btn_kakao_secession;
+
+
 
     private FirebaseAuth auth;  // 파이어베이스 인증 객체
     private GoogleApiClient googleApiClient;  // 구글 API 클라이언트 객체
     private static final int REQ_SIGN_GOOGLE = 100; // 구글 로그인 결과 코드
+
+    //카카오 로그인에 필요한 변수들
+    private SessionCallback sessionCallback = new SessionCallback();
+    Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginselect);
-
+        //새로운 앱 추가할 때 해쉬키 추가 필요
+        getHashKey();
         // findViewById
         btn_new_account = (Button)findViewById(R.id.btn_new_account);
         btn_google_login = (Button)findViewById(R.id.btn_google_login);
+        btn_kakao_login = (Button)findViewById(R.id.btn_kakao_login);
+        btn_kakao_secession = (Button)findViewById(R.id.btn_kakao_secession);
 
 
         // 구글 로그인 관련 코드들
@@ -56,6 +81,10 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
 
         auth = FirebaseAuth.getInstance();  // 파이어베이스 인증 객체 초기화
 
+
+        //카카오 로그인 관련 코드들
+        session = Session.getCurrentSession();
+        session.addCallback(sessionCallback);
 
         // 새 계정 만들기 버튼
         btn_new_account.setOnClickListener(new View.OnClickListener() {
@@ -74,11 +103,70 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
                 startActivityForResult(intent, REQ_SIGN_GOOGLE);
             }
         });
+
+        //카카오 로그인 버튼
+        btn_kakao_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                session.open(AuthType.KAKAO_LOGIN_ALL, loginselect.this);
+            }
+        });
+
+        btn_kakao_secession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //앱과의 카카오톡 연결 완전히 끊기
+                UserManagement.getInstance()
+                        .requestUnlink(new UnLinkResponseCallback() {
+                            @Override
+                            public void onSessionClosed(ErrorResult errorResult) {
+                                Log.e("KAKAO_API", "세션이 닫혀 있음: " + errorResult);
+                            }
+
+                            @Override
+                            public void onFailure(ErrorResult errorResult) {
+                                Log.e("KAKAO_API", "연결 끊기 실패: " + errorResult);
+
+                            }
+                            @Override
+                            public void onSuccess(Long result) {
+                                Log.i("KAKAO_API", "연결 끊기 성공. id: " + result);
+                            }
+                        });
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        // 세션 콜백 삭제
+        Session.getCurrentSession().removeCallback(sessionCallback);
     }
 
 
+
+    //추후 카카오 로그아웃과 앱 탈퇴를 위한 코드
+//          btn_kakao_login_out.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            //로그아웃
+//            UserManagement.getInstance()
+//                    .requestLogout(new LogoutResponseCallback() {
+//                        @Override
+//                        public void onCompleteLogout() {
+//                            Toast.makeText(MainActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//        }
+//    });
+//
+//}
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  // 구글 로그인 인증 요청했을 때 결과값을 되돌려 받음
+
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == REQ_SIGN_GOOGLE){
@@ -89,6 +177,10 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
                 resultLogin(account);  // 로그인 결과 값 출력 수행하라는 메소드
             }
 
+        }
+        // 카카오톡|스토리 간편로그인 실행 결과를 받아서 SDK로 전달
+        if (Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
+            return;
         }
 
     }
@@ -122,4 +214,24 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
 
     }
 
+    private void getHashKey(){
+        PackageInfo packageInfo = null;
+        try {
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (packageInfo == null)
+            Log.e("KeyHash", "KeyHash:null");
+
+        for (Signature signature : packageInfo.signatures) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            } catch (NoSuchAlgorithmException e) {
+                Log.e("KeyHash", "Unable to get MessageDigest. signature=" + signature, e);
+            }
+        }
+    }
 }
