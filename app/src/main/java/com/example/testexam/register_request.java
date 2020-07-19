@@ -15,7 +15,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-public class register_request extends StringRequest {
+public class register_request extends StringRequest { // 회원 가입시 유저 정보 전송 부분
 
     final static private String URL = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/Register.php";
     private Map<String,String> map;

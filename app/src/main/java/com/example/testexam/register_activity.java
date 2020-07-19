@@ -3,13 +3,19 @@ package com.example.testexam;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -23,7 +29,21 @@ public class register_activity extends AppCompatActivity {
 
     private EditText et_name, et_email, et_password, et_re_password;
     private Button btn_regist_account;
+    private  TextView tv_yearpicker, tv_women, tv_men;
 
+    private String user_birth = "";
+    private String user_gender = "";
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
+            Log.d("YearMonthPickerTest", "year = " + year + ", month = " + monthOfYear + ", day = " + dayOfMonth);
+            user_birth = year+"/" + monthOfYear + "/"+dayOfMonth;
+            tv_yearpicker = (TextView) findViewById(R.id.tv_yearpicker);
+            tv_yearpicker.setText(year+" / " + monthOfYear + " / "+dayOfMonth);
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +54,11 @@ public class register_activity extends AppCompatActivity {
         et_password = (EditText)findViewById(R.id.et_password);
         et_re_password = (EditText)findViewById(R.id.et_re_password);
         btn_regist_account = (Button) findViewById(R.id.btn_regist_account);
+        tv_yearpicker = (TextView) findViewById(R.id.tv_yearpicker);
+        tv_women = (TextView) findViewById(R.id.tv_women);
+        tv_men = (TextView) findViewById(R.id.tv_men);
 
-        et_name.setOnKeyListener(new View.OnKeyListener() {
+        et_name.setOnKeyListener(new View.OnKeyListener() { //엔터시 키보드 내리는 부분
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -46,7 +69,7 @@ public class register_activity extends AppCompatActivity {
             }
         });
         et_email.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_email.getWindowToken(), 0);
@@ -56,7 +79,7 @@ public class register_activity extends AppCompatActivity {
             }
         });
         et_password.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_password.getWindowToken(), 0);
@@ -66,7 +89,7 @@ public class register_activity extends AppCompatActivity {
             }
         });
         et_re_password.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_re_password.getWindowToken(), 0);
@@ -77,19 +100,48 @@ public class register_activity extends AppCompatActivity {
         });
 
 
+        tv_yearpicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { // 생년월일 팝업창 띄우기
+                year_picker pd = new year_picker();
+                pd.setListener(d);
+                pd.show(getSupportFragmentManager(), "YearMonthPickerTest");
+            }
+        });
 
+        tv_women.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {  // 여자 버튼 클릭
+                tv_women.setBackground(getResources().getDrawable(R.drawable.round_button));
+                tv_men.setBackground(getResources().getDrawable(R.drawable.edge));
+                user_gender = "여자";
+            }
+        });
 
-
+        tv_men.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { // 남자 버튼 클릭
+                tv_men.setBackground(getResources().getDrawable(R.drawable.round_button));
+                tv_women.setBackground(getResources().getDrawable(R.drawable.edge));
+                user_gender = "남자";
+            }
+        });
 
         btn_regist_account.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {  // 유저 정보 전송 부분
                 String username = et_name.getText().toString();
                 String useremail = et_email.getText().toString();
                 String userpassword = et_password.getText().toString();
                 String userrepassword = et_re_password.getText().toString();
 
-                if(!useremail.contains("@")){
+                if(user_gender.equals("")){
+                    Toast.makeText(getApplicationContext(),"성별을 선택해 주세요",Toast.LENGTH_LONG).show();
+                }else if (user_birth.equals("") ){
+                    Toast.makeText(getApplicationContext(),"생년월일을 선택해 주세요",Toast.LENGTH_LONG).show();
+                }else if (username.isEmpty()){
+                    Toast.makeText(getApplicationContext(),"이름을 적어주세요",Toast.LENGTH_LONG).show();
+                }else if(!useremail.contains("@")){
                     Toast.makeText(getApplicationContext(),"이메일 형식이 아닙니다",Toast.LENGTH_LONG).show();
                     et_email.setText("");
                 }else if(!(userpassword.length() >= 8)) {
