@@ -146,24 +146,6 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
     }
 
 
-
-    //추후 카카오 로그아웃과 앱 탈퇴를 위한 코드
-//          btn_kakao_login_out.setOnClickListener(new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            //로그아웃
-//            UserManagement.getInstance()
-//                    .requestLogout(new LogoutResponseCallback() {
-//                        @Override
-//                        public void onCompleteLogout() {
-//                            Toast.makeText(MainActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//        }
-//    });
-//
-//}
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  // 구글 로그인 인증 요청했을 때 결과값을 되돌려 받음
 
