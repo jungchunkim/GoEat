@@ -83,6 +83,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
 
 
+
     Response.Listener<String> responseListener = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
@@ -107,6 +108,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
         SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+        final SharedPreferences.Editor editor = pref.edit();
 
         tv_sign_up = (TextView) findViewById(R.id.tv_sign_up);
         btn_login = (Button)findViewById(R.id.btn_login);
@@ -114,9 +116,11 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         et_login_email = (EditText) findViewById(R.id.et_login_email);
         et_login_password = (EditText) findViewById(R.id.et_login_password);
         cb_login_auto = (CheckBox) findViewById(R.id.cb_login_auto);
-        if(pref.getString("check","").equals("1")){
-            cb_login_auto.setChecked(true);
-        }
+
+
+
+
+
 
         et_login_email.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) { // 엔터시 키보드 내리는 부분
@@ -152,8 +156,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             public void onClick(View view) { // 로그인 버튼 클릭 시 정보확인 부분
                 String email = et_login_email.getText().toString();
                 String password = et_login_password.getText().toString();
-                SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
+
                 Response.Listener<String> responselistener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -176,17 +179,30 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                 RequestQueue queue = Volley.newRequestQueue(login_activity.this);
                 queue.add(login_request);
 
-                if (cb_login_auto.isChecked()){
+                if (cb_login_auto.isChecked()){ //자동 로그인 클릭시 정보 저장
 
                     editor.putString("email",email);
                     editor.putString("password",password);
                     editor.putString("check","1");
+                    editor.commit();
+                }else{
+                    editor.putString("check","0");
+                    editor.commit();
                 }
 
 
 
             }
         });
+
+        if(pref.getString("check","").equals("1")){ //액티비티 실행시 자동로그인 확인후 로그인 처리
+            cb_login_auto.setChecked(true);
+            String email = pref.getString("email","");
+            String password = pref.getString("password","");
+            et_login_email.setText(email);
+            et_login_password.setText(password);
+            btn_login.performClick();
+        }
 
         tv_find_account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -267,7 +283,17 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                         UserAccount kakaoAccount = result.getKakaoAccount();
                         useremail = kakaoAccount.getEmail();
 
-                        login_request login_request = new login_request(useremail,"NULL",responseListener);
+                        if (cb_login_auto.isChecked()){
+                            editor.putString("email",useremail);
+                            editor.putString("password",useremail);
+                            editor.putString("check","1");
+                            editor.commit();
+                        }else{
+                            editor.putString("check","0");
+                            editor.commit();
+                        }
+
+                        login_request login_request = new login_request(useremail,useremail,responseListener);
                         RequestQueue queue = Volley.newRequestQueue(login_activity.this);
                         queue.add(login_request);
                     }
@@ -297,7 +323,18 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             if(result.isSuccess()){  // 인증 결과가 성공적이면
                 GoogleSignInAccount account = result.getSignInAccount();  // account라는 데이터는 구글 로그인 정보를 담고 있음(닉네임, 프로필사진url, 이메일 주소 등)
                 useremail = account.getEmail();
-                login_request login_request = new login_request(useremail,"NULL",responseListener);
+                SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+                final SharedPreferences.Editor editor = pref.edit();
+                if (cb_login_auto.isChecked()){
+                    editor.putString("email",useremail);
+                    editor.putString("password",useremail);
+                    editor.putString("check","1");
+                    editor.commit();
+                }else{
+                    editor.putString("check","0");
+                    editor.commit();
+                }
+                login_request login_request = new login_request(useremail,useremail,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(login_activity.this);
                 queue.add(login_request);
 

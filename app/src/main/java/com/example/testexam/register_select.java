@@ -110,7 +110,7 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
                 usergender = "남";
             }
 
-            register_request register_request = new register_request(username, useremail, "NULL", usergender, userbirth, userage, "google", responseListener);
+            register_request register_request = new register_request(username, useremail, useremail, usergender, userbirth, userage, "google", responseListener);
             RequestQueue queue = Volley.newRequestQueue(register_select.this);
             queue.add(register_request);
 
@@ -205,7 +205,7 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
                         userage = ageRange.getValue().substring(0,2);
                         userbirth = kakaoAccount.getBirthday().substring(0,2)+"/"+ kakaoAccount.getBirthday().substring(2,4);
 
-                        register_request register_request = new register_request(username,useremail,"NULL",usergender,userbirth,userage,"kakao",responseListener);
+                        register_request register_request = new register_request(username,useremail,useremail,usergender,userbirth,userage,"kakao",responseListener);
                         RequestQueue queue = Volley.newRequestQueue(register_select.this);
                         queue.add(register_request);
                     }
