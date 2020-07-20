@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -13,8 +14,12 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,22 +36,29 @@ import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.LogoutResponseCallback;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
+import com.kakao.usermgmt.response.model.AgeRange;
+import com.kakao.usermgmt.response.model.Gender;
+import com.kakao.usermgmt.response.model.Profile;
+import com.kakao.usermgmt.response.model.UserAccount;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
 
-public class loginselect extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class register_select extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private Button btn_new_account;
     private Button btn_google_login;
     private Button btn_kakao_login;
     private Button btn_kakao_secession;
 
-
+    private String useremail,username,usergender,userage,userbirth;
 
     private FirebaseAuth auth;  // 파이어베이스 인증 객체
     private GoogleApiClient googleApiClient;  // 구글 API 클라이언트 객체
@@ -55,12 +67,61 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
     //카카오 로그인에 필요한 변수들
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
+    public Calendar cal = Calendar.getInstance();
+
+
+
+    Response.Listener<String> responseListener = new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) { // 서버 응답 받아오는 부
+            try {
+                JSONObject jsonObject = new JSONObject(response);
+                boolean success = jsonObject.getBoolean("success");
+                if (success){
+                    Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getApplicationContext(), "이미 가입되어 있습니다", Toast.LENGTH_LONG).show();
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int yeargender, int month, int date){ // 구글 회원가입시 생년월일 및 성별 받아오는 부분
+            Log.d("YearMonthPickerTest", "yeargender = " + yeargender + ", month = " + month + ", date = " + date);
+            userbirth = month+"/"+date;
+            int thisyear = cal.get(Calendar.YEAR);
+            if(thisyear-Integer.parseInt(Integer.toString(yeargender).substring(0,4)) < 20){
+                userage = "10";
+            }else if (thisyear-Integer.parseInt(Integer.toString(yeargender).substring(0,4)) < 30){
+                userage = "20";
+            }else if (thisyear-Integer.parseInt(Integer.toString(yeargender).substring(0,4)) < 40){
+                userage = "30";
+            }else{
+                userage = "40";
+            }
+            if(Integer.parseInt(Integer.toString(yeargender).substring(4)) == 1){
+                usergender = "여";
+            }else{
+                usergender = "남";
+            }
+
+            register_request register_request = new register_request(username, useremail, "NULL", usergender, userbirth, userage, "google", responseListener);
+            RequestQueue queue = Volley.newRequestQueue(register_select.this);
+            queue.add(register_request);
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loginselect);
+        setContentView(R.layout.activity_login_select);
         //새로운 앱 추가할 때 해쉬키 추가 필요
         getHashKey();
         // findViewById
@@ -68,6 +129,8 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
         btn_google_login = (Button)findViewById(R.id.btn_google_login);
         btn_kakao_login = (Button)findViewById(R.id.btn_kakao_login);
         btn_kakao_secession = (Button)findViewById(R.id.btn_kakao_secession);
+
+
 
 
         // 구글 로그인 관련 코드들
@@ -92,7 +155,7 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
         btn_new_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(loginselect.this, register_activity.class);
+                Intent intent = new Intent(register_select.this, register_activity.class);
                 startActivity(intent);
             }
         });
@@ -110,7 +173,7 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
         btn_kakao_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                session.open(AuthType.KAKAO_LOGIN_ALL, loginselect.this);
+                session.open(AuthType.KAKAO_LOGIN_ALL, register_select.this);
                 UserManagement.getInstance().me(new MeV2ResponseCallback() {
                     @Override
                     public void onFailure(ErrorResult errorResult) {
@@ -124,14 +187,33 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
 
                     @Override
                     public void onSuccess(MeV2Response result) {
-                        //로그인에 성공했을 때
+                        //로그인에 성공했을 때 서버 요청 보내는 부분 (첫회원가입시 두번클릭해야함...해결 필요...)
                         Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
                         startActivity(intent);
                         finish();
+                        UserAccount kakaoAccount = result.getKakaoAccount();
+                        useremail = kakaoAccount.getEmail();
+                        Profile profile = kakaoAccount.getProfile();
+                        username = profile.getNickname();
+                        Gender gender = kakaoAccount.getGender();
+                        if(gender.getValue().equals("male")) {
+                            usergender = "남";
+                        }else{
+                            usergender = "여";
+                        }
+                        AgeRange ageRange = kakaoAccount.getAgeRange();
+                        userage = ageRange.getValue().substring(0,2);
+                        userbirth = kakaoAccount.getBirthday().substring(0,2)+"/"+ kakaoAccount.getBirthday().substring(2,4);
+
+                        register_request register_request = new register_request(username,useremail,"NULL",usergender,userbirth,userage,"kakao",responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(register_select.this);
+                        queue.add(register_request);
                     }
                 });
             }
         });
+
+
 
         btn_kakao_secession.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +259,13 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if(result.isSuccess()){  // 인증 결과가 성공적이면
                 GoogleSignInAccount account = result.getSignInAccount();  // account라는 데이터는 구글 로그인 정보를 담고 있음(닉네임, 프로필사진url, 이메일 주소 등)
+                username = account.getDisplayName();
+                useremail = account.getEmail();
+                gender_year_picker pd = new gender_year_picker();
+                pd.setListener(d);
+                pd.show(getSupportFragmentManager(), "YearMonthPickerTest");
                 resultLogin(account);  // 로그인 결과 값 출력 수행하라는 메소드
+
             }
 
         }
@@ -190,6 +278,7 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
 
     private void resultLogin(final GoogleSignInAccount account) {
 
+
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -197,18 +286,13 @@ public class loginselect extends AppCompatActivity implements GoogleApiClient.On
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()){  // 로그인이 성공했으면
-                            Toast.makeText(loginselect.this, "로그인 성공", Toast.LENGTH_LONG).show();
-                            Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
-
-                            startActivity(intent);
 
                         } else {  // 로그인이 실패했으면
-                            Toast.makeText(loginselect.this, "로그인 실패", Toast.LENGTH_LONG).show();
+                            Toast.makeText(register_select.this, "로그인 실패", Toast.LENGTH_LONG).show();
                         }
 
                     }
                 });
-
     }
 
 

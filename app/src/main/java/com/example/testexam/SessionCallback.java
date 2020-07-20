@@ -1,7 +1,16 @@
 package com.example.testexam;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -15,7 +24,12 @@ import com.kakao.usermgmt.response.model.UserAccount;
 import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SessionCallback implements ISessionCallback {
+
+
 
     // 로그인에 성공한 상태
     @Override
@@ -83,10 +97,10 @@ public class SessionCallback implements ISessionCallback {
                             //성별
                             Gender gender = kakaoAccount.getGender();
 
-                            if (gender != null){
+
+                            if (gender != null) {
                                 Log.d("KAKAO_API", "gender: " + gender.getValue());
-                            }
-                            else{
+                            } else {
                                 //성별 획득 불가
                                 Log.d("KAKAO_API", "gender: null");
                             }
@@ -94,26 +108,23 @@ public class SessionCallback implements ISessionCallback {
                             //연령대
                             AgeRange ageRange = kakaoAccount.getAgeRange();
 
-                            if (ageRange != null){
+                            if (ageRange != null) {
                                 Log.d("KAKAO_API", "ageRange: " + ageRange.getValue());
-                            }
-                            else{
+                            } else {
                                 Log.d("KAKAO_API", "ageRange: null");
                             }
 
                             //생일
                             BirthdayType birthdayType = kakaoAccount.getBirthdayType();
 
-                            if (birthdayType != null){
+                            if (birthdayType != null) {
                                 Log.d("KAKAO_API", "birthdayType: " + kakaoAccount.getBirthday());
-                            }
-                            else{
+                            } else {
                                 Log.d("KAKAO_API", "birthdayType: null");
                             }
-
-
                         }
                     }
+
                 });
     }
 }

@@ -25,20 +25,34 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
 public class register_activity extends AppCompatActivity {
 
     private EditText et_name, et_email, et_password, et_re_password;
     private Button btn_regist_account;
     private  TextView tv_yearpicker, tv_women, tv_men;
 
-    private String user_birth = "";
-    private String user_gender = "";
+    private String userbirth = "";
+    private String usergender = "";
+    private String userage = "";
+    public Calendar cal = Calendar.getInstance();
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){ //생년월일 받아오는 부분
             Log.d("YearMonthPickerTest", "year = " + year + ", month = " + monthOfYear + ", day = " + dayOfMonth);
-            user_birth = year+"/" + monthOfYear + "/"+dayOfMonth;
+            userbirth = monthOfYear+"/"+dayOfMonth;
+            int thisyear = cal.get(Calendar.YEAR);
+            if(thisyear-year < 20){
+                userage = "10";
+            }else if (thisyear-year < 30){
+                userage = "20";
+            }else if (thisyear-year < 40){
+                userage = "30";
+            }else{
+                userage = "40";
+            }
             tv_yearpicker = (TextView) findViewById(R.id.tv_yearpicker);
             tv_yearpicker.setText(year+" / " + monthOfYear + " / "+dayOfMonth);
 
@@ -59,7 +73,7 @@ public class register_activity extends AppCompatActivity {
         tv_men = (TextView) findViewById(R.id.tv_men);
 
         et_name.setOnKeyListener(new View.OnKeyListener() { //엔터시 키보드 내리는 부분
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_name.getWindowToken(), 0);
@@ -114,7 +128,7 @@ public class register_activity extends AppCompatActivity {
             public void onClick(View view) {  // 여자 버튼 클릭
                 tv_women.setBackground(getResources().getDrawable(R.drawable.round_button));
                 tv_men.setBackground(getResources().getDrawable(R.drawable.edge));
-                user_gender = "여자";
+                usergender = "여";
             }
         });
 
@@ -123,7 +137,7 @@ public class register_activity extends AppCompatActivity {
             public void onClick(View view) { // 남자 버튼 클릭
                 tv_men.setBackground(getResources().getDrawable(R.drawable.round_button));
                 tv_women.setBackground(getResources().getDrawable(R.drawable.edge));
-                user_gender = "남자";
+                usergender = "남";
             }
         });
 
@@ -135,9 +149,9 @@ public class register_activity extends AppCompatActivity {
                 String userpassword = et_password.getText().toString();
                 String userrepassword = et_re_password.getText().toString();
 
-                if(user_gender.equals("")){
+                if(usergender.equals("")){
                     Toast.makeText(getApplicationContext(),"성별을 선택해 주세요",Toast.LENGTH_LONG).show();
-                }else if (user_birth.equals("") ){
+                }else if (userbirth.equals("") ){
                     Toast.makeText(getApplicationContext(),"생년월일을 선택해 주세요",Toast.LENGTH_LONG).show();
                 }else if (username.isEmpty()){
                     Toast.makeText(getApplicationContext(),"이름을 적어주세요",Toast.LENGTH_LONG).show();
@@ -166,7 +180,7 @@ public class register_activity extends AppCompatActivity {
                             }
                         }
                     };
-                    register_request register_request = new register_request(username,useremail,userpassword,responseListener);
+                    register_request register_request = new register_request(username,useremail,userpassword,usergender,userbirth,userage,"goeat",responseListener);
                     RequestQueue queue = Volley.newRequestQueue(register_activity.this);
                     queue.add(register_request);
                 }
