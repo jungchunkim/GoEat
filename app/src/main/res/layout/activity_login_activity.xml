@@ -49,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="5dp"
         android:hint="비밀번호"
         android:inputType="textPassword"
@@ -57,7 +58,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_login_email"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/cb_login_auto"
@@ -65,22 +66,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginLeft="2dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="3dp"
         android:text="로그인 상태 유지"
         android:textColor="#B23B65"
         app:layout_constraintBottom_toTopOf="@+id/btn_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_login_password"
-        app:layout_constraintVertical_bias="0.32" />
+        app:layout_constraintTop_toBottomOf="@+id/et_login_password" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/round_button"
         android:text="로그인"
@@ -90,7 +89,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_login_password"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
