@@ -94,7 +94,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                     Intent intent = new Intent(login_activity.this,success_sign_up.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getApplicationContext(),"가입되어 았지 않습니다", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -199,23 +199,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             }
         });
 
-        if(pref.getString("check","").equals("1")){ //액티비티 실행시 자동로그인 확인후 로그인 처리
-            cb_login_auto.setChecked(true);
-            String email = pref.getString("email","");
-            String password = pref.getString("password","");
-            et_login_email.setText(email);
-            et_login_password.setText(password);
-            btn_login.performClick();
-        }
 
-        tv_find_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(login_activity.this,reset_password.class);
-                startActivity(intent);
-
-            }
-        });
 
         cb_login_auto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -263,6 +247,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             public void onClick(View view) {
                 Intent intent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
                 startActivityForResult(intent, REQ_SIGN_GOOGLE);
+
             }
         });
 
@@ -288,15 +273,10 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                         UserAccount kakaoAccount = result.getKakaoAccount();
                         useremail = kakaoAccount.getEmail();
 
-                        if (cb_login_auto.isChecked()){
-                            editor.putString("email",useremail);
-                            editor.putString("password",useremail);
-                            editor.putString("check","1");
-                            editor.commit();
-                        }else{
-                            editor.putString("check","0");
-                            editor.commit();
-                        }
+
+                        editor.putString("check","3");
+                        editor.commit();
+
 
                         login_request login_request = new login_request(useremail,useremail,responseListener);
                         RequestQueue queue = Volley.newRequestQueue(login_activity.this);
@@ -305,7 +285,33 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                 });
             }
         });
+        if(pref.getString("check","").equals("1")){ //액티비티 실행시 자동로그인 확인후 각 계정 별 로그인 처리
+            cb_login_auto.setChecked(true);
+            String email = pref.getString("email","");
+            String password = pref.getString("password","");
+            et_login_email.setText(email);
+            et_login_password.setText(password);
+            Toast.makeText(getApplicationContext(), "GoEat 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
 
+            btn_login.performClick();
+        }else if(pref.getString("check","").equals("3")){
+            Toast.makeText(getApplicationContext(), "Kakao 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
+
+            iv_kakao_login.performClick();
+
+        }else if(pref.getString("check","").equals("4")){
+            Toast.makeText(getApplicationContext(), "Google 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
+
+            iv_google_login.performClick();
+        }
+        tv_find_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(login_activity.this,reset_password.class);
+                startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -329,16 +335,9 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                 GoogleSignInAccount account = result.getSignInAccount();  // account라는 데이터는 구글 로그인 정보를 담고 있음(닉네임, 프로필사진url, 이메일 주소 등)
                 useremail = account.getEmail();
                 SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
-                final SharedPreferences.Editor editor = pref.edit();
-                if (cb_login_auto.isChecked()){
-                    editor.putString("email",useremail);
-                    editor.putString("password",useremail);
-                    editor.putString("check","1");
+                SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("check","4");
                     editor.commit();
-                }else{
-                    editor.putString("check","0");
-                    editor.commit();
-                }
                 login_request login_request = new login_request(useremail,useremail,responseListener);
                 RequestQueue queue = Volley.newRequestQueue(login_activity.this);
                 queue.add(login_request);

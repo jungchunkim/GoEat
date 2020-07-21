@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -188,6 +189,12 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
                     @Override
                     public void onSuccess(MeV2Response result) {
                         //로그인에 성공했을 때 서버 요청 보내는 부분 (첫회원가입시 두번클릭해야함...해결 필요...)
+
+                        SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("check","3");
+                        editor.commit();
+
                         Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
                         startActivity(intent);
                         finish();
@@ -204,6 +211,7 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
                         AgeRange ageRange = kakaoAccount.getAgeRange();
                         userage = ageRange.getValue().substring(0,2);
                         userbirth = kakaoAccount.getBirthday().substring(0,2)+"/"+ kakaoAccount.getBirthday().substring(2,4);
+
 
                         register_request register_request = new register_request(username,useremail,useremail,usergender,userbirth,userage,"kakao",responseListener);
                         RequestQueue queue = Volley.newRequestQueue(register_select.this);
@@ -265,6 +273,11 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
                 pd.setListener(d);
                 pd.show(getSupportFragmentManager(), "YearMonthPickerTest");
                 resultLogin(account);  // 로그인 결과 값 출력 수행하라는 메소드
+
+                SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("check","4");
+                editor.commit();
 
             }
 
