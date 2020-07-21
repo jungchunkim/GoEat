@@ -2,10 +2,13 @@ package com.example.testexam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -32,7 +35,17 @@ public class reset_password extends AppCompatActivity { //비밀번호 재설정
         et_reset_email  = (EditText)findViewById(R.id.et_reset_email);
         btn_reset_password= (Button)findViewById(R.id.btn_reset_password);
 
-        btn_receive_password.setOnClickListener(new View.OnClickListener() {
+        et_reset_email.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) { // 엔터시 키보드 내리는 부분
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow( et_reset_email.getWindowToken(), 0);
+                    return true;
+                }
+                return false;
+            }
+        });
+        btn_receive_password.setOnClickListener(new View.OnClickListener() { // 이메일 받아서 유효성 체크
 
 
             @Override
@@ -76,7 +89,7 @@ public class reset_password extends AppCompatActivity { //비밀번호 재설정
             }
         });
 
-        btn_reset_password.setOnClickListener(new View.OnClickListener() {
+        btn_reset_password.setOnClickListener(new View.OnClickListener() { // 재설정할 암호 서버 전송
             @Override
             public void onClick(View view) {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
