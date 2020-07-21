@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.317"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.386" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_women"
@@ -61,12 +61,13 @@
         app:layout_constraintHorizontal_bias="0.68"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.386" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/tv_yearpicker"
         android:layout_width="200dp"
         android:layout_height="50dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/round_button"
         android:gravity="center"
         android:text="생년월일을 선택해주세요!"
@@ -75,8 +76,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/et_password"
@@ -98,14 +99,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="5dp"
         android:hint="이름"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_yearpicker"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/et_re_password"

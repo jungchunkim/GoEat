@@ -90,11 +90,11 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 boolean success = jsonObject.getBoolean("success");
-                if (success){
-                    Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
+                if(success){
+                    Intent intent = new Intent(login_activity.this,success_sign_up.class);
                     startActivity(intent);
-                }else {
-                    Toast.makeText(getApplicationContext(), "가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"가입되어 았지 않습니다", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -161,13 +161,17 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                     @Override
                     public void onResponse(String response) {
                         try {
+
                             JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            if(success){
-                                Intent intent = new Intent(login_activity.this,success_sign_up.class);
+                            String success = jsonObject.getString("success");
+                            System.out.println(success);
+                            if (success.equals("true")){
+                                Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
                                 startActivity(intent);
+                            }else if(success.equals("almost_true")){
+                                Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다", Toast.LENGTH_LONG).show();
                             }else{
-                                Toast.makeText(getApplicationContext(),"이메일 또는 비밀번호가 다릅니다", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -207,7 +211,8 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         tv_find_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(login_activity.this,reset_password.class);
+                startActivity(intent);
 
             }
         });
