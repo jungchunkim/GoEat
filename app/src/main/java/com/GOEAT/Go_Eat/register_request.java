@@ -1,21 +1,13 @@
-package com.example.testexam;
+package com.GOEAT.Go_Eat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
-    public class register_request extends StringRequest { // 회원 가입시 유저 정보 전송 부분
+public class register_request extends StringRequest { // 회원 가입시 유저 정보 전송 부분
 
     final static private String URL = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/Register.php";
     private Map<String,String> map;

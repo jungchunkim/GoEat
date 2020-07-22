@@ -1,4 +1,4 @@
-package com.example.testexam;
+package com.GOEAT.Go_Eat;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

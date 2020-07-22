@@ -1,6 +1,5 @@
-package com.example.testexam;
+package com.GOEAT.Go_Eat;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.AlertDialog;

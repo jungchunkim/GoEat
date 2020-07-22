@@ -1,4 +1,4 @@
-package com.example.testexam;
+package com.GOEAT.Go_Eat;
 
 import org.junit.Test;
 

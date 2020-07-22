@@ -1,4 +1,4 @@
-package com.example.testexam;
+package com.GOEAT.Go_Eat;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,11 +44,7 @@ import com.kakao.auth.Session;
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
-import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
-import com.kakao.usermgmt.response.model.AgeRange;
-import com.kakao.usermgmt.response.model.Gender;
-import com.kakao.usermgmt.response.model.Profile;
 import com.kakao.usermgmt.response.model.UserAccount;
 
 import org.json.JSONException;
@@ -56,7 +52,6 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
 
 public class login_activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{ // 로그인 화면
 
