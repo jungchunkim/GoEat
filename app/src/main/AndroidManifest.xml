@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.GOEAT.Go_Eat">
+    package="com.example.testexam">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.GOEAT.Go_Eat.GlobalApplication"
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,6 +27,22 @@
         <activity android:name="com.GOEAT.Go_Eat.start3nd" />
         <activity android:name="com.GOEAT.Go_Eat.start2nd" />
         <activity android:name="com.GOEAT.Go_Eat.MainActivity">
+        <activity android:name=".ChooseHateFood"></activity>
+        <activity android:name=".CheckUserTasteThird" />
+        <activity android:name=".CheckUserTasteSecond" />
+        <activity android:name=".CheckUserTasteFirst" />
+        <activity android:name=".CheckUserTaste" />
+        <activity android:name=".MakeCharCompleteActivity" />
+        <activity android:name=".reset_password" />
+        <activity android:name=".success_sign_up" />
+        <activity android:name=".register_activity" />
+        <activity android:name=".login_activity" />
+        <activity android:name=".hello2" />
+        <activity android:name=".register_select" />
+        <activity android:name=".hello" />
+        <activity android:name=".start3nd" />
+        <activity android:name=".start2nd" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
