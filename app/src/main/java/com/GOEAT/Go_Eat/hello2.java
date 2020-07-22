@@ -1,6 +1,5 @@
 package com.GOEAT.Go_Eat;
 
-import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,10 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.TextView;
 
-import com.example.testexam.MakeCharCompleteActivity;
-import com.example.testexam.R;
 
 public class hello2 extends AppCompatActivity {
 

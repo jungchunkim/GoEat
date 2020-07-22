@@ -1,9 +1,11 @@
-package com.example.testexam;
+package com.GOEAT.Go_Eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+
+import com.GOEAT.Go_Eat.R;
 
 public class ChooseHateFood extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.testexam;
+package com.GOEAT.Go_Eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,25 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class CheckUserTasteThird extends AppCompatActivity {
+public class CheckUserTasteSecond extends AppCompatActivity {
 
     private Button btn_next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_check_user_taste_third);
+        setContentView(R.layout.activity_check_user_taste_second);
 
         btn_next = findViewById(R.id.btn_next);
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChooseHateFood.class);
+                Intent intent = new Intent(getApplicationContext(), CheckUserTasteThird.class);
                 startActivity(intent);
             }
         });
-
 
     }
 }
