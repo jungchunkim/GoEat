@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -44,10 +46,13 @@ import com.kakao.usermgmt.response.model.AgeRange;
 import com.kakao.usermgmt.response.model.Gender;
 import com.kakao.usermgmt.response.model.Profile;
 import com.kakao.usermgmt.response.model.UserAccount;
+import com.nhn.android.naverlogin.OAuthLogin;
+import com.nhn.android.naverlogin.OAuthLoginHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Calendar;
@@ -58,6 +63,9 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
     private Button btn_google_login;
     private Button btn_kakao_login;
     private Button btn_kakao_secession;
+
+    private Button btn_naver_login;
+    public static OAuthLogin mOAuthLoginModule;
 
     private String useremail,username,usergender,userage,userbirth;
 
@@ -131,7 +139,26 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
         btn_kakao_login = (Button)findViewById(R.id.btn_kakao_login);
         btn_kakao_secession = (Button)findViewById(R.id.btn_kakao_secession);
 
+        btn_naver_login = (Button) findViewById(R.id.btn_naver_login);
+        mOAuthLoginModule = OAuthLogin.getInstance();
+        mOAuthLoginModule.init(  //네이버 클라인트 api 정보
+                register_select.this,
+                "vu_x6MX3VQMf8FkHvqi3",
+                "no99zztS1T",
+                "Go Eat"
+        );
+        final OAuthLoginHandler mOAuthLoginHandler = new NaverLoginHandler(this);
 
+
+        btn_naver_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    mOAuthLoginModule.startOauthLoginActivity(register_select.this, mOAuthLoginHandler);
+
+
+
+            }
+        });
 
 
         // 구글 로그인 관련 코드들
@@ -334,4 +361,120 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
             }
         }
     }
+    private static class NaverLoginHandler extends OAuthLoginHandler { //네이버 사용자 정보 얻는 클래스
+        private final WeakReference<register_select> mActivity;
+
+        public NaverLoginHandler(register_select activity) {
+            mActivity = new WeakReference<register_select>(activity);
+        }
+
+        @Override
+        public void run(boolean success) {
+            final register_select activity = mActivity.get();
+
+            if (success) {
+                final String accessToken = mOAuthLoginModule.getAccessToken(activity);
+                String refreshToken = mOAuthLoginModule.getRefreshToken(activity);
+                long expiresAt = mOAuthLoginModule.getExpiresAt(activity);
+                String tokenType = mOAuthLoginModule.getTokenType(activity);
+                new Thread(){
+                    public void run(){
+                        String data = mOAuthLoginModule.requestApi(activity, accessToken ,"https://openapi.naver.com/v1/nid/me");
+                        try {
+                            JSONObject result = new JSONObject(data);
+
+
+                            activity.setUserage(result.getJSONObject("response").getString("age"));
+                            activity.setUserbirth(result.getJSONObject("response").getString("birthday"));
+                            activity.setUseremail(result.getJSONObject("response").getString("email"));
+                            activity.setUsergender(result.getJSONObject("response").getString("gender"));
+                            activity.setUsername(result.getJSONObject("response").getString("name"));
+                            register_request register_request = new register_request(activity.getUsername(), activity.getUseremail(),activity. getUseremail(), activity.getUsergender(), activity.getUserbirth(),activity.getUserage(), "Naver", activity.responseListener);
+                            RequestQueue queue = Volley.newRequestQueue(activity);
+                            queue.add(register_request);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }.start();
+
+
+
+
+
+//                ProfileTask task = new ProfileTask();
+//                // 이 클래스가 유저정보를 가져오는 업무를 담당합니다.
+//                task.execute(accessToken);
+//
+//
+//                Log.d("123",task.getUsername());
+
+
+
+
+//                register_request register_request = new register_request(task.getUsername(), task.getUseremail(), task.getUseremail(), task.getUsergender(), task.getUserbirth(), task.getUserage(), "google", responseListener);
+//                RequestQueue queue = Volley.newRequestQueue(activity);
+//                queue.add(register_request);
+
+            } else {
+                String errorCode = mOAuthLoginModule.getLastErrorCode(activity).getCode();
+                String errorDesc = mOAuthLoginModule.getLastErrorDesc(activity);
+                Toast.makeText(activity, "errorCode:" + errorCode
+                        + ", errorDesc:" + errorDesc, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    public void setUseremail(String s){
+        Log.d("111",s);
+        useremail = s;
+    }
+    public void setUsername(String s){
+        Log.d("111",s);
+        username = s;
+    }
+    public void setUserbirth(String s){
+        Log.d("111",s);
+        s = s.substring(0,2)+"/"+s.substring(3,5);
+        userbirth = s;
+    }
+    public void setUsergender(String s){
+        Log.d("111",s);
+        if (s.equals("M")) {
+            usergender = "남";
+        }else {
+            usergender = "여";
+        }
+    }
+    public void setUserage(String s){
+        Log.d("111",s);
+        s = s.substring(0,2);
+        userage = s;
+    }
+
+    public String getUserage() {
+        Log.d("222",userage);
+        return userage;
+    }
+
+    public String getUserbirth() {
+        Log.d("222",userbirth);
+        return userbirth;
+    }
+
+    public String getUseremail() {
+        Log.d("222",useremail);
+        return useremail;
+    }
+
+    public String getUsergender() {
+        Log.d("222",usergender);
+        return usergender;
+    }
+
+    public String getUsername() {
+        Log.d("222",username);
+        return username;
+    }
+
 }

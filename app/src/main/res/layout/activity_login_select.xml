@@ -50,116 +50,137 @@
     <Button
         android:id="@+id/btn_new_account"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:background="#FFFFFF"
+        android:text="새 계정 만들기"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView2"
+        app:layout_constraintTop_toTopOf="@+id/circleImageView2" />
+
+    <Button
+        android:id="@+id/btn_google_login"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:text="Google로 계속하기"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+        app:layout_constraintTop_toTopOf="@+id/circleImageView" />
+
+    <Button
+        android:id="@+id/btn_kakao_login"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:text="Kakao로 계속하기"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView4"
+        app:layout_constraintTop_toTopOf="@+id/circleImageView4" />
+
+    <Button
+        android:id="@+id/btn_kakao_secession"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:text="앱에서 KAKAO 탈퇴"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/circleImageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/circleImageView3"
+        app:layout_constraintTop_toTopOf="@+id/circleImageView3" />
+
+    <Button
+        android:id="@+id/btn_naver_login"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:text="NAVER 로 계속하기"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_naver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_naver"
+        app:layout_constraintTop_toTopOf="@+id/btn_naver" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView4"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/kakaolink_btn_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_google_login"
+        app:layout_constraintStart_toStartOf="@+id/circleImageView"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/btn_naver"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/naver_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_kakao_login"
+        app:layout_constraintStart_toStartOf="@+id/circleImageView4"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView4"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView3"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/kakaolink_btn_medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_naver"
+        app:layout_constraintStart_toStartOf="@+id/btn_naver"
+        app:layout_constraintTop_toBottomOf="@+id/btn_naver"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/fui_ic_googleg_color_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/circleImageView2"
+        app:layout_constraintStart_toStartOf="@+id/circleImageView2"
+        app:layout_constraintTop_toBottomOf="@+id/circleImageView2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView2"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:background="#FFFFFF"
-        android:text="\t\t\t\t\t\t\t\t새 계정 만들기"
-        android:textSize="18sp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/go"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.082" />
-
-    <Button
-        android:id="@+id/btn_google_login"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="10dp"
-        android:background="#FFFFFF"
-        android:text="\t\t\t\t\t\t\t\tGoogle으로 계속하기"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_new_account"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btn_kakao_login"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="10dp"
-        android:background="#FFFFFF"
-        android:text="\t\t\t\t\t\t\t\tKakao로 계속하기"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_google_login"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/btn_kakao_secession"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="10dp"
-        android:background="#FFFFFF"
-        android:text="\t\t\t\t\t\t\t\t앱에서 Kakao 탈퇴"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.005"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_kakao_login"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="47dp"
-        android:layout_height="47dp"
-        android:src="@drawable/kakaoaccount_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_kakao_login"
-        app:layout_constraintEnd_toEndOf="@+id/btn_kakao_login"
-        app:layout_constraintHorizontal_bias="0.006"
-        app:layout_constraintStart_toStartOf="@+id/btn_kakao_login"
-        app:layout_constraintTop_toTopOf="@+id/btn_kakao_login"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="47dp"
-        android:layout_height="47dp"
-        android:src="@drawable/kakaoaccount_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_kakao_secession"
-        app:layout_constraintEnd_toEndOf="@+id/btn_kakao_secession"
-        app:layout_constraintHorizontal_bias="0.006"
-        app:layout_constraintStart_toStartOf="@+id/btn_kakao_secession"
-        app:layout_constraintTop_toTopOf="@+id/btn_kakao_secession"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="43dp"
-        android:layout_height="43dp"
-        android:src="@drawable/fui_ic_googleg_color_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_google_login"
-        app:layout_constraintEnd_toEndOf="@+id/btn_google_login"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="@+id/btn_google_login"
-        app:layout_constraintTop_toTopOf="@+id/btn_google_login" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="47dp"
-        android:layout_height="47dp"
-        android:src="@drawable/go"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_new_account"
-        app:layout_constraintEnd_toEndOf="@+id/btn_new_account"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn_new_account"
-        app:layout_constraintTop_toTopOf="@+id/btn_new_account"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.006" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

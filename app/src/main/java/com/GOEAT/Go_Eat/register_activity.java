@@ -13,12 +13,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.nhn.android.naverlogin.OAuthLogin;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,6 +37,7 @@ public class register_activity extends AppCompatActivity {
     private String usergender = "";
     private String userage = "";
     public Calendar cal = Calendar.getInstance();
+
 
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -69,6 +72,7 @@ public class register_activity extends AppCompatActivity {
         tv_yearpicker = (TextView) findViewById(R.id.tv_yearpicker);
         tv_women = (TextView) findViewById(R.id.tv_women);
         tv_men = (TextView) findViewById(R.id.tv_men);
+
 
         et_name.setOnKeyListener(new View.OnKeyListener() { //엔터시 키보드 내리는 부분
             public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분

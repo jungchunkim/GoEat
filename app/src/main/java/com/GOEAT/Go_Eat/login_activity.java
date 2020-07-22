@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -46,12 +47,18 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
 import com.kakao.usermgmt.response.model.UserAccount;
+import com.nhn.android.naverlogin.OAuthLogin;
+import com.nhn.android.naverlogin.OAuthLoginHandler;
+import com.nhn.android.naverlogin.ui.view.OAuthLoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.ref.WeakReference;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import static com.nhn.android.naverlogin.OAuthLogin.mOAuthLoginHandler;
 
 public class login_activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{ // 로그인 화면
 
@@ -64,6 +71,9 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
     private ImageView iv_google_login;
     private ImageView iv_kakao_login;
+    private ImageView iv_naver_login;
+    public static OAuthLogin mOAuthLoginModule;
+
 
 
     private String useremail;
@@ -75,6 +85,10 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
     //카카오 로그인에 필요한 변수들
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
+
+
+
+
 
 
 
@@ -98,6 +112,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
     };
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +126,30 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         et_login_email = (EditText) findViewById(R.id.et_login_email);
         et_login_password = (EditText) findViewById(R.id.et_login_password);
         cb_login_auto = (CheckBox) findViewById(R.id.cb_login_auto);
+
+        iv_naver_login = (ImageView) findViewById(R.id.iv_naver_login);
+
+        mOAuthLoginModule = OAuthLogin.getInstance();
+        mOAuthLoginModule.init(  //네이버 클라인트 api 정보
+                login_activity.this,
+                "vu_x6MX3VQMf8FkHvqi3",
+                "no99zztS1T",
+                "Go Eat"
+        );
+        final OAuthLoginHandler mOAuthLoginHandler = new login_activity.NaverLoginHandler(this);
+
+
+        iv_naver_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOAuthLoginModule.startOauthLoginActivity(login_activity.this, mOAuthLoginHandler);
+
+
+
+            }
+        });
+
+
 
 
 
@@ -298,6 +337,9 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             Toast.makeText(getApplicationContext(), "Google 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
 
             iv_google_login.performClick();
+        }else if(pref.getString("check","").equals("5")){
+            Toast.makeText(getApplicationContext(), "Naver 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
+            iv_naver_login.performClick();
         }
         tv_find_account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -413,5 +455,53 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
 
     }
+
+    private static class NaverLoginHandler extends OAuthLoginHandler { //네이버 사용자 정보 얻는 클래스
+        private final WeakReference<login_activity> mActivity;
+
+        public NaverLoginHandler(login_activity activity) {
+            mActivity = new WeakReference<login_activity>(activity);
+        }
+
+        @Override
+        public void run(boolean success) {
+            final login_activity activity = mActivity.get();
+
+            if (success) {
+                final String accessToken = mOAuthLoginModule.getAccessToken(activity);
+                String refreshToken = mOAuthLoginModule.getRefreshToken(activity);
+                long expiresAt = mOAuthLoginModule.getExpiresAt(activity);
+                String tokenType = mOAuthLoginModule.getTokenType(activity);
+                new Thread(){
+                    public void run(){
+                        String data = mOAuthLoginModule.requestApi(activity, accessToken ,"https://openapi.naver.com/v1/nid/me");
+                        try {
+                            JSONObject result = new JSONObject(data);
+
+                            String useremail = result.getJSONObject("response").getString("email");
+                            SharedPreferences pref = activity.getSharedPreferences("loginauto",MODE_PRIVATE);
+                            SharedPreferences.Editor editor = pref.edit();
+                            editor.putString("check","5");
+                            editor.commit();
+
+                            login_request login_request = new login_request(useremail,useremail,activity.responseListener);
+                            RequestQueue queue = Volley.newRequestQueue(activity);
+                            queue.add(login_request);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }.start();
+
+            } else {
+                String errorCode = mOAuthLoginModule.getLastErrorCode(activity).getCode();
+                String errorDesc = mOAuthLoginModule.getLastErrorDesc(activity);
+                Toast.makeText(activity, "errorCode:" + errorCode
+                        + ", errorDesc:" + errorDesc, Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
 }
