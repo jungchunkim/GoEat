@@ -401,22 +401,6 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
 
 
 
-
-
-//                ProfileTask task = new ProfileTask();
-//                // 이 클래스가 유저정보를 가져오는 업무를 담당합니다.
-//                task.execute(accessToken);
-//
-//
-//                Log.d("123",task.getUsername());
-
-
-
-
-//                register_request register_request = new register_request(task.getUsername(), task.getUseremail(), task.getUseremail(), task.getUsergender(), task.getUserbirth(), task.getUserage(), "google", responseListener);
-//                RequestQueue queue = Volley.newRequestQueue(activity);
-//                queue.add(register_request);
-
             } else {
                 String errorCode = mOAuthLoginModule.getLastErrorCode(activity).getCode();
                 String errorDesc = mOAuthLoginModule.getLastErrorDesc(activity);

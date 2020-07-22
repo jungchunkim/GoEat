@@ -61,7 +61,7 @@ public class reset_password extends AppCompatActivity { //비밀번호 재설정
                             String SNS = jsonObject.getString("SNS");
                             Log.d("SNS", SNS);
 
-                            if(SNS.equals("google") || SNS.equals("kakao")) {
+                            if(SNS.equals("google") || SNS.equals("kakao") || SNS.equals("Naver")) {
                                 Toast.makeText(getApplicationContext(), SNS + "로 이미 가입된 계정입니다", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(reset_password.this, login_activity.class);
                                 startActivity(intent);
