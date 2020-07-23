@@ -31,7 +31,7 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
-        <activity android:name=".CheckUserTasteThird" />
+
         <activity android:name=".CheckUserTasteSecond" />
         <activity android:name=".CheckUserTasteFirst" />
         <activity android:name=".CheckUserTaste" />

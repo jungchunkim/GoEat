@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:text="첫번째 질문!\n 외식할때 나한테 중요한 순서는?"
+        android:text="@string/talk_ex2"
         android:gravity="center"
         android:textStyle="bold"
         android:layout_marginBottom="40dp"/>
@@ -72,7 +72,6 @@
             android:layout_gravity="center"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:layout_marginBottom="7dp"
             android:text="D. 가격"
             android:textStyle="bold"/>
 
@@ -83,6 +82,7 @@
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:progressDrawable="@drawable/progressbar_progressbar1"
             android:layout_width="400dp"
+            android:layout_marginTop="10dp"
             android:layout_height="10dp" />
 
         <TextView
