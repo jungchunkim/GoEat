@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ChooseHateFood">
     
     <LinearLayout
@@ -25,5 +26,171 @@
             android:textSize="20sp"/>
         
     </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="490dp"
+        android:orientation="vertical">
+        
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1"
+          android:gravity="center">
+
+          <ImageView
+              android:id="@+id/img_1"
+              android:layout_width="100dp"
+              android:layout_height="match_parent"
+              android:src="@drawable/p_food1">
+          </ImageView>
+          <ImageView
+              android:id="@+id/img_2"
+              android:layout_width="100dp"
+              android:layout_height="match_parent"
+              android:src="@drawable/p_food2"
+              android:layout_margin="20dp">
+          </ImageView>
+          <ImageView
+              android:id="@+id/img_3"
+              android:layout_width="100dp"
+              android:layout_height="match_parent"
+              android:src="@drawable/p_food3">
+          </ImageView>
+
+      </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_4"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food4">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_5"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food5"
+                android:layout_margin="20dp">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_6"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food6">
+            </ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_7"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food7">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_8"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food8"
+                android:layout_margin="20dp">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_9"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food9">
+            </ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_10"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food10">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_11"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food11"
+                android:layout_margin="20dp">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_12"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food12">
+            </ImageView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/img_13"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food13">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_14"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food14"
+                android:layout_margin="20dp">
+            </ImageView>
+            <ImageView
+                android:id="@+id/img_15"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/p_food15">
+            </ImageView>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right">
+
+        <Button
+            android:id="@+id/btn_next"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffffff"
+            android:text="다음  >"
+            android:textColor="#C15278"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

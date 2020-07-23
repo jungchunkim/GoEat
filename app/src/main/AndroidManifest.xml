@@ -14,33 +14,39 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserAnalyzeEnd"></activity>
+        <activity android:name=".UserAnalyzeStart" />
+        <activity android:name=".reset_password" />
+        <activity android:name=".success_sign_up" />
+        <activity android:name=".register_activity" />
+        <activity android:name=".login_activity" />
+        <activity android:name=".hello2" />
+        <activity android:name=".register_select" />
+        <activity android:name=".hello" />
+        <activity android:name=".start3nd" />
+        <activity android:name=".start2nd" />
+        <activity android:name=".ChooseHateFood" />
 
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
-        <activity android:name="com.GOEAT.Go_Eat.reset_password"/>
-        <activity android:name="com.GOEAT.Go_Eat.success_sign_up" />
-        <activity android:name="com.GOEAT.Go_Eat.register_activity" />
-        <activity android:name="com.GOEAT.Go_Eat.login_activity" />
-        <activity android:name="com.GOEAT.Go_Eat.hello2" />
-        <activity android:name="com.GOEAT.Go_Eat.register_select" />
-        <activity android:name="com.GOEAT.Go_Eat.hello" />
-        <activity android:name="com.GOEAT.Go_Eat.start3nd" />
-        <activity android:name="com.GOEAT.Go_Eat.start2nd" />
-        <activity android:name="com.GOEAT.Go_Eat.ChooseHateFood" />
         <activity android:name=".CheckUserTasteThird" />
         <activity android:name=".CheckUserTasteSecond" />
         <activity android:name=".CheckUserTasteFirst" />
         <activity android:name=".CheckUserTaste" />
         <activity android:name=".MakeCharCompleteActivity" />
-        <activity android:name="com.GOEAT.Go_Eat.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
     </application>
 
 </manifest>
