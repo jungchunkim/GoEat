@@ -100,9 +100,9 @@ public class CheckUserTasteSecond extends AppCompatActivity {
                     btn_click2_2.setTextColor(Color.WHITE);
 
                 } else {
-                    btn_click2_1.setSelected(false);
-                    btn_click2_1.setText("B. 분식");
-                    btn_click2_1.setTextColor(Color.BLACK);
+                    btn_click2_2.setSelected(false);
+                    btn_click2_2.setText("B. 분식");
+                    btn_click2_2.setTextColor(Color.BLACK);
                 }
             }
         };
@@ -183,12 +183,12 @@ public class CheckUserTasteSecond extends AppCompatActivity {
                 if (view.isSelected()) {
 
                     btn_click2_6.setSelected(true);
-                    btn_click2_6.setText("F. 버거");
+                    btn_click2_6.setText("F. 패스트푸드");
                     btn_click2_6.setTextColor(Color.WHITE);
 
                 } else {
                     btn_click2_6.setSelected(false);
-                    btn_click2_6.setText("F. 버거");
+                    btn_click2_6.setText("F. 패스트푸드");
                     btn_click2_6.setTextColor(Color.BLACK);
                 }
             }
@@ -225,12 +225,12 @@ public class CheckUserTasteSecond extends AppCompatActivity {
                 if (view.isSelected()) {
 
                     btn_click2_8.setSelected(true);
-                    btn_click2_8.setText("H. 서양");
+                    btn_click2_8.setText("H. 양식");
                     btn_click2_8.setTextColor(Color.WHITE);
 
                 } else {
                     btn_click2_8.setSelected(false);
-                    btn_click2_8.setText("H. 서양");
+                    btn_click2_8.setText("H. 양식");
                     btn_click2_8.setTextColor(Color.BLACK);
                 }
             }
