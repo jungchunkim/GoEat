@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class ChooseHateFood extends AppCompatActivity {
+public class ChooseHateFood extends AppCompatActivity implements View.OnClickListener {
 
     private Button btn_next;
     private ImageView img_char;
@@ -32,6 +32,7 @@ public class ChooseHateFood extends AppCompatActivity {
     private ImageView img_15;
     private int userChar = 0;
     private int[] clickCheck = new int[15];
+    private UserDB userDB = new UserDB();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,199 +66,203 @@ public class ChooseHateFood extends AppCompatActivity {
         img_14 = findViewById(R.id.img_14);
         img_15 = findViewById(R.id.img_15);
 
-        img_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[0]%2==0)
-                    changeImgBright(img_1);
-                else
-                    changeImgBack(img_1);
-                clickCheck[0]++;
-            }
-        });
+        // clickCheck[] 초기화
+        for(int i=0;i<15;i++)
+            clickCheck[i]=1;
 
-        img_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[1]%2==0)
-                    changeImgBright(img_2);
-                else
-                    changeImgBack(img_2);
-                clickCheck[1]++;
-            }
-        });
+        // 음식 클릭했을 때
+        img_1.setOnClickListener(this);
+        img_2.setOnClickListener(this);
+        img_3.setOnClickListener(this);
+        img_4.setOnClickListener(this);
+        img_5.setOnClickListener(this);
+        img_6.setOnClickListener(this);
+        img_7.setOnClickListener(this);
+        img_8.setOnClickListener(this);
+        img_9.setOnClickListener(this);
+        img_10.setOnClickListener(this);
+        img_11.setOnClickListener(this);
+        img_12.setOnClickListener(this);
+        img_13.setOnClickListener(this);
+        img_14.setOnClickListener(this);
+        img_15.setOnClickListener(this);
 
-        img_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[2]%2==0)
-                    changeImgBright(img_3);
-                else
-                    changeImgBack(img_3);
-                clickCheck[2]++;
-            }
-        });
+       UserDB userDB = new UserDB();
 
-        img_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[3]%2==0)
-                    changeImgBright(img_4);
-                else
-                    changeImgBack(img_4);
-                clickCheck[3]++;
-            }
-        });
-
-        img_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[4]%2==0)
-                    changeImgBright(img_5);
-                else
-                    changeImgBack(img_5);
-                clickCheck[4]++;
-            }
-        });
-
-        img_6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[5]%2==0)
-                    changeImgBright(img_6);
-                else
-                    changeImgBack(img_6);
-                clickCheck[5]++;
-            }
-        });
-
-        img_7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[6]%2==0)
-                    changeImgBright(img_7);
-                else
-                    changeImgBack(img_7);
-                clickCheck[6]++;
-            }
-        });
-
-        img_8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[7]%2==0)
-                    changeImgBright(img_8);
-                else
-                    changeImgBack(img_8);
-                clickCheck[7]++;
-            }
-        });
-
-        img_9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[8]%2==0)
-                    changeImgBright(img_9);
-                else
-                    changeImgBack(img_9);
-                clickCheck[8]++;
-            }
-        });
-
-        img_10.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[9]%2==0)
-                    changeImgBright(img_10);
-                else
-                    changeImgBack(img_10);
-                clickCheck[9]++;
-            }
-        });
-
-        img_11.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[10]%2==0)
-                    changeImgBright(img_11);
-                else
-                    changeImgBack(img_11);
-                clickCheck[10]++;
-            }
-        });
-
-        img_12.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[11]%2==0)
-                    changeImgBright(img_12);
-                else
-                    changeImgBack(img_12);
-                clickCheck[11]++;
-            }
-        });
-
-        img_13.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[12]%2==0)
-                    changeImgBright(img_13);
-                else
-                    changeImgBack(img_13);
-                clickCheck[12]++;
-            }
-        });
-
-        img_14.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[13]%2==0)
-                    changeImgBright(img_14);
-                else
-                    changeImgBack(img_14);
-                clickCheck[13]++;
-            }
-        });
-
-        img_15.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (clickCheck[14]%2==0)
-                    changeImgBright(img_15);
-                else
-                    changeImgBack(img_15);
-                clickCheck[14]++;
-            }
-        });
-
-
-
-        // 아직 서버연동안해서 임시로 넣은 캐릭터
-       userChar = 1;
-
-        // 사용자 캐릭터 불러옴
-        switch (userChar){
-            case 1:
-              img_char.setImageResource(R.drawable.char1);
-                break;
-            case 2:
-                img_char.setImageResource(R.drawable.char2);
-                break;
-            case 3:
-                img_char.setImageResource(R.drawable.char3);
-                break;
+       userDB.setImageToUserChar(img_char);        // 서버에서 사용자캐릭터가져와서 세팅
+        userDB.saveUserHateFood(clickCheck);       // 서버에 사용자가 싫어하는 음식 저장
 
     }
 
-}
-
-    private void changeImgBack(ImageView img) {
+    // 다시 클릭했을 때 명암&투명도 원래대로
+   private void changeImgBack(ImageView img) {
         img.setColorFilter(null);
         img.setAlpha(255);
     }
 
+    // 클릭했을 때 명암&투명도 설정
     private void changeImgBright(ImageView img) {
         img.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
         img.setAlpha(100);
     }
+
+    // 음식 클릭했을 때
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.img_1:
+                if (clickCheck[0]==1){
+                    changeImgBright(img_1);
+                    clickCheck[0] = -1;
+                }
+                else{
+                    changeImgBack(img_1);
+                    clickCheck[0] = 1;
+                }
+                break;
+            case R.id.img_2:
+                if (clickCheck[1]==1){
+                    changeImgBright(img_2);
+                    clickCheck[1] = -1;
+                }
+                else{
+                    changeImgBack(img_2);
+                    clickCheck[1] = 1;
+                }
+                break;
+            case R.id.img_3:
+                if (clickCheck[2]==1){
+                    changeImgBright(img_3);
+                    clickCheck[2] = -1;
+                }
+                else{
+                    changeImgBack(img_3);
+                    clickCheck[2] = 1;
+                }
+                break;
+            case R.id.img_4:
+                if (clickCheck[3]==1){
+                    changeImgBright(img_4);
+                    clickCheck[3] = -1;
+                }
+                else{
+                    changeImgBack(img_4);
+                    clickCheck[3] = 1;
+                }
+                break;
+            case R.id.img_5:
+                if (clickCheck[4]==1){
+                    changeImgBright(img_5);
+                    clickCheck[4] = -1;
+                }
+                else{
+                    changeImgBack(img_5);
+                    clickCheck[4] = 1;
+                }
+                break;
+            case R.id.img_6:
+                if (clickCheck[5]==1){
+                    changeImgBright(img_6);
+                    clickCheck[5] = -1;
+                }
+                else{
+                    changeImgBack(img_6);
+                    clickCheck[5] = 1;
+                }
+                break;
+            case R.id.img_7:
+                if (clickCheck[6]==1){
+                    changeImgBright(img_7);
+                    clickCheck[6] = -1;
+                }
+                else{
+                    changeImgBack(img_7);
+                    clickCheck[6] = 1;
+                }
+                break;
+            case R.id.img_8:
+                if (clickCheck[7]==1){
+                    changeImgBright(img_8);
+                    clickCheck[7] = -1;
+                }
+                else{
+                    changeImgBack(img_8);
+                    clickCheck[7] = 1;
+                }
+                break;
+            case R.id.img_9:
+                if (clickCheck[8]==1){
+                    changeImgBright(img_9);
+                    clickCheck[8] = -1;
+                }
+                else{
+                    changeImgBack(img_9);
+                    clickCheck[8] = 1;
+                }
+                break;
+            case R.id.img_10:
+                if (clickCheck[9]==1){
+                    changeImgBright(img_10);
+                    clickCheck[9] = -1;
+                }
+                else{
+                    changeImgBack(img_10);
+                    clickCheck[9] = 1;
+                }
+                break;
+            case R.id.img_11:
+                if (clickCheck[10]==1){
+                    changeImgBright(img_11);
+                    clickCheck[10] = -1;
+                }
+                else{
+                    changeImgBack(img_11);
+                    clickCheck[10] = 1;
+                }
+                break;
+            case R.id.img_12:
+                if (clickCheck[11]==1){
+                    changeImgBright(img_12);
+                    clickCheck[11] = -1;
+                }
+                else{
+                    changeImgBack(img_12);
+                    clickCheck[11] = 1;
+                }
+                break;
+            case R.id.img_13:
+                if (clickCheck[12]==1){
+                    changeImgBright(img_13);
+                    clickCheck[12] = -1;
+                }
+                else{
+                    changeImgBack(img_13);
+                    clickCheck[12] = 1;
+                }
+                break;
+            case R.id.img_14:
+                if (clickCheck[13]==1){
+                    changeImgBright(img_14);
+                    clickCheck[13] = -1;
+                }
+                else{
+                    changeImgBack(img_14);
+                    clickCheck[13] = 1;
+                }
+                break;
+            case R.id.img_15:
+                if (clickCheck[14]==1){
+                    changeImgBright(img_15);
+                    clickCheck[14] = -1;
+                }
+                else{
+                    changeImgBack(img_15);
+                    clickCheck[14] = 1;
+                }
+                break;
+        }
+    }
+
+
+
 }

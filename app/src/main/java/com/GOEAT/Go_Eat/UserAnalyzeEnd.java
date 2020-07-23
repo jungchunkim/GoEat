@@ -17,7 +17,7 @@ public class UserAnalyzeEnd extends AppCompatActivity {
         img_char = findViewById(R.id.img_char);
 
         UserDB userDB = new UserDB();
-        userDB.setUserChar(img_char);
-        
+        userDB.setImageToUserChar(img_char);
+
     }
 }

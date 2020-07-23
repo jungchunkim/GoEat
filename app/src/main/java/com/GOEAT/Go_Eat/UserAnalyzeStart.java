@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
@@ -13,6 +14,7 @@ import java.util.TimerTask;
 public class UserAnalyzeStart extends AppCompatActivity {
 
     private TextView tv_num;
+    private ImageView img_char;
     private int percent=0;
     private Timer timer;
     private final Handler handler = new Handler();
@@ -23,7 +25,13 @@ public class UserAnalyzeStart extends AppCompatActivity {
         setContentView(R.layout.activity_user_analyze_start);
 
         tv_num = findViewById(R.id.tv_num);
+        img_char = findViewById(R.id.img_char);
 
+        // 사용자 캐릭터 설정
+        UserDB userDB = new UserDB();
+        userDB.setImageToUserChar(img_char);
+
+        // 퍼센트 올라가는거 구현
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
