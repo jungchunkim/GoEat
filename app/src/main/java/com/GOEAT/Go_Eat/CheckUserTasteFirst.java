@@ -19,6 +19,11 @@ public class CheckUserTasteFirst extends AppCompatActivity {
     private View.OnClickListener m_listener2;
     private View.OnClickListener m_listener3;
     private View.OnClickListener m_listener4;
+    int num=0;
+    int btn_num1;
+    int btn_num2;
+    int btn_num3;
+    int btn_num4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +52,15 @@ public class CheckUserTasteFirst extends AppCompatActivity {
                 btn_click1.setSelected(!view.isSelected());
 
                 if(view.isSelected()) {
+                    btn_num1=++num;
                     btn_click1.setSelected(true);
-                    btn_click1.setText("A. 칼로리");  // 뭐가 될지 알고리즘 작성.
+                    btn_click1.setText("#"+String.valueOf(btn_num1)+"                                 A. 칼로리                                      ");
                     btn_click1.setTextColor(Color.WHITE);
+
                 }
                 else
                 {
+                    num--;
                     btn_click1.setSelected(false);
                     btn_click1.setText("A. 칼로리");
                     btn_click1.setTextColor(Color.BLACK);
@@ -70,12 +78,14 @@ public class CheckUserTasteFirst extends AppCompatActivity {
                 btn_click2.setSelected(!view.isSelected());
 
                 if(view.isSelected()) {
+                    btn_num2=++num;
                     btn_click2.setSelected(true);
-                    btn_click2.setText("B. 요리방식");  // 뭐가 될지 알고리즘 작성.
+                    btn_click2.setText("#"+String.valueOf(btn_num2)+"                               B. 요리방식                                    ");
                     btn_click2.setTextColor(Color.WHITE);
                 }
                 else
                 {
+                    num--;
                     btn_click2.setSelected(false);
                     btn_click2.setText("B. 요리방식");
                     btn_click2.setTextColor(Color.BLACK);
@@ -92,14 +102,16 @@ public class CheckUserTasteFirst extends AppCompatActivity {
                 btn_click3.setSelected(!view.isSelected());
 
                 if(view.isSelected()) {
+                    btn_num3=++num;
                     btn_click3.setSelected(true);
-                    btn_click3.setText("C. 누구랑먹는지");  // 뭐가 될지 알고리즘 작성.
+                    btn_click3.setText("#"+String.valueOf(btn_num3)+"                           C. 누구랑 먹는지                                ");
                     btn_click3.setTextColor(Color.WHITE);
                 }
                 else
                 {
+                    num--;
                     btn_click3.setSelected(false);
-                    btn_click3.setText("C. 누구랑먹는지");
+                    btn_click3.setText("C. 누구랑 먹는지");
                     btn_click3.setTextColor(Color.BLACK);
                 }
             }
@@ -113,12 +125,14 @@ public class CheckUserTasteFirst extends AppCompatActivity {
                 btn_click4.setSelected(!view.isSelected());
 
                 if(view.isSelected()) {
+                    btn_num4=++num;
                     btn_click4.setSelected(true);
-                    btn_click4.setText("D. 가격");  // 뭐가 될지 알고리즘 작성.
+                    btn_click4.setText("#"+String.valueOf(btn_num4)+"                                  D. 가격                                        ");
                     btn_click4.setTextColor(Color.WHITE);
                 }
                 else
                 {
+                    num--;
                     btn_click4.setSelected(false);
                     btn_click4.setText("D. 가격");
                     btn_click4.setTextColor(Color.BLACK);
