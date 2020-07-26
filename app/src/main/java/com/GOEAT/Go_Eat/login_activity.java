@@ -96,7 +96,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                 JSONObject jsonObject = new JSONObject(response);
                 boolean success = jsonObject.getBoolean("success");
                 if(success){
-                    Intent intent = new Intent(login_activity.this,success_sign_up.class);
+                    Intent intent = new Intent(login_activity.this,hello.class);
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(),"가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
@@ -196,7 +196,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                             String success = jsonObject.getString("success");
                             System.out.println(success);
                             if (success.equals("true")){
-                                Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
+                                Intent intent = new Intent(getApplicationContext(), hello.class);
                                 startActivity(intent);
                             }else if(success.equals("almost_true")){
                                 Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다", Toast.LENGTH_LONG).show();
