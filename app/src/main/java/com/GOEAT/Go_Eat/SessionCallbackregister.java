@@ -18,8 +18,12 @@ import com.kakao.util.exception.KakaoException;
 
 import java.lang.ref.WeakReference;
 
-public class SessionCallback implements ISessionCallback {
+public class SessionCallbackregister implements ISessionCallback {
+    private final WeakReference<register_select> mActivity;
 
+    public SessionCallbackregister(register_select activity) {
+        mActivity = new WeakReference<register_select>(activity);
+    }
 
     // 로그인에 성공한 상태
     @Override
@@ -114,6 +118,31 @@ public class SessionCallback implements ISessionCallback {
                             }
                         }
 
+
+                        final register_select activity = mActivity.get();
+                        SharedPreferences pref = activity.getSharedPreferences("loginauto",activity.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("check","3");
+                        editor.putString("register_media","kakao");
+                        editor.commit();
+
+                        activity.setUseremail(kakaoAccount.getEmail());
+                        Profile profile = kakaoAccount.getProfile();
+                        activity.setUsername(profile.getNickname());
+                        Gender gender = kakaoAccount.getGender();
+
+                        if(gender.getValue().equals("male")) {
+                            activity.setUsergender("M");
+                        }else{
+                            activity.setUsergender("F");
+                        }
+//                        AgeRange ageRange = kakaoAccount.getAgeRange();
+//                        userage = ageRange.getValue().substring(0,2);
+//                        userbirth = kakaoAccount.getBirthday().substring(0,2)+"/"+ kakaoAccount.getBirthday().substring(2,4);
+
+                        gender_year_picker pd = new gender_year_picker();
+                        pd.setListener(activity.d);
+                        pd.show(activity.getSupportFragmentManager(), "YearMonthPickerTest");
                     }
 
 
