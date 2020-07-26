@@ -56,7 +56,7 @@
             android:id="@+id/img_3"
             android:layout_width="100dp"
             android:layout_height="match_parent"
-            android:src="@drawable/char3" />
+            android:src="@drawable/ic_launcher_background" />
 
 
 
