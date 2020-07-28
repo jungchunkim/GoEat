@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="225dp"
         android:layout_gravity="bottom"
         android:orientation="vertical">
 
@@ -56,23 +56,12 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="400dp"
-            android:layout_gravity="center"
-            android:layout_height="60dp"
-            android:background="@drawable/selector_button"
-            android:layout_weight="1"
-            android:layout_marginBottom="7dp"
-            android:text="C. 누구랑 먹는지"
-            android:textStyle="bold"/>
-
-        <Button
-            android:id="@+id/button4"
             android:background="@drawable/selector_button"
             android:layout_width="400dp"
             android:layout_gravity="center"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="D. 가격"
+            android:text="C. 가격"
             android:textStyle="bold"/>
 
         <ProgressBar

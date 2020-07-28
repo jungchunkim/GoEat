@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -40,6 +42,10 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
+import com.kakao.usermgmt.response.model.AgeRange;
+import com.kakao.usermgmt.response.model.Gender;
+import com.kakao.usermgmt.response.model.Profile;
+import com.kakao.usermgmt.response.model.UserAccount;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 
@@ -68,7 +74,7 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
     private static final int REQ_SIGN_GOOGLE = 100; // 구글 로그인 결과 코드
 
     //카카오 로그인에 필요한 변수들
-    private SessionCallbackregister sessionCallbackregister = new SessionCallbackregister(this);
+    private SessionCallback sessionCallback = new SessionCallback();
     Session session;
     public Calendar cal = Calendar.getInstance();
 
@@ -81,6 +87,10 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
                 JSONObject jsonObject = new JSONObject(response);
                 boolean success = jsonObject.getBoolean("success");
                 if (success){
+                    SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                    SharedPreferences.Editor editors = prefs.edit();
+                    editors.putString("email",useremail);
+                    editors.commit();
                     Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
                     startActivity(intent);
                 }else {
@@ -112,10 +122,8 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
             }else{
                 usergender = "남";
             }
-            SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
-            String media = pref.getString("register_media","");
 
-            register_request register_request = new register_request(username, useremail, useremail, usergender, userbirth, userage, media , responseListener);
+            register_request register_request = new register_request(username, useremail, useremail, usergender, userbirth, userage, "google", responseListener);
             RequestQueue queue = Volley.newRequestQueue(register_select.this);
             queue.add(register_request);
 
@@ -173,7 +181,7 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
 
         //카카오 로그인 관련 코드들
         session = Session.getCurrentSession();
-        session.addCallback(sessionCallbackregister);
+        session.addCallback(sessionCallback);
 
         // 새 계정 만들기 버튼
         btn_new_account.setOnClickListener(new View.OnClickListener() {
@@ -211,7 +219,34 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
 
                     @Override
                     public void onSuccess(MeV2Response result) {
+                        //로그인에 성공했을 때 서버 요청 보내는 부분 (첫회원가입시 두번클릭해야함...해결 필요...)
 
+                        SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
+                        editor.putString("check","3");
+                        editor.commit();
+
+                        Intent intent = new Intent(getApplicationContext(), success_sign_up.class);
+                        startActivity(intent);
+                        finish();
+                        UserAccount kakaoAccount = result.getKakaoAccount();
+                        useremail = kakaoAccount.getEmail();
+                        Profile profile = kakaoAccount.getProfile();
+                        username = profile.getNickname();
+                        Gender gender = kakaoAccount.getGender();
+                        if(gender.getValue().equals("male")) {
+                            usergender = "남";
+                        }else{
+                            usergender = "여";
+                        }
+                        AgeRange ageRange = kakaoAccount.getAgeRange();
+                        userage = ageRange.getValue().substring(0,2);
+                        userbirth = kakaoAccount.getBirthday().substring(0,2)+"/"+ kakaoAccount.getBirthday().substring(2,4);
+
+
+                        register_request register_request = new register_request(username,useremail,useremail,usergender,userbirth,userage,"kakao",responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(register_select.this);
+                        queue.add(register_request);
                     }
                 });
             }
@@ -249,7 +284,7 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
         super.onDestroy();
 
         // 세션 콜백 삭제
-        Session.getCurrentSession().removeCallback(sessionCallbackregister);
+        Session.getCurrentSession().removeCallback(sessionCallback);
     }
 
 
@@ -272,7 +307,6 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
 
                 SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
-                editor.putString("register_media","google");
                 editor.putString("check","4");
                 editor.commit();
 

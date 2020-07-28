@@ -1,13 +1,55 @@
 package com.GOEAT.Go_Eat;
 
+import android.util.Log;
 import android.widget.ImageView;
 
-public class UserDB {
+import androidx.annotation.Nullable;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
+public class UserDB implements Serializable {
+
+    final static private String URL1 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/char.php";
+    final static private String URL2 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/CheckImportance.php";
+    final static private String URL3 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/";
+    private Map<String,String> map;
+
+
 
     // 서버에 사용자 캐릭터 저장
-    public void setUserChar(String imgStr){
+    public void setUserChar(String useremail , int imgStr, Response.Listener<String> listener,MakeCharCompleteActivity activity){
 
-        // 백엔드 코드 작성
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+        map.put("userchar",Integer.toString(imgStr));
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL1,
+                listener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+        protected Map<String, String> getParams() throws AuthFailureError {
+            return map;
+        }
+        };
+        activity.queue.add(request);
 
     }
 
@@ -32,6 +74,32 @@ public class UserDB {
 
     };
 
+    public void saveUserTastImportance(String useremail,int btn_num1,int btn_num2,String Price,  Response.Listener<String> listener, CheckUserTasteFirst activity){
+        // 서버에 저장하는 코드
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+        map.put("calorie",Integer.toString(btn_num1));
+        map.put("food",Integer.toString(btn_num2));
+        map.put("price",Price);
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL2,
+                listener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        activity.queue.add(request);
+    }
     public void saveUserHateFood(int[] clickCheck){
         // 서버에 저장하는 코드
     }

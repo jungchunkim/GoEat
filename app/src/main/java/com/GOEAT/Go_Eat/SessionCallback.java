@@ -1,6 +1,5 @@
 package com.GOEAT.Go_Eat;
 
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.kakao.auth.ISessionCallback;
@@ -16,9 +15,8 @@ import com.kakao.usermgmt.response.model.UserAccount;
 import com.kakao.util.OptionalBoolean;
 import com.kakao.util.exception.KakaoException;
 
-import java.lang.ref.WeakReference;
-
 public class SessionCallback implements ISessionCallback {
+
 
 
     // 로그인에 성공한 상태
@@ -113,10 +111,7 @@ public class SessionCallback implements ISessionCallback {
                                 Log.d("KAKAO_API", "birthdayType: null");
                             }
                         }
-
                     }
-
-
 
                 });
     }

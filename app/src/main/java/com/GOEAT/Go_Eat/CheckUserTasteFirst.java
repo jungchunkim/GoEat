@@ -3,10 +3,19 @@ package com.GOEAT.Go_Eat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class CheckUserTasteFirst extends AppCompatActivity {
 
@@ -14,16 +23,17 @@ public class CheckUserTasteFirst extends AppCompatActivity {
     private Button btn_click1;
     private Button btn_click2;
     private Button btn_click3;
-    private Button btn_click4;
     private View.OnClickListener m_listener1;
     private View.OnClickListener m_listener2;
     private View.OnClickListener m_listener3;
-    private View.OnClickListener m_listener4;
     int num=0;
     int btn_num1;
     int btn_num2;
     int btn_num3;
-    int btn_num4;
+    int calorie;
+    int food;
+    String Price;
+    public RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +43,50 @@ public class CheckUserTasteFirst extends AppCompatActivity {
         btn_click1 = (Button)findViewById(R.id.button1);
         btn_click2 = (Button)findViewById(R.id.button2);
         btn_click3 = (Button)findViewById(R.id.button3);
-        btn_click4 = (Button)findViewById(R.id.button4);
 
         btn_next = findViewById(R.id.btn_next);
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CheckUserTasteSecond.class);
-                startActivity(intent);
+            public void onClick(View view) { //userdb를 통해 서버로 전송
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) { // 서버 응답 받아오는 부
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            System.out.println(success);
+                            if (success){
+                                Intent intent = new Intent(getApplicationContext(), CheckUserTasteSecond.class);
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                if(btn_num3 < btn_num2 && btn_num3 < btn_num1){
+                    Price = "Y";
+                }else{
+                    Price = "N";
+                }
+                if(btn_num1 > btn_num2){
+                    calorie = 20;
+                    food = 40;
+                }else{
+                    calorie = 40;
+                    food = 20;
+                }
+
+                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                String email = prefs.getString("email","");
+                UserDB userDB = new UserDB();
+                queue = Volley.newRequestQueue(CheckUserTasteFirst.this);
+                userDB.saveUserTastImportance(email,calorie,food,Price, responseListener, CheckUserTasteFirst.this);
+
             }
         });
 
@@ -104,14 +149,14 @@ public class CheckUserTasteFirst extends AppCompatActivity {
                 if(view.isSelected()) {
                     btn_num3=++num;
                     btn_click3.setSelected(true);
-                    btn_click3.setText("#"+String.valueOf(btn_num3)+"                           C. 누구랑 먹는지                                ");
+                    btn_click3.setText("#"+String.valueOf(btn_num3)+"                           C. 가격                                ");
                     btn_click3.setTextColor(Color.WHITE);
                 }
                 else
                 {
                     num--;
                     btn_click3.setSelected(false);
-                    btn_click3.setText("C. 누구랑 먹는지");
+                    btn_click3.setText("C. 가격");
                     btn_click3.setTextColor(Color.BLACK);
                 }
             }
@@ -119,27 +164,5 @@ public class CheckUserTasteFirst extends AppCompatActivity {
 
         btn_click3.setOnClickListener(m_listener3);
 
-        m_listener4=new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btn_click4.setSelected(!view.isSelected());
-
-                if(view.isSelected()) {
-                    btn_num4=++num;
-                    btn_click4.setSelected(true);
-                    btn_click4.setText("#"+String.valueOf(btn_num4)+"                                  D. 가격                                        ");
-                    btn_click4.setTextColor(Color.WHITE);
-                }
-                else
-                {
-                    num--;
-                    btn_click4.setSelected(false);
-                    btn_click4.setText("D. 가격");
-                    btn_click4.setTextColor(Color.BLACK);
-                }
-            }
-        };
-
-        btn_click4.setOnClickListener(m_listener4);
     }
 }

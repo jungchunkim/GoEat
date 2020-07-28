@@ -96,6 +96,10 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                 JSONObject jsonObject = new JSONObject(response);
                 boolean success = jsonObject.getBoolean("success");
                 if(success){
+                    SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                    SharedPreferences.Editor editors = prefs.edit();
+                    editors.putString("email",useremail);
+                    editors.commit();
                     Intent intent = new Intent(login_activity.this,hello.class);
                     startActivity(intent);
                 }else{
@@ -184,7 +188,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // 로그인 버튼 클릭 시 정보확인 부분
-                String email = et_login_email.getText().toString();
+                final String email = et_login_email.getText().toString();
                 String password = et_login_password.getText().toString();
 
                 Response.Listener<String> responselistener = new Response.Listener<String>() {
@@ -196,6 +200,10 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                             String success = jsonObject.getString("success");
                             System.out.println(success);
                             if (success.equals("true")){
+                                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                                SharedPreferences.Editor editors = prefs.edit();
+                                editors.putString("email",email);
+                                editors.commit();
                                 Intent intent = new Intent(getApplicationContext(), hello.class);
                                 startActivity(intent);
                             }else if(success.equals("almost_true")){

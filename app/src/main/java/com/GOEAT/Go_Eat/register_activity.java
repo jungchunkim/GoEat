@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -147,7 +148,7 @@ public class register_activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {  // 유저 정보 전송 부분
                 String username = et_name.getText().toString();
-                String useremail = et_email.getText().toString();
+                final String useremail = et_email.getText().toString();
                 String userpassword = et_password.getText().toString();
                 String userrepassword = et_re_password.getText().toString();
 
@@ -172,6 +173,10 @@ public class register_activity extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(response);
                                 boolean success = jsonObject.getBoolean("success");
                                 if (success){
+                                    SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                                    SharedPreferences.Editor editors = prefs.edit();
+                                    editors.putString("email",useremail);
+                                    editors.commit();
                                     Intent intent = new Intent(register_activity.this,success_sign_up.class);
                                     startActivity(intent);
                                 }else {
