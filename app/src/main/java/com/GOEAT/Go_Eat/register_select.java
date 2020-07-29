@@ -122,8 +122,10 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
             }else{
                 usergender = "남";
             }
+            SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+            String media = pref.getString("register_media","");
 
-            register_request register_request = new register_request(username, useremail, useremail, usergender, userbirth, userage, "google", responseListener);
+            register_request register_request = new register_request(username, useremail, useremail, usergender, userbirth, userage, media, responseListener);
             RequestQueue queue = Volley.newRequestQueue(register_select.this);
             queue.add(register_request);
 
@@ -270,15 +272,17 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if(result.isSuccess()){  // 인증 결과가 성공적이면
                 GoogleSignInAccount account = result.getSignInAccount();  // account라는 데이터는 구글 로그인 정보를 담고 있음(닉네임, 프로필사진url, 이메일 주소 등)
+                SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
                 username = account.getDisplayName();
                 useremail = account.getEmail();
+                editor.putString("register_media","google");
                 gender_year_picker pd = new gender_year_picker();
                 pd.setListener(d);
                 pd.show(getSupportFragmentManager(), "YearMonthPickerTest");
                 resultLogin(account);  // 로그인 결과 값 출력 수행하라는 메소드
 
-                SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
-                SharedPreferences.Editor editor = pref.edit();
+
                 editor.putString("check","4");
                 editor.commit();
 
