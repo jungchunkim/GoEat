@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -23,6 +24,7 @@ public class CheckUserTasteFirst extends AppCompatActivity {
     private Button btn_click1;
     private Button btn_click2;
     private Button btn_click3;
+    private ImageView img_char;
     private View.OnClickListener m_listener1;
     private View.OnClickListener m_listener2;
     private View.OnClickListener m_listener3;
@@ -33,60 +35,68 @@ public class CheckUserTasteFirst extends AppCompatActivity {
     int calorie;
     int food;
     String Price;
-    public RequestQueue queue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_user_taste_first);
+        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        final String email = prefs.getString("email","");
 
         btn_click1 = (Button)findViewById(R.id.button1);
         btn_click2 = (Button)findViewById(R.id.button2);
         btn_click3 = (Button)findViewById(R.id.button3);
+        img_char = findViewById(R.id.img_char);
+        final UserDB userDB = new UserDB();
+        userDB.setImageToUserChar(img_char, email,CheckUserTasteFirst.this);
 
         btn_next = findViewById(R.id.btn_next);
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { //userdb를 통해 서버로 전송
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) { // 서버 응답 받아오는 부
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            boolean success = jsonObject.getBoolean("success");
-                            System.out.println(success);
-                            if (success){
-                                Intent intent = new Intent(getApplicationContext(), CheckUserTasteSecond.class);
-                                startActivity(intent);
-                            }else {
-                                Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
+
+                if (btn_click1.isSelected() && btn_click2.isSelected() && btn_click3.isSelected()) {
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) { // 서버 응답 받아오는 부분
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                boolean success = jsonObject.getBoolean("success");
+                                System.out.println(success);
+                                if (success) {
+                                    Intent intent = new Intent(getApplicationContext(), CheckUserTasteSecond.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+                    };
+
+                    if (btn_num3 < btn_num2 && btn_num3 < btn_num1) {
+                        Price = "Y";
+                    } else {
+                        Price = "N";
                     }
-                };
 
-                if(btn_num3 < btn_num2 && btn_num3 < btn_num1){
-                    Price = "Y";
+                    if (btn_num1 > btn_num2) { //일단 바형태가 되기전 20/40으로 정해둠
+                        calorie = 20;
+                        food = 40;
+                    } else {
+                        calorie = 40;
+                        food = 20;
+                    }
+
+                    SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
+                    String email = prefs.getString("email", "");
+                    userDB.saveUserTastImportance(email, calorie, food, Price, responseListener, CheckUserTasteFirst.this);
+
                 }else{
-                    Price = "N";
+                    Toast.makeText(getApplicationContext(), "선호도를 선택해 주세요", Toast.LENGTH_LONG).show();
                 }
-                if(btn_num1 > btn_num2){
-                    calorie = 20;
-                    food = 40;
-                }else{
-                    calorie = 40;
-                    food = 20;
-                }
-
-                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
-                String email = prefs.getString("email","");
-                UserDB userDB = new UserDB();
-                queue = Volley.newRequestQueue(CheckUserTasteFirst.this);
-                userDB.saveUserTastImportance(email,calorie,food,Price, responseListener, CheckUserTasteFirst.this);
-
             }
         });
 

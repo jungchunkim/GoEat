@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Go Eat</string>
     <string name="kakao_app_key">e635487d62ff3a5c31c89594b1412994</string>
-    <string name="talk_ex1">"마지막 질문!\n\"정말 싫어하는 음식 종류는?\"\n (중복 선택)"</string>
+    <string name="talk_ex1">"마지막 질문!\n\"정말 싫어하는 음식 종류는?\"\n (4개 중복 선택 가능)"</string>
     <string name="talk_ex2">"첫번째 질문!\n \"외식할때 나한테 중요한 순서는?\""</string>
 </resources>

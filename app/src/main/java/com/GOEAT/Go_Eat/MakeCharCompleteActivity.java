@@ -23,7 +23,6 @@ public class MakeCharCompleteActivity extends AppCompatActivity {
     private ImageView img_char;
     private Button btn_next;
 
-    public RequestQueue queue;
 
 
     @Override
@@ -75,7 +74,6 @@ public class MakeCharCompleteActivity extends AppCompatActivity {
                 SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
                 String email = prefs.getString("email","");
                 UserDB userDB = new UserDB();
-                queue = Volley.newRequestQueue(MakeCharCompleteActivity.this);
                 userDB.setUserChar(email,userChoiceChar, responseListener, MakeCharCompleteActivity.this);
 
 

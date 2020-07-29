@@ -3,6 +3,7 @@ package com.GOEAT.Go_Eat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
@@ -23,13 +24,16 @@ public class UserAnalyzeStart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_analyze_start);
+        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        final String email = prefs.getString("email","");
 
         tv_num = findViewById(R.id.tv_num);
         img_char = findViewById(R.id.img_char);
 
         // 사용자 캐릭터 설정
         UserDB userDB = new UserDB();
-        userDB.setImageToUserChar(img_char);
+        userDB.setImageToUserChar(img_char, email,UserAnalyzeStart.this);
+
 
         // 퍼센트 올라가는거 구현
         TimerTask timerTask = new TimerTask() {

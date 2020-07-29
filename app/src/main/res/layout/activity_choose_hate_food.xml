@@ -41,22 +41,39 @@
           <ImageView
               android:id="@+id/img_1"
               android:layout_width="100dp"
-              android:layout_height="match_parent"
-              android:src="@drawable/p_food1">
+              android:layout_height="match_parent">
           </ImageView>
           <ImageView
               android:id="@+id/img_2"
               android:layout_width="100dp"
               android:layout_height="match_parent"
-              android:src="@drawable/p_food2"
               android:layout_margin="20dp">
           </ImageView>
           <ImageView
               android:id="@+id/img_3"
               android:layout_width="100dp"
-              android:layout_height="match_parent"
-              android:src="@drawable/p_food3">
+              android:layout_height="match_parent">
           </ImageView>
+
+<!--          <ImageView-->
+<!--              android:id="@+id/img_1"-->
+<!--              android:layout_width="100dp"-->
+<!--              android:layout_height="match_parent"-->
+<!--              android:src="@drawable/p_food1">-->
+<!--          </ImageView>-->
+<!--          <ImageView-->
+<!--              android:id="@+id/img_2"-->
+<!--              android:layout_width="100dp"-->
+<!--              android:layout_height="match_parent"-->
+<!--              android:src="@drawable/p_food2"-->
+<!--              android:layout_margin="20dp">-->
+<!--          </ImageView>-->
+<!--          <ImageView-->
+<!--              android:id="@+id/img_3"-->
+<!--              android:layout_width="100dp"-->
+<!--              android:layout_height="match_parent"-->
+<!--              android:src="@drawable/p_food3">-->
+<!--          </ImageView>-->
 
       </LinearLayout>
 
@@ -69,21 +86,18 @@
             <ImageView
                 android:id="@+id/img_4"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food4">
+                android:layout_height="match_parent">
             </ImageView>
             <ImageView
                 android:id="@+id/img_5"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/p_food5"
                 android:layout_margin="20dp">
             </ImageView>
             <ImageView
                 android:id="@+id/img_6"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food6">
+                android:layout_height="match_parent">
             </ImageView>
 
         </LinearLayout>
@@ -97,21 +111,18 @@
             <ImageView
                 android:id="@+id/img_7"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food7">
+                android:layout_height="match_parent">
             </ImageView>
             <ImageView
                 android:id="@+id/img_8"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/p_food8"
                 android:layout_margin="20dp">
             </ImageView>
             <ImageView
                 android:id="@+id/img_9"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food9">
+                android:layout_height="match_parent">
             </ImageView>
 
         </LinearLayout>
@@ -125,21 +136,18 @@
             <ImageView
                 android:id="@+id/img_10"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food10">
+                android:layout_height="match_parent">
             </ImageView>
             <ImageView
                 android:id="@+id/img_11"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/p_food11"
                 android:layout_margin="20dp">
             </ImageView>
             <ImageView
                 android:id="@+id/img_12"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food12">
+                android:layout_height="match_parent">
             </ImageView>
 
         </LinearLayout>
@@ -153,21 +161,18 @@
             <ImageView
                 android:id="@+id/img_13"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food13">
+                android:layout_height="match_parent">
             </ImageView>
             <ImageView
                 android:id="@+id/img_14"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/p_food14"
                 android:layout_margin="20dp">
             </ImageView>
             <ImageView
                 android:id="@+id/img_15"
                 android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/p_food15">
+                android:layout_height="match_parent">
             </ImageView>
 
         </LinearLayout>
