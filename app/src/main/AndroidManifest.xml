@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.GOEAT.Go_Eat">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,13 +12,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".UserAnalyzeEnd"/>
+        <activity android:name=".MainActivity_after"></activity>
+        <activity android:name=".UserAnalyzeEnd" />
         <activity android:name=".UserAnalyzeStart" />
         <activity android:name=".reset_password" />
         <activity android:name=".success_sign_up" />
@@ -28,7 +31,6 @@
         <activity android:name=".start3nd" />
         <activity android:name=".start2nd" />
         <activity android:name=".ChooseHateFood" />
-
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
