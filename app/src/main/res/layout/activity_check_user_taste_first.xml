@@ -11,7 +11,7 @@
         android:id="@+id/img_char"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:src="@drawable/char1"
         android:layout_marginTop="70dp"
         android:layout_marginBottom="10dp"/>
@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:text="@string/talk_ex2"
         android:gravity="center"
         android:textStyle="bold"
@@ -29,8 +29,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="225dp"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="3"
         android:layout_gravity="bottom"
         android:orientation="vertical">
 
@@ -39,7 +39,7 @@
             android:layout_width="400dp"
             android:layout_gravity="center"
             android:background="@drawable/selector_button"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginBottom="7dp"
             android:text="A.  칼로리"
@@ -51,7 +51,7 @@
             android:layout_width="400dp"
             android:layout_gravity="center"
             android:background="@drawable/selector_button"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginBottom="7dp"
             android:text="B. 요리방식"
@@ -62,7 +62,7 @@
             android:background="@drawable/selector_button"
             android:layout_width="400dp"
             android:layout_gravity="center"
-            android:layout_height="60dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:text="C. 가격"
             android:textStyle="bold"/>
