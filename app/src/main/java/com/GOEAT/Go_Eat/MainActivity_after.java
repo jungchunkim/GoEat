@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +19,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
@@ -29,6 +36,11 @@ public class MainActivity_after extends AppCompatActivity {
 
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
+    private Button btn_weather;
+    private TextView tv_weather;
+    private TextView tv_temp;
+
+
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
 
@@ -46,8 +58,11 @@ public class MainActivity_after extends AppCompatActivity {
         }
 
         final TextView textview_address = (TextView)findViewById(R.id.loc_text);
+        tv_weather = findViewById(R.id.tv_weather);
+        tv_temp = findViewById(R.id.tv_temp);
+        btn_weather = findViewById(R.id.btn_weather);
 
-
+        // 위치 버튼 눌렀을 때
         Button ShowLocationButton = (Button) findViewById(R.id.loc_button);
         ShowLocationButton.setOnClickListener(new View.OnClickListener()
         {
@@ -63,6 +78,18 @@ public class MainActivity_after extends AppCompatActivity {
                 textview_address.setText(address);
             }
         });
+
+        // 날씨 버튼 눌렀을 때
+        btn_weather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                new WeatherAsynTask(tv_temp).execute("https://search.naver.com/search.naver?query=날씨", "span.todaytemp");
+                new WeatherAsynTask(tv_weather).execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
+
+            }
+        });
+
     }
 
 
@@ -251,6 +278,44 @@ public class MainActivity_after extends AppCompatActivity {
 
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
+
+}
+
+class WeatherAsynTask extends AsyncTask<String, Void, String> {
+
+    TextView textView;
+
+    public WeatherAsynTask(TextView textView){
+        this.textView = textView;
+    }
+
+    @Override
+    protected String doInBackground(String... params) {
+        String URL = params[0];
+        String E1 = params[1];
+        String result = "";
+
+        Document doc = null;
+        try {
+            doc = Jsoup.connect(URL).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Element temp = doc.select(E1).first();
+
+        result = temp.text();
+
+        return result;
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+
+        String[] str = s.split(",");
+
+        textView.setText(str[0]);
     }
 
 }
