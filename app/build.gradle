@@ -41,7 +41,8 @@ dependencies {
     implementation group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION //카카오 sdk - 카카오 로그인 연동
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //implementation 'org.json:json:20190722'
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -35,7 +35,12 @@ public class UserDB implements Serializable {
     final static private String URL4 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getchar.php";
     final static private String URL5 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getfoodhate.php";
     final static private String URL6 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/HateFoodList.php";
+    final static private String URL7 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getHateFoodList.php";
+    final static private String URL8 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/saveFoodFlavor.php";
+    final static private String URL9 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getFlavorFood.php";
+
     private Map<String,String> map;
+
     private int userChar;
     public RequestQueue queue;
 
@@ -201,8 +206,6 @@ public class UserDB implements Serializable {
             }
         };
         queue.add(request);
-
-
     }
 
     public void saveUserHateFood(String useremail, String HateFoodLists,Response.Listener<String> listener, Activity activity){ //싫어하는 음식 서버 전달
@@ -228,6 +231,105 @@ public class UserDB implements Serializable {
             }
         };
         queue.add(request);
+    }
+
+    public void getHateFoodInfo(String useremail, Response.Listener<String> listener, UserAnalyzeEnd activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
+        queue = Volley.newRequestQueue(activity);
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL7,
+                listener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void saveFoodFlavor(String useremail, JSONObject jsonObject,Response.Listener<String> listener, Activity activity){ //싫어하는 음식 서버 전달
+        queue = Volley.newRequestQueue(activity);
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+        map.put("flavor",jsonObject.toString());
+        Log.d("food",map.toString());
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL8,
+                listener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void setFlavorFoodList(String useremail, Activity activity){ //서버로부터 사용자 캐릭터 받아오는 부분
+        queue = Volley.newRequestQueue(activity);
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // 서버 응답 받아오는 부분
+                Log.d("foodtest",response);
+               // try {
+                    //JSONArray test = new JSONArray(response);
+                    //Log.d("foodtest",test.toString());
+
+//                    boolean success = jsonObject.getBoolean(0); // 사용자 캐릭터 불러옴
+//                    JSONArray test = jsonObject.getJSONArray(1);
+//                    System.out.println(jsonObject);
+//                    if (success){
+//                    }else {
+//                        Log.d("foodtest","fail");
+//                        return;
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        };
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL9,
+                responseListener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        queue.add(request);
+
+
+
+
     }
 
 }

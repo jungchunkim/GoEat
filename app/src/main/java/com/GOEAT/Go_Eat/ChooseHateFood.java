@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -61,10 +62,10 @@ public class ChooseHateFood extends AppCompatActivity implements View.OnClickLis
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             Boolean success = jsonObject.getBoolean("success");
-                            if (success){
+                            if (success) {
                                 Intent intent = new Intent(getApplicationContext(), UserAnalyzeStart.class);
                                 startActivity(intent);
-                            }else {
+                            } else {
                                 Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
                             }
 
@@ -73,14 +74,15 @@ public class ChooseHateFood extends AppCompatActivity implements View.OnClickLis
                         }
                     }
                 };
+
                 for (int i = 0; i < 15; i++) {
                     if (Hatefoodlists.equals("N") && clickCheck[i] == -1) {
                         Hatefoodlists = Integer.toString(foodlist[i]);
-                    } else if(clickCheck[i] == -1){
-                        Hatefoodlists = Hatefoodlists + "," +foodlist[i];
+                    } else if (clickCheck[i] == -1) {
+                        Hatefoodlists = Hatefoodlists + "," + foodlist[i];
                     }
                 }
-                userDB.saveUserHateFood(email,Hatefoodlists,responselistener,ChooseHateFood.this);       // 서버에 사용자가 싫어하는 음식 저장
+                userDB.saveUserHateFood(email, Hatefoodlists, responselistener, ChooseHateFood.this);       // 서버에 사용자가 싫어하는 음식 저장
             }
         });
 
