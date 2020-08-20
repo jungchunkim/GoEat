@@ -64,7 +64,7 @@ public class register_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_activity);
+        setContentView(R.layout.activity_register);
         et_name = (EditText)findViewById(R.id.et_name);
         et_email = (EditText)findViewById(R.id.et_email);
         et_password = (EditText)findViewById(R.id.et_password);

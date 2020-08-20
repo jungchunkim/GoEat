@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".register_activity"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:weightSum="100"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일 찾기"
+            android:textSize="26dp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="핸드폰번호로 인증하기"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/pureunjeonnam"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:orientation="vertical"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        >
+
+        <EditText
+            android:id="@+id/et_phoneNum"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/edit_text_background"
+            android:fontFamily="@font/pureunjeonnam"
+            android:paddingLeft="15dp"
+            android:inputType="number"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="19"
+        >
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:text="인증번호 전송"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

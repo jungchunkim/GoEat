@@ -59,7 +59,7 @@ import java.security.NoSuchAlgorithmException;
 public class login_activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{ // 로그인 화면
 
     private Button btn_login;
-    private TextView tv_find_account,tv_sign_up;
+    private TextView tv_find_pwd, tv_find_id,tv_sign_up;
     private EditText et_login_email, et_login_password;
     private CheckBox cb_login_auto;
     private long backBtnTime = 0;
@@ -122,10 +122,11 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
         tv_sign_up = (TextView) findViewById(R.id.tv_sign_up);
         btn_login = (Button)findViewById(R.id.btn_login);
-        tv_find_account = (TextView) findViewById(R.id.tv_find_account);
         et_login_email = (EditText) findViewById(R.id.et_login_email);
         et_login_password = (EditText) findViewById(R.id.et_login_password);
         cb_login_auto = (CheckBox) findViewById(R.id.cb_login_auto);
+        tv_find_id = findViewById(R.id.tv_find_id);
+        tv_find_pwd = findViewById(R.id.tv_find_pwd);
 
         iv_naver_login = (ImageView) findViewById(R.id.iv_naver_login);
 
@@ -138,6 +139,22 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         );
         final OAuthLoginHandler mOAuthLoginHandler = new login_activity.NaverLoginHandler(this);
 
+
+        tv_find_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(login_activity.this, FindEmailActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tv_find_pwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(login_activity.this, FindPasswordActivity.class);
+                startActivity(intent);
+            }
+        });
 
         iv_naver_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,7 +197,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         tv_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // 회원가입 선택 화면
-                Intent intent = new Intent(login_activity.this, register_select.class);
+                Intent intent = new Intent(login_activity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -345,14 +362,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             Toast.makeText(getApplicationContext(), "Naver 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
             iv_naver_login.performClick();
         }
-        tv_find_account.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(login_activity.this,reset_password.class);
-                startActivity(intent);
 
-            }
-        });
 
     }
 
