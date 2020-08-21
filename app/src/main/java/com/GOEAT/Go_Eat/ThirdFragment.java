@@ -2,7 +2,10 @@ package com.GOEAT.Go_Eat;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import android.util.TypedValue;
@@ -38,6 +41,7 @@ public class ThirdFragment  extends Fragment {
     }
 
     // Inflate the view for the fragment based on layout XML
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class ThirdFragment  extends Fragment {
         tvLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
         tvLabel.setGravity(Gravity.CENTER_HORIZONTAL);
         tvLabel.setTextColor(Color.parseColor("#222B45"));
+        Typeface typeface = getResources().getFont(R.font.pureunjeonnam);
+        tvLabel.setTypeface(typeface);
         return view;
     }
 }
