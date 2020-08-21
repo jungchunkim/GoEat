@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+//Onboarding3 화면
 public class ThirdFragment  extends Fragment {
     // Store instance variables
     private String title;

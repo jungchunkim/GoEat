@@ -1,6 +1,7 @@
 package com.GOEAT.Go_Eat;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
@@ -12,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-
+//Onboarding1 화면
 public class FirstFragment extends Fragment {
     // Store instance variables
     private String title;

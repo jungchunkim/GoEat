@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-
+//Onboarding2 화면
 public class SecondFragment  extends Fragment {
     // Store instance variables
     private String title;
