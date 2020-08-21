@@ -16,7 +16,7 @@ public class start3nd extends AppCompatActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(start3nd.this,login_activity.class);
+                Intent intent = new Intent(start3nd.this,Onboarding.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
