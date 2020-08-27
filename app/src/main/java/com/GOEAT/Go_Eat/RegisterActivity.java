@@ -6,14 +6,26 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -68,6 +80,21 @@ public class RegisterActivity extends AppCompatActivity {
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                final String username = et_name.getText().toString();
+                final String useremail = et_email.getText().toString();
+                final String userpassword = et_pwd1.getText().toString();
+                final String userphonenum = et_phoneNum.getText().toString();
+                String userage = "40";
+                String[] birth = tv_birth.getText().toString().split("년 ");
+                final String userbirth = birth[1];
+                if(calendar.get(Calendar.YEAR)-Integer.parseInt(birth[0])< 20){
+                    userage = "10";
+                }else if(calendar.get(Calendar.YEAR)-Integer.parseInt(birth[0])< 30){
+                    userage = "20";
+                }else if(calendar.get(Calendar.YEAR)-Integer.parseInt(birth[0])< 40){
+                    userage = "30";
+                }
                 // 비밀번호 일치
                 if(et_pwd1.getText().toString().equals(et_pwd2.getText().toString())){
 
@@ -77,12 +104,47 @@ public class RegisterActivity extends AppCompatActivity {
                     else{
 
                         // 서버에 저장하는 코드 (작성해야함!!)
+                        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                        SharedPreferences.Editor editors = prefs.edit();
+                        editors.putString("name",username);
+                        editors.putString("email",useremail);
+                        editors.putString("phonenum",userphonenum);
+                        editors.putString("password",userpassword);
+                        editors.putString("age",userage);
+                        editors.putString("birth",userbirth);
+                        editors.putString("gender",usergender);
+                        editors.commit();
 
-                        
+                        Response.Listener<String> responseListener = new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonArray = new JSONObject(response);
+                                    String success = jsonArray.getString("result");
+                                    String randnum = jsonArray.getString("randnum");
+                                    System.out.println(success);
+                                    System.out.println(randnum);
+                                    if (success.equals("success")){ //Test일땐 "Test Success!"
+                                        // 액티비티 이동
+                                        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                                        SharedPreferences.Editor editors = prefs.edit();
+                                        editors.putString("randnum",randnum);
+                                        editors.commit();
+                                        Intent intent = new Intent(RegisterActivity.this, RegAuthActivity.class);
+                                        startActivity(intent);
+                                    }else {
+                                        Toast.makeText(getApplicationContext(), "전화번호를 확인해주세요", Toast.LENGTH_LONG).show();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        };
+                        sms_request sms_request = new sms_request(userphonenum,responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                        queue.add(sms_request);
 
-                        // 액티비티 이동
-                        Intent intent = new Intent(RegisterActivity.this, RegAuthActivity.class);
-                        startActivity(intent);
+
                     }
                 }
                 else{

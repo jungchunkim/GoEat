@@ -3,6 +3,7 @@ package com.GOEAT.Go_Eat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +13,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegAuthActivity extends AppCompatActivity {
 
@@ -45,17 +54,44 @@ public class RegAuthActivity extends AppCompatActivity {
 
                 AuthNum = et_1.getText().toString()+et_2.getText().toString()+et_3.getText().toString()+et_4.getText().toString();
 
-                // 인증번호 맞는지 확인하는 코드 ( 작성해야함!! )
 
+                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                String randnum = prefs.getString("randnum","");
+                String username = prefs.getString("name","");
+                String useremail = prefs.getString("email","");
+                String userphonenum = prefs.getString("phonenum","");
+                String userpassword =  prefs.getString("password","");
+                String userage = prefs.getString("age","");
+                String userbirth = prefs.getString("birth","");
+                String usergender = prefs.getString("gender","");
 
-                // 인증번호 틀렸을때의 코드 ( 작성해야함!! )
+                if(randnum.equals(AuthNum)) {// 인증번호 맞는지 확인하는 코드 ->randnum.equals(AuthNum)
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                boolean success = jsonObject.getBoolean("success");
+                                if (success){
+                                    Intent intent = new Intent(getApplicationContext(), login_activity.class);
+                                    startActivity(intent);
+                                }else {
+                                    Toast.makeText(getApplicationContext(), "이미 가입된 이메일입니다", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    register_request register_request = new register_request(username,useremail,userpassword,usergender,userbirth,userage,userphonenum,responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(RegAuthActivity.this);
+                    queue.add(register_request);
 
-                //만약, 인증번호틀리다면 아래의코드 반드시 넣어야함!
-                //layout.setVisibility(View.VISIBLE);
+                }else{ // 인증번호 틀렸을때의 코드
+                    Toast.makeText(getApplicationContext(), "인증번호를 확인해 주세요", Toast.LENGTH_LONG).show();
+                    layout.setVisibility(View.VISIBLE);
+                }
 
-                // 액티비티 이동
-                Intent intent = new Intent(getApplicationContext(), login_activity.class);
-                startActivity(intent);
             }
         });
 
@@ -71,7 +107,34 @@ public class RegAuthActivity extends AppCompatActivity {
         tv_resend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 인증번호 다시 보내는 코드 ( 작성해야 함!! )
+                // 인증번호 다시 보내는 코드
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonArray = new JSONObject(response);
+                            String success = jsonArray.getString("result");
+                            String randnum = jsonArray.getString("randnum");
+                            System.out.println(success);
+                            System.out.println(randnum);
+                            if (success.equals("success")){ //Test일땐 "Test Success!"
+                                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                                SharedPreferences.Editor editors = prefs.edit();
+                                editors.putString("randnum",randnum);
+                                editors.commit();
+                            }else {
+                                Toast.makeText(getApplicationContext(), "재전송 실패! 다시 시도해주세요", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                String userphonenum = prefs.getString("phonenum","");
+                sms_request sms_request = new sms_request(userphonenum,responseListener);
+                RequestQueue queue = Volley.newRequestQueue(RegAuthActivity.this);
+                queue.add(sms_request);
 
 
             }
