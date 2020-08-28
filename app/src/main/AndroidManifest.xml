@@ -18,7 +18,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".Onboarding"></activity>
+        <activity android:name=".CheckHateFood2"></activity>
+        <activity android:name=".CheckHateFood" />
+        <activity android:name=".SetCharActivity" />
+        <activity android:name=".Onboarding" />
         <activity android:name=".RegAuthActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".ResetPwdActivity" />

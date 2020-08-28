@@ -30,6 +30,7 @@ dependencies {
     implementation files('libs\\jsoup-1.13.1.jar')
     implementation files('..\\jsoup-1.13.1\\jsoup-1.13.1.jar')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.viewpager:viewpager:1.0.0'
     testImplementation 'junit:junit:4.12'
     implementation 'me.relex:circleindicator:1.2.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

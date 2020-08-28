@@ -100,7 +100,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                     SharedPreferences.Editor editors = prefs.edit();
                     editors.putString("email",useremail);
                     editors.commit();
-                    Intent intent = new Intent(login_activity.this,hello.class);
+                    Intent intent = new Intent(login_activity.this,SetCharActivity.class);
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(),"가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
@@ -221,7 +221,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                                 SharedPreferences.Editor editors = prefs.edit();
                                 editors.putString("email",email);
                                 editors.commit();
-                                Intent intent = new Intent(getApplicationContext(), hello.class);
+                                Intent intent = new Intent(getApplicationContext(), SetCharActivity.class);
                                 startActivity(intent);
                             }else if(success.equals("almost_true")){
                                 Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다", Toast.LENGTH_LONG).show();

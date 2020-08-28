@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SetCharActivity"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:src="@drawable/arrow"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="17"
+        android:gravity="center"
+        android:textSize="23dp"
+        android:textColor="@color/font"
+        android:fontFamily="@font/pureunjeonnam"
+        android:text="지금부터 당신의 외식을 책임질\nGO EAT 외식비서를 골라주세요!"/>
+
+    <androidx.viewpager.widget.ViewPager
+
+        android:id="@+id/myviewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+
+        android:overScrollMode="never" />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/indicator"
+        app:ci_drawable="@drawable/onboarding_pink_radius"
+        app:ci_height="7dp"
+        app:ci_width="7dp"
+        app:ci_margin="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="14">
+        <Button
+            android:id="@+id/btn_ok"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:background="@drawable/button_background"
+            android:text="확인"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"/>
+    </LinearLayout>
+
+
+</LinearLayout>

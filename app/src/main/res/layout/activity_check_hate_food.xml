@@ -1,0 +1,431 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SetCharActivity"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/background"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:src="@drawable/arrow"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="17"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/mouse"/>
+
+        <TextView
+            android:id="@+id/tv_txtWithName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="23dp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:text="못먹는 음식의 \n재료를 모두 골라주세요!"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="31dp"
+                android:paddingRight="31dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingRight="6dp">
+
+                    <Button
+                        android:id="@+id/btn_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button"
+                        android:elevation="8dp"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="회"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textSize="17sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingLeft="6dp">
+
+                    <Button
+                        android:id="@+id/btn_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button"
+                        android:elevation="8dp"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="갑각류"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textSize="17sp"/>
+                </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="31dp"
+            android:paddingRight="31dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="6dp">
+
+                <Button
+                    android:id="@+id/btn_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="어패류"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="6dp">
+
+                <Button
+                    android:id="@+id/btn_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="견과류"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="31dp"
+            android:paddingRight="31dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="6dp">
+
+                <Button
+                    android:id="@+id/btn_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="밀가루"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="6dp">
+
+                <Button
+                    android:id="@+id/btn_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="콩"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="31dp"
+            android:paddingRight="31dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="6dp">
+
+                <Button
+                    android:id="@+id/btn_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="계란"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="6dp">
+
+                <Button
+                    android:id="@+id/btn_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="우유"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="31dp"
+            android:paddingRight="31dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="6dp">
+
+                <Button
+                    android:id="@+id/btn_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="소고기"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="6dp">
+
+                <Button
+                    android:id="@+id/btn_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="돼지고기"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="31dp"
+            android:paddingRight="31dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="6dp">
+
+                <Button
+                    android:id="@+id/btn_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="양고기"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="6dp">
+
+                <Button
+                    android:id="@+id/btn_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="오이"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15">
+
+        <Button
+            android:id="@+id/btn_next"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="28dp"
+            android:background="@drawable/button_background"
+            android:text="다음"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"/>
+
+                                                            </LinearLayout>
+</LinearLayout>
