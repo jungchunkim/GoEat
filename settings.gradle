@@ -1,3 +1,4 @@
+include ':mail'
 include ':jsoup-1.13.1'
 include ':naveridlogin_android_sdk'
 include ':app'

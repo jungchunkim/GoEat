@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,6 +15,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import javax.mail.MessagingException;
+import javax.mail.SendFailedException;
 
 public class PwdAuthNumberActivity extends AppCompatActivity {
 
@@ -22,7 +34,7 @@ public class PwdAuthNumberActivity extends AppCompatActivity {
     Button btn_next;
     private String check;
     private TextView tv_check;
-    private TextView tv_resend;
+    TextView tv_resend;
     private String AuthNum;
     LinearLayout layout;
 
@@ -56,18 +68,17 @@ public class PwdAuthNumberActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 AuthNum = et_1.getText().toString()+et_2.getText().toString()+et_3.getText().toString()+et_4.getText().toString();
-
+                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                String landnum = prefs.getString("randnum","");
                 // 인증번호 맞는지 확인하는 코드 ( 작성해야함!! )
-
-
-                // 인증번호 틀렸을때의 코드 ( 작성해야함!! )
-
-                //만약, 인증번호틀리다면 아래의코드 반드시 넣어야함!
-                //layout.setVisibility(View.VISIBLE);
-
-                // 액티비티 이동
-                Intent intent = new Intent(getApplicationContext(), ResetPwdActivity.class);
-                startActivity(intent);
+                if(AuthNum.equals(landnum)){
+                    // 액티비티 이동
+                    Intent intent = new Intent(getApplicationContext(), ResetPwdActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(),"인증번호를 확인해 주세요",Toast.LENGTH_LONG).show();
+                    layout.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -83,7 +94,55 @@ public class PwdAuthNumberActivity extends AppCompatActivity {
         tv_resend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 인증번호 다시 보내는 코드 작성하기 ( 작성해야함!! )
+                // 인증번호 다시 보내는 코드 작성하기
+                if (check.equals("phone")) {
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+                                String success = jsonObject.getString("result");
+                                String randnum = jsonObject.getString("randnum");
+                                System.out.println(success);
+                                System.out.println(randnum);
+                                if (success.equals("success")) { //Test일땐 "Test Success!"
+                                    SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
+                                    SharedPreferences.Editor editors = prefs.edit();
+                                    editors.putString("randnum", randnum);
+                                    editors.commit();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "재전송 실패! 다시 시도해주세요", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+
+                    SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
+                    String userphonenum = prefs.getString("phonenum", "");
+                    sms_request sms_request = new sms_request(userphonenum, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(PwdAuthNumberActivity.this);
+                    queue.add(sms_request);
+                }
+                else {
+                    SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
+                    String receive_email = prefs.getString("receive_email", "");
+                    String randnum = Integer.toString((int) ((Math.random()*100000)%10000));
+                    if(randnum.length()<4){
+                        randnum +="0";
+                    }
+                    GMailSender gMailSender = new GMailSender("goeat123123@gmail.com", "goeat123^^","GoEat 비밀번호 찾기 인증번호", "Go Eat 인증번호는 ["+randnum+"] 입니다", receive_email);
+                    //GMailSender.sendMail(제목, 본문내용, 받는사람);
+                    Thread thread = new Thread(gMailSender);
+                    thread.start();
+//                              gMailSender.sendMail("제목입니다", "1234", et_email.getText().toString());
+//                                Toast.makeText(getApplicationContext(), "이메일을 성공적으로 보냈습니다.", Toast.LENGTH_SHORT).show();
+                    SharedPreferences.Editor editors = prefs.edit();
+                    editors.putString("randnum",randnum);
+                    editors.commit();
+                }
+
             }
         });
 

@@ -112,9 +112,9 @@ public class RegAuthActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            JSONObject jsonArray = new JSONObject(response);
-                            String success = jsonArray.getString("result");
-                            String randnum = jsonArray.getString("randnum");
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("result");
+                            String randnum = jsonObject.getString("randnum");
                             System.out.println(success);
                             System.out.println(randnum);
                             if (success.equals("success")){ //Test일땐 "Test Success!"

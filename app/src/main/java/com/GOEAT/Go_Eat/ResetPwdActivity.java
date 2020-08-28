@@ -3,6 +3,7 @@ package com.GOEAT.Go_Eat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,7 @@ public class ResetPwdActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                /*Response.Listener<String> responseListener = new Response.Listener<String>() {
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
@@ -55,7 +56,7 @@ public class ResetPwdActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     }
-                };*/
+                };
 
 
                 // 비밀번호 일치
@@ -66,9 +67,10 @@ public class ResetPwdActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"비밀번호는 8자 이상이어야 합니다",Toast.LENGTH_LONG).show();
                     else{
                         // 비밀번호 변경 코드 (작성해야함!)
-                        //reset_password_request reset_password_request = new reset_password_request(email,et_pwd1.toString(),responseListener);
-                        //RequestQueue queue = Volley.newRequestQueue(ResetPwdActivity.this);
-                       // queue.add(reset_password_request);
+                        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                        reset_password_request reset_password_request = new reset_password_request(prefs.getString("receive_email",""),et_pwd1.getText().toString(),responseListener);
+                        RequestQueue queue = Volley.newRequestQueue(ResetPwdActivity.this);
+                        queue.add(reset_password_request);
                         Intent intent = new Intent(ResetPwdActivity.this, login_activity.class);
                         startActivity(intent);
                     }

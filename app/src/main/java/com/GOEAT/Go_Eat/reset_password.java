@@ -118,9 +118,9 @@ public class reset_password extends AppCompatActivity { //비밀번호 재설정
                     Toast.makeText(getApplicationContext(),"비밀번호는 8자 이상이어야 합니다",Toast.LENGTH_LONG).show();
 
                 }else {
-                    reset_password_request reset_password_request = new reset_password_request(email,password,responseListener);
-                    RequestQueue queue = Volley.newRequestQueue(reset_password.this);
-                    queue.add(reset_password_request);
+//                    reset_password_request reset_password_request = new reset_password_request(email,password,responseListener);
+//                    RequestQueue queue = Volley.newRequestQueue(reset_password.this);
+//                    queue.add(reset_password_request);
 
 
                 }

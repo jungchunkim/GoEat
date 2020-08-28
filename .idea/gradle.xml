@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/jsoup-1.13.1" />
+            <option value="$PROJECT_DIR$/mail" />
             <option value="$PROJECT_DIR$/naveridlogin_android_sdk" />
           </set>
         </option>
