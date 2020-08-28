@@ -7,6 +7,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -67,12 +69,15 @@ public class register_activity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         et_name = (EditText)findViewById(R.id.et_name);
         et_email = (EditText)findViewById(R.id.et_email);
-        et_password = (EditText)findViewById(R.id.et_password);
-        et_re_password = (EditText)findViewById(R.id.et_re_password);
+        et_password = (EditText)findViewById(R.id.et_pwd1);
+        et_re_password = (EditText)findViewById(R.id.et_pwd2);
         btn_regist_account = (Button) findViewById(R.id.btn_regist_account);
         tv_yearpicker = (TextView) findViewById(R.id.tv_yearpicker);
         tv_women = (TextView) findViewById(R.id.tv_women);
         tv_men = (TextView) findViewById(R.id.tv_men);
+
+        et_password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        et_password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
 
         et_name.setOnKeyListener(new View.OnKeyListener() { //엔터시 키보드 내리는 부분
@@ -96,11 +101,13 @@ public class register_activity extends AppCompatActivity {
             }
         });
         et_password.setOnKeyListener(new View.OnKeyListener() {
-            public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
+
+  public boolean onKey(View v, int keyCode, KeyEvent event) { //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow( et_password.getWindowToken(), 0);
                     return true;
+
                 }
                 return false;
             }
@@ -129,8 +136,8 @@ public class register_activity extends AppCompatActivity {
         tv_women.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {  // 여자 버튼 클릭
-                tv_women.setBackground(getResources().getDrawable(R.drawable.round_button));
-                tv_men.setBackground(getResources().getDrawable(R.drawable.edge));
+                tv_women.setBackgroundResource(R.drawable.button_background);
+                tv_men.setBackgroundResource(R.drawable.edit_text_background);
                 usergender = "여";
             }
         });
@@ -138,8 +145,8 @@ public class register_activity extends AppCompatActivity {
         tv_men.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // 남자 버튼 클릭
-                tv_men.setBackground(getResources().getDrawable(R.drawable.round_button));
-                tv_women.setBackground(getResources().getDrawable(R.drawable.edge));
+                tv_men.setBackground(getResources().getDrawable(R.drawable.button_background));
+                tv_women.setBackground(getResources().getDrawable(R.drawable.edit_text_background));
                 usergender = "남";
             }
         });
