@@ -49,7 +49,7 @@ public class FirstFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_first, container, false);
         TextView tvLabel = (TextView) view.findViewById(R.id.textview);
         tvLabel.setText("안녕하세요!\n우리는 외식 비서 어플\nGo eat이에요!");
-        tvLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+        tvLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 28);
         tvLabel.setGravity(Gravity.CENTER_HORIZONTAL);
         tvLabel.setTextColor(Color.parseColor("#222B45"));
         Typeface typeface = getResources().getFont(R.font.pureunjeonnam);
