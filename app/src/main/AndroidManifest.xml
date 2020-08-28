@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".CheckHateFood2"></activity>
+        <activity android:name=".before_emotion_check"></activity>
+        <activity android:name=".CheckHateFood2" />
         <activity android:name=".CheckHateFood" />
         <activity android:name=".SetCharActivity" />
         <activity android:name=".Onboarding" />
@@ -40,8 +41,6 @@
         <activity android:name=".hello2" />
         <activity android:name=".register_select" />
         <activity android:name=".hello" />
-        <activity android:name=".start3nd" />
-        <activity android:name=".start2nd" />
         <activity android:name=".ChooseHateFood" />
         <activity android:name=".CheckUserTasteSecond" />
         <activity android:name=".CheckUserTasteFirst" />
