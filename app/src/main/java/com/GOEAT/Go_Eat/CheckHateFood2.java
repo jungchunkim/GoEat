@@ -61,7 +61,8 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 다음액티비티로 이동하는 코드 (작성해야함!)
+                Intent intent = new Intent(getApplicationContext(),before_emotion_check.class);
+                startActivity(intent);
             }
         });
 
