@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="select_who">
+        <item>애인</item>
+        <item>가족</item>
+        <item>친구</item>
+        <item>동아리</item>
+        <item>회사</item>
+        <item>혼자</item>
+    </string-array>
+
+    <string-array name="select_emotion">
+        <item>행복한</item>
+        <item>축하하는</item>
+        <item>설레는</item>
+        <item>평범한</item>
+        <item>우울한</item>
+        <item>스트레스 받는</item>
+    </string-array>
+</resources>

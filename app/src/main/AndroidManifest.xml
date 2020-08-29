@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".before_emotion_check"></activity>
+        <activity android:name=".investigation_page"></activity>
+        <activity android:name=".before_emotion_check" />
         <activity android:name=".CheckHateFood2" />
         <activity android:name=".CheckHateFood" />
         <activity android:name=".SetCharActivity" />
