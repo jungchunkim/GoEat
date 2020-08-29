@@ -39,6 +39,7 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_check_hate_food2);
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         final String email = prefs.getString("email","");
+        final String name = prefs.getString("name","");
 
         btn_1 = findViewById(R.id.btn_1);
         btn_2 = findViewById(R.id.btn_2);
@@ -76,86 +77,85 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
         btn_11.setOnClickListener(this);
         btn_12.setOnClickListener(this);
 
-//        //랜덤으로 받아온 음식 index들로 이미지 설정하는 부분
-//        Response.Listener<String> responseListener = new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) { // 서버 응답 받아오는 부분
-//                Log.d("~~~~~", "jsonarray");
-//                try {
-//                    JSONArray jsonArray = new JSONArray(response);
-//                    if (!jsonArray.getString(0).equals("false")){
-//                        Log.d("~~~~~","1");
-//                        for(int i = 0; i<foodlist.length ; i++){
-//                            setFoodlist(i,jsonArray.getString(i));
-//                        }
-//                        btn_1.setText(foodlist[0]);
-//                        btn_2.setText(foodlist[1]);
-//                        btn_3.setText(foodlist[2]);
-//                        btn_4.setText(foodlist[3]);
-//                        btn_5.setText(foodlist[4]);
-//                        btn_6.setText(foodlist[5]);
-//                        btn_7.setText(foodlist[6]);
-//                        btn_8.setText(foodlist[7]);
-//                        btn_9.setText(foodlist[8]);
-//                        btn_10.setText(foodlist[9]);
-//                        btn_11.setText(foodlist[10]);
-//                        btn_12.setText(foodlist[11]);
-//
-//                    }else {
-//
-//                    }
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//        //userDB.setImageToUserChar(img_char,email,CheckHateFood2.this);        // 서버에서 사용자캐릭터가져와서 세팅
-//        userDB.getFoodListHate(email,responseListener,CheckHateFood2.this);     //음식 리스트 index 불러오는 부분
+        //랜덤으로 받아온 음식 index들로 이미지 설정하는 부분
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // 서버 응답 받아오는 부분
+                try {
+                    JSONArray jsonArray = new JSONArray(response);
+                    if (!jsonArray.getString(0).equals("false")){
+                        for(int i = 0; i<foodlist.length ; i++){
+                            setFoodlist(i,jsonArray.getString(i));
+                        }
+                        btn_1.setText(foodlist[0]);
+                        btn_2.setText(foodlist[1]);
+                        btn_3.setText(foodlist[2]);
+                        btn_4.setText(foodlist[3]);
+                        btn_5.setText(foodlist[4]);
+                        btn_6.setText(foodlist[5]);
+                        btn_7.setText(foodlist[6]);
+                        btn_8.setText(foodlist[7]);
+                        btn_9.setText(foodlist[8]);
+                        btn_10.setText(foodlist[9]);
+                        btn_11.setText(foodlist[10]);
+                        btn_12.setText(foodlist[11]);
+
+                    }else {
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        userDB.setImageToUserChar(img_char,email,CheckHateFood2.this);        // 서버에서 사용자캐릭터가져와서 세팅
+        userDB.getFoodListHate(email,responseListener,CheckHateFood2.this);     //음식 리스트 index 불러오는 부분
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Response.Listener<String> responselistener = new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) { // 서버 응답 받아오는 부분
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(response);
-//                            Boolean success = jsonObject.getBoolean("success");
-//                            if (success){
-//                                Intent intent = new Intent(getApplicationContext(), before_emotion_check.class);
-//                                startActivity(intent);
-//                            }else {
-//                                Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
-//                            }
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                };
-//
-//                for (int i = 0; i < 12; i++) {
-//                    if (Hatefoodlists.equals("N") && clickCheck[i] == -1) {
-//                        Hatefoodlists = foodlist[i];
-//                    } else if(clickCheck[i] == -1){
-//                        Hatefoodlists = Hatefoodlists + "," +foodlist[i];
-//                    }
-//                }
-//                userDB.saveUserHateFood(email,Hatefoodlists,responselistener,CheckHateFood2.this);       // 서버에 사용자가 싫어하는 음식 저장
-           }
+                Response.Listener<String> responselistener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) { // 서버 응답 받아오는 부분
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            Boolean success = jsonObject.getBoolean("success");
+                            if (success){
+                                Intent intent = new Intent(getApplicationContext(), before_emotion_check.class);
+                                startActivity(intent);
+                            }else {
+                                Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                for (int i = 0; i < 12; i++) {
+                    if (Hatefoodlists.equals("N") && clickCheck[i] == -1) {
+                        Hatefoodlists = "\""+foodlist[i]+"\"";
+                    } else if(clickCheck[i] == -1){
+                        Hatefoodlists = Hatefoodlists + "," +"\"" + foodlist[i] + "\"";
+                    }
+                }
+                userDB.saveUserHateFood(email,Hatefoodlists,responselistener,CheckHateFood2.this);       // 서버에 사용자가 싫어하는 음식 저장
+            }
         });
 
         // 뒤로가기 버튼 클릭
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Hatefoodlists="N";
                 onBackPressed();
             }
         });
 
         // 사용자의 이름 넣는 부분 (서버관련코드 구현해야함!)
-        //tv_txtWithName.setText(//서버에서가져온 사용자의 이름 + "님이 " + tv_txtWithName.getText() );
+        tv_txtWithName.setText(name + "님이 " + tv_txtWithName.getText() );
 
 
     }

@@ -32,8 +32,8 @@ public class FoodInfo {
     public FoodInfo(JSONObject jsonObject){
         try {
             index = jsonObject.getInt("Food_Index");
-            kind = jsonObject.getString("Food_Kind");
-            type = jsonObject.getString("Food_Type");
+            //kind = jsonObject.getString("Food_Kind");
+            type = (String) jsonObject.get("Food_Type");
             soup = jsonObject.getString("Food_Soup");
             temp = jsonObject.getString("Food_Temp");
             texture = jsonObject.getString("Food_Texture");

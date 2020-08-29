@@ -41,6 +41,8 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
         setContentView(R.layout.activity_check_hate_food);
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         final String email = prefs.getString("email","");
+        final String name = prefs.getString("name","");
+
         final String foodIngre[] = {"회", "갑각류", "어패류", "견과류", "밀가루", "콩", "계란", "우유", "소고기", "돼지고기", "양고기", "오이"};
         btn_1 = findViewById(R.id.btn_1);
         btn_2 = findViewById(R.id.btn_2);
@@ -132,7 +134,7 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
         });
 
         // 사용자의 이름 넣는 부분 (서버관련코드 구현해야함!)
-        //tv_txtWithName.setText(//서버에서가져온 사용자의 이름 + "님이 " + tv_txtWithName.getText() );
+        tv_txtWithName.setText(name + "님이 " + tv_txtWithName.getText() );
 
 
     }

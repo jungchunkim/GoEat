@@ -176,21 +176,15 @@ public class UserDB implements Serializable {
         };
         queue.add(request);
     }
-    public void getFoodListHate(String useremail, Response.Listener<String> listener, Activity activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
+    public void getFoodListHate(String useremail, Response.Listener<String> listener, CheckHateFood2 activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail",useremail);
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) { // 서버 응답 받아오는 부분
-                Log.d("foodtest", response);
-            }
-        };
 
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL5,
-                responseListener,
+                listener,
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -236,7 +230,7 @@ public class UserDB implements Serializable {
     }
 
 
-    public void getHateFoodInfo(String useremail, Response.Listener<String> listener, UserAnalyzeEnd activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
+    public void getHateFoodInfo(String useremail, Response.Listener<String> listener, Activity activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail",useremail);
