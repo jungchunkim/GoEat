@@ -45,7 +45,7 @@
         <activity android:name=".CheckUserTasteSecond" />
         <activity android:name=".CheckUserTasteFirst" />
         <activity android:name=".CheckUserTaste" />
-        <activity android:name=".MakeCharCompleteActivity" />
+        <activity android:name=".notUse.MakeCharCompleteActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

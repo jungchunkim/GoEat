@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.GOEAT.Go_Eat.notUse.MakeCharCompleteActivity;
+
 
 public class hello2 extends AppCompatActivity {
 

@@ -4,12 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class CheckHateFood extends AppCompatActivity  implements View.OnClickListener {
 
@@ -19,11 +28,20 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
     ImageView iv_back;
 
 
+    //2020-08-29 염상희
+    //싫어하는 재료 저장 부분 추가
+    private ArrayList<String> hateFoodArr;
+    private String HateFoodCategory;
+    private ImageView img_char;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_hate_food);
-
+        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        final String email = prefs.getString("email","");
+        final String foodIngre[] = {"회", "갑각류", "어패류", "견과류", "밀가루", "콩", "계란", "우유", "소고기", "돼지고기", "양고기", "오이"};
         btn_1 = findViewById(R.id.btn_1);
         btn_2 = findViewById(R.id.btn_2);
         btn_3 = findViewById(R.id.btn_3);
@@ -39,7 +57,12 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
         btn_next = findViewById(R.id.btn_next);
         tv_txtWithName = findViewById(R.id.tv_txtWithName);
         iv_back = findViewById(R.id.iv_back);
+        img_char = findViewById(R.id.img_char);
 
+        hateFoodArr = new ArrayList<String>();
+        final UserDB userDB = new UserDB();
+        Log.d("email",email);
+        userDB.setImageToUserChar(img_char, email,CheckHateFood.this);
 
         // clickCheck[] 초기화
         for(int i=0;i<15;i++)
@@ -62,8 +85,41 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CheckHateFood2.class);
-                startActivity(intent);
+                hateFoodArr.clear();
+                for(int i=0;i<clickCheck.length;i++){
+                    if (clickCheck[i] == -1) {
+                        hateFoodArr.add(foodIngre[i]);
+                    }
+                }
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) { // 서버 응답 받아오는 부분
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            boolean success = jsonObject.getBoolean("success");
+                            System.out.println(success);
+                            if (success) {
+                                Intent intent = new Intent(getApplicationContext(), CheckHateFood2.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                for (int i = 0; i < hateFoodArr.size(); i++) {
+                    if(i==0) HateFoodCategory = hateFoodArr.get(i);
+                    else HateFoodCategory += ("," + hateFoodArr.get(i));
+                }
+
+                Log.d("HateFoodCategory", HateFoodCategory);
+
+                UserDB userDB = new UserDB();
+                userDB.saveUserHateCategory(email, HateFoodCategory, responseListener, CheckHateFood.this);
             }
         });
 
