@@ -2,7 +2,10 @@ package com.GOEAT.Go_Eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,11 +14,18 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class investigation_page extends AppCompatActivity implements View.OnClickListener {
 
     Button btn_1,btn_2,btn_next; //btn_1 : 칼로리 낮은, btn_2: 칼로리 상관없는
     private int[] clickCheck = new int[2];
     ImageView iv_back;
+    private UserDB userDB = new UserDB();
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +59,26 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         });
 
 
+        //2020-08-30 염상희
+        //음식 취향조사 test
+
+        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        email = prefs.getString("email","");
+
+        Response.Listener<String> responselistener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // 서버 응답 받아오는 부분
+                try {
+                    Log.d("foodOnClick",response);
+                    JSONObject jsonObject = new JSONObject(response);
+                    Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        ///userDB.saveFoodFlavor(email,result,responselistener2,before_emotion_check.this);
+        userDB.setFlavorFoodList(email,responselistener,investigation_page.this);
 
         //누구랑 함께하는지에 대한 spinner (~ 랑 함께)
         Spinner spinner_who=(Spinner) findViewById(R.id.select_who);

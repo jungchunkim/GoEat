@@ -1,14 +1,8 @@
 package com.GOEAT.Go_Eat;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -18,12 +12,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +27,10 @@ public class UserDB implements Serializable {
     final static private String URL4 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getchar.php";
     final static private String URL5 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getfoodhate.php";
     final static private String URL6 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/HateFoodList.php";
+    final static private String URL7 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getHateFoodList.php";
+    final static private String URL8 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/saveFoodFlavor.php";
+    final static private String URL9 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getFlavorFood.php";
+
     private Map<String,String> map;
     private int userChar;
     public RequestQueue queue;
@@ -61,9 +57,9 @@ public class UserDB implements Serializable {
                 }
         ){
             @Override
-        protected Map<String, String> getParams() throws AuthFailureError {
-            return map;
-        }
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
         };
         queue.add(request);
 
@@ -79,19 +75,20 @@ public class UserDB implements Serializable {
             public void onResponse(String response) { // 서버 응답 받아오는 부분
                 try {
                     JSONObject jsonObject = new JSONObject(response);
+                    Log.d("jsonObject",jsonObject.toString());
                     boolean success = jsonObject.getBoolean("success"); // 사용자 캐릭터 불러옴
                     String character = jsonObject.getString("Character");
                     System.out.println(jsonObject);
                     if (success){
                         userChar = Integer.parseInt(character);
                         switch (userChar){
-                            case 1:
-                                img.setImageResource(R.drawable.char1);
+                            case 0:
+                                img.setImageResource(R.drawable.mouse);
                                 break;
-                            case 2:
+                            case 1:
                                 img.setImageResource(R.drawable.char2);
                                 break;
-                            case 3:
+                            case 2:
                                 img.setImageResource(R.drawable.char3);
                                 break;
                         }
@@ -179,10 +176,11 @@ public class UserDB implements Serializable {
         };
         queue.add(request);
     }
-    public void getFoodListHate(String useremail,  Response.Listener<String> listener, ChooseHateFood activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
+    public void getFoodListHate(String useremail, Response.Listener<String> listener, CheckHateFood2 activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail",useremail);
+
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL5,
@@ -206,6 +204,7 @@ public class UserDB implements Serializable {
     }
 
     public void saveUserHateFood(String useremail, String HateFoodLists,Response.Listener<String> listener, Activity activity){ //싫어하는 음식 서버 전달
+        Log.d("~~~~",HateFoodLists);
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail",useremail);
@@ -230,4 +229,83 @@ public class UserDB implements Serializable {
         queue.add(request);
     }
 
+
+    public void getHateFoodInfo(String useremail, Response.Listener<String> listener, Activity activity){ //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
+        queue = Volley.newRequestQueue(activity);
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL7,
+                listener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void saveFoodFlavor(String useremail, JSONObject jsonObject,Response.Listener<String> listener, Activity activity){ //싫어하는 음식 서버 전달
+        queue = Volley.newRequestQueue(activity);
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+        map.put("flavor",jsonObject.toString());
+        Log.d("food",map.toString());
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL8,
+                listener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        queue.add(request);
+    }
+
+    public void setFlavorFoodList(String useremail, Response.Listener<String> responseListener, Activity activity){ //서버로부터 사용자 캐릭터 받아오는 부분
+        queue = Volley.newRequestQueue(activity);
+        map = new HashMap<>();
+        map.put("useremail",useremail);
+
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL9,
+                responseListener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        queue.add(request);
+
+
+
+
+    }
 }
