@@ -1,10 +1,9 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,9 +16,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.GOEAT.Go_Eat.R;
+import com.GOEAT.Go_Eat.Server_Request.register_request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -42,10 +42,6 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.MeV2ResponseCallback;
 import com.kakao.usermgmt.callback.UnLinkResponseCallback;
 import com.kakao.usermgmt.response.MeV2Response;
-import com.kakao.usermgmt.response.model.AgeRange;
-import com.kakao.usermgmt.response.model.Gender;
-import com.kakao.usermgmt.response.model.Profile;
-import com.kakao.usermgmt.response.model.UserAccount;
 import com.nhn.android.naverlogin.OAuthLogin;
 import com.nhn.android.naverlogin.OAuthLoginHandler;
 

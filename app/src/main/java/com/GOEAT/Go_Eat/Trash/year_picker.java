@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.fragment.app.DialogFragment;
 
@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
+
+import com.GOEAT.Go_Eat.R;
 
 import java.util.Calendar;
 

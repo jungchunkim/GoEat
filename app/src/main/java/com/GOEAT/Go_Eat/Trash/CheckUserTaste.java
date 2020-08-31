@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.GOEAT.Go_Eat.CheckUserTasteFirst;
+import com.GOEAT.Go_Eat.R;
 
 public class CheckUserTaste extends AppCompatActivity {
 

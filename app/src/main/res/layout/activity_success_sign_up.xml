@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".success_sign_up"
+    tools:context=".Trash.success_sign_up"
     android:background="#FFFFFF">
 
 

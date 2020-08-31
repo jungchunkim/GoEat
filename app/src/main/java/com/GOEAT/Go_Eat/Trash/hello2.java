@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.GOEAT.Go_Eat.R;
 
 
 public class hello2 extends AppCompatActivity {

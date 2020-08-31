@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.GOEAT.Go_Eat.R;
+import com.GOEAT.Go_Eat.Server_Request.UserDB;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -1,10 +1,12 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.GOEAT.Go_Eat.R;
 
 public class success_sign_up extends AppCompatActivity { // 로그인 또는 회원가입 성공시 화면 (수정 필요)
 
@@ -16,7 +18,7 @@ public class success_sign_up extends AppCompatActivity { // 로그인 또는 회
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(success_sign_up.this,hello.class);
+                Intent intent = new Intent(success_sign_up.this, hello.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }

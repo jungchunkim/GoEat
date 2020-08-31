@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Server_Request;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;

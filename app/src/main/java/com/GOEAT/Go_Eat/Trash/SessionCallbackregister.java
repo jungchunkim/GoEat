@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -140,9 +140,9 @@ public class SessionCallbackregister implements ISessionCallback {
 //                        userage = ageRange.getValue().substring(0,2);
 //                        userbirth = kakaoAccount.getBirthday().substring(0,2)+"/"+ kakaoAccount.getBirthday().substring(2,4);
 
-                        gender_year_picker pd = new gender_year_picker();
-                        pd.setListener(activity.d);
-                        pd.show(activity.getSupportFragmentManager(), "YearMonthPickerTest");
+//                        gender_year_picker pd = new gender_year_picker();
+//                        pd.setListener(activity.d);
+//                        pd.show(activity.getSupportFragmentManager(), "YearMonthPickerTest");
                     }
 
 

@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.GOEAT.Go_Eat.R;
+import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
 
 import org.json.JSONArray;

@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Server_Request;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Response;

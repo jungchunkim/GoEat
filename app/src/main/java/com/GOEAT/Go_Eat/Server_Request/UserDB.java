@@ -1,9 +1,11 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Server_Request;
 
 import android.app.Activity;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.GOEAT.Go_Eat.CheckHateFood2;
+import com.GOEAT.Go_Eat.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;

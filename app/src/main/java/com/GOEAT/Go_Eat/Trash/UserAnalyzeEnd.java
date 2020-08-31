@@ -1,4 +1,4 @@
-package com.GOEAT.Go_Eat;
+package com.GOEAT.Go_Eat.Trash;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.GOEAT.Go_Eat.MainActivity_after;
+import com.GOEAT.Go_Eat.R;
+import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
 
 public class UserAnalyzeEnd extends AppCompatActivity {
 

@@ -24,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GOEAT.Go_Eat.Server_Request.login_request;
+import com.GOEAT.Go_Eat.Trash.SessionCallback;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
@@ -346,22 +348,23 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             String password = pref.getString("password","");
             et_login_email.setText(email);
             et_login_password.setText(password);
-            Toast.makeText(getApplicationContext(), "GoEat 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
             btn_login.performClick();
-        }else if(pref.getString("check","").equals("3")){
-            Toast.makeText(getApplicationContext(), "Kakao 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
-
-            iv_kakao_login.performClick();
-
-        }else if(pref.getString("check","").equals("4")){
-            Toast.makeText(getApplicationContext(), "Google 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
-
-            iv_google_login.performClick();
-        }else if(pref.getString("check","").equals("5")){
-            Toast.makeText(getApplicationContext(), "Naver 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
-            iv_naver_login.performClick();
         }
+//        else if(pref.getString("check","").equals("3")){
+//            Toast.makeText(getApplicationContext(), "Kakao 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
+//
+//            iv_kakao_login.performClick();
+//
+//        }else if(pref.getString("check","").equals("4")){
+//            Toast.makeText(getApplicationContext(), "Google 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
+//
+//            iv_google_login.performClick();
+//        }else if(pref.getString("check","").equals("5")){
+//            Toast.makeText(getApplicationContext(), "Naver 계정으로 로그인 성공", Toast.LENGTH_SHORT).show();
+//            iv_naver_login.performClick();
+//        }
 
 
     }

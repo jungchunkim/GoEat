@@ -6,13 +6,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
 
 import org.json.JSONArray;
@@ -83,6 +83,7 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
             public void onResponse(String response) { // 서버 응답 받아오는 부분
                 try {
                     JSONArray jsonArray = new JSONArray(response);
+                    System.out.println(jsonArray);
                     if (!jsonArray.getString(0).equals("false")){
                         for(int i = 0; i<foodlist.length ; i++){
                             setFoodlist(i,jsonArray.getString(i));
