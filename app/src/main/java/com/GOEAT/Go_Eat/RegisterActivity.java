@@ -1,6 +1,7 @@
 package com.GOEAT.Go_Eat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -60,8 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                btn_female.setBackgroundColor(Color.rgb(224,39,74));
-                btn_male.setBackgroundColor(Color.WHITE);
+                btn_female.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.edit_text_background_color));
+                btn_male.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.edit_text_background));
                 usergender = "여";
             }
         });
@@ -70,8 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
-                btn_male.setBackgroundColor(Color.rgb(224,39,74));
-                btn_female.setBackgroundColor(Color.WHITE);
+                btn_male.setBackgroundResource(R.drawable.edit_text_background_color);
+                btn_female.setBackgroundResource(R.drawable.edit_text_background);
                 usergender = "남";
             }
         });

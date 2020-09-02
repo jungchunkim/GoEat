@@ -108,8 +108,7 @@
                 android:fontFamily="@font/pureunjeonnam"
                 android:layout_marginRight="12dp"
                 android:hint="여자"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
+                android:gravity="center"
                 android:textSize="16sp"
                 />
             <Button
@@ -121,8 +120,7 @@
                 android:fontFamily="@font/pureunjeonnam"
                 android:layout_marginLeft="12dp"
                 android:hint="남자"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
+                android:gravity="center"
                 android:textSize="16sp"
                 />
         </LinearLayout>
