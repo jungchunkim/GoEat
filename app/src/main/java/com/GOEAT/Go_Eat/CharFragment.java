@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,7 +29,23 @@ public class CharFragment extends Fragment {
         LinearLayout l = (LinearLayout)
                 inflater.inflate(R.layout.mf, container, false);
 
-        //int pos = this.getArguments().getInt("pos");
+
+
+
+
+        int pos = this.getArguments().getInt("pos");
+        if (pos==0){
+            ImageView char1 = l.findViewById(R.id.content);
+            char1.setBackgroundResource(R.drawable.char1);
+        }
+        else if(pos==1){
+            ImageView char2 = l.findViewById(R.id.content);
+            char2.setBackgroundResource(R.drawable.char2);
+        }
+        else if(pos==2){
+            ImageView char3 = l.findViewById(R.id.content);
+            char3.setBackgroundResource(R.drawable.char3);
+        }
        // TextView tv = (TextView) l.findViewById(R.id.text);
         //tv.setText("Position = " + pos);
 
