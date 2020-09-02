@@ -23,7 +23,6 @@ import android.app.AlertDialog;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.List;
@@ -84,8 +83,8 @@ public class MainActivity_after extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                new WeatherAsynTask(tv_temp).execute("https://search.naver.com/search.naver?query=날씨", "span.todaytemp");
-                new WeatherAsynTask(tv_weather).execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
+                new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "span.todaytemp");
+                new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
 
             }
         });
@@ -286,7 +285,7 @@ class WeatherAsynTask extends AsyncTask<String, Void, String> {
 
     TextView textView;
 
-    public WeatherAsynTask(TextView textView){
+    public WeatherAsynTask(){
         this.textView = textView;
     }
 

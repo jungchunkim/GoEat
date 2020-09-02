@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
@@ -19,6 +21,11 @@ import com.android.volley.Response;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
 
 public class investigation_page extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +34,8 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
     ImageView iv_back;
     private UserDB userDB = new UserDB();
     String email;
+    public String temperature;
+    public String weather;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +68,13 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                 onBackPressed();
             }
         });
+
+
+        // 2020-09-02 임민영
+        // 날씨 불러오는 부분 (기온은 temperature, 날씨는 weather에 저장됨!)
+        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "span.todaytemp");
+        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
+
 
 
         //2020-08-30 염상희
@@ -165,4 +181,55 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         btn.setBackgroundResource(R.drawable.button_background);
         btn.setTextColor(getResources().getColorStateList(R.color.white));
     }
+
+    class WeatherAsynTask extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            String URL = params[0];
+            String E1 = params[1];
+            String result = "";
+
+            Document doc = null;
+            try {
+                doc = Jsoup.connect(URL).get();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Element temp = doc.select(E1).first();
+
+            result = temp.text();
+
+            Log.e("result", result);
+
+            String str[] = result.split(",");
+
+            if(E1.equals("span.todaytemp")){
+                temperature = str[0];
+                Log.e("temperature", temperature);
+            }
+            else{
+                weather = str[0];
+                Log.e("weather", weather);
+            }
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            String[] str = s.split(",");
+
+            //textView.setText(str[0]);
+            //Log.e("날씨", str[0]);
+
+
+
+        }
+
+    }
+
 }
