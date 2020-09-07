@@ -10,7 +10,86 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="@color/mainPink">
+        android:background="@color/mainPink"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25">
+
+            <ImageView
+                android:layout_width="6pt"
+                android:layout_height="8pt"
+                android:scaleType="fitXY"
+                android:src="@drawable/place"
+                android:layout_gravity="center"
+                android:layout_marginLeft="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="신촌"
+                android:fontFamily="@font/nanumsquare_acb"
+                android:textSize="17sp"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:layout_marginLeft="11dp"
+                />
+        </LinearLayout>
+
+        
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:layout_weight="0.5"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go eat"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:textColor="#ffffff"
+                android:textSize="24sp"
+                android:layout_gravity="center"
+                android:gravity="center"
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:gravity="right">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:fontFamily="@font/nanumsquare_acb"
+                android:gravity="right|center_vertical"
+                android:text="Lv."
+                android:textColor="#ffffff"
+                android:textSize="15sp"
+                android:layout_marginRight="10dp"/>
+            
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="18pt"
+                android:layout_height="18pt"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_launcher_background"
+                />
+            
+        </LinearLayout>
+        
+      
 
     </LinearLayout>
 
@@ -20,14 +99,149 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
+                android:id="@+id/vp_event"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"/>
+                android:layout_height="110dp"
+                android:layout_marginBottom="36dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="고잇 알고리즘이 추천한 메뉴에요!"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textColor="#222B45"
+                    android:layout_marginBottom="17dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_viewMore1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="더보기 >>"
+                    android:textColor="#E0274A"
+                    android:textSize="15sp"
+                    android:layout_marginRight="14dp"/>
+            </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview1"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="15dp"
+                    android:scrollbars="horizontal"/>
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_similar"
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="님과 비슷한 사람들이 먹은 음식은?"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textColor="#222B45"
+                    android:layout_marginBottom="17dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_viewMore2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="더보기 >>"
+                    android:textColor="#E0274A"
+                    android:textSize="15sp"
+                    android:layout_marginRight="14dp"/>
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview2"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="15dp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="요즘 신촌에서 핫한 음식은?"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textColor="#222B45"
+                    android:layout_marginBottom="17dp"/>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_viewMore3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="더보기 >>"
+                    android:textColor="#E0274A"
+                    android:textSize="15sp"
+                    android:layout_marginRight="14dp"/>
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview3"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"/>
+
+
+
+
 
         </LinearLayout>
+
+    
+
 
     </ScrollView>
     

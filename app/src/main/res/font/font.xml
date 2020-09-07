@@ -9,4 +9,10 @@
         android:fontStyle = "normal"
         android:fontWeight = "400"
         android:font = "@font/pureunjeonnambold"/>
+
+    <font
+        android:fontStyle = "normal"
+        android:fontWeight = "400"
+        android:font = "@font/nanumsquare_acb"/>
+
 </font-family>
