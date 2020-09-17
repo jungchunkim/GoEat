@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -61,7 +62,7 @@ import java.security.NoSuchAlgorithmException;
 public class login_activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{ // 로그인 화면
 
     private Button btn_login;
-    private TextView tv_find_pwd, tv_find_id,tv_sign_up;
+    private TextView tv_find_pwd, tv_find_id,tv_sign_up,err_text;
     private EditText et_login_email, et_login_password;
     private CheckBox cb_login_auto;
     private long backBtnTime = 0;
@@ -87,10 +88,6 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
 
 
-
-
-
-
     Response.Listener<String> responseListener = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
@@ -105,6 +102,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                     Intent intent = new Intent(login_activity.this,SetCharActivity.class);
                     startActivity(intent);
                 }else{
+
                     Toast.makeText(getApplicationContext(),"가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
@@ -129,7 +127,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         cb_login_auto = (CheckBox) findViewById(R.id.cb_login_auto);
         tv_find_id = findViewById(R.id.tv_find_id);
         tv_find_pwd = findViewById(R.id.tv_find_pwd);
-
+        err_text=findViewById(R.id.err_text);
         iv_naver_login = (ImageView) findViewById(R.id.iv_naver_login);
 
         mOAuthLoginModule = OAuthLogin.getInstance();
@@ -226,9 +224,15 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                                 Intent intent = new Intent(getApplicationContext(), SetCharActivity.class);
                                 startActivity(intent);
                             }else if(success.equals("almost_true")){
-                                Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다", Toast.LENGTH_LONG).show();
+                                et_login_email.setTextColor(Color.parseColor("#E01D4A"));
+                                et_login_password.setTextColor(Color.parseColor("#E01D4A"));
+                                err_text.setText("비밀번호가 맞지 않습니다.");
+                                err_text.setTextColor(Color.parseColor("#E01D4A"));
                             }else{
-                                Toast.makeText(getApplicationContext(), "가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
+                                et_login_email.setTextColor(Color.parseColor("#E01D4A"));
+                                et_login_password.setTextColor(Color.parseColor("#E01D4A"));
+                                err_text.setText("이메일 주소와 비밀번호가 맞지 않습니다.");
+                                err_text.setTextColor(Color.parseColor("#E01D4A"));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

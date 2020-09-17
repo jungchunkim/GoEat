@@ -23,12 +23,25 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="10"
+        android:layout_weight="7"
         android:textSize="30dp"
         android:fontFamily="@font/pureunjeonnam"
         android:textColor="#222B45"
         android:gravity="center"
         android:text="로그인"/>
+
+    <TextView
+        android:id="@+id/err_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="40dp"
+        android:textSize="18dp"
+        android:fontFamily="@font/pureunjeonnam"
+        android:textColor="#222B45"
+        android:gravity=""
+        />
 
     <EditText
         android:id="@+id/et_login_email"

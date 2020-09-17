@@ -140,7 +140,10 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
             case R.id.btn_1:
                 if(clickCheck[1]==-1)
                 {
-                    Toast.makeText(getApplicationContext(),"둘 중에 하나만 고르세요",Toast.LENGTH_SHORT).show();
+                    clickCheck[1]=1;
+                    reChangeBtnBackground(btn_2);
+                    changeBtnBackground(btn_1);
+                    clickCheck[0]=-1;
                 }
                 else{
                     if (clickCheck[0] == 1) {
@@ -155,7 +158,10 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
             case R.id.btn_2:
                 if(clickCheck[0]==-1)
                 {   //두 개 골랐을 때
-                    Toast.makeText(getApplicationContext(),"둘 중에 하나만 고르세요",Toast.LENGTH_SHORT).show();
+                    clickCheck[0]=1;
+                    reChangeBtnBackground(btn_1);
+                    changeBtnBackground(btn_2);
+                    clickCheck[1]=-1;
                 }
                 else{
                     if (clickCheck[1] == 1) {
