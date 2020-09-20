@@ -60,13 +60,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.75"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="6dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -80,13 +80,15 @@
                     android:id="@+id/btn_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="회"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -101,13 +103,15 @@
                     android:id="@+id/btn_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="갑각류"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
 
@@ -118,14 +122,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.75"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -139,13 +143,15 @@
                     android:id="@+id/btn_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="어패류"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -160,13 +166,15 @@
                     android:id="@+id/btn_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="견과류"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
 
@@ -176,14 +184,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.75"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -197,13 +205,15 @@
                     android:id="@+id/btn_5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="밀가루"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -218,13 +228,15 @@
                     android:id="@+id/btn_6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="콩"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
 
@@ -234,14 +246,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.75"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -255,13 +267,15 @@
                     android:id="@+id/btn_7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="계란"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -276,13 +290,15 @@
                     android:id="@+id/btn_8"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="우유"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
 
@@ -292,14 +308,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.75"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -313,13 +329,15 @@
                     android:id="@+id/btn_9"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="소고기"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -334,13 +352,15 @@
                     android:id="@+id/btn_10"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="돼지고기"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
 
@@ -350,14 +370,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.75"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginTop="8dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -371,13 +390,15 @@
                     android:id="@+id/btn_11"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="양고기"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -392,13 +413,15 @@
                     android:id="@+id/btn_12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadow_button"
+                    android:background="@drawable/shadow_button2"
                     android:elevation="8dp"
                     android:gravity="center"
                     android:shadowColor="#80000000"
                     android:text="오이"
+                    android:layout_margin="2dp"
                     android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="17sp"/>
+                    android:textColor="#A1141414"
+                    android:textSize="15sp"/>
             </LinearLayout>
 
 

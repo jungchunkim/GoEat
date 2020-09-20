@@ -294,8 +294,8 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
     @SuppressLint("ResourceAsColor")
     private void reChangeBtnBackground(Button btn) {
 
-        btn.setBackgroundResource(R.drawable.shadow_button);
-        btn.setTextColor(getResources().getColorStateList(R.color.black));
+        btn.setBackgroundResource(R.drawable.shadow_button2);
+        btn.setTextColor(getResources().getColorStateList(R.color.gray));
 
     }
 
