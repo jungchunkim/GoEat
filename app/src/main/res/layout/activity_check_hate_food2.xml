@@ -50,19 +50,21 @@
     </LinearLayout>
 
 
-
-    
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="52"
+        android:scrollbarDefaultDelayBeforeFade="500000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.75"
+            android:layout_height="43dp"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
@@ -123,8 +125,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.75"
+            android:layout_height="43dp"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
@@ -185,11 +186,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="43dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="6dp"
-            android:layout_weight="1.75"
             android:orientation="horizontal"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
@@ -246,8 +246,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.75"
+            android:layout_height="43dp"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
@@ -308,11 +307,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="43dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="6dp"
-            android:layout_weight="1.75"
             android:orientation="horizontal"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
@@ -369,14 +367,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.75"
+            android:layout_height="43dp"
             android:paddingLeft="31dp"
             android:paddingRight="31dp"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -424,16 +422,375 @@
                     android:textSize="15sp"/>
             </LinearLayout>
 
-
-
-
-
-
         </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:paddingLeft="31dp"
+                android:paddingRight="31dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="6dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingRight="6dp">
+
+                    <Button
+                        android:id="@+id/btn_13"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:shadowColor="#80000000"
+                        android:gravity="center"
+                        android:layout_margin="2dp"
+                        android:text="김치찌개"
+                        android:textColor="#A1141414"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingLeft="6dp">
+
+                    <Button
+                        android:id="@+id/btn_14"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="초밥"
+                        android:textColor="#A1141414"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:paddingLeft="31dp"
+                android:paddingRight="31dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="6dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:paddingRight="6dp">
+
+                    <Button
+                        android:id="@+id/btn_15"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="짜장면"
+                        android:textColor="#A1141414"
+                        android:layout_margin="2dp"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingLeft="6dp">
+
+                    <Button
+                        android:id="@+id/btn_16"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="모밀"
+                        android:textColor="#A1141414"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:paddingLeft="31dp"
+                android:paddingRight="31dp"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:paddingRight="6dp">
+
+                    <Button
+                        android:id="@+id/btn_17"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="돈가스"
+                        android:textColor="#A1141414"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:paddingLeft="6dp">
+
+                    <Button
+                        android:id="@+id/btn_18"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="해산물"
+                        android:textColor="#A1141414"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:paddingLeft="31dp"
+                android:paddingRight="31dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="6dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingRight="6dp">
+
+                    <Button
+                        android:id="@+id/btn_19"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="떡볶이"
+                        android:textColor="#A1141414"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingLeft="6dp">
+
+                    <Button
+                        android:id="@+id/btn_20"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="파스타"
+                        android:textColor="#A1141414"
+                        android:layout_margin="2dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="6dp"
+                android:orientation="horizontal"
+                android:paddingLeft="31dp"
+                android:paddingRight="31dp"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:paddingRight="6dp">
+
+                    <Button
+                        android:id="@+id/btn_21"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="햄버거"
+                        android:textColor="#A1141414"
+                        android:layout_margin="2dp"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal"
+                    android:paddingLeft="6dp">
+
+                    <Button
+                        android:id="@+id/btn_22"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shadow_button2"
+                        android:elevation="8dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center"
+                        android:shadowColor="#80000000"
+                        android:text="쌀국수"
+                        android:textColor="#A1141414"
+                        android:layout_margin="2dp"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:paddingLeft="31dp"
+                android:paddingRight="31dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingRight="6dp">
+
+                <Button
+                    android:id="@+id/btn_23"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button2"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="피자"
+                    android:textColor="#A1141414"
+                    android:layout_margin="2dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:paddingLeft="6dp">
+
+                <Button
+                    android:id="@+id/btn_24"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shadow_button2"
+                    android:elevation="8dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:text="치킨"
+                    android:textColor="#A1141414"
+                    android:layout_margin="2dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            </LinearLayout>
 
 
     </LinearLayout>
 
+    </ScrollView>
 
 
     <LinearLayout
