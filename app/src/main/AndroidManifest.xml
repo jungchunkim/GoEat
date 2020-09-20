@@ -18,8 +18,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".investigation_page"></activity>
-        <activity android:name=".AnalysisHomeActivity"></activity>
+        <activity android:name=".location_check"></activity>
+        <activity android:name="com.example.testexam.location_check" />
+        <activity android:name=".investigation_page" />
+        <activity android:name=".AnalysisHomeActivity" />
         <activity android:name=".before_emotion_check" />
         <activity android:name=".CheckHateFood2" />
         <activity android:name=".CheckHateFood" />

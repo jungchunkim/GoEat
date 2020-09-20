@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.GOEAT.Go_Eat.location_check"
+    android:weightSum="100"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:text="위치 설정"
+        android:fontFamily="@font/pureunjeonnam"
+        android:textColor="@color/font"
+        android:textSize="24dp"
+        android:gravity="center"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fontFamily="@font/pureunjeonnam"
+        android:textColor="@color/font"
+        android:layout_weight="10">
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_weight="80"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </androidx.viewpager.widget.ViewPager>
+</LinearLayout>

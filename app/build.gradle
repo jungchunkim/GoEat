@@ -51,6 +51,7 @@ dependencies {
     //recyclerview
     //noinspection GradleCompatible,GradleCompatible
     implementation 'com.android.support:recyclerview-v7:26.+'
+    //noinspection GradleCompatible
     implementation 'com.android.support:cardview-v7:21.+'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
@@ -65,7 +66,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
-
+    implementation 'com.google.android.material:material:1.1.0-alpha09'
+    implementation 'com.android.support:design:30.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
