@@ -29,7 +29,7 @@ import java.io.IOException;
 
 public class investigation_page extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn_1,btn_2,btn_next; //btn_1 : 칼로리 낮은, btn_2: 칼로리 상관없는
+    Button btn_1,btn_2,btn_next,select_place; //btn_1 : 칼로리 낮은, btn_2: 칼로리 상관없는
     private int[] clickCheck = new int[2];
     ImageView iv_back;
     private UserDB userDB = new UserDB();
@@ -42,6 +42,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investigation_page);
 
+        select_place=findViewById(R.id.select_place);
         btn_1=findViewById(R.id.btn_1);
         btn_2=findViewById(R.id.btn_2);
         iv_back = findViewById(R.id.iv_back);
@@ -53,6 +54,14 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
 
         btn_1.setOnClickListener(this);
         btn_2.setOnClickListener(this);
+
+        select_place.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),location_check.class);
+                startActivity(intent);
+            }
+        });
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
