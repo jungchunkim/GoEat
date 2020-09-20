@@ -226,7 +226,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                             }else if(success.equals("almost_true")){
                                 et_login_email.setTextColor(Color.parseColor("#E01D4A"));
                                 et_login_password.setTextColor(Color.parseColor("#E01D4A"));
-                                err_text.setText("비밀번호가 맞지 않습니다.");
+                                err_text.setText("이메일 주소와 비밀번호가 맞지 않습니다.");
                                 err_text.setTextColor(Color.parseColor("#E01D4A"));
                             }else{
                                 et_login_email.setTextColor(Color.parseColor("#E01D4A"));
