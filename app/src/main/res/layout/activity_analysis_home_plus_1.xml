@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.GOEAT.Go_Eat.analysis_home_plus_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/mainPink"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_weight="2"
+                android:src="@drawable/arrow"
+                android:layout_gravity="center"
+                android:layout_width="16dp"
+                android:layout_height="14dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:textSize="30dp"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:text="나를 위한 메뉴 "/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/button_1"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/picture_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="20"
+                android:layout_marginTop="18dp">
+                <TextView
+                    android:id="@+id/shop_name_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="28dp"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textColor="@color/place_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:text="맛있는 식당"/>
+                <TextView
+                    android:id="@+id/exp_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/exp_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:text="맛없다고 소문난 돈까스"/>
+
+                <TextView
+                    android:id="@+id/price_1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="@color/mainPink"
+                    android:text="$12,000"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/place_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:textSize="14dp"
+                android:textColor="@color/exp_name"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="서울시 송파구 가락동"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/button_2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/picture_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="20"
+                android:layout_marginTop="18dp">
+                <TextView
+                    android:id="@+id/shop_name_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="28dp"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textColor="@color/place_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:text="맛있는 식당"/>
+                <TextView
+                    android:id="@+id/exp_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/exp_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:text="맛없다고 소문난 돈까스"/>
+
+                <TextView
+                    android:id="@+id/price_2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="@color/mainPink"
+                    android:text="$12,000"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/place_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:textSize="14dp"
+                android:textColor="@color/exp_name"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="서울시 송파구 가락동"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/button_3"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/picture_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="20"
+                android:layout_marginTop="18dp">
+                <TextView
+                    android:id="@+id/shop_name_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="28dp"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textColor="@color/place_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:text="맛있는 식당"/>
+                <TextView
+                    android:id="@+id/exp_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/exp_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:text="맛없다고 소문난 돈까스"/>
+
+                <TextView
+                    android:id="@+id/price_3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="@color/mainPink"
+                    android:text="$12,000"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/place_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:textSize="14dp"
+                android:textColor="@color/exp_name"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="서울시 송파구 가락동"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/button_4"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/picture_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="20"
+                android:layout_marginTop="18dp">
+                <TextView
+                    android:id="@+id/shop_name_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="28dp"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textColor="@color/place_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:text="맛있는 식당"/>
+                <TextView
+                    android:id="@+id/exp_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/exp_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:text="맛없다고 소문난 돈까스"/>
+
+                <TextView
+                    android:id="@+id/price_4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="@color/mainPink"
+                    android:text="$12,000"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/place_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:textSize="14dp"
+                android:textColor="@color/exp_name"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="서울시 송파구 가락동"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/button_5"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/picture_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="20"
+                android:layout_marginTop="18dp">
+                <TextView
+                    android:id="@+id/shop_name_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="28dp"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textColor="@color/place_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:text="맛있는 식당"/>
+                <TextView
+                    android:id="@+id/exp_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/exp_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:text="맛없다고 소문난 돈까스"/>
+
+                <TextView
+                    android:id="@+id/price_5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="@color/mainPink"
+                    android:text="$12,000"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/place_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:textSize="14dp"
+                android:textColor="@color/exp_name"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="서울시 송파구 가락동"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <Button
+                android:id="@+id/button_6"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/picture_background"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="20"
+                android:layout_marginTop="18dp">
+                <TextView
+                    android:id="@+id/shop_name_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="28dp"
+                    android:layout_weight="5"
+                    android:textSize="17dp"
+                    android:textColor="@color/place_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:text="맛있는 식당"/>
+                <TextView
+                    android:id="@+id/exp_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="@color/exp_name"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:text="맛없다고 소문난 돈까스"/>
+
+                <TextView
+                    android:id="@+id/price_6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="@color/mainPink"
+                    android:text="$12,000"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/place_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:textSize="14dp"
+                android:textColor="@color/exp_name"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="서울시 송파구 가락동"/>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+</ScrollView>

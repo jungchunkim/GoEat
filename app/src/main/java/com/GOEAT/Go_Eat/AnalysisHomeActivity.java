@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,6 +34,16 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         // 2020.09.07 임민영
 
         // 이벤트 부분
+
+        //임시로..
+        TextView example=(TextView)findViewById(R.id.example);
+        example.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), analysis_home_plus_1.class);
+                startActivity(intent);
+            }
+        });
 
         // Event Fragment로 넘길 Image Resource
         ArrayList<Integer> listImage = new ArrayList<>();

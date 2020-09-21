@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".LinkSnsActivity"></activity>
+        <activity android:name=".analysis_home_plus_1"></activity>
+        <activity android:name=".LinkSnsActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".location_check" />
         <activity android:name="com.example.testexam.location_check" />
