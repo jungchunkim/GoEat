@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.GOEAT.Go_Eat.LinkSnsActivity"
+    android:orientation="vertical"
+    android:background="#F7F9FC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/mainPink"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/sns_back"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="21dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="0.6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SNS 계정 연동"
+                android:textColor="@color/white"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"></LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:weightSum="3"
+        >
+        <LinearLayout
+            android:id="@+id/layout_naver"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/naver"/>
+
+            <TextView
+                android:id="@+id/tv_naver"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="asdf@naver.com"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pureunjeonnam"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/mypage_arrow"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_google"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/google"/>
+
+            <TextView
+                android:id="@+id/tv_google"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="asdf@google.com"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pureunjeonnam"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/mypage_arrow"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_kakao"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/kakao"/>
+
+            <TextView
+                android:id="@+id/tv_kakao"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:text="asdf@google.com"
+                android:textColor="@color/black"
+                android:fontFamily="@font/pureunjeonnam"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/mypage_arrow"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="15dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/layout_shadow"></LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
