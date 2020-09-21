@@ -32,6 +32,7 @@ public class UserDB implements Serializable {
     final static private String URL7 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getHateFoodList.php";
     final static private String URL8 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/saveFoodFlavor.php";
     final static private String URL9 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getFlavorFood.php";
+    final static private String URL10 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getuserdata.php";
 
     private Map<String,String> map;
     private int userChar;
@@ -296,6 +297,35 @@ public class UserDB implements Serializable {
                     public void onErrorResponse(VolleyError error) {
                         Log.e("response",error.getMessage());
 
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return map;
+            }
+        };
+        queue.add(request);
+
+
+
+
+    }
+
+
+    public void getuserdata(String useremail, Response.Listener<String> responseListener, Activity activity){ //서버로부터 사용자 캐릭터 받아오는 부분
+        queue = Volley.newRequestQueue(activity);
+        map = new HashMap<>();
+        map.put("email",useremail);
+
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL10,
+                responseListener,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("response",error.getMessage());
                     }
                 }
         ){
