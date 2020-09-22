@@ -1,47 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context="com.GOEAT.Go_Eat.analysis_home_plus_1">
+    android:layout_height="match_parent"
+    tools:context="com.GOEAT.Go_Eat.Fragment_home_after_1"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/mainPink"
-            android:orientation="horizontal"
-            android:weightSum="10">
 
-            <ImageView
-                android:id="@+id/btn_back"
-                android:layout_weight="2"
-                android:src="@drawable/arrow"
-                android:layout_gravity="center"
-                android:layout_width="16dp"
-                android:layout_height="14dp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:textSize="30dp"
-                android:fontFamily="@font/pureunjeonnambold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:text="나를 위한 메뉴 "/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="2"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -439,8 +408,6 @@
                 android:fontFamily="@font/pureunjeonnambold"
                 android:text="서울시 송파구 가락동"/>
         </LinearLayout>
-
-
 
 
 

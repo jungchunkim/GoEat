@@ -9,17 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.GOEAT.Go_Eat.Server_Request.UserDB;
-import com.GOEAT.Go_Eat.Trash.CheckUserTaste;
-import com.android.volley.Response;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,34 +28,22 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         tv_similar = findViewById(R.id.tv_similar);
 
-        // 사용자의 이름 넣는 부분 // 2020.09.22 방진혁
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) { // 서버 응답 받아오는 부
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    boolean success = jsonObject.getBoolean("success");
-                    System.out.println(success);
-                    String name = jsonObject.getString("name");
-                    if (success){
-                        tv_similar.setText(name + tv_similar.getText() );
-                    }else {
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
-        UserDB userDB = new UserDB();
-        userDB.getuserdata(prefs.getString("email",""),responseListener,AnalysisHomeActivity.this);
-
-
+        // 사용자의 이름 넣는 부분 (서버관련코드 구현해야함!)
+        //tv_similar.setText(name + tv_similar.getText() );
 
         // 2020.09.07 임민영
 
         // 이벤트 부분
+
+        //임시로..
+        TextView example=(TextView)findViewById(R.id.example);
+        example.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), analysis_home_plus_1.class);
+                startActivity(intent);
+            }
+        });
 
         // Event Fragment로 넘길 Image Resource
         ArrayList<Integer> listImage = new ArrayList<>();
