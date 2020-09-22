@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AnalysisHomeActivity extends AppCompatActivity {
 
-    final int ITEM_SIZE = 3;
+    final int ITEM_SIZE = 5;
     private TextView tv_similar;
 
     @Override
@@ -101,8 +101,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
             items.add(item[i]);
         }
 
-        RecyclerAdapter adapter1 = new RecyclerAdapter(getApplicationContext(), items, R.layout.activity_analysis_home);
-        recyclerView.setAdapter(adapter1);
+        recyclerView.setAdapter(new RecyclerAdapter(getApplicationContext(), items, R.layout.activity_analysis_home));
 
 
         // 비슷한 사람들이 먹은 음식
@@ -151,22 +150,10 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         for (int i = 0; i < ITEM_SIZE; i++) {
             items3.add(item3[i]);
         }
-        RecyclerAdapter adapter3 = new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home);
-        recyclerView3.setAdapter(adapter3);
 
 
         // 음식 선택하면 분석홈 상세로 넘어가는 부분 (adapter1처럼 adapter2, adapter3도 구현하면 됨)
-        adapter1.setOnItemClickListener(
-                new RecyclerAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View v, int position) {
 
-                        Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
-                        startActivity(intent);
-
-                    }
-                }
-        );
 
 
     }
