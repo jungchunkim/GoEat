@@ -112,6 +112,7 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
                     if (!jsonArray.getString(0).equals("false")){
                         for(int i = 0; i<foodlist.length ; i++){
                             setFoodlist(i,jsonArray.getString(i));
+                            System.out.println(jsonArray.getString(i));
                         }
                         btn_1.setText(foodlist[0]);
                         btn_2.setText(foodlist[1]);
@@ -205,7 +206,7 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
         });
 
         // 사용자의 이름 넣는 부분 (서버관련코드 구현해야함!)
-        tv_txtWithName.setText(name + "님이 " + tv_txtWithName.getText() );
+        tv_txtWithName.setText(prefs.getString("name","") + "님이 " + tv_txtWithName.getText() );
 
 
     }

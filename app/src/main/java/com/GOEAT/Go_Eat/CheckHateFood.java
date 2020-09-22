@@ -40,9 +40,9 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_hate_food);
-        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        final SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         final String email = prefs.getString("email","");
-        final String name = prefs.getString("name","");
+
 
         final String foodIngre[] = {"회", "갑각류", "어패류", "견과류", "밀가루", "콩", "계란", "우유", "소고기", "돼지고기", "양고기", "오이"};
         btn_1 = findViewById(R.id.btn_1);
@@ -136,8 +136,31 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
             }
         });
 
-        // 사용자의 이름 넣는 부분 (서버관련코드 구현해야함!)
-        tv_txtWithName.setText(name + "님이 " + tv_txtWithName.getText() );
+
+        // 사용자의 이름 넣는 부분 // 2020.09.22 방진혁
+        Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // 서버 응답 받아오는 부
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    boolean success = jsonObject.getBoolean("success");
+                    System.out.println(success);
+                    String name = jsonObject.getString("name");
+                    SharedPreferences.Editor editors = prefs.edit();
+                    editors.putString("name",name);
+                    editors.commit();
+                    if (success){
+                        tv_txtWithName.setText(name + "님이 " + tv_txtWithName.getText() );
+                    }else {
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        userDB.getuserdata(prefs.getString("email",""),responseListener1,CheckHateFood.this);
+
 
 
     }
