@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,11 +30,22 @@ public class AnalysisHomeActivity extends AppCompatActivity {
     final int ITEM_SIZE = 5;
     private TextView tv_similar;
 
+    TextView example;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_home);
 
+        //또 임시로!
+        example=findViewById(R.id.example);
+        example.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
+                startActivity(intent);
+            }
+        });
         tv_similar = findViewById(R.id.tv_similar);
 
         // 사용자의 이름 넣는 부분 // 2020.09.22 방진혁

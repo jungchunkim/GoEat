@@ -21,6 +21,8 @@ public class Analysis_home_after extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_home_after);
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs_2);
+
+        //탭의 이름 넣어주는 곳 2020-09-23 김정천
         tabs.addTab(tabs.newTab().setText("메뉴 1"));
         tabs.addTab(tabs.newTab().setText("메뉴 2"));
         tabs.addTab(tabs.newTab().setText("메뉴 3"));
