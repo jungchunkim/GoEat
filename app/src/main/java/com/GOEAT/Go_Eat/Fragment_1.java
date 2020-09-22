@@ -21,6 +21,7 @@ public class Fragment_1 extends Fragment {
     private Context context;
     private int num=0;
 
+    // 위치 정보 선택 창 2020-09-20 김정천
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

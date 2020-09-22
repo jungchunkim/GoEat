@@ -21,6 +21,7 @@ public class location_check extends AppCompatActivity {
         Button btn_next=(Button)findViewById(R.id.btn_next);
         ImageView btn_back= (ImageView)findViewById(R.id.btn_back);
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        //위치 정보 메뉴 창 2020-09-20 김정천
         tabs.addTab(tabs.newTab().setText("서울 강북"));
         tabs.addTab(tabs.newTab().setText("서울 강남"));
         tabs.setTabGravity(tabs.GRAVITY_FILL);
