@@ -39,6 +39,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
                 android:orientation="vertical"
                 android:layout_weight="20"
                 android:background="#1E1E1E">
@@ -48,11 +52,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
+
                     android:textColor="@color/exp_name"
                     android:text="곱창집"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
                     android:orientation="horizontal"
@@ -85,6 +91,7 @@
                     android:layout_height="30dp"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
+                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
                     android:weightSum="10">
                     <!--별 이미지 넣기 -->
@@ -117,13 +124,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:weightSum="10">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.6"
+                        android:layout_weight="1.7"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -141,7 +150,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.6"
+                        android:layout_weight="1.7"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -159,7 +168,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.6"
+                        android:layout_weight="1.7"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -177,7 +186,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.6"
+                        android:layout_weight="1.7"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -319,7 +328,7 @@
                         android:textColor="#1E1E1E"
                         android:layout_marginBottom="15dp"
                         android:fontFamily="@font/pureunjeonnambold"
-                        android:text="<접기"/>
+                        android:text="접기"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -362,6 +371,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="118dp"
+                android:paddingLeft="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
@@ -385,6 +398,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:layout_marginTop="10dp"
                         android:textColor="#1E1E1E"
                         android:textSize="20dp"
                         android:fontFamily="@font/pureunjeonnam"
@@ -398,6 +412,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal"
                         android:weightSum="10">
                         <ImageView
@@ -460,12 +475,14 @@
                         android:layout_weight="2"
                         android:textColor="#1E1E1E"
                         android:textSize="20dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:layout_marginBottom="10dp"
                         android:text="1200g"/>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -533,6 +550,7 @@
                         android:layout_weight="2"
                         android:textColor="#1E1E1E"
                         android:textSize="20dp"
+                        android:layout_marginTop="10dp"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
@@ -544,6 +562,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal"
                         android:weightSum="10">
                         <ImageView
