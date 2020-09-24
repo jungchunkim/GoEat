@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".Analysis_home_after"></activity>
+        <activity android:name=".restuarent_detail"></activity>
+        <activity android:name=".Analysis_home_after" />
         <activity android:name=".Analysis_home_after_1" />
         <activity android:name=".LinkSnsActivity" />
         <activity android:name=".MyPageActivity" />

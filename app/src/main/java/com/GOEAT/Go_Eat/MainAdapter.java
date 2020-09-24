@@ -56,6 +56,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         protected TextView place_1;
 
 
+
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             this.Image_1=(ImageView)itemView.findViewById(R.id.Image_1);
@@ -63,6 +65,30 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
             this.exp_1=(TextView)itemView.findViewById(R.id.exp_1);
             this.price_1=(TextView)itemView.findViewById(R.id.price_1);
             this.place_1=(TextView)itemView.findViewById(R.id.place_1);
+
+
+           itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   int pos = getAdapterPosition() ;
+                   if (pos != RecyclerView.NO_POSITION) {
+                       if (mListener != null) {
+                           mListener.onItemClick(v, pos) ;
+                       }
+                   }
+               }
+           });
         }
+    }
+    public interface OnItemClickListener {
+        void onItemClick(View v, int position) ;
+    }
+
+    // 리스너 객체 참조를 저장하는 변수
+    private OnItemClickListener mListener = null ;
+
+    // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener ;
     }
 }
