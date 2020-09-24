@@ -1,5 +1,6 @@
 package com.GOEAT.Go_Eat;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -57,7 +58,14 @@ public class Fragment_home_after_3 extends Fragment {
         mainAdapter=new MainAdapter(arrayList);
         recyclerView.setAdapter(mainAdapter);
 
-
+        mainAdapter.setOnItemClickListener(
+                new MainAdapter.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View v, int position) {
+                        Intent intent = new Intent(getActivity(), restuarent_detail.class);
+                        startActivity(intent);
+                    }
+                });
         // Inflate the layout for this fragment
         return rootView;
     }

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.GOEAT.Go_Eat.restuarent_detail"
+    android:background="@color/background"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,270 +18,314 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="10">
-            <!-- 사진 옆으로 넘기는 것 -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_weight="10"
-                android:text="사진 넣기"/>
+            android:background="@drawable/shadow_button_4"
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="20"
-            android:background="@color/colorAccent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="곱창집"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="맛있는 곱창 부추곱창"
-                    android:textSize="28dp"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="8"/>
-                <!-- 깃발 이미지-->
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@mipmap/ic_launcher"
-                    android:layout_gravity="right"
-                    android:layout_weight="1"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal"
-                android:weightSum="10">
-                <!--별 이미지 넣기 -->
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:src="@mipmap/ic_launcher"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="4.5"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:text="999+개 리뷰"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="10">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.4"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="10dp"
-                        android:gravity="center"
-                        android:text="전화하기" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.4"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="10dp"
-                        android:gravity="center"
-                        android:text="지도열기" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.4"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="10dp"
-                        android:gravity="center"
-                        android:text="네이버로 주문" />
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.4"
-                    android:orientation="vertical">
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="10dp"
-                        android:gravity="center"
-                        android:text="공유하기" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <!-- 흰색부분으로 된 곳 정보 -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginBottom="15dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:weightSum="10">
-                <!-- 통화 버튼 넣기 -->
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher"/>
-
+                android:layout_height="wrap_content"
+                android:layout_weight="10">
+                <!-- 사진 옆으로 넘기는 것 -->
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    android:gravity="center_vertical"
-                    android:text="02-000-0000(배달 가능)"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_weight="10"
+                    android:text="사진 넣기"/>
+
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="10dp"/>
-            <!--위치 버튼 입력-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:weightSum="10">
-                <!-- 통화 버튼 넣기 -->
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    android:gravity="center_vertical"
-                    android:text="서울시 마포구 입맛대로 골라드시길"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="10dp"/>
-            <!-- 시계 그림 넣기 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:weightSum="10">
-                <!-- 통화 버튼 넣기 -->
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    android:gravity="center_vertical"
-                    android:text="10:00-24:00"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="10dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:weightSum="10">
-                <!-- 통화 버튼 넣기 -->
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:src="@mipmap/ic_launcher"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    android:gravity="center_vertical"
-                    android:text="02-000-0000(배달 가능)"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="20dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_weight="20"
+                android:background="#1E1E1E">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:text="내용 입력~~"/>
-                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:textColor="@color/exp_name"
+                    android:text="곱창집"/>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="접근"/>
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:textColor="#ffffff"
+                        android:text="맛있는 곱창 부추곱창"
+                        android:textSize="28dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="8"/>
+                    <!-- 깃발 이미지-->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@mipmap/ic_launcher"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+                    <!--별 이미지 넣기 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:src="@mipmap/ic_launcher"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_weight="1"
+                        android:text="4.5"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:textColor="@color/exp_name"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="999+개 리뷰"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.6"
+                        android:orientation="vertical">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pureunjeonnam"
+                            android:textSize="10dp"
+                            android:gravity="center"
+                            android:textColor="#ffffff"
+                            android:text="전화하기" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.6"
+                        android:orientation="vertical">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/pureunjeonnam"
+                            android:textColor="#ffffff"
+                            android:text="지도열기" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.6"
+                        android:orientation="vertical">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10dp"
+                            android:gravity="center"
+                            android:textColor="#ffffff"
+                            android:fontFamily="@font/pureunjeonnam"
+                            android:text="네이버로 주문" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.6"
+                        android:orientation="vertical">
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="10dp"
+                            android:gravity="center"
+                            android:textColor="#ffffff"
+                            android:fontFamily="@font/pureunjeonnam"
+                            android:text="공유하기" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- 흰색부분으로 된 곳 정보 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:weightSum="10">
+                    <!-- 통화 버튼 넣기 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:src="@mipmap/ic_launcher"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="9"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="02-000-0000(배달 가능)"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+                <!--위치 버튼 입력-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:weightSum="10">
+                    <!-- 통화 버튼 넣기 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:src="@mipmap/ic_launcher"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="9"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="서울시 마포구 입맛대로 골라드시길"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+                <!-- 시계 그림 넣기 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:weightSum="10">
+                    <!-- 통화 버튼 넣기 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:src="@mipmap/ic_launcher"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="9"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center_vertical"
+                        android:text="10:00-24:00"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:weightSum="10">
+                    <!-- 통화 버튼 넣기 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:src="@mipmap/ic_launcher"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="9"
+                        android:gravity="center_vertical"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="8,000~36,000"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="내용 입력~~"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#1E1E1E"
+                        android:layout_marginBottom="15dp"
+                        android:fontFamily="@font/pureunjeonnambold"
+                        android:text="<접기"/>
+                </LinearLayout>
+
             </LinearLayout>
 
         </LinearLayout>
+
 
         <!-- 대표메뉴 창들-->
         <LinearLayout
@@ -299,6 +344,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:textSize="24dp"
+                    android:textColor="#1E1E1E"
+                    android:fontFamily="@font/pureunjeonnam"
                     android:text="대표 메뉴"/>
                 <TextView
                     android:layout_width="0dp"
@@ -306,6 +353,8 @@
                     android:layout_weight="9"
                     android:textSize="12dp"
                     android:gravity="right|bottom"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textColor="@color/exp_name"
                     android:text="모든 메뉴 >"/>
             </LinearLayout>
 
@@ -314,12 +363,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="118dp"
                 android:layout_marginTop="18dp"
+                android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher"
                     android:layout_weight="1"/>
 
@@ -334,6 +385,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:textColor="#1E1E1E"
+                        android:textSize="20dp"
+                        android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -355,12 +409,20 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:textColor="#1E1E1E"
+                            android:textSize="16dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/pureunjeonnam"
                             android:text="4.5"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
+                            android:textColor="#1E1E1E"
+                            android:textSize="16dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/pureunjeonnam"
                             android:text="26000"/>
 
                     </LinearLayout>
@@ -374,12 +436,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="118dp"
                 android:layout_marginTop="18dp"
+                android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher"
                     android:layout_weight="1"/>
 
@@ -394,6 +458,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:textColor="#1E1E1E"
+                        android:textSize="20dp"
+                        android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -415,12 +482,20 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:textColor="#1E1E1E"
+                            android:textSize="16dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/pureunjeonnam"
                             android:text="4.5"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
+                            android:textColor="#1E1E1E"
+                            android:textSize="16dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/pureunjeonnam"
                             android:text="26000"/>
 
                     </LinearLayout>
@@ -434,12 +509,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="118dp"
                 android:layout_marginTop="18dp"
+                android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
                     android:src="@mipmap/ic_launcher"
                     android:layout_weight="1"/>
 
@@ -454,6 +531,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
+                        android:textColor="#1E1E1E"
+                        android:textSize="20dp"
+                        android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -475,12 +555,20 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:textColor="#1E1E1E"
+                            android:textSize="16dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/pureunjeonnam"
                             android:text="4.5"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
+                            android:textColor="#1E1E1E"
+                            android:textSize="16dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/pureunjeonnam"
                             android:text="26000"/>
 
                     </LinearLayout>
@@ -504,7 +592,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:fontFamily="@font/pureunjeonnam"
                     android:textSize="24dp"
+                    android:textColor="#1E1E1E"
                     android:text="리뷰"/>
                 <TextView
                     android:layout_width="0dp"
@@ -520,19 +610,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:background="@drawable/shadow_button_4"
                 android:weightSum="10">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="15dp"
                     android:textSize="20dp"
+                    android:textColor="#1E1E1E"
                     android:text="엥 이거 완전 JMTGR 아니냐 응 인..."/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
                     android:weightSum="10">
                     <ImageView
                         android:layout_width="0dp"
@@ -543,6 +642,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:textColor="#1E1E1E"
                         android:textSize="16dp"
                         android:text="4.5"/>
                     <TextView
@@ -550,6 +650,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="4"
                         android:textSize="16dp"
+                        android:textColor="#1E1E1E"
                         android:text="모듬곱창 (대)"/>
 
                 </LinearLayout>
@@ -557,17 +658,27 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
-                    android:layout_marginTop="8dp"
                     android:layout_weight="4"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textColor="@color/exp_name"
                     android:textSize="12dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="5dp"
                     android:text="내용들~~~" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="8dp"
                     android:textSize="16dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:textColor="@color/exp_name"
                     android:gravity="right"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
                     android:text="ghdrlfehd/2일 전"/>
 
 
@@ -580,6 +691,8 @@
             android:layout_marginTop="80dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:fontFamily="@font/pureunjeonnam"
+            android:textColor="@color/exp_name"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:text="Go EAT에서 제공하는 정보는 네이버 지도 기반이고 기타 등등\n"/>
