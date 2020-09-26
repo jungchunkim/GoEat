@@ -182,8 +182,9 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
                     };
 
 
+                    Hatefoodlists = null;
                     for (int i = 0; i < 24; i++) {
-                        if (Hatefoodlists.equals("N") && clickCheck[i] == -1) {
+                        if (Hatefoodlists==null && clickCheck[i] == -1) {
                             Hatefoodlists = foodlist[i];
                         } else if (clickCheck[i] == -1) {
                             Hatefoodlists = Hatefoodlists + "," + foodlist[i];
@@ -192,7 +193,7 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
                     }
 
                     userDB.saveUserHateFood(email, Hatefoodlists, responselistener, CheckHateFood2.this);       // 서버에 사용자가 싫어하는 음식 저장
-                    Hatefoodlists = "N";
+                    Hatefoodlists = null;
                 }
             }
         });
