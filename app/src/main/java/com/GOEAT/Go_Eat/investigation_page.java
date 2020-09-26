@@ -104,7 +104,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                 }
             }
         };
-        ///userDB.saveFoodFlavor(email,result,responselistener2,before_emotion_check.this);
+        //userDB.saveFoodFlavor(email,result,responselistener2,before_emotion_check.this);
         userDB.setFlavorFoodList(email,responselistener,investigation_page.this);
 
         //누구랑 함께하는지에 대한 spinner (~ 랑 함께)
