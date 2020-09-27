@@ -146,29 +146,29 @@
             android:layout_height="0dp"
             android:layout_weight="3"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/iv_google_login"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="3"
             android:layout_gravity="center"
-            android:src="@drawable/fui_ic_googleg_color_24dp"/>
+            android:src="@drawable/google_btn"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/iv_kakao_login"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="3"
-            android:src="@drawable/kakaolink_btn_medium"/>
+            android:src="@drawable/kakao_btn"/>
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <ImageView
             android:id="@+id/iv_naver_login"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_weight="3"
-            android:src="@drawable/naver_icon"/>
+            android:src="@drawable/naver_btn"/>
 
         <TextView
             android:layout_width="0dp"
