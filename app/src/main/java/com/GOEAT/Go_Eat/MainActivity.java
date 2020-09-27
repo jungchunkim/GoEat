@@ -6,12 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         Handler mHandler = new Handler();
 
         mHandler.postDelayed(new Runnable() {
@@ -22,5 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
         },1300);
+
+
+
     }
 }

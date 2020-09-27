@@ -19,13 +19,14 @@ import com.GOEAT.Go_Eat.Server_Request.sms_request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class EmailAuthNumberActivity extends AppCompatActivity {
 
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     EditText et_1, et_2, et_3, et_4;
     ImageView iv_back;
     Button btn_ok;
@@ -39,6 +40,8 @@ public class EmailAuthNumberActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth_number);
 
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         et_1 = findViewById(R.id.et_1);
         et_2 = findViewById(R.id.et_2);

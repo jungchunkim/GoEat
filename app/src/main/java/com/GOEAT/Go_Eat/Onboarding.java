@@ -11,10 +11,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import me.relex.circleindicator.CircleIndicator;
 
 public class Onboarding extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     FragmentPagerAdapter adapterViewPager;
 
     private Button button_1;
@@ -24,6 +27,9 @@ public class Onboarding extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         button_1=findViewById(R.id.button_1);
         button_2=findViewById(R.id.button_2);

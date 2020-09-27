@@ -15,12 +15,14 @@ import com.GOEAT.Go_Eat.Server_Request.findID_request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CheckIdActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     private TextView tv_email;
     private String email;
     private Button btn_ok;
@@ -30,6 +32,9 @@ public class CheckIdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_id);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         tv_email = findViewById(R.id.tv_email);
         btn_ok = findViewById(R.id.btn_ok);

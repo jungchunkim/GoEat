@@ -21,6 +21,7 @@ import com.GOEAT.Go_Eat.Server_Request.sms_request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +30,7 @@ import java.util.Calendar;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     final int DIALOG_DATE = 1;
     EditText et_name, et_email, et_pwd1, et_pwd2, et_phoneNum;
     Button btn_female, btn_male, btn_send;
@@ -39,6 +41,9 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         et_name = findViewById(R.id.et_name);
         et_email = findViewById(R.id.et_email);

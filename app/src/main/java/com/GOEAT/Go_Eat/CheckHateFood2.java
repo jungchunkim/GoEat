@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 public class CheckHateFood2 extends AppCompatActivity implements View.OnClickListener{
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     Button btn_1, btn_2, btn_3, btn_4,btn_5, btn_6,btn_7,btn_8,btn_9,btn_10,btn_11,btn_12,btn_13,btn_14,btn_15,btn_16,btn_17,btn_18,btn_19,btn_20,btn_21,btn_22,btn_23,btn_24, btn_next;
     private int[] clickCheck = new int[24];
     TextView tv_txtWithName;
@@ -37,6 +39,10 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_hate_food2);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         final String email = prefs.getString("email","");
         final String name = prefs.getString("name","");

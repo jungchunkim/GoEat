@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
 
@@ -20,6 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyPageActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     LinearLayout layout_sns;
     TextView tv_nickname;
     TextView tv_email;
@@ -32,6 +35,9 @@ public class MyPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         layout_sns = findViewById(R.id.layout_sns);
         tv_nickname = findViewById(R.id.tv_nickname);
@@ -68,8 +74,9 @@ public class MyPageActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // 서버에서 이름 가져와서 name에 저장하는 코드 작성해야 함
-                tv_nickname.setText(name);
 
+                // 가져온 이름을 세팅하기
+                tv_nickname.setText(name);
 
             }
         });
@@ -77,6 +84,8 @@ public class MyPageActivity extends AppCompatActivity {
         tv_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // 서버에서 이메일 가져와서 mail에 저장하는 코드 작성해야 함
 
                 // 가져온 이메일을 세팅하기
                 tv_email.setText(email);

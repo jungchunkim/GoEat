@@ -38,6 +38,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,6 +62,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class login_activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{ // 로그인 화면
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     private Button btn_login;
     private TextView tv_find_pwd, tv_find_id,tv_sign_up,err_text;
     private EditText et_login_email, et_login_password;
@@ -117,6 +119,10 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
 

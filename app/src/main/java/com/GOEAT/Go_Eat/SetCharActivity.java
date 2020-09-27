@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,6 +22,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class SetCharActivity extends FragmentActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     public final static int PAGES = 5;
     // You can choose a bigger number for LOOPS, but you know, nobody will fling
     // more than 1000 times just in order to test your "infinite" ViewPager :D
@@ -34,6 +36,9 @@ public class SetCharActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_char);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         pager = (ViewPager) findViewById(R.id.myviewpager);
         btn_ok = findViewById(R.id.btn_ok);

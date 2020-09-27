@@ -22,13 +22,16 @@ import com.android.volley.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class AnalysisHomeActivity extends AppCompatActivity {
 
-    final int ITEM_SIZE = 5;
+    final int ITEM_SIZE = 3;
     private TextView tv_similar;
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     TextView example;
 
@@ -73,9 +76,6 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
 
 
-        // 2020.09.07 임민영
-
-        // 이벤트 부분
 
         // Event Fragment로 넘길 Image Resource
         ArrayList<Integer> listImage = new ArrayList<>();
@@ -178,9 +178,18 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         for (int i = 0; i < ITEM_SIZE; i++) {
             items3.add(item3[i]);
         }
+        RecyclerAdapter adapter3 = new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home);
+        recyclerView3.setAdapter(adapter3);
+
 
         recyclerView3.setAdapter(new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home));
 
+                        Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
+                        startActivity(intent);
+
+                    }
+                }
+        );
 
 
     }

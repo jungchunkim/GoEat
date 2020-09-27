@@ -8,8 +8,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class LinkSnsActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     ImageView iv_back;
     LinearLayout layout_google, layout_kakao, layout_naver;
     TextView tv_google, tv_naver, tv_kakao;
@@ -21,6 +24,9 @@ public class LinkSnsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link_sns);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         iv_back = findViewById(R.id.iv_back);
         layout_google = findViewById(R.id.layout_google);

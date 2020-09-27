@@ -11,15 +11,20 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class Analysis_home_after extends AppCompatActivity {
 
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     ImageView btn_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_home_after);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs_2);
 
         //탭의 이름 넣어주는 곳 2020-09-23 김정천

@@ -14,12 +14,14 @@ import com.GOEAT.Go_Eat.Server_Request.reset_password_request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ResetPwdActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     EditText et_pwd1;
     EditText et_pwd2;
     Button btn_ok;
@@ -28,6 +30,9 @@ public class ResetPwdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_pwd);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         et_pwd1 = findViewById(R.id.et_pwd1);
         et_pwd2 = findViewById(R.id.et_pwd2);

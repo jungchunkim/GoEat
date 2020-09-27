@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +30,7 @@ import java.io.IOException;
 
 public class investigation_page extends AppCompatActivity implements View.OnClickListener {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     Button btn_1,btn_2,btn_next,select_place; //btn_1 : 칼로리 낮은, btn_2: 칼로리 상관없는
     private int[] clickCheck = new int[2];
     ImageView iv_back;
@@ -41,6 +43,9 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_investigation_page);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         select_place=findViewById(R.id.select_place);
         btn_1=findViewById(R.id.btn_1);

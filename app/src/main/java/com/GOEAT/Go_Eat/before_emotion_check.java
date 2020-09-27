@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.GOEAT.Go_Eat.DataType.FoodInfo;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +25,7 @@ import java.util.Vector;
 
 public class before_emotion_check extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     private Button btn_home;
     String email;
 

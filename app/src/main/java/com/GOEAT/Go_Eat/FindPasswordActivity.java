@@ -20,12 +20,14 @@ import com.GOEAT.Go_Eat.Server_Request.sms_request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class FindPasswordActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     private EditText et_email;
     private Button btn_email_send;
     private Button btn_phone_send;
@@ -38,6 +40,9 @@ public class FindPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_password);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         btn_email_send = (Button)findViewById(R.id.btn_email_send);
         btn_phone_send = findViewById(R.id.btn_phone_send);

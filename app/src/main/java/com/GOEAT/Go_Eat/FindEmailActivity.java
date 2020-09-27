@@ -14,12 +14,14 @@ import com.GOEAT.Go_Eat.Server_Request.sms_request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class FindEmailActivity extends AppCompatActivity {
 
+    private FirebaseAnalytics mFirebaseAnalytics;
     Button btn_send;
     private EditText et_phoneNum;
     String phoneNum;
@@ -28,6 +30,9 @@ public class FindEmailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_email);
+
+        // Obtain the FirebaseAnalytics instance.
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         btn_send = findViewById(R.id.btn_send);
         et_phoneNum = findViewById(R.id.et_phoneNum);
