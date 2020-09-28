@@ -26,13 +26,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="10">
-                <!-- 사진 옆으로 넘기는 것 -->
-                <TextView
+                android:orientation="vertical">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vpPager_1"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_weight="10"
-                    android:text="사진 넣기"/>
+                    android:layout_height="250dp"/>
 
             </LinearLayout>
 
@@ -78,9 +77,10 @@
                         android:layout_weight="8"/>
                     <!-- 깃발 이미지-->
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/book_tag"
+                        android:layout_width="30dp"
                         android:layout_height="match_parent"
-                        android:background="@mipmap/ic_launcher"
+                        android:background="@drawable/ic_booktag_img"
                         android:layout_gravity="right"
                         android:layout_weight="1"
                         />
@@ -99,7 +99,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:src="@mipmap/ic_launcher"/>
+                        android:src="@drawable/ic_star_img"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -227,7 +227,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:src="@mipmap/ic_launcher"/>
+                        android:src="@drawable/ic_phone_image"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -297,7 +297,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
-                        android:src="@mipmap/ic_launcher"/>
+                        android:src="@drawable/price_img"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -321,7 +321,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="내용 입력~~"/>
+                        android:text="동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라\n만세 무궁화 삼천리 화려강산"/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -370,7 +370,7 @@
             <!-- 음식 버튼 만들기 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="118dp"
+                android:layout_height="150dp"
                 android:paddingLeft="8dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="8dp"
@@ -384,7 +384,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/bread"
                     android:layout_weight="1"/>
 
                 <LinearLayout
@@ -419,7 +419,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@color/colorAccent"
+                            android:src="@drawable/ic_star_img"
                             />
                         <TextView
                             android:layout_width="0dp"
@@ -449,7 +449,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="118dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
@@ -459,7 +459,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/bread"
                     android:layout_weight="1"/>
 
                 <LinearLayout
@@ -494,7 +494,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@color/colorAccent"
+                            android:src="@drawable/ic_star_img"
                             />
                         <TextView
                             android:layout_width="0dp"
@@ -524,7 +524,7 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="118dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
@@ -534,7 +534,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/bread"
                     android:layout_weight="1"/>
 
                 <LinearLayout
@@ -569,7 +569,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@color/colorAccent"
+                            android:src="@drawable/ic_star_img"
                             />
                         <TextView
                             android:layout_width="0dp"
@@ -645,7 +645,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:orientation="horizontal"
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="5dp"
@@ -656,7 +656,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:src="@color/colorAccent"/>
+                        android:src="@drawable/ic_star_img"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
