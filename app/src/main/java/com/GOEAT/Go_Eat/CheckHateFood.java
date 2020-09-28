@@ -46,7 +46,7 @@ public class CheckHateFood extends AppCompatActivity  implements View.OnClickLis
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        //SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         final SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         final String email = prefs.getString("email","");
 

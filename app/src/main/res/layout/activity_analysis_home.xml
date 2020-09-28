@@ -130,15 +130,7 @@
                     android:layout_weight="1"
                     />
 
-                <TextView
-                    android:id="@+id/tv_viewMore1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:text="더보기 >>"
-                    android:textColor="#E0274A"
-                    android:textSize="15sp"
-                    android:layout_marginRight="14dp"/>
+
             </LinearLayout>
 
 
@@ -175,15 +167,7 @@
                     android:layout_weight="1"
                     />
 
-                <TextView
-                    android:id="@+id/tv_viewMore2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:text="더보기 >>"
-                    android:textColor="#E0274A"
-                    android:textSize="15sp"
-                    android:layout_marginRight="14dp"/>
+
             </LinearLayout>
 
 
@@ -216,15 +200,7 @@
                     android:layout_weight="1"
                     />
 
-                <TextView
-                    android:id="@+id/tv_viewMore3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:text="더보기 >>"
-                    android:textColor="#E0274A"
-                    android:textSize="15sp"
-                    android:layout_marginRight="14dp"/>
+
             </LinearLayout>
 
 

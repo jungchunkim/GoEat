@@ -121,8 +121,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         item[0] = new Item(R.drawable.steak, "현명식탁", "양식");
         item[1] = new Item(R.drawable.noodle, "정육면체", "국수");
         item[2] = new Item(R.drawable.pasta, "라구식당", "파스타");
-        item[3] = new Item(R.drawable.button_background, "홍콩반점", "중식");
-        item[4] = new Item(R.drawable.button_background,"일식집", "일식");
+
 
         //recyclerView.scrollToPosition(items.size() - 1);
 
@@ -145,8 +144,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         item2[0] = new Item(R.drawable.bread, "만동제과", "베이커리");
         item2[1] = new Item(R.drawable.rice, "마도인신촌", "대창덮밥");
         item2[2] = new Item(R.drawable.salad, "보울룸", "샐러드");
-        item2[3] = new Item(R.drawable.button_background, "홍콩반점", "중식");
-        item2[4] = new Item(R.drawable.button_background,"일식집", "일식");
+
 
         //recyclerView.scrollToPosition(items.size() - 1);
 
@@ -170,8 +168,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         item3[0] = new Item(R.drawable.ramen, "카라멘야", "일식");
         item3[1] = new Item(R.drawable.bread2, "파이홀", "베이커리");
         item3[2] = new Item(R.drawable.ricecake, "품어떡", "분식");
-        item3[3] = new Item(R.drawable.button_background, "홍콩반점", "중식");
-        item3[4] = new Item(R.drawable.button_background,"일식집", "일식");
+
 
         //recyclerView.scrollToPosition(items.size() - 1);
 
@@ -184,15 +181,14 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         recyclerView3.setAdapter(new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home));
 
-                        Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
-                        startActivity(intent);
-
-                    }
-                }
-        );
-
-
+                        /*Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
+                        startActivity(intent);*/
     }
+}
+
+
+
+
 
     class FragmentAdapter extends FragmentPagerAdapter {
 
@@ -220,5 +216,5 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         }
     }
 
-}
+
 
