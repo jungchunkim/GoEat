@@ -38,7 +38,9 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
     String email;
     public String temperature;
     public String weather;
-
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,10 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         btn_2=findViewById(R.id.btn_2);
         iv_back = findViewById(R.id.iv_back);
         btn_next=findViewById(R.id.btn_next);
-
+        sharedPreferences = getSharedPreferences("location",MODE_PRIVATE);
+        prefs = getSharedPreferences("goeat",MODE_PRIVATE);
+        editor = prefs.edit();
+        select_place.setText(sharedPreferences.getString("loc",""));
         // clickCheck[] 초기화
         clickCheck[0]=1;
         clickCheck[1]=1;
@@ -68,13 +73,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
             }
         });
 
-        btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AnalysisHomeActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +93,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         //2020-08-30 염상희
         //음식 취향조사 test
 
-        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        final SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         email = prefs.getString("email","");
 
         Response.Listener<String> responselistener = new Response.Listener<String>() {
@@ -113,7 +112,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         userDB.setFlavorFoodList(email,responselistener,investigation_page.this);
 
         //누구랑 함께하는지에 대한 spinner (~ 랑 함께)
-        Spinner spinner_who=(Spinner) findViewById(R.id.select_who);
+        final Spinner spinner_who=(Spinner) findViewById(R.id.select_who);
         ArrayAdapter<CharSequence> adapter1=ArrayAdapter.createFromResource(this,R.array.select_who,android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_who.setAdapter(adapter1);
@@ -145,7 +144,17 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
 
             }
         });
-
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println(select_place.getText().toString()+"---------"+(String) spinner_who.getSelectedItem());
+                editor.putString("location",select_place.getText().toString());
+                editor.putString("companion",(String) spinner_who.getSelectedItem());
+                editor.commit();
+                Intent intent = new Intent(getApplicationContext(), AnalysisHomeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void onClick(View view){

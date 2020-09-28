@@ -6,6 +6,7 @@
     android:weightSum="100"
     android:orientation="vertical"
     android:background="@color/background"
+    android:id="@+id/fragment1"
     >
 
     <TextView

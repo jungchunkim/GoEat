@@ -1,6 +1,7 @@
 package com.GOEAT.Go_Eat;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,7 +17,8 @@ public class Fragment_2 extends Fragment {
 
     private Context context;
     private int num=0;
-
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     // 위치 정보 선택 창 2020-09-20 김정천
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,8 @@ public class Fragment_2 extends Fragment {
                              Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_fragment_2, container, false);
         context=container.getContext();
+        sharedPreferences = getActivity().getSharedPreferences("location", Context.MODE_PRIVATE);;
+        editor = sharedPreferences.edit();
         final Button location_8 = (Button) view.findViewById(R.id.location_8);
         final Button location_9 = (Button) view.findViewById(R.id.location_9);
         final Button location_10 = (Button) view.findViewById(R.id.location_10);
@@ -44,6 +48,8 @@ public class Fragment_2 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 8;
+                    editor.putInt("num",8);
+                    editor.commit();
                     changeBtnBackground(location_8);
                 }else if(num==8){
                     num=0;
@@ -61,6 +67,8 @@ public class Fragment_2 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 9;
+                    editor.putInt("num",9);
+                    editor.commit();
                     changeBtnBackground(location_9);
                 }else if(num==9){
                     num=0;
@@ -78,6 +86,8 @@ public class Fragment_2 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 10;
+                    editor.putInt("num",10);
+                    editor.commit();
                     changeBtnBackground(location_10);
                 }else if(num==10){
                     num=0;
@@ -95,6 +105,8 @@ public class Fragment_2 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 11;
+                    editor.putInt("num",11);
+                    editor.commit();
                     changeBtnBackground(location_11);
                 }else if(num==11){
                     num=0;
@@ -112,6 +124,8 @@ public class Fragment_2 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 12;
+                    editor.putInt("num",12);
+                    editor.commit();
                     changeBtnBackground(location_12);
                 }else if(num==12){
                     num=0;
@@ -127,6 +141,7 @@ public class Fragment_2 extends Fragment {
 
         return view;
     }
+
 
     private void reChangeBtnBackground(Button btn) {
 

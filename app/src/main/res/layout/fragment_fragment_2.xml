@@ -5,7 +5,8 @@
     tools:context="com.GOEAT.Go_Eat.Fragment_2"
     android:weightSum="100"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:id="@+id/fragment2">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"

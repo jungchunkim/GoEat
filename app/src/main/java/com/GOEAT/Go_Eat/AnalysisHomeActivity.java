@@ -73,7 +73,8 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         UserDB userDB = new UserDB();
         userDB.getuserdata(prefs.getString("email",""),responseListener,AnalysisHomeActivity.this);
-
+        SharedPreferences preferences = getSharedPreferences("goeat",MODE_PRIVATE);
+        System.out.println(preferences.getString("location","")+"---------"+preferences.getString("companion",""));
 
 
 

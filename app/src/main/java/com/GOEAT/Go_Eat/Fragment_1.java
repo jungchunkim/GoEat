@@ -2,6 +2,7 @@ package com.GOEAT.Go_Eat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,7 +21,8 @@ public class Fragment_1 extends Fragment {
 
     private Context context;
     private int num=0;
-
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     // 위치 정보 선택 창 2020-09-20 김정천
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,13 +32,16 @@ public class Fragment_1 extends Fragment {
     public Fragment_1() {
         // Required empty public constructor
     }
-
+    @SuppressLint("CommitPrefEdits")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_fragment_1, container, false);
 
         context=container.getContext();
+
+        sharedPreferences = getActivity().getSharedPreferences("location", Context.MODE_PRIVATE);;
+        editor = sharedPreferences.edit();
         final Button location_1 = (Button) view.findViewById(R.id.location_1);
         final Button location_2 = (Button) view.findViewById(R.id.location_2);
         final Button location_3 = (Button) view.findViewById(R.id.location_3);
@@ -45,12 +50,13 @@ public class Fragment_1 extends Fragment {
         final Button location_6 = (Button) view.findViewById(R.id.location_6);
         final Button location_7 = (Button) view.findViewById(R.id.location_7);
 
-
         location_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(num==0) {
                     num = 1;
+                    editor.putInt("num",1);
+                    editor.commit();
                     changeBtnBackground(location_1);
                 }else if(num==1){
                     num=0;
@@ -68,6 +74,8 @@ public class Fragment_1 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 2;
+                    editor.putInt("num",2);
+                    editor.commit();
                     changeBtnBackground(location_2);
                 }else if(num==2){
                     num=0;
@@ -83,6 +91,8 @@ public class Fragment_1 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 3;
+                    editor.putInt("num",3);
+                    editor.commit();
                     changeBtnBackground(location_3);
                 }else if(num==3){
                     num=0;
@@ -98,6 +108,8 @@ public class Fragment_1 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 4;
+                    editor.putInt("num",4);
+                    editor.commit();
                     changeBtnBackground(location_4);
                 }else if(num==4){
                     num=0;
@@ -112,6 +124,8 @@ public class Fragment_1 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 5;
+                    editor.putInt("num",5);
+                    editor.commit();
                     changeBtnBackground(location_5);
                 }else if(num==5){
                     num=0;
@@ -126,6 +140,8 @@ public class Fragment_1 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 6;
+                    editor.putInt("num",6);
+                    editor.commit();
                     changeBtnBackground(location_6);
                 }else if(num==6){
                     num=0;
@@ -140,6 +156,8 @@ public class Fragment_1 extends Fragment {
             public void onClick(View view) {
                 if(num==0) {
                     num = 7;
+                    editor.putInt("num",7);
+                    editor.commit();
                     changeBtnBackground(location_7);
                 }else if(num==7){
                     num=0;
@@ -152,6 +170,7 @@ public class Fragment_1 extends Fragment {
 
         return view;
     }
+
 
 
     private void reChangeBtnBackground(Button btn) {
