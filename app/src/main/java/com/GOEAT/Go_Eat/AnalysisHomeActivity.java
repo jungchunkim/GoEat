@@ -129,7 +129,8 @@ public class AnalysisHomeActivity extends AppCompatActivity {
             items.add(item[i]);
         }
 
-        recyclerView.setAdapter(new RecyclerAdapter(getApplicationContext(), items, R.layout.activity_analysis_home));
+        recyclerView.setAdapter(new RecyclerAdapter(getApplicationContext(), items, R.layout.activity_analysis_home, 0));
+
 
 
         // 비슷한 사람들이 먹은 음식
@@ -152,7 +153,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
             items2.add(item2[i]);
         }
 
-        recyclerView2.setAdapter(new RecyclerAdapter(getApplicationContext(), items2, R.layout.activity_analysis_home));
+        recyclerView2.setAdapter(new RecyclerAdapter(getApplicationContext(), items2, R.layout.activity_analysis_home, 1));
 
 
 
@@ -175,14 +176,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         for (int i = 0; i < ITEM_SIZE; i++) {
             items3.add(item3[i]);
         }
-        RecyclerAdapter adapter3 = new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home);
-        recyclerView3.setAdapter(adapter3);
 
+        recyclerView3.setAdapter(new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home, 2));
 
-        recyclerView3.setAdapter(new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home));
-
-                        /*Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
-                        startActivity(intent);*/
     }
 }
 
