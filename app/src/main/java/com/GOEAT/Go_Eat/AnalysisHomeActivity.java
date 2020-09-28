@@ -26,13 +26,13 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class AnalysisHomeActivity extends AppCompatActivity {
 
     final int ITEM_SIZE = 3;
     private TextView tv_similar;
     private FirebaseAnalytics mFirebaseAnalytics;
-
     TextView example;
 
     @Override
@@ -73,9 +73,21 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         UserDB userDB = new UserDB();
         userDB.getuserdata(prefs.getString("email",""),responseListener,AnalysisHomeActivity.this);
+
+        //추천 음식 넣어줄 부분 2020-09-29 방진혁
         SharedPreferences preferences = getSharedPreferences("goeat",MODE_PRIVATE);
         System.out.println(preferences.getString("location","")+"---------"+preferences.getString("companion",""));
-
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("Recommend_first_food","비빔밥/산나물 비빔밥");
+        editor.putString("Recommend_second_food","칼국수/육개장 칼국수");
+        editor.putString("Recommend_third_food","떡볶이/김치 떡볶이");
+        editor.putString("Similar_first_food","");
+        editor.putString("Similar_second_food","");
+        editor.putString("Similar_third_food","");
+        editor.putString("Famous_first_food","");
+        editor.putString("Famous_second_food","");
+        editor.putString("Famous_third_food","");
+        editor.commit();
 
 
         // Event Fragment로 넘길 Image Resource
@@ -119,9 +131,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         List<Item> items = new ArrayList<>();
         Item[] item = new Item[ITEM_SIZE];
-        item[0] = new Item(R.drawable.steak, "현명식탁", "양식");
-        item[1] = new Item(R.drawable.noodle, "정육면체", "국수");
-        item[2] = new Item(R.drawable.pasta, "라구식당", "파스타");
+        item[0] = new Item(R.drawable.steak, "떡볶이", "분식");
+        item[1] = new Item(R.drawable.noodle, "비빔밥", "한식");
+        item[2] = new Item(R.drawable.pasta, "피자", "피자");
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
