@@ -15,6 +15,9 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
@@ -41,8 +44,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Item item = items.get(position);
-        Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
-        holder.image.setBackground(drawable);
+        //Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
+        //holder.image.setBackground(item.getDrawable());
+
+//        Glide.with(holder.itemView.getContext())
+//                .load(item.getUrl())
+//                .into(holder.image);
+
+        Picasso.get().load(item.url).into(holder.image);
         holder.title.setText(item.getTitle());
         holder.kinds.setText(item.getKinds());
         holder.cardview.setOnClickListener(new View.OnClickListener() {

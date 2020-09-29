@@ -13,10 +13,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.GOEAT.Go_Eat.DataType.FoodInfo;
+import com.GOEAT.Go_Eat.DataType.FoodPic;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.GOEAT.Go_Eat.Trash.CheckUserTaste;
 import com.android.volley.Response;
@@ -27,6 +29,7 @@ import org.json.JSONObject;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,6 +48,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
     private String[] foodFirst = new String[10];
     private String[] foodKind = new String[10];
 
+    private FoodPic foodPic = new FoodPic();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         String calo = intent.getExtras().getString("calo");
         Log.d("calo", calo);
         Toast.makeText(getApplicationContext(), "calo" + calo, Toast.LENGTH_LONG).show();
+
+        //음식 사진 읽어오기
+        //2020-09-29 염상희
 
 
         //또 임시로!
@@ -132,7 +139,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
                     similarRecommend(order); //비슷한 취향 음식 추천
                     famousRecommend(order); //신촌 음식 추천
                     //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
+                } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
             }
@@ -201,7 +208,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    public void goeatRecommend(List<Integer> list) {
+    public void goeatRecommend(List<Integer> list) throws IOException {
         // 고잇 알고리즘이 추천한 메뉴
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
@@ -212,9 +219,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         List<Item> items = new ArrayList<>();
         Item[] item = new Item[ITEM_SIZE];
         Log.d("foodArray", foodFirst[list.get(0)] + foodFirst.toString());
-        item[0] = new Item(R.drawable.steak, foodFirst[list.get(0)], foodKind[list.get(0)]);
-        item[1] = new Item(R.drawable.noodle, foodFirst[list.get(1)], foodKind[list.get(1)]);
-        item[2] = new Item(R.drawable.pasta, foodFirst[list.get(2)], foodKind[list.get(2)]);
+        item[0] = new Item(foodPic.getFoodSrc(foodFirst[list.get(0)]), foodFirst[list.get(0)], foodKind[list.get(0)]);
+        item[1] = new Item(foodPic.getFoodSrc(foodFirst[list.get(1)]), foodFirst[list.get(1)], foodKind[list.get(1)]);
+        item[2] = new Item(foodPic.getFoodSrc(foodFirst[list.get(2)]), foodFirst[list.get(2)], foodKind[list.get(2)]);
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
@@ -227,7 +234,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
     }
 
-    public void similarRecommend(List<Integer> list) {
+    public void similarRecommend(List<Integer> list) throws IOException {
         // 비슷한 사람들이 먹은 음식
 
         RecyclerView recyclerView2 = (RecyclerView) findViewById(R.id.recyclerview2);
@@ -237,12 +244,10 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         List<Item> items2 = new ArrayList<>();
         Item[] item2 = new Item[ITEM_SIZE];
-        item2[0] = new Item(R.drawable.bread, foodFirst[list.get(3)], foodKind[list.get(3)]);
-        item2[1] = new Item(R.drawable.rice, foodFirst[list.get(4)], foodKind[list.get(4)]);
-        item2[2] = new Item(R.drawable.salad, foodFirst[list.get(5)], foodKind[list.get(5)]);
+        item2[0] = new Item(foodPic.getFoodSrc(foodFirst[list.get(3)]), foodFirst[list.get(3)], foodKind[list.get(3)]);
+        item2[1] = new Item(foodPic.getFoodSrc(foodFirst[list.get(4)]), foodFirst[list.get(4)], foodKind[list.get(4)]);
+        item2[2] = new Item(foodPic.getFoodSrc(foodFirst[list.get(5)]), foodFirst[list.get(5)], foodKind[list.get(5)]);
 
-
-        //recyclerView.scrollToPosition(items.size() - 1);
 
         for (int i = 0; i < ITEM_SIZE; i++) {
             items2.add(item2[i]);
@@ -252,7 +257,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
     }
 
-    public void famousRecommend(List<Integer> list) {
+    public void famousRecommend(List<Integer> list) throws IOException {
         // 신촌에서 핫한 음식
 
         RecyclerView recyclerView3 = (RecyclerView) findViewById(R.id.recyclerview3);
@@ -262,9 +267,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         List<Item> items3 = new ArrayList<>();
         Item[] item3 = new Item[ITEM_SIZE];
-        item3[0] = new Item(R.drawable.ramen, foodFirst[list.get(6)], foodKind[list.get(6)]);
-        item3[1] = new Item(R.drawable.bread2, foodFirst[list.get(7)], foodKind[list.get(7)]);
-        item3[2] = new Item(R.drawable.ricecake, foodFirst[list.get(8)], foodKind[list.get(8)]);
+        item3[0] = new Item(foodPic.getFoodSrc(foodFirst[list.get(6)]), foodFirst[list.get(6)], foodKind[list.get(6)]);
+        item3[1] = new Item(foodPic.getFoodSrc(foodFirst[list.get(7)]), foodFirst[list.get(7)], foodKind[list.get(7)]);
+        item3[2] = new Item(foodPic.getFoodSrc(foodFirst[list.get(8)]), foodFirst[list.get(8)], foodKind[list.get(8)]);
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
@@ -275,6 +280,13 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         recyclerView3.setAdapter(new RecyclerAdapter(getApplicationContext(), items3, R.layout.activity_analysis_home, 2));
 
+    }
+
+    public void sendImageRequest(String url, ImageView imageView) {
+        //String url = "https://i.ytimg.com/vi/Gmyh4cgAlK8/maxresdefault.jpg,";
+
+        ImageLoadTask task = new ImageLoadTask(url,imageView);
+        task.execute();
     }
 }
 
