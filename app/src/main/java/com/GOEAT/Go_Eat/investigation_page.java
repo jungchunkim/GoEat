@@ -90,26 +90,26 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
 
 
 
-        //2020-08-30 염상희
-        //음식 취향조사 test
-
-        final SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
-        email = prefs.getString("email","");
-
-        Response.Listener<String> responselistener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) { // 서버 응답 받아오는 부분
-                try {
-                    Log.d("foodOnClick",response);
-                    JSONObject jsonObject = new JSONObject(response);
-                    Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
+//        //2020-08-30 염상희
+//        //음식 취향조사 test
+//
+//        final SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+//        email = prefs.getString("email","");
+//
+//        Response.Listener<String> responselistener = new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) { // 서버 응답 받아오는 부분
+//                try {
+//                    Log.d("foodOnClick",response);
+//                    JSONObject jsonObject = new JSONObject(response);
+//                    Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        };
+//        userDB.setFlavorFoodList(email,responselistener,investigation_page.this);
         //userDB.saveFoodFlavor(email,result,responselistener2,before_emotion_check.this);
-        userDB.setFlavorFoodList(email,responselistener,investigation_page.this);
 
         //누구랑 함께하는지에 대한 spinner (~ 랑 함께)
         final Spinner spinner_who=(Spinner) findViewById(R.id.select_who);
@@ -152,6 +152,12 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                 editor.putString("companion",(String) spinner_who.getSelectedItem());
                 editor.commit();
                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeActivity.class);
+                if(clickCheck[0]==1)
+                    intent.putExtra("calo","high");
+                else if(clickCheck[1]==1)
+                    intent.putExtra("calo","low");
+                else
+                    intent.putExtra("calo","null");
                 startActivity(intent);
             }
         });

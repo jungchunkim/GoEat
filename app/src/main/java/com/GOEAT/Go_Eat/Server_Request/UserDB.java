@@ -283,11 +283,11 @@ public class UserDB implements Serializable {
         queue.add(request);
     }
 
-    public void setFlavorFoodList(String useremail, Response.Listener<String> responseListener, Activity activity){ //서버로부터 사용자 캐릭터 받아오는 부분
+    public void setFlavorFoodList(String useremail, String calo, Response.Listener<String> responseListener, Activity activity){ //서버로부터 사용자 캐릭터 받아오는 부분
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail",useremail);
-
+        map.put("calo",calo);
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL9,

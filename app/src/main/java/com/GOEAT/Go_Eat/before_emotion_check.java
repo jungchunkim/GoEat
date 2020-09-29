@@ -31,7 +31,7 @@ public class before_emotion_check extends AppCompatActivity {
 
     private int listCnt = 0;
     private Vector<Integer> HatefoodIndex = new Vector<>();
-    private int foodSoup[] = {0,0};
+    private int foodSoup[] = {0,0,0};
     Map<String, Integer> foodType = new HashMap<String,Integer>(); // key : 음식 재료, value : 싫음으로 선택한 수
     Map<String, Integer> foodKind = new HashMap<String,Integer>(); // key : 음식 종류, value : 싫음으로 선택한 수
 

@@ -11,22 +11,28 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GOEAT.Go_Eat.DataType.FoodInfo;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.GOEAT.Go_Eat.Trash.CheckUserTaste;
 import com.android.volley.Response;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
 public class AnalysisHomeActivity extends AppCompatActivity {
 
@@ -35,10 +41,23 @@ public class AnalysisHomeActivity extends AppCompatActivity {
     private FirebaseAnalytics mFirebaseAnalytics;
     TextView example;
 
+    private String[] foodSecond = new String[10];
+    private String[] foodFirst = new String[10];
+    private String[] foodKind = new String[10];
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_home);
+
+        //칼로리 선택 정보 가져오기
+        //2020-09-29 염상희
+        Intent intent = getIntent();
+        String calo = intent.getExtras().getString("calo");
+        Log.d("calo", calo);
+        Toast.makeText(getApplicationContext(), "calo" + calo, Toast.LENGTH_LONG).show();
+
 
         //또 임시로!
         example=findViewById(R.id.example);
@@ -71,23 +90,54 @@ public class AnalysisHomeActivity extends AppCompatActivity {
             }
         };
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        String email = prefs.getString("email","");
+
         UserDB userDB = new UserDB();
         userDB.getuserdata(prefs.getString("email",""),responseListener,AnalysisHomeActivity.this);
 
-        //추천 음식 넣어줄 부분 2020-09-29 방진혁
-        SharedPreferences preferences = getSharedPreferences("goeat",MODE_PRIVATE);
-        System.out.println(preferences.getString("location","")+"---------"+preferences.getString("companion",""));
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString("Recommend_first_food","비빔밥/산나물 비빔밥");
-        editor.putString("Recommend_second_food","칼국수/육개장 칼국수");
-        editor.putString("Recommend_third_food","떡볶이/김치 떡볶이");
-        editor.putString("Similar_first_food","");
-        editor.putString("Similar_second_food","");
-        editor.putString("Similar_third_food","");
-        editor.putString("Famous_first_food","");
-        editor.putString("Famous_second_food","");
-        editor.putString("Famous_third_food","");
-        editor.commit();
+        //음식 취향조사 test
+        //2020-08-30 염상희
+        Response.Listener<String> responselistener2 = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // 서버 응답 받아오는 부분
+                try {
+                    JSONObject json = new JSONObject(response);
+                    JSONArray foodArray = json.getJSONArray("result");
+
+                    Log.d("foodArray",Integer.toString(foodArray.length()));
+                    int j=0;
+                    //중복되지 않게 1차 군집 설정
+                    for (int i = 0; i < foodArray.length(); i++) {
+                        JSONObject jsonObject = foodArray.getJSONObject(i); //i번째 Json데이터를 가져옴
+                        if(j<10&&!Arrays.asList(foodFirst).contains(jsonObject.getString("Food_First_Name"))){
+                            foodFirst[j] = jsonObject.getString("Food_First_Name");
+                            foodSecond[j] = jsonObject.getString("Food_Second_Name");
+                            foodKind[j++] = jsonObject.getString("Food_Kind");
+
+
+                        }
+                    }
+                    //1차 군집의 수가 모자를 경우, 뒤에서부터 1차 군집 설정
+                    int index = foodArray.length()-1;
+                    for(;j<10;j++) {
+                        JSONObject jsonObject = foodArray.getJSONObject(index); //i번째 Json데이터를 가져옴
+                        foodFirst[j] = jsonObject.getString("Food_First_Name");
+                        foodSecond[j] = jsonObject.getString("Food_Second_Name");
+                        foodKind[j] = jsonObject.getString("Food_Kind");
+                    }
+
+                    List<Integer> order = ShuffleOrder();
+                    putRecommendFood(order); //고잇(0~3), 비슷한 취향(4~6), 신천
+                    goeatRecommend(order); //고잇 음식 추천
+                    similarRecommend(order); //비슷한 취향 음식 추천
+                    famousRecommend(order); //신촌 음식 추천
+                    //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        userDB.setFlavorFoodList(email,calo,responselistener2,AnalysisHomeActivity.this);
 
 
         // Event Fragment로 넘길 Image Resource
@@ -119,9 +169,39 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         }
 
         fragmentAdapter.notifyDataSetChanged();
+    }
 
+    public List<Integer> ShuffleOrder(){
+        //추천 음식 넣는 순서 셔플 2020-09-29 염상희
+        List<Integer> list = new ArrayList<Integer>();
 
+        list.add(0); list.add(1); list.add(2); list.add(3); list.add(4);
+        list.add(5); list.add(6); list.add(7); list.add(8); list.add(9);
 
+        Collections.shuffle(list);
+
+        return list;
+    }
+
+    public void putRecommendFood(List<Integer> list){
+        //추천 음식 넣어줄 부분 2020-09-29 방진혁
+        SharedPreferences preferences = getSharedPreferences("goeat",MODE_PRIVATE);
+        System.out.println(preferences.getString("location","")+"---------"+preferences.getString("companion",""));
+        SharedPreferences.Editor editor = preferences.edit();
+        //추천음식으로 변경 2020-09-29 염상희
+        editor.putString("Recommend_first_food",foodFirst[list.get(0)] + "/"+foodSecond[list.get(0)]);
+        editor.putString("Recommend_second_food",foodFirst[list.get(1)] + "/"+foodSecond[list.get(1)]);
+        editor.putString("Recommend_third_food",foodFirst[list.get(2)] + "/"+foodSecond[list.get(2)]);
+        editor.putString("Similar_first_food",foodFirst[list.get(3)] + "/"+foodSecond[list.get(3)]);
+        editor.putString("Similar_second_food",foodFirst[list.get(4)] + "/"+foodSecond[list.get(4)]);
+        editor.putString("Similar_third_food",foodFirst[list.get(5)] + "/"+foodSecond[list.get(5)]);
+        editor.putString("Famous_first_food",foodFirst[list.get(6)] + "/"+foodSecond[list.get(6)]);
+        editor.putString("Famous_second_food",foodFirst[list.get(7)] + "/"+foodSecond[list.get(7)]);
+        editor.putString("Famous_third_food",foodFirst[list.get(8)] + "/"+foodSecond[list.get(8)]);
+        editor.commit();
+    }
+
+    public void goeatRecommend(List<Integer> list) {
         // 고잇 알고리즘이 추천한 메뉴
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview1);
@@ -131,9 +211,10 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         List<Item> items = new ArrayList<>();
         Item[] item = new Item[ITEM_SIZE];
-        item[0] = new Item(R.drawable.steak, "떡볶이", "분식");
-        item[1] = new Item(R.drawable.noodle, "비빔밥", "한식");
-        item[2] = new Item(R.drawable.pasta, "피자", "피자");
+        Log.d("foodArray", foodFirst[list.get(0)] + foodFirst.toString());
+        item[0] = new Item(R.drawable.steak, foodFirst[list.get(0)], foodKind[list.get(0)]);
+        item[1] = new Item(R.drawable.noodle, foodFirst[list.get(1)], foodKind[list.get(1)]);
+        item[2] = new Item(R.drawable.pasta, foodFirst[list.get(2)], foodKind[list.get(2)]);
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
@@ -144,8 +225,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(new RecyclerAdapter(getApplicationContext(), items, R.layout.activity_analysis_home, 0));
 
+    }
 
-
+    public void similarRecommend(List<Integer> list) {
         // 비슷한 사람들이 먹은 음식
 
         RecyclerView recyclerView2 = (RecyclerView) findViewById(R.id.recyclerview2);
@@ -155,9 +237,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         List<Item> items2 = new ArrayList<>();
         Item[] item2 = new Item[ITEM_SIZE];
-        item2[0] = new Item(R.drawable.bread, "만동제과", "베이커리");
-        item2[1] = new Item(R.drawable.rice, "마도인신촌", "대창덮밥");
-        item2[2] = new Item(R.drawable.salad, "보울룸", "샐러드");
+        item2[0] = new Item(R.drawable.bread, foodFirst[list.get(3)], foodKind[list.get(3)]);
+        item2[1] = new Item(R.drawable.rice, foodFirst[list.get(4)], foodKind[list.get(4)]);
+        item2[2] = new Item(R.drawable.salad, foodFirst[list.get(5)], foodKind[list.get(5)]);
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
@@ -168,8 +250,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         recyclerView2.setAdapter(new RecyclerAdapter(getApplicationContext(), items2, R.layout.activity_analysis_home, 1));
 
+    }
 
-
+    public void famousRecommend(List<Integer> list) {
         // 신촌에서 핫한 음식
 
         RecyclerView recyclerView3 = (RecyclerView) findViewById(R.id.recyclerview3);
@@ -179,9 +262,9 @@ public class AnalysisHomeActivity extends AppCompatActivity {
 
         List<Item> items3 = new ArrayList<>();
         Item[] item3 = new Item[ITEM_SIZE];
-        item3[0] = new Item(R.drawable.ramen, "카라멘야", "일식");
-        item3[1] = new Item(R.drawable.bread2, "파이홀", "베이커리");
-        item3[2] = new Item(R.drawable.ricecake, "품어떡", "분식");
+        item3[0] = new Item(R.drawable.ramen, foodFirst[list.get(6)], foodKind[list.get(6)]);
+        item3[1] = new Item(R.drawable.bread2, foodFirst[list.get(7)], foodKind[list.get(7)]);
+        item3[2] = new Item(R.drawable.ricecake, foodFirst[list.get(8)], foodKind[list.get(8)]);
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
@@ -224,6 +307,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
             fragments.add(fragment);
         }
     }
+
 
 
 
