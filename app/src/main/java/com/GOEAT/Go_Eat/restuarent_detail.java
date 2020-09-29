@@ -12,11 +12,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,6 +42,7 @@ public class restuarent_detail extends AppCompatActivity {
     ImageView restaurant_img_1,restaurant_img_2,restaurant_img_3;
     String restaurant_name, FirstFood, AssociateFood;
     String restaurant_main_image;
+    Button restaurant_link,bt_phone_num;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,9 @@ public class restuarent_detail extends AppCompatActivity {
         restaurant_txt_3 = (TextView) findViewById(R.id.restaurant_txt_3);
         food_price_3 = (TextView) findViewById(R.id.food_price_3);
         restaurant_img_3 = (ImageView) findViewById(R.id.restaurant_img_3);
-        Intent intent = getIntent();
+        restaurant_link = (Button) findViewById(R.id.restaurant_link);
+        bt_phone_num = (Button) findViewById(R.id.bt_phone_num);
+        final Intent intent = getIntent();
 
         restaurant_name = intent.getExtras().getString("restaurant_name");
         FirstFood = intent.getExtras().getString("FirstFood");
@@ -114,6 +119,21 @@ public class restuarent_detail extends AppCompatActivity {
         MyPageAdapter adapter = new MyPageAdapter(this);
         viewpager1.setAdapter(adapter);
 
+        restaurant_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(intent.getExtras().getString("restaurant_link")));
+               startActivity(intent1);
+            }
+        });
+
+        bt_phone_num.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+intent.getExtras().getString("phone_num")));
+                startActivity(intent1);
+            }
+        });
         booktag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
