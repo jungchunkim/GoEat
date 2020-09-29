@@ -102,6 +102,18 @@ public class Fragment_home_after_1 extends Fragment {
 
                         mainAdapter=new MainAdapter(arrayList);
                         recyclerView.setAdapter(mainAdapter);
+
+                        //2020-09-29 김정천 클릭 이벤트 추가
+                        mainAdapter.setOnItemClickListener(
+                                new MainAdapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View v, int position) {
+                                        Intent intent = new Intent(getActivity(), restuarent_detail.class);
+                                        //음식점에 맞는 정보를 여기에 입력해주면됨!, id값에 맞게 정보 입력!
+
+                                        startActivity(intent);
+                                    }
+                                });
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -113,37 +125,6 @@ public class Fragment_home_after_1 extends Fragment {
         get_restaurantlist get_restaurantlist = new get_restaurantlist(menu,main_menu,companion,responselistener1) ;
         RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
         queue.add(get_restaurantlist);
-
-        arrayList=new ArrayList<>();
-        //Data 정보들 넣어주는 곳 2020-09-23 김정천
-        MainData[] Data_1= new MainData[number];
-        Data_1[0]=new MainData(R.drawable.steak,"","","","");
-        Data_1[1]=new MainData(R.drawable.steak,"","","","");
-        Data_1[2]=new MainData(R.drawable.steak,"","","","");
-        Data_1[3]=new MainData(R.drawable.steak,"","","","");
-        Data_1[4]=new MainData(R.drawable.steak,"","","","");
-        Data_1[5]=new MainData(R.drawable.steak,"","","","");
-        Data_1[6]=new MainData(R.drawable.steak,"","","","");
-        Data_1[7]=new MainData(R.drawable.steak,"","","","");
-        Data_1[8]=new MainData(R.drawable.steak,"","","","");
-        Data_1[9]=new MainData(R.drawable.steak,"","","","");
-        for(int i=0;i<number;i++)
-        {
-            arrayList.add(Data_1[i]);
-        }
-
-        mainAdapter=new MainAdapter(arrayList);
-        recyclerView.setAdapter(mainAdapter);
-
-
-        mainAdapter.setOnItemClickListener(
-                new MainAdapter.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(View v, int position) {
-                        Intent intent = new Intent(getActivity(), restuarent_detail.class);
-                        startActivity(intent);
-                    }
-                });
 
                 // Inflate the layout for this fragment
         return rootView;

@@ -19,21 +19,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shadow_button_4"
-
             android:layout_marginBottom="15dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vpPager_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="300dp"/>
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/vpPager_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"/>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,6 +40,7 @@
                 android:background="#1E1E1E">
 
                 <TextView
+                    android:id="@+id/food_name_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
@@ -63,6 +57,7 @@
                     android:orientation="horizontal"
                     android:weightSum="10">
                     <TextView
+                        android:id="@+id/food_name_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/pureunjeonnam"
@@ -101,6 +96,7 @@
                         android:layout_weight="1"
                         android:src="@drawable/ic_star_img"/>
                     <TextView
+                        android:id="@+id/star_pt"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:textColor="#ffffff"
@@ -109,6 +105,7 @@
                         android:layout_weight="1"
                         android:text="4.5"/>
                     <TextView
+                        android:id="@+id/review_cnt"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="3"
@@ -132,7 +129,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.7"
+                        android:layout_weight="2"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -145,6 +142,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/pureunjeonnam"
                             android:textSize="10dp"
+                            android:layout_marginLeft="10dp"
                             android:gravity="center"
                             android:textColor="#ffffff"
                             android:text="전화하기" />
@@ -152,7 +150,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.7"
+                        android:layout_weight="2"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -165,6 +163,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="10dp"
                             android:gravity="center"
+                            android:layout_marginLeft="10dp"
                             android:fontFamily="@font/pureunjeonnam"
                             android:textColor="#ffffff"
                             android:text="지도열기" />
@@ -172,7 +171,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.7"
+                        android:layout_weight="2"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -185,6 +184,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="10dp"
                             android:gravity="center"
+                            android:layout_marginLeft="10dp"
                             android:textColor="#ffffff"
                             android:fontFamily="@font/pureunjeonnam"
                             android:text="네이버로 주문" />
@@ -192,7 +192,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1.7"
+                        android:layout_weight="2"
                         android:orientation="vertical">
                         <Button
                             android:layout_width="match_parent"
@@ -205,6 +205,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="10dp"
                             android:gravity="center"
+                            android:layout_marginLeft="10dp"
                             android:textColor="#ffffff"
                             android:fontFamily="@font/pureunjeonnam"
                             android:text="공유하기" />
@@ -238,6 +239,7 @@
                         android:src="@drawable/ic_icon_phone"/>
 
                     <TextView
+                        android:id="@+id/phone_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="9"
@@ -262,6 +264,7 @@
                         android:src="@drawable/ic_icon_pin"/>
 
                     <TextView
+                        android:id="@+id/position_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="9"
@@ -285,6 +288,7 @@
                         android:src="@drawable/ic_icon_clock"/>
 
                     <TextView
+                        android:id="@+id/time"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="9"
@@ -308,6 +312,7 @@
                         android:src="@drawable/price_img"/>
 
                     <TextView
+                        android:id="@+id/price_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="9"
@@ -326,6 +331,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/text_food"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:fontFamily="@font/pureunjeonnam"
@@ -349,6 +355,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
@@ -362,7 +369,7 @@
                     android:layout_weight="4"
                     android:textSize="24dp"
                     android:textColor="#1E1E1E"
-                    android:fontFamily="@font/pureunjeonnam"
+                    android:fontFamily="@font/pureunjeonnambold"
                     android:text="대표 메뉴"/>
                 <TextView
                     android:layout_width="0dp"
@@ -389,6 +396,7 @@
                 android:weightSum="4">
 
                 <ImageView
+                    android:id="@+id/restaurant_img_1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
@@ -403,6 +411,7 @@
                     android:weightSum="9"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/restaurant_txt_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -412,6 +421,7 @@
                         android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
+                        android:id="@+id/food_weight_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -430,6 +440,7 @@
                             android:src="@drawable/ic_star_img"
                             />
                         <TextView
+                            android:id="@+id/star_pt_2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
@@ -439,6 +450,7 @@
                             android:fontFamily="@font/pureunjeonnam"
                             android:text="4.5"/>
                         <TextView
+                            android:id="@+id/food_price_1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
@@ -464,6 +476,7 @@
                 android:weightSum="4">
 
                 <ImageView
+                    android:id="@+id/restaurant_img_2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
@@ -478,6 +491,7 @@
                     android:weightSum="9"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/restaurant_txt_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -487,6 +501,7 @@
                         android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
+                        android:id="@+id/food_weight_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -505,6 +520,7 @@
                             android:src="@drawable/ic_star_img"
                             />
                         <TextView
+                            android:id="@+id/star_pt_3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
@@ -514,6 +530,7 @@
                             android:fontFamily="@font/pureunjeonnam"
                             android:text="4.5"/>
                         <TextView
+                            android:id="@+id/food_price_2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
@@ -539,6 +556,7 @@
                 android:weightSum="4">
 
                 <ImageView
+                    android:id="@+id/restaurant_img_3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
@@ -553,6 +571,7 @@
                     android:weightSum="9"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/restaurant_txt_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -562,6 +581,7 @@
                         android:fontFamily="@font/pureunjeonnam"
                         android:text="모듬곱창 (대)"/>
                     <TextView
+                        android:id="@+id/food_weight_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
@@ -580,6 +600,7 @@
                             android:src="@drawable/ic_star_img"
                             />
                         <TextView
+                            android:id="@+id/star_pt_4"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
@@ -589,6 +610,7 @@
                             android:fontFamily="@font/pureunjeonnam"
                             android:text="4.5"/>
                         <TextView
+                            android:id="@+id/food_price_3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="4"
@@ -601,117 +623,6 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-
-        <!--리뷰 창들-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="24dp"
-                    android:textColor="#1E1E1E"
-                    android:text="리뷰"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9"
-                    android:textSize="12dp"
-                    android:gravity="right|bottom"
-                    android:text="모든 리뷰 >"/>
-            </LinearLayout>
-
-            <!-- 리뷰 버튼 들 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/shadow_button_4"
-                android:weightSum="10">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
-                    android:textSize="20dp"
-                    android:textColor="#1E1E1E"
-                    android:text="엥 이거 완전 JMTGR 아니냐 응 인..."/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="5dp"
-                    android:weightSum="10">
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:src="@drawable/ic_star_img"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:textColor="#1E1E1E"
-                        android:textSize="16dp"
-                        android:text="4.5"/>
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="4"
-                        android:textSize="16dp"
-                        android:textColor="#1E1E1E"
-                        android:text="모듬곱창 (대)"/>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_weight="4"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="@color/exp_name"
-                    android:textSize="12dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="5dp"
-                    android:text="내용들~~~" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textSize="16dp"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="@color/exp_name"
-                    android:gravity="right"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="ghdrlfehd/2일 전"/>
-
-
-
-            </LinearLayout>
-
         </LinearLayout>
 
         <TextView

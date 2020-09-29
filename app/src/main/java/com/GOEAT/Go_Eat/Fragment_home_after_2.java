@@ -89,6 +89,17 @@ public class Fragment_home_after_2 extends Fragment {
 
                         mainAdapter=new MainAdapter(arrayList);
                         recyclerView.setAdapter(mainAdapter);
+
+                        //2020-09-29 김정천 클릭 이벤트 추가
+                        mainAdapter.setOnItemClickListener(
+                                new MainAdapter.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View v, int position) {
+                                        Intent intent = new Intent(getActivity(), restuarent_detail.class);
+                                        //음식점에 맞는 정보를 여기에 입력해주면됨!, id값에 맞게 정보 입력!
+                                        startActivity(intent);
+                                    }
+                                });
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
