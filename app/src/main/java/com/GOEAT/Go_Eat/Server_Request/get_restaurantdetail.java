@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class get_restaurantdetail extends StringRequest {
-    final static private String URL = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/login.php";
+    final static private String URL = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getrestaurantdetail.php";
     private Map<String,String> map;
 
     public get_restaurantdetail(String restaurant_name, String FirstFood,String AssociateFood, Response.Listener<String> listener){

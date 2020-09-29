@@ -22,11 +22,11 @@
             android:layout_marginBottom="15dp"
             android:orientation="vertical">
 
+
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpPager_1"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"/>
-
+                android:layout_height="300dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/pureunjeonnam"
                         android:textColor="#ffffff"
-                        android:text="맛있는 곱창 부추곱창"
+                        android:text=""
                         android:textSize="28dp"
                         android:layout_weight="1"/>
 
@@ -103,16 +103,8 @@
                         android:gravity="center"
                         android:fontFamily="@font/pureunjeonnam"
                         android:layout_weight="1"
-                        android:text="4.5"/>
-                    <TextView
-                        android:id="@+id/review_cnt"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3"
-                        android:textColor="@color/exp_name"
-                        android:gravity="center_vertical"
-                        android:fontFamily="@font/pureunjeonnam"
-                        android:text="999+개 리뷰"/>
+                        android:text=""/>
+
 
                 </LinearLayout>
 
@@ -245,7 +237,7 @@
                         android:layout_weight="9"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="02-000-0000(배달 가능)"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -270,7 +262,7 @@
                         android:layout_weight="9"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="서울시 마포구 입맛대로 골라드시길"/>
+                        android:text=""/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -294,7 +286,7 @@
                         android:layout_weight="9"
                         android:fontFamily="@font/pureunjeonnam"
                         android:gravity="center_vertical"
-                        android:text="10:00-24:00"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -318,7 +310,7 @@
                         android:layout_weight="9"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="8,000~36,000"/>
+                        android:text=""/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -335,7 +327,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라\n만세 무궁화 삼천리 화려강산"/>
+                        android:text=""/>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -400,7 +392,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/bread"
                     android:layout_weight="1"/>
 
                 <LinearLayout
@@ -419,13 +410,13 @@
                         android:textColor="#1E1E1E"
                         android:textSize="20dp"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="모듬곱창 (대)"/>
+                        android:text=""/>
                     <TextView
                         android:id="@+id/food_weight_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:text="1200g"/>
+                        android:text=""/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -458,7 +449,7 @@
                             android:textSize="16dp"
                             android:gravity="center"
                             android:fontFamily="@font/pureunjeonnam"
-                            android:text="26000"/>
+                            android:text=""/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -480,7 +471,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/bread"
                     android:layout_weight="1"/>
 
                 <LinearLayout
@@ -499,14 +489,14 @@
                         android:textSize="20dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="모듬곱창 (대)"/>
+                        android:text=""/>
                     <TextView
                         android:id="@+id/food_weight_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
                         android:layout_marginBottom="10dp"
-                        android:text="1200g"/>
+                        android:text=""/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -538,7 +528,7 @@
                             android:textSize="16dp"
                             android:gravity="center"
                             android:fontFamily="@font/pureunjeonnam"
-                            android:text="26000"/>
+                            android:text=""/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -560,7 +550,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:src="@drawable/bread"
                     android:layout_weight="1"/>
 
                 <LinearLayout
@@ -579,13 +568,13 @@
                         android:textSize="20dp"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text="모듬곱창 (대)"/>
+                        android:text=""/>
                     <TextView
                         android:id="@+id/food_weight_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:text="1200g"/>
+                        android:text=""/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -618,7 +607,7 @@
                             android:textSize="16dp"
                             android:gravity="center"
                             android:fontFamily="@font/pureunjeonnam"
-                            android:text="26000"/>
+                            android:text=""/>
 
                     </LinearLayout>
                 </LinearLayout>

@@ -285,8 +285,8 @@ public class AnalysisHomeActivity extends AppCompatActivity {
     public void sendImageRequest(String url, ImageView imageView) {
         //String url = "https://i.ytimg.com/vi/Gmyh4cgAlK8/maxresdefault.jpg,";
 
-        ImageLoadTask task = new ImageLoadTask(url,imageView);
-        task.execute();
+//        ImageLoadTask task = new ImageLoadTask(url,imageView);
+//        task.execute();
     }
 }
 

@@ -9,12 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHolder> {
 
     private ArrayList<MainData> arrayList;
-
 
     public MainAdapter( ArrayList<MainData> arrayList) {
         this.arrayList = arrayList;
@@ -33,7 +36,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
     @Override
     public void onBindViewHolder(@NonNull MainAdapter.CustomViewHolder holder, int position) {
 
-        holder.Image_1.setImageResource(arrayList.get(position).getImage_1());
+        //holder.Image_1.setImageResource(arrayList.get(position).getImage_1());
+        try {
+            if(arrayList.get(position).getImage_1() != null && arrayList.get(position).getImage_1().length() > 0) { //java.lang.IllegalArgumentException: Path must not be empty.
+                Picasso.get().load(arrayList.get(position).getImage_1()).error(R.drawable.go).into(holder.Image_1);
+            }
+        } catch (Exception e){ //[200210] fix: IllegalStateException: Unrecognized type of request
+            e.printStackTrace();
+        }
+
         holder.shop_name_1.setText(arrayList.get(position).getShop_name_1());
         holder.exp_1.setText(arrayList.get(position).getExp_1());
         holder.price_1.setText(arrayList.get(position).getPrice_1());
@@ -44,6 +55,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
     @Override
     public int getItemCount() {
         return this.arrayList.size();
+    }
+    //음식점 이름 가져오는 부분
+    public String get_shop_name(int position){
+            return arrayList.get(position).getShop_name_1();
     }
 
 

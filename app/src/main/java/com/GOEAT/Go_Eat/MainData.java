@@ -2,13 +2,13 @@ package com.GOEAT.Go_Eat;
 
 public class MainData {
 
-    private int image_1;
+    private String image_1;
     private String shop_name_1;
     private String exp_1;
     private String price_1;
     private String place_1;
 
-    public MainData(int image_1, String shop_name_1, String exp_1, String price_1, String place_1) {
+    public MainData(String image_1, String shop_name_1, String exp_1, String price_1, String place_1) {
         this.image_1 = image_1;
         this.shop_name_1 = shop_name_1;
         this.exp_1 = exp_1;
@@ -16,11 +16,11 @@ public class MainData {
         this.place_1 = place_1;
     }
 
-    public int getImage_1() {
+    public String getImage_1() {
         return image_1;
     }
 
-    public void setImage_1(int image_1) {
+    public void setImage_1(String image_1) {
         this.image_1 = image_1;
     }
 
