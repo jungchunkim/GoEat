@@ -28,6 +28,7 @@
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:background="@drawable/edit_text_background_color"
+                    android:scaleType="fitXY"
                     />
 
                 <ImageView
