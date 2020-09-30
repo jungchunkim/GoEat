@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class MyPageActivity extends AppCompatActivity {
     String name="";
     String email="";
     String chracter="";
+    ImageView home_btn_2,go_btn_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,26 @@ public class MyPageActivity extends AppCompatActivity {
         tv_nickname = findViewById(R.id.tv_nickname);
         tv_email = findViewById(R.id.tv_email);
         iv_profile = findViewById(R.id.iv_profile);
+        go_btn_2=findViewById(R.id.go_btn_2);
+        home_btn_2=findViewById(R.id.home_btn_2);
+
+        go_btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),investigation_page.class);
+                startActivity(intent);
+            }
+        });
+
+        /* 홈 버튼 클릭했을 때 일단 빼놓음
+        home_btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),AnalysisHomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        */
 
         final UserDB userDB = new UserDB();
         final SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);

@@ -33,6 +33,7 @@ public class Analysis_home_after extends AppCompatActivity {
     StringTokenizer menu1tk;
     StringTokenizer menu2tk;
     StringTokenizer menu3tk;
+    ImageView go_btn_1,my_btn_1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,9 @@ public class Analysis_home_after extends AppCompatActivity {
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        go_btn_1=findViewById(R.id.go_btn_1);
+        my_btn_1=findViewById(R.id.my_btn_1);
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs_2);
 //추천 받은 Data 음식 정보들 분류 2020-09-29 방진혁
@@ -107,6 +111,22 @@ public class Analysis_home_after extends AppCompatActivity {
         viewPager.setAdapter(myPagerAdapter);
         viewPager.setCurrentItem(position);
 
+
+        go_btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),investigation_page.class);
+                startActivity(intent);
+            }
+        });
+
+        my_btn_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn_back = findViewById(R.id.btn_back);
 
