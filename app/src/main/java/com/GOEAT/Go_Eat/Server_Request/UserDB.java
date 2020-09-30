@@ -37,7 +37,7 @@ public class UserDB implements Serializable {
     private Map<String,String> map;
     private int userChar;
     public RequestQueue queue;
-
+    private String email;
 
 
     public void setUserChar(String useremail , int imgStr, Response.Listener<String> listener,Activity activity){ // 서버에 사용자 캐릭터 저장
@@ -45,6 +45,7 @@ public class UserDB implements Serializable {
 
 
         map = new HashMap<>();
+        email = useremail;
         map.put("useremail",useremail);
         map.put("userchar",Integer.toString(imgStr));
         StringRequest request = new StringRequest(
@@ -72,7 +73,7 @@ public class UserDB implements Serializable {
     public void setImageToUserChar(final ImageView img, String useremail, Activity activity){ //서버로부터 사용자 캐릭터 받아오는 부분
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
-        map.put("useremail",useremail);
+        map.put("email",email);
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부분
