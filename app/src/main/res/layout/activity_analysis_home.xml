@@ -212,13 +212,7 @@
                 android:layout_marginBottom="15dp"/>
 
 
-
-
-
         </LinearLayout>
-
-    
-
 
     </ScrollView>
     
