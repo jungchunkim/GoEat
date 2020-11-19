@@ -49,7 +49,6 @@ public class restuarent_detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restuarent_detail);
 
-        booktag = findViewById(R.id.book_tag);
         food_name_1= (TextView) findViewById(R.id.food_name_1);
         food_name_2= (TextView) findViewById(R.id.food_name_2);
         star_pt = (TextView) findViewById(R.id.star_pt);
@@ -66,7 +65,7 @@ public class restuarent_detail extends AppCompatActivity {
         restaurant_txt_3 = (TextView) findViewById(R.id.restaurant_txt_3);
         food_price_3 = (TextView) findViewById(R.id.food_price_3);
         restaurant_img_3 = (ImageView) findViewById(R.id.restaurant_img_3);
-        restaurant_link = (Button) findViewById(R.id.restaurant_link);
+//        restaurant_link = (Button) findViewById(R.id.restaurant_link);
         bt_phone_num = (Button) findViewById(R.id.bt_phone_num);
         final Intent intent = getIntent();
 
@@ -119,13 +118,13 @@ public class restuarent_detail extends AppCompatActivity {
         MyPageAdapter adapter = new MyPageAdapter(this);
         viewpager1.setAdapter(adapter);
 
-        restaurant_link.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(intent.getExtras().getString("restaurant_link")));
-               startActivity(intent1);
-            }
-        });
+//        restaurant_link.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(intent.getExtras().getString("restaurant_link")));
+//               startActivity(intent1);
+//            }
+//        });
 
         bt_phone_num.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,18 +133,18 @@ public class restuarent_detail extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
-        booktag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (number == 0) {
-                    number = 1;
-                    changeBtnBackground(booktag);
-                } else {
-                    reChangeBtnBackground(booktag);
-                    number = 0;
-                }
-            }
-        });
+//        booktag.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (number == 0) {
+//                    number = 1;
+//                    changeBtnBackground(booktag);
+//                } else {
+//                    reChangeBtnBackground(booktag);
+//                    number = 0;
+//                }
+//            }
+//        });
 
     }
 

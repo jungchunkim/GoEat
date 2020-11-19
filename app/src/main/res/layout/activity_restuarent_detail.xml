@@ -26,7 +26,7 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpPager_1"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
+                android:layout_height="250dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:paddingTop="8dp"
                 android:orientation="vertical"
                 android:layout_weight="20"
-                android:background="#1E1E1E">
+                android:background="@drawable/one_coner_round_layout">
 
                 <TextView
                     android:id="@+id/food_name_1"
@@ -47,7 +47,7 @@
                     android:layout_marginRight="14dp"
 
                     android:textColor="@color/exp_name"
-                    android:text="곱창집"/>
+                    android:text=""/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,22 +71,14 @@
                         android:layout_height="0dp"
                         android:layout_weight="8"/>
                     <!-- 깃발 이미지-->
-                    <ImageView
-                        android:id="@+id/book_tag"
-                        android:layout_width="30dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ic_booktag_img"
-                        android:layout_gravity="right"
-                        android:layout_weight="1"
-                        />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="20dp"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="15dp"
                     android:orientation="horizontal"
                     android:weightSum="10">
                     <!--별 이미지 넣기 -->
@@ -113,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:weightSum="10">
@@ -125,81 +117,43 @@
                         android:orientation="vertical">
                         <Button
                             android:id="@+id/bt_phone_num"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
                             android:background="@drawable/ic_call"
                             android:layout_weight="0.8" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/pureunjeonnam"
+                            android:layout_marginTop="5dp"
                             android:textSize="10dp"
-                            android:layout_marginLeft="10dp"
                             android:gravity="center"
                             android:textColor="#ffffff"
                             android:text="전화하기" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
                         android:orientation="vertical">
                         <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
                             android:layout_marginLeft="10dp"
-                            android:background="@drawable/ic_map"
-                            android:layout_weight="0.8" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="10dp"
-                            android:gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:fontFamily="@font/pureunjeonnam"
-                            android:textColor="#ffffff"
-                            android:text="지도열기" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="vertical">
-                        <Button
-                            android:id="@+id/restaurant_link"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_marginLeft="10dp"
-                            android:background="@drawable/ic_order"
-                            android:layout_weight="0.8" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="10dp"
-                            android:gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:textColor="#ffffff"
-                            android:fontFamily="@font/pureunjeonnam"
-                            android:text="네이버로 주문" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="vertical">
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
                             android:background="@drawable/ic_share"
                             android:layout_weight="0.8" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="10dp"
+                            android:layout_marginTop="5dp"
                             android:gravity="center"
-                            android:layout_marginLeft="10dp"
                             android:textColor="#ffffff"
                             android:fontFamily="@font/pureunjeonnam"
                             android:text="공유하기" />
@@ -223,20 +177,20 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:weightSum="10">
                     <!-- 통화 버튼 넣기 -->
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="1.5"
                         android:src="@drawable/ic_icon_phone"/>
 
                     <TextView
                         android:id="@+id/phone_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="9"
+                        android:layout_weight="8.5"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
@@ -248,20 +202,20 @@
                 <!--위치 버튼 입력-->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:weightSum="10">
                     <!-- 통화 버튼 넣기 -->
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="1.5"
                         android:src="@drawable/ic_icon_pin"/>
 
                     <TextView
                         android:id="@+id/position_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="9"
+                        android:layout_weight="8.5"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
@@ -272,20 +226,20 @@
                 <!-- 시계 그림 넣기 -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:weightSum="10">
                     <!-- 통화 버튼 넣기 -->
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="1.5"
                         android:src="@drawable/ic_icon_clock"/>
 
                     <TextView
                         android:id="@+id/time"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="9"
+                        android:layout_weight="8.5"
                         android:fontFamily="@font/pureunjeonnam"
                         android:gravity="center_vertical"
                         android:text=""/>
@@ -296,20 +250,20 @@
                     android:layout_height="10dp"/>
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:weightSum="10">
                     <!-- 통화 버튼 넣기 -->
                     <ImageView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="2"
+                        android:layout_weight="1.5"
                         android:src="@drawable/price_img"/>
 
                     <TextView
                         android:id="@+id/price_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="9"
+                        android:layout_weight="8.5"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
@@ -327,7 +281,7 @@
                     <TextView
                         android:id="@+id/text_food"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="50dp"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
                     <TextView
@@ -336,7 +290,7 @@
                         android:textColor="#1E1E1E"
                         android:layout_marginBottom="15dp"
                         android:fontFamily="@font/pureunjeonnambold"
-                        android:text="접기"/>
+                        android:text="더보기>"/>
                 </LinearLayout>
 
             </LinearLayout>
