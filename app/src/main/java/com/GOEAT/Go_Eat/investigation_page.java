@@ -151,7 +151,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                 editor.putString("location",select_place.getText().toString());
                 editor.putString("companion",(String) spinner_who.getSelectedItem());
                 editor.commit();
-                Intent intent = new Intent(getApplicationContext(), AnalysisHomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
                 if(clickCheck[0]==1)
                     intent.putExtra("calo","high");
                 else if(clickCheck[1]==1)
