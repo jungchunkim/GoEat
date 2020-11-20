@@ -201,5 +201,26 @@ public class RegAuthActivity extends AppCompatActivity {
             }
         });
 
+        et_4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(et_4.getText().toString().length()==1){
+                    btn_ok.performClick();
+                    //Toast.makeText(getApplicationContext(), "자동OK", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 }

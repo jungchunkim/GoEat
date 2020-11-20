@@ -118,6 +118,7 @@
             android:fontFamily="@font/pureunjeonnambold"
             android:inputType="number"
             android:textSize="35dp"
+            android:text=""
             />
 
 
