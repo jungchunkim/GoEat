@@ -26,11 +26,11 @@
 
             <ImageView
                 android:id="@+id/iv_back"
-                android:layout_marginLeft="15dp"
-                android:src="@drawable/arrow"
-                android:layout_width="16dp"
+                android:layout_width="6dp"
                 android:layout_height="14dp"
-                android:layout_weight="5"/>
+                android:layout_marginLeft="15dp"
+                android:layout_weight="5"
+                android:src="@drawable/arrow" />
 
 
         </LinearLayout>
@@ -85,6 +85,7 @@
             android:layout_height="0dp"
             android:layout_weight="16"
             android:paddingLeft="30dp"
+            android:paddingRight="30dp"
             android:orientation="vertical">
             <TextView
                 android:layout_width="0dp"
@@ -95,16 +96,79 @@
                 android:layout_height="0dp"
                 android:layout_weight="2"
                 android:textSize="18dp"
-
                 android:fontFamily="@font/pureunjeonnambold"
                 android:textColor="@color/font"
                 android:text="날씨 / 온도" />
-            <ImageView
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="4dp"
                 android:layout_weight="7"
+                android:background="@drawable/shadow_button"
+                android:orientation="horizontal">
 
-                />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/font"
+                    android:text="날씨" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:scaleType="center"
+                    android:background="@drawable/fresh" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:textColor="@color/font"
+                    android:text="온도" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="@color/mainPink"
+                    android:gravity="center"
+                    android:textSize="15dp"
+                    android:text="36.5도" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
 
 
