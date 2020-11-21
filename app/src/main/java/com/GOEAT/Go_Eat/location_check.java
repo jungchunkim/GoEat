@@ -51,10 +51,11 @@ public class location_check extends AppCompatActivity {
                 if(num1 == 1){
                     editor.putString("loc","건대/세종대");
                     editor.commit();
-                }else if(num1 == 2){
-                    editor.putString("loc","신촌/이대");
+                }else if(num1 == 2) {
+                    editor.putString("loc", "신촌/이대");
                     editor.commit();
-                }else if(num1 == 3){
+                }
+                else if(num1 == 3){
                     editor.putString("loc","왕십리/성동");
                     editor.commit();
                 }else if(num1 == 4){
@@ -85,6 +86,7 @@ public class location_check extends AppCompatActivity {
                     editor.putString("loc","상도/흑석");
                     editor.commit();
                 }
+
                 Intent intent = new Intent(getApplicationContext(), investigation_page.class);
                 startActivity(intent);
             }

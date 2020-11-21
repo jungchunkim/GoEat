@@ -4,7 +4,7 @@
     android:shape="rectangle" android:padding="10dp" android:layout_height="match_parent"
      android:layout_width="match_parent"
     >
-    <solid android:color="#E01D4A"/>
+    <solid android:color="#FF3F81"/>
 
 
 

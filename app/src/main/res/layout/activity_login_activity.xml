@@ -48,12 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
+        android:paddingLeft="10dp"
         android:layout_marginLeft="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_text_background"
         android:fontFamily="@font/pureunjeonnam"
-        android:hint=" 이메일주소"/>
+        android:hint="이메일주소"/>
 
     <EditText
         android:id="@+id/et_login_password"
@@ -62,6 +63,7 @@
         android:layout_weight="8"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
+        android:paddingLeft="10dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_text_background"
         android:hint=" 비밀번호"
