@@ -28,7 +28,7 @@ public class Fragment_2 extends Fragment {
     public Fragment_2() {
         // Required empty public constructor
     }
-
+    /*
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class Fragment_2 extends Fragment {
         context=container.getContext();
         sharedPreferences = getActivity().getSharedPreferences("location", Context.MODE_PRIVATE);;
         editor = sharedPreferences.edit();
+
         final Button location_8 = (Button) view.findViewById(R.id.location_8);
         final Button location_9 = (Button) view.findViewById(R.id.location_9);
         final Button location_10 = (Button) view.findViewById(R.id.location_10);
@@ -154,4 +155,5 @@ public class Fragment_2 extends Fragment {
         btn.setBackgroundResource(R.drawable.button_background);
         btn.setTextColor(getResources().getColorStateList(R.color.white));
     }
+    */
 }

@@ -28,6 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:text="교대/서초"
+            android:visibility="invisible"
             android:background="@drawable/location_button"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"/>
@@ -41,6 +42,7 @@
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:text="강남"
+            android:visibility="invisible"
             android:background="@drawable/location_button"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"/>
@@ -74,6 +76,7 @@
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:text="서울대"
+            android:visibility="invisible"
             android:background="@drawable/location_button"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"/>
@@ -87,6 +90,7 @@
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:text="신천/잠실"
+            android:visibility="invisible"
             android:background="@drawable/location_button"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"/>
@@ -119,6 +123,7 @@
             android:layout_height="match_parent"
             android:layout_weight="10"
             android:text="상도/흑석"
+            android:visibility="invisible"
             android:background="@drawable/location_button"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"/>

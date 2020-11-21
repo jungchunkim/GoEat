@@ -44,12 +44,13 @@ public class Fragment_1 extends Fragment {
         editor = sharedPreferences.edit();
         final Button location_1 = (Button) view.findViewById(R.id.location_1);
         final Button location_2 = (Button) view.findViewById(R.id.location_2);
+        /*
         final Button location_3 = (Button) view.findViewById(R.id.location_3);
         final Button location_4 = (Button) view.findViewById(R.id.location_4);
         final Button location_5 = (Button) view.findViewById(R.id.location_5);
         final Button location_6 = (Button) view.findViewById(R.id.location_6);
         final Button location_7 = (Button) view.findViewById(R.id.location_7);
-
+    */
         location_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +87,7 @@ public class Fragment_1 extends Fragment {
                 }
             }
         });
+/*
         location_3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,6 +170,7 @@ public class Fragment_1 extends Fragment {
             }
         });
 
+    */
         return view;
     }
 
