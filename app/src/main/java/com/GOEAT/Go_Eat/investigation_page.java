@@ -49,15 +49,16 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        select_place=findViewById(R.id.select_place);
+        //select_place=findViewById(R.id.select_place);
         btn_1=findViewById(R.id.btn_1);
         btn_2=findViewById(R.id.btn_2);
         iv_back = findViewById(R.id.iv_back);
         btn_next=findViewById(R.id.btn_next);
+
         sharedPreferences = getSharedPreferences("location",MODE_PRIVATE);
         prefs = getSharedPreferences("goeat",MODE_PRIVATE);
         editor = prefs.edit();
-        select_place.setText(sharedPreferences.getString("loc",""));
+        //select_place.setText(sharedPreferences.getString("loc",""));
         // clickCheck[] 초기화
         clickCheck[0]=1;
         clickCheck[1]=1;
@@ -111,45 +112,14 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
 //        userDB.setFlavorFoodList(email,responselistener,investigation_page.this);
         //userDB.saveFoodFlavor(email,result,responselistener2,before_emotion_check.this);
 
-        //누구랑 함께하는지에 대한 spinner (~ 랑 함께)
-        final Spinner spinner_who=(Spinner) findViewById(R.id.select_who);
-        ArrayAdapter<CharSequence> adapter1=ArrayAdapter.createFromResource(this,R.array.select_who,android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_who.setAdapter(adapter1);
-        spinner_who.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //선택되었을때
-            }
+        //spinner 안써서 다 지움
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
-        //어떤 기분인지에 대한 spinner (~ 기분으로)
-        Spinner spinner_emotion=(Spinner) findViewById(R.id.select_emotion);
-        ArrayAdapter<CharSequence> adapter2=ArrayAdapter.createFromResource(this,R.array.select_emotion,android.R.layout.simple_spinner_item);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_emotion.setAdapter(adapter2);
-        spinner_emotion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //선택되었을때
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(select_place.getText().toString()+"---------"+(String) spinner_who.getSelectedItem());
+              //  System.out.println(select_place.getText().toString()+"---------"+(String) spinner_who.getSelectedItem());
                 editor.putString("location",select_place.getText().toString());
-                editor.putString("companion",(String) spinner_who.getSelectedItem());
+             //   editor.putString("companion",(String) spinner_who.getSelectedItem());
                 editor.commit();
                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
                 if(clickCheck[0]==1)
@@ -208,13 +178,13 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
     private void reChangeBtnBackground(Button btn) {
 
         btn.setBackgroundResource(R.drawable.shadow_button);
-        btn.setTextColor(getResources().getColorStateList(R.color.black));
+
 
     }
 
     private void changeBtnBackground(Button btn) {
-        btn.setBackgroundResource(R.drawable.button_background);
-        btn.setTextColor(getResources().getColorStateList(R.color.white));
+        btn.setBackgroundResource(R.drawable.after_background);
+
     }
 
     class WeatherAsynTask extends AsyncTask<String, Void, String> {
