@@ -3,6 +3,9 @@ package com.GOEAT.Go_Eat;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -14,6 +17,8 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     AnalysisFragment1 fragment1;
     AnalysisFragment2 fragment2;
     AnalysisFragment3 fragment3;
+    public SharedPreferences prefs;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,14 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         });
 
 
+        // 앱 첫 실행때만 Gudie 띄우기
+        prefs = getSharedPreferences("Pref", MODE_PRIVATE);
+        boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
+        if(isFirstRun){
+            Intent intent = new Intent(getApplicationContext(), AnalysishomeGuideActivity.class);
+            startActivity(intent);
+            prefs.edit().putBoolean("isFirstRun", false).apply();
+        }
 
 
     }
