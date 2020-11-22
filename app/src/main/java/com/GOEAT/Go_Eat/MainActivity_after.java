@@ -298,12 +298,12 @@ class WeatherAsynTask extends AsyncTask<String, Void, String> {
         Document doc = null;
         try {
             doc = Jsoup.connect(URL).get();
+            Element temp = doc.select(E1).first();
+
+            result = temp.text();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Element temp = doc.select(E1).first();
-
-        result = temp.text();
 
         return result;
     }

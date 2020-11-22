@@ -118,7 +118,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
             @Override
             public void onClick(View view) {
               //  System.out.println(select_place.getText().toString()+"---------"+(String) spinner_who.getSelectedItem());
-                editor.putString("location",select_place.getText().toString());
+//                editor.putString("location",select_place.getText().toString());
              //   editor.putString("companion",(String) spinner_who.getSelectedItem());
                 editor.commit();
                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
@@ -199,25 +199,31 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
             Document doc = null;
             try {
                 doc = Jsoup.connect(URL).get();
+                Element temp = doc.select(E1).first();
+
+                if(temp==null){
+                    Log.e("result" ,"fail to get weather");
+                }
+
+                else {
+                    result = temp.text();
+
+                    Log.e("result", result);
+
+                    String str[] = result.split(",");
+
+                    if (E1.equals("span.todaytemp")) {
+                        temperature = str[0];
+                        Log.e("temperature", temperature);
+                    } else {
+                        weather = str[0];
+                        Log.e("weather", weather);
+                    }
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Element temp = doc.select(E1).first();
 
-            result = temp.text();
-
-            Log.e("result", result);
-
-            String str[] = result.split(",");
-
-            if(E1.equals("span.todaytemp")){
-                temperature = str[0];
-                Log.e("temperature", temperature);
-            }
-            else{
-                weather = str[0];
-                Log.e("weather", weather);
-            }
 
             return result;
         }

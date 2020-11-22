@@ -18,6 +18,13 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.GOEAT.Go_Eat.DataType.FoodPic;
+import com.GOEAT.Go_Eat.Server_Request.UserDB;
+import com.android.volley.Response;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,14 +37,21 @@ public class AnalysisFragment1 extends Fragment {
     ViewGroup v;
     TextView tv_recommend_info, tv_place, tv_weather, tv_temperature, tv_who, tv_emotion, tv_calorie;
     ImageView iv_weather, iv_who, iv_emotion, iv_calroie;
-    String who=" ";
+    String who=" "; //(친구, 애인 등등)
     String emotion=" ";
     String place="신촌";
     String calorie=" ";
-    String name=" ";
+    String name=" "; // 사용자이름
     String weather=" ";
     String temperature=" ";
+    String email ="";
     public SharedPreferences prefs;
+
+    //음식관련 가져와서 저장할 변수 - 염상희
+    private String[] foodSecond = new String[10];
+    private String[] foodFirst = new String[10];
+    private String[] foodKind = new String[10];
+    private FoodPic foodPic = new FoodPic();
 
 
     @Nullable
@@ -58,7 +72,6 @@ public class AnalysisFragment1 extends Fragment {
         iv_who = v.findViewById(R.id.iv_who);
         iv_emotion = v.findViewById(R.id.iv_emotion);
         iv_calroie = v.findViewById(R.id.iv_calorie);
-
 
         // name, place, emotion, calorie 받아오는 코드
 
@@ -191,7 +204,7 @@ public class AnalysisFragment1 extends Fragment {
         item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
         item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
         item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-        item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+        item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "그냥파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
         //item[4] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
 
 
@@ -215,6 +228,11 @@ public class AnalysisFragment1 extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                //스와이프한 음식 이름 가져오기 - 염상희
+                String item_title = item[viewHolder.getLayoutPosition()].getTitle();
+                String item_title2 = item[viewHolder.getAdapterPosition()].getTitle();
+
+                Log.e("item_swiped ***********", item_title + item_title2);
 
                 items.remove(viewHolder.getAdapterPosition());
                 analysisHomeRecyclerAdapter.notifyDataSetChanged();
@@ -230,5 +248,12 @@ public class AnalysisFragment1 extends Fragment {
 
 
         return v;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setEmail(String email){
+        this.email = email;
     }
 }
