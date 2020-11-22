@@ -66,13 +66,13 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         btn_1.setOnClickListener(this);
         btn_2.setOnClickListener(this);
 
-        select_place.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),location_check.class);
-                startActivity(intent);
-            }
-        });
+//        select_place.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(getApplicationContext(),location_check.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
