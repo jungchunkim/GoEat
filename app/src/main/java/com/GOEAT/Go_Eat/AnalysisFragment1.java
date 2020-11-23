@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.GOEAT.Go_Eat.DataType.FoodPic;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
+import com.GOEAT.Go_Eat.Server_Request.get_restaurantdetail;
+import com.GOEAT.Go_Eat.Server_Request.save_UserSituFlavor;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,6 +50,7 @@ public class AnalysisFragment1 extends Fragment {
     String weather=" ";
     String temperature=" ";
     String email ="";
+    UserDB userDB = new UserDB();
     public SharedPreferences prefs;
 
     //음식관련 가져와서 저장할 변수 - 염상희
@@ -233,6 +239,27 @@ public class AnalysisFragment1 extends Fragment {
                 String item_title2 = item[viewHolder.getAdapterPosition()].getTitle();
 
                 Log.e("item_swiped ***********", item_title + item_title2);
+
+                Response.Listener<String> responselistener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            System.out.println(success);
+                            if (!success.equals("true")){
+                                Log.e("AnalysisFragment1", "싫어하는 음식 저장 오류");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                };
+                //임시 데이터로 확인
+                save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email,"친구","토마토파스타",responselistener);
+                RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+                queue.add(save_UserSituFlavor);
 
                 items.remove(viewHolder.getAdapterPosition());
                 analysisHomeRecyclerAdapter.notifyDataSetChanged();
