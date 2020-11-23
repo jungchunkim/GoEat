@@ -22,12 +22,12 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="2"/>
+                android:layout_weight="1"/>
 
             <ImageView
                 android:id="@+id/iv_back"
-                android:layout_width="6dp"
-                android:layout_height="14dp"
+                android:layout_width="12dp"
+                android:layout_height="18dp"
                 android:layout_marginLeft="15dp"
                 android:layout_weight="5"
                 android:src="@drawable/arrow" />
@@ -127,11 +127,12 @@
                     android:text="날씨" />
 
                 <ImageView
+                    android:id="@+id/weather_id"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_weight="2"
-                    android:scaleType="center"
+                    android:scaleType="fitXY"
                     android:background="@drawable/fresh" />
 
                 <TextView
@@ -150,6 +151,7 @@
                     android:text="온도" />
 
                 <TextView
+                    android:id="@+id/temperature_id"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
@@ -274,6 +276,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <LinearLayout
+                        android:id="@+id/who_1"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -316,6 +319,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/who_2"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -355,6 +359,7 @@
                             android:layout_weight="0.5"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/who_3"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -394,6 +399,7 @@
                             android:layout_weight="0.5"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/who_4"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -433,6 +439,7 @@
                             android:layout_weight="0.5"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/who_5"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -512,6 +519,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <LinearLayout
+                        android:id="@+id/emo_1"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -554,6 +562,7 @@
 
 
                     <LinearLayout
+                        android:id="@+id/emo_2"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -593,6 +602,7 @@
                             android:layout_weight="0.5"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/emo_3"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -632,6 +642,7 @@
                             android:layout_weight="0.5"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/emo_4"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -671,6 +682,7 @@
                             android:layout_weight="0.5"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/emo_5"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -710,6 +722,7 @@
                             android:layout_weight="0.5"/>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/emo_6"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:weightSum="10"
@@ -787,6 +800,7 @@
                 android:layout_weight="7"
                 android:orientation="horizontal">
                 <LinearLayout
+                    android:id="@+id/cal_low"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:weightSum="10"
@@ -807,7 +821,6 @@
                         android:gravity="center"
                         >
                         <Button
-                            android:id="@+id/btn_1"
                             android:layout_width="20dp"
                             android:layout_height="50dp"
                             android:background="@drawable/low_"
@@ -832,6 +845,7 @@
                         android:layout_weight="0.5"/>
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/cal_nomatter"
                     android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:weightSum="10"
@@ -850,7 +864,6 @@
                         android:layout_gravity="center"
                         android:layout_weight="6">
                         <Button
-                            android:id="@+id/btn_2"
                             android:layout_width="60dp"
                             android:layout_height="10dp"
                             android:layout_gravity="center_vertical"
