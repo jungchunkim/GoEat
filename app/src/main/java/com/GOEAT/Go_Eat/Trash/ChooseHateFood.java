@@ -337,105 +337,105 @@ public class ChooseHateFood extends AppCompatActivity implements View.OnClickLis
     }
     // index값별로 맞는 이미지 넣어주는 부분
     private void setImage(ImageView img, int a){
-        if(a == 1){
-            Drawable drawable1 =getResources().getDrawable(R.drawable.f1);
-            img.setImageDrawable(drawable1);
-        }else if(a == 2){
-            Drawable drawable2 =getResources().getDrawable(R.drawable.f2);
-            img.setImageDrawable(drawable2);
-        }else if(a == 3){
-            Drawable drawable3 =getResources().getDrawable(R.drawable.f3);
-            img.setImageDrawable(drawable3);
-        }else if(a == 4){
-            Drawable drawable4 =getResources().getDrawable(R.drawable.f4);
-            img.setImageDrawable(drawable4);
-        }else if(a == 5){
-            Drawable drawable5 =getResources().getDrawable(R.drawable.f5);
-            img.setImageDrawable(drawable5);
-        }else if(a == 6){
-            Drawable drawable6 =getResources().getDrawable(R.drawable.f6);
-            img.setImageDrawable(drawable6);
-        }else if(a == 7){
-            Drawable drawable7 =getResources().getDrawable(R.drawable.f7);
-            img.setImageDrawable(drawable7);
-        }else if(a == 8){
-            Drawable drawable8 =getResources().getDrawable(R.drawable.f8);
-            img.setImageDrawable(drawable8);
-        }else if(a == 9){
-            Drawable drawable9 =getResources().getDrawable(R.drawable.f9);
-            img.setImageDrawable(drawable9);
-        }else if(a == 10){
-            Drawable drawable10 =getResources().getDrawable(R.drawable.f10);
-            img.setImageDrawable(drawable10);
-        }else if(a == 11){
-            Drawable drawable11 =getResources().getDrawable(R.drawable.f11);
-            img.setImageDrawable(drawable11);
-        }else if(a == 12){
-            Drawable drawable12 =getResources().getDrawable(R.drawable.f12);
-            img.setImageDrawable(drawable12);
-        }else if(a == 13){
-            Drawable drawable13 =getResources().getDrawable(R.drawable.f13);
-            img.setImageDrawable(drawable13);
-        }else if(a == 14){
-            Drawable drawable14 =getResources().getDrawable(R.drawable.f14);
-            img.setImageDrawable(drawable14);
-        }else if(a == 15){
-            Drawable drawable15 =getResources().getDrawable(R.drawable.f15);
-            img.setImageDrawable(drawable15);
-        }else if(a == 16){
-            Drawable drawable16 =getResources().getDrawable(R.drawable.f16);
-            img.setImageDrawable(drawable16);
-        }else if(a == 17){
-            Drawable drawable17 =getResources().getDrawable(R.drawable.f17);
-            img.setImageDrawable(drawable17);
-        }else if(a == 18){
-            Drawable drawable18 =getResources().getDrawable(R.drawable.f18);
-            img.setImageDrawable(drawable18);
-        }else if(a == 19){
-            Drawable drawable19 =getResources().getDrawable(R.drawable.f19);
-            img.setImageDrawable(drawable19);
-        }else if(a == 20){
-            Drawable drawable20 =getResources().getDrawable(R.drawable.f20);
-            img.setImageDrawable(drawable20);
-        }else if(a == 21){
-            Drawable drawable21 =getResources().getDrawable(R.drawable.f21);
-            img.setImageDrawable(drawable21);
-        }else if(a == 22){
-            Drawable drawable22 =getResources().getDrawable(R.drawable.f22);
-            img.setImageDrawable(drawable22);
-        }else if(a == 23){
-            Drawable drawable23 =getResources().getDrawable(R.drawable.f23);
-            img.setImageDrawable(drawable23);
-        }else if(a == 24){
-            Drawable drawable24 =getResources().getDrawable(R.drawable.f24);
-            img.setImageDrawable(drawable24);
-        }else if(a == 25){
-            Drawable drawable25 =getResources().getDrawable(R.drawable.f25);
-            img.setImageDrawable(drawable25);
-        }else if(a == 26){
-            Drawable drawable26 =getResources().getDrawable(R.drawable.f26);
-            img.setImageDrawable(drawable26);
-        }else if(a == 27){
-            Drawable drawable27 =getResources().getDrawable(R.drawable.f27);
-            img.setImageDrawable(drawable27);
-        }else if(a == 28){
-            Drawable drawable28 =getResources().getDrawable(R.drawable.f28);
-            img.setImageDrawable(drawable28);
-        }else if(a == 29){
-            Drawable drawable29 =getResources().getDrawable(R.drawable.f29);
-            img.setImageDrawable(drawable29);
-        }else if(a == 30){
-            Drawable drawable30 =getResources().getDrawable(R.drawable.f30);
-            img.setImageDrawable(drawable30);
-        }else if(a == 31){
-            Drawable drawable31 =getResources().getDrawable(R.drawable.f31);
-            img.setImageDrawable(drawable31);
-        }else if(a == 32){
-            Drawable drawable32 =getResources().getDrawable(R.drawable.f32);
-            img.setImageDrawable(drawable32);
-        }else {
-            Drawable drawable33 =getResources().getDrawable(R.drawable.f33);
-            img.setImageDrawable(drawable33);
-        }
+//        if(a == 1){
+//            Drawable drawable1 =getResources().getDrawable(R.drawable.f1);
+//            img.setImageDrawable(drawable1);
+//        }else if(a == 2){
+//            Drawable drawable2 =getResources().getDrawable(R.drawable.f2);
+//            img.setImageDrawable(drawable2);
+//        }else if(a == 3){
+//            Drawable drawable3 =getResources().getDrawable(R.drawable.f3);
+//            img.setImageDrawable(drawable3);
+//        }else if(a == 4){
+//            Drawable drawable4 =getResources().getDrawable(R.drawable.f4);
+//            img.setImageDrawable(drawable4);
+//        }else if(a == 5){
+//            Drawable drawable5 =getResources().getDrawable(R.drawable.f5);
+//            img.setImageDrawable(drawable5);
+//        }else if(a == 6){
+//            Drawable drawable6 =getResources().getDrawable(R.drawable.f6);
+//            img.setImageDrawable(drawable6);
+//        }else if(a == 7){
+//            Drawable drawable7 =getResources().getDrawable(R.drawable.f7);
+//            img.setImageDrawable(drawable7);
+//        }else if(a == 8){
+//            Drawable drawable8 =getResources().getDrawable(R.drawable.f8);
+//            img.setImageDrawable(drawable8);
+//        }else if(a == 9){
+//            Drawable drawable9 =getResources().getDrawable(R.drawable.f9);
+//            img.setImageDrawable(drawable9);
+//        }else if(a == 10){
+//            Drawable drawable10 =getResources().getDrawable(R.drawable.f10);
+//            img.setImageDrawable(drawable10);
+//        }else if(a == 11){
+//            Drawable drawable11 =getResources().getDrawable(R.drawable.f11);
+//            img.setImageDrawable(drawable11);
+//        }else if(a == 12){
+//            Drawable drawable12 =getResources().getDrawable(R.drawable.f12);
+//            img.setImageDrawable(drawable12);
+//        }else if(a == 13){
+//            Drawable drawable13 =getResources().getDrawable(R.drawable.f13);
+//            img.setImageDrawable(drawable13);
+//        }else if(a == 14){
+//            Drawable drawable14 =getResources().getDrawable(R.drawable.f14);
+//            img.setImageDrawable(drawable14);
+//        }else if(a == 15){
+//            Drawable drawable15 =getResources().getDrawable(R.drawable.f15);
+//            img.setImageDrawable(drawable15);
+//        }else if(a == 16){
+//            Drawable drawable16 =getResources().getDrawable(R.drawable.f16);
+//            img.setImageDrawable(drawable16);
+//        }else if(a == 17){
+//            Drawable drawable17 =getResources().getDrawable(R.drawable.f17);
+//            img.setImageDrawable(drawable17);
+//        }else if(a == 18){
+//            Drawable drawable18 =getResources().getDrawable(R.drawable.f18);
+//            img.setImageDrawable(drawable18);
+//        }else if(a == 19){
+//            Drawable drawable19 =getResources().getDrawable(R.drawable.f19);
+//            img.setImageDrawable(drawable19);
+//        }else if(a == 20){
+//            Drawable drawable20 =getResources().getDrawable(R.drawable.f20);
+//            img.setImageDrawable(drawable20);
+//        }else if(a == 21){
+//            Drawable drawable21 =getResources().getDrawable(R.drawable.f21);
+//            img.setImageDrawable(drawable21);
+//        }else if(a == 22){
+//            Drawable drawable22 =getResources().getDrawable(R.drawable.f22);
+//            img.setImageDrawable(drawable22);
+//        }else if(a == 23){
+//            Drawable drawable23 =getResources().getDrawable(R.drawable.f23);
+//            img.setImageDrawable(drawable23);
+//        }else if(a == 24){
+//            Drawable drawable24 =getResources().getDrawable(R.drawable.f24);
+//            img.setImageDrawable(drawable24);
+//        }else if(a == 25){
+//            Drawable drawable25 =getResources().getDrawable(R.drawable.f25);
+//            img.setImageDrawable(drawable25);
+//        }else if(a == 26){
+//            Drawable drawable26 =getResources().getDrawable(R.drawable.f26);
+//            img.setImageDrawable(drawable26);
+//        }else if(a == 27){
+//            Drawable drawable27 =getResources().getDrawable(R.drawable.f27);
+//            img.setImageDrawable(drawable27);
+//        }else if(a == 28){
+//            Drawable drawable28 =getResources().getDrawable(R.drawable.f28);
+//            img.setImageDrawable(drawable28);
+//        }else if(a == 29){
+//            Drawable drawable29 =getResources().getDrawable(R.drawable.f29);
+//            img.setImageDrawable(drawable29);
+//        }else if(a == 30){
+//            Drawable drawable30 =getResources().getDrawable(R.drawable.f30);
+//            img.setImageDrawable(drawable30);
+//        }else if(a == 31){
+//            Drawable drawable31 =getResources().getDrawable(R.drawable.f31);
+//            img.setImageDrawable(drawable31);
+//        }else if(a == 32){
+//            Drawable drawable32 =getResources().getDrawable(R.drawable.f32);
+//            img.setImageDrawable(drawable32);
+//        }else {
+//            Drawable drawable33 =getResources().getDrawable(R.drawable.f33);
+//            img.setImageDrawable(drawable33);
+//        }
     }
 }
