@@ -112,6 +112,37 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                     //famousRecommend(order); //신촌 음식 추천
                     //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
                     fragment1.setFood(foodFirst, foodSecond, foodKind, foodPic, list);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,fragment1).commitAllowingStateLoss();
+                    bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                            switch (item.getItemId()){
+                                case R.id.tab1:{
+                                    getSupportFragmentManager().beginTransaction()
+                                            .replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
+                                    return true;
+                                }
+
+                                case R.id.tab2:{
+                                    getSupportFragmentManager().beginTransaction()
+                                            .replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
+                                    return true;
+                                }
+
+                                case R.id.tab3:{
+                                    getSupportFragmentManager().beginTransaction()
+                                            .replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
+                                    return true;
+                                }
+                                default: return false;
+                            }
+
+                        }
+                    });
+
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -121,39 +152,39 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         userDB.setFlavorFoodList(email,calo,responselistener2,AnalysisHomeRealActivity.this);
 
 
-        // 제일 처음 띄울 뷰 세팅
-        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,fragment1).commitAllowingStateLoss();
-
-        // 아이콘 선택했을떄 원하는 fragment띄워질 수 있도록 리스너 추가
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-                    case R.id.tab1:{
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
-                        return true;
-                    }
-
-                    case R.id.tab2:{
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
-                        return true;
-                    }
-
-                    case R.id.tab3:{
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
-                        return true;
-                    }
-                    default: return false;
-                }
-
-            }
-        });
-
-
+//        // 제일 처음 띄울 뷰 세팅
+//        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,fragment1).commitAllowingStateLoss();
+//
+//        // 아이콘 선택했을떄 원하는 fragment띄워질 수 있도록 리스너 추가
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId()){
+//                    case R.id.tab1:{
+//                        getSupportFragmentManager().beginTransaction()
+//                                .replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
+//                        return true;
+//                    }
+//
+//                    case R.id.tab2:{
+//                        getSupportFragmentManager().beginTransaction()
+//                                .replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
+//                        return true;
+//                    }
+//
+//                    case R.id.tab3:{
+//                        getSupportFragmentManager().beginTransaction()
+//                                .replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
+//                        return true;
+//                    }
+//                    default: return false;
+//                }
+//
+//            }
+//        });
+//
+//
         // 앱 첫 실행때만 Gudie 띄우기
         prefs = getSharedPreferences("Pref", MODE_PRIVATE);
         boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
