@@ -145,6 +145,9 @@ public class Fragment_home_after_1 extends Fragment {
                                                     intent.putExtra("restaurant_link", jsonObject.getString("restaurant_link"));
                                                     intent.putExtra("deliver", jsonObject.getString("deliver"));
 
+                                                    intent.putExtra("menulist", jsonObject.getString("menulist"));
+                                                    intent.putExtra("pricelist", jsonObject.getString("pricelist"));
+
                                                     String []tokensmenu = jsonObject.getString("menulist").split(", ");
                                                     Log.d("menulist",jsonObject.getString("menulist"));
 

@@ -215,14 +215,14 @@ public class AnalysisFragment1 extends Fragment {
         final AnalysisItem[] item = new AnalysisItem[ITEM_SIZE];
         //Log.d("foodArray", foodFirst[list.get(0)] + foodFirst.toString());
         //오류부분
-        item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-        item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-        item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-        item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-//          item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-//          item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-//          item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-//          item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+//        item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+//        item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+//        item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+//        item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+          item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+          item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+          item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+          item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
 
 
         //recyclerView.scrollToPosition(items.size() - 1);

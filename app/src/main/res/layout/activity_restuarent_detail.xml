@@ -209,6 +209,7 @@
 
             <!-- 흰색부분으로 된 곳 정보 -->
             <LinearLayout
+                android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -235,6 +236,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
+                        android:textSize="12dp"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
@@ -260,6 +262,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
+                        android:textSize="12dp"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
@@ -284,6 +287,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
+                        android:textSize="12dp"
                         android:fontFamily="@font/pureunjeonnam"
                         android:gravity="center_vertical"
                         android:text=""/>
@@ -308,6 +312,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
+                        android:textSize="12dp"
                         android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
@@ -318,6 +323,7 @@
                     android:layout_height="20dp"/>
 
                 <LinearLayout
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -325,15 +331,20 @@
                     <TextView
                         android:id="@+id/text_food"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="30dp"
+                        android:ellipsize="end"
+                        android:textSize="12dp"
                         android:fontFamily="@font/pureunjeonnam"
                         android:text=""/>
-                    <TextView
+                    <Button
+                        android:id="@+id/View_more"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:textColor="#1E1E1E"
-                        android:layout_marginBottom="15dp"
+                        android:background="#00ff0000"
+                        android:gravity="left"
                         android:fontFamily="@font/pureunjeonnambold"
+                        android:textSize="12dp"
                         android:text="더보기>"/>
                 </LinearLayout>
 
@@ -398,6 +409,7 @@
                     android:fontFamily="@font/pureunjeonnambold"
                     android:text="대표 메뉴"/>
                 <Button
+                    android:id="@+id/show_all_menu"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="9"
@@ -412,7 +424,7 @@
             <!-- 음식 버튼 만들기 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="140dp"
                 android:paddingLeft="8dp"
                 android:paddingBottom="8dp"
                 android:paddingRight="8dp"
@@ -475,8 +487,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
                 android:weightSum="4">
@@ -533,8 +545,8 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="15dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
                 android:weightSum="4">

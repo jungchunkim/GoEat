@@ -22,6 +22,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,9 +56,9 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
     int number = 0;
     TextView food_name_1, food_name_2, star_pt, phone_num, position_num, price_num, text_food, restaurant_txt_1, food_price_1, restaurant_txt_2, food_price_2, restaurant_txt_3, food_price_3, map_address;
     ImageView restaurant_img_1, restaurant_img_2, restaurant_img_3;
-    String restaurant_name, FirstFood, AssociateFood;
+    String restaurant_name, FirstFood, AssociateFood,menulist,pricelist;
     String restaurant_main_image;
-    Button bt_phone_num,naver_order;
+    Button bt_phone_num,naver_order,View_more,show_all_menu;
     private MapView mapView;
 
     @Override
@@ -83,6 +85,8 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         restaurant_img_3 = (ImageView) findViewById(R.id.restaurant_img_3);
         naver_order = (Button) findViewById(R.id.naver_order);
         bt_phone_num = (Button) findViewById(R.id.bt_phone_num);
+        View_more =  (Button) findViewById(R.id.View_more);
+        show_all_menu = (Button) findViewById(R.id.show_all_menu);
         final Intent intent = getIntent();
 
         mapView = findViewById(R.id.map_view);
@@ -107,22 +111,31 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         restaurant_txt_3.setText(intent.getExtras().getString("restaurant_txt_3"));
         food_price_3.setText(intent.getExtras().getString("food_price_3"));
         restaurant_main_image = intent.getExtras().getString("imageview1");
+        menulist = intent.getExtras().getString("menulist");
+        pricelist = intent.getExtras().getString("pricelist");
+
+        Log.d("restaurant_img_1",intent.getExtras().getString("restaurant_img_1"));
+        Log.d("restaurant_img_2",intent.getExtras().getString("restaurant_img_2"));
+        Log.d("restaurant_img_3",intent.getExtras().getString("restaurant_img_3"));
         try {
             Picasso.get().load(intent.getExtras().getString("restaurant_img_1")).error(R.drawable.go).into(restaurant_img_1);
 
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
+            restaurant_img_1.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
             Picasso.get().load(intent.getExtras().getString("restaurant_img_2")).error(R.drawable.go).into(restaurant_img_2);
 
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
+            restaurant_img_2.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
             Picasso.get().load(intent.getExtras().getString("restaurant_img_3")).error(R.drawable.go).into(restaurant_img_3);
 
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
+            restaurant_img_3.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
 //        Picasso.get().load(intent.getExtras().getString("restaurant_img_1")).error(R.drawable.go).into(restaurant_img_1);
@@ -149,14 +162,52 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         naver_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //네이버 주문클릭시 사이트 이동
                 Intent intent1 = new Intent(Intent.ACTION_VIEW,Uri.parse(intent.getExtras().getString("restaurant_link")));
                 startActivity(intent1);
             }
         });
-
-        bt_phone_num.setOnClickListener(new View.OnClickListener() {
+        show_all_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //메뉴 더보기 클릭시 화면 전환
+                Intent intent2 = new Intent(getApplicationContext(), menu_detail_list.class);
+                intent2.putExtra("menulist",menulist);
+                intent2.putExtra("pricelist",pricelist);
+                intent2.putExtra("restaurant_name",restaurant_name);
+                startActivity(intent2);
+            }
+        });
+        View_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { // 더보기 클릭시 확인하여 음식점 설명 레이아웃 크기 증가
+                if (text_food.getLayout() != null) {
+                    if(text_food.getLayout().getEllipsisCount(text_food.getLineCount()-1) > 0){
+                        LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
+                        LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT, linearLayout2.getHeight());
+                        int d = 90;
+                        float mScale = getResources().getDisplayMetrics().density;
+                        int calHeight = (int)(d*mScale);
+                        params1.height = calHeight;
+                        linearLayout2.setLayoutParams(params1);
+
+                        LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(
+
+                                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+                        d = 60;
+                        mScale = getResources().getDisplayMetrics().density;
+                        calHeight = (int)(d*mScale);
+                        params2.height = calHeight;
+                        text_food.setLayoutParams(params2);
+                    }
+                }
+
+            }
+        });
+        bt_phone_num.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { //전화 걸기
                 Intent intent1 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + intent.getExtras().getString("phone_num")));
                 startActivity(intent1);
             }
