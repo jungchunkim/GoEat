@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.GOEAT.Go_Eat">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -23,11 +24,9 @@
         <activity android:name=".AnalysisHomeRealActivity" />
         <activity android:name=".restuarent_detail" />
         <activity android:name=".Analysis_home_after" />
-        <activity android:name=".Analysis_home_after_1" />
         <activity android:name=".LinkSnsActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".location_check" />
-        <activity android:name="com.example.testexam.location_check" />
         <activity android:name=".investigation_page" />
         <activity android:name=".AnalysisHomeActivity" />
         <activity android:name=".before_emotion_check" />
@@ -44,22 +43,9 @@
         <activity android:name=".EmailAuthNumberActivity" />
         <activity android:name=".FindEmailActivity" />
         <activity android:name=".MainActivity_after" />
-        <activity android:name=".UserAnalyzeEnd" />
-        <activity android:name=".UserAnalyzeStart" />
-        <activity android:name=".reset_password" />
-        <activity android:name=".success_sign_up" />
-        <activity android:name=".register_activity" />
+
         <activity android:name=".login_activity" />
-        <activity android:name=".hello2" />
-        <activity android:name=".register_select" />
-        <activity android:name=".hello" />
-        <activity android:name=".start3nd" />
-        <activity android:name=".start2nd" />
-        <activity android:name=".ChooseHateFood" />
-        <activity android:name=".CheckUserTasteSecond" />
-        <activity android:name=".CheckUserTasteFirst" />
-        <activity android:name=".CheckUserTaste" />
-        <activity android:name=".MakeCharCompleteActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

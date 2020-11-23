@@ -2,7 +2,9 @@ package com.GOEAT.Go_Eat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +14,19 @@ import android.view.MenuItem;
 
 import com.GOEAT.Go_Eat.DataType.FoodPic;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
-import com.GOEAT.Go_Eat.Server_Request.setFlavorFoodList;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import eu.long1.spacetablayout.SpaceTabLayout;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,7 +44,10 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     AnalysisFragment2 fragment2;
     AnalysisFragment3 fragment3;
     public SharedPreferences prefs;
-
+    MeowBottomNavigation meo;
+    private final static int ID_HOME=1;
+    private final static int ID_GO=2;
+    private final static int ID_MYPAGE=3;
 
     private String[] foodSecond = new String[10];
     private String[] foodFirst = new String[10];
@@ -47,6 +60,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_home_real);
 
+
         //조사홈에서 정보 가져오기 - 염상희
         Intent intent = getIntent();
         String calo = intent.getExtras().getString("calo");
@@ -56,8 +70,6 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
 
         System.out.println(calo + loc+ who + emo);
 
-        //민영
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
         fragment1 = new AnalysisFragment1();
         fragment2 = new AnalysisFragment2();
@@ -112,35 +124,6 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                     //famousRecommend(order); //신촌 음식 추천
                     //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
                     fragment1.setFood(foodFirst, foodSecond, foodKind, foodPic, list);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,fragment1).commitAllowingStateLoss();
-                    bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-                        @Override
-                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                            switch (item.getItemId()){
-                                case R.id.tab1:{
-                                    getSupportFragmentManager().beginTransaction()
-                                            .replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
-                                    return true;
-                                }
-
-                                case R.id.tab2:{
-                                    getSupportFragmentManager().beginTransaction()
-                                            .replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
-                                    return true;
-                                }
-
-                                case R.id.tab3:{
-                                    getSupportFragmentManager().beginTransaction()
-                                            .replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
-                                    return true;
-                                }
-                                default: return false;
-                            }
-
-                        }
-                    });
-
 
 
                 } catch (JSONException e) {
@@ -152,47 +135,54 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         userDB.setFlavorFoodList(email,calo,responselistener2,AnalysisHomeRealActivity.this);
 
 
-//        // 제일 처음 띄울 뷰 세팅
-//        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout,fragment1).commitAllowingStateLoss();
-//
-//        // 아이콘 선택했을떄 원하는 fragment띄워질 수 있도록 리스너 추가
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                switch (item.getItemId()){
-//                    case R.id.tab1:{
-//                        getSupportFragmentManager().beginTransaction()
-//                                .replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
-//                        return true;
-//                    }
-//
-//                    case R.id.tab2:{
-//                        getSupportFragmentManager().beginTransaction()
-//                                .replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
-//                        return true;
-//                    }
-//
-//                    case R.id.tab3:{
-//                        getSupportFragmentManager().beginTransaction()
-//                                .replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
-//                        return true;
-//                    }
-//                    default: return false;
-//                }
-//
-//            }
-//        });
 //
 //
         // 앱 첫 실행때만 Gudie 띄우기
-        prefs = getSharedPreferences("Pref", MODE_PRIVATE);
-        boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
-        if(isFirstRun){
+        SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
+        boolean first = pref.getBoolean("isFirst", false);
+        if(first==false){
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("isFirst",true);
+            editor.commit();
+            //앱 최초 실행시 하고 싶은 작업
             Intent intent2 = new Intent(getApplicationContext(), AnalysishomeGuideActivity.class);
             startActivity(intent2);
-            prefs.edit().putBoolean("isFirstRun", false).apply();
         }
+
+        meo=findViewById(R.id.bottom_nav);
+        meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
+        meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
+        meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AnalysisFragment1()).commit();
+
+        meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        meo.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                Fragment select_fragment = null;
+                switch (item.getId()){
+                    case ID_HOME:
+                        select_fragment = fragment1;
+                        break;
+                    case ID_GO:
+                        select_fragment = fragment2;
+                        break;
+                    case ID_MYPAGE:
+                        select_fragment = fragment3;
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
+            }
+        });
+
+
+
     }
 
     public List<Integer> ShuffleOrder(){

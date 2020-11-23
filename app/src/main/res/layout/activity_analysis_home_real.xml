@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.GOEAT.Go_Eat.AnalysisHomeRealActivity"
-    android:orientation="vertical">
+    >
 
-    <FrameLayout
-        android:id="@+id/main_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize"/>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
+    android:layout_marginBottom="55dp"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_gravity="bottom"
-        android:background="@color/black"
-        app:menu="@menu/menu_bottom"
-        app:labelVisibilityMode="unlabeled"
-        app:itemIconTint="@drawable/item_color"
-        app:itemTextColor="@drawable/item_color"
+        android:id="@+id/bottom_nav"
+        android:layout_alignParentBottom="true"
+        app:mbn_backgroundBottomColor="#ffffff"
+        app:mbn_countBackgroundColor="#ff6f66"
+        app:mbn_defaultIconColor="#99000000"
+        app:mbn_selectedIconColor="#FFFFFF"
+        app:mbn_circleColor="@color/mainPink"
         />
-
-
-</com.google.android.material.circularreveal.coordinatorlayout.CircularRevealCoordinatorLayout>
+</RelativeLayout>
