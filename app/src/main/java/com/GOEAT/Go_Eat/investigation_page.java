@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +32,19 @@ import java.io.IOException;
 public class investigation_page extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAnalytics mFirebaseAnalytics;
-    Button btn_1,btn_2,btn_next,select_place; //btn_1 : 칼로리 낮은, btn_2: 칼로리 상관없는
+    Button btn_next; //btn_next: 다음으로 이동
+    Button loc1,loc2;         //loc1 : 건대, loc2 : 신촌
+    LinearLayout cal_low,cal_nomatter;  //칼로리 낮은 경우, 칼로리 상관없는 경우
+    LinearLayout who_1,who_2,who_3,who_4,who_5; // 혼자, 애인,친구,회식, 가족 변수
+    LinearLayout emo_1, emo_2,emo_3,emo_4,emo_5,emo_6; // 설레는 축하하는 우울한 평범한 스트레스 행복한
+    TextView temperature_id;    //온도 화면에 표시
+    ImageView weather_id;       //어떤 계절인지 화면에 표시
     private int[] clickCheck = new int[2];
+    private int[] clickCheck_1 = new int[5];
+    private int[] clickCheck_2 = new int[2];
+    private int[] clickCheck_3 = new int[6];
+    private int reference=0;
+    private int reference_1=0;
     ImageView iv_back;
     private UserDB userDB = new UserDB();
     String email;
@@ -50,21 +62,55 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         //select_place=findViewById(R.id.select_place);
-        btn_1=findViewById(R.id.btn_1);
-        btn_2=findViewById(R.id.btn_2);
-        iv_back = findViewById(R.id.iv_back);
-        btn_next=findViewById(R.id.btn_next);
+        cal_low=(LinearLayout)findViewById(R.id.cal_low);   //칼로리 낮은 경우
+        cal_nomatter=(LinearLayout)findViewById(R.id.cal_nomatter); //칼로리 상관없이
+        loc1=findViewById(R.id.loc1);           // 건대 버튼
+        loc2=findViewById(R.id.loc2);           // 신촌 버튼
+        iv_back = findViewById(R.id.iv_back);   //뒤로가기 버튼
+        btn_next=findViewById(R.id.btn_next);   //다음으로 버튼
+        who_1=(LinearLayout)findViewById(R.id.who_1);   //혼자
+        who_2=(LinearLayout)findViewById(R.id.who_2);   //애인
+        who_3=(LinearLayout)findViewById(R.id.who_3);   //친구
+        who_4=(LinearLayout)findViewById(R.id.who_4);   //회식
+        who_5=(LinearLayout)findViewById(R.id.who_5);   //가족
+        emo_1=(LinearLayout)findViewById(R.id.emo_1);   //설레는
+        emo_2=(LinearLayout)findViewById(R.id.emo_2);   //축하하는
+        emo_3=(LinearLayout)findViewById(R.id.emo_3);   //우울한
+        emo_4=(LinearLayout)findViewById(R.id.emo_4);   //평범한
+        emo_5=(LinearLayout)findViewById(R.id.emo_5);   //스트레스
+        emo_6=(LinearLayout)findViewById(R.id.emo_6);   //행복한한
+        temperature_id=findViewById(R.id.temperature_id); // 몇 도 인지?
+        weather_id =findViewById(R.id.weather_id);  //어떤 계절인지 ?
 
         sharedPreferences = getSharedPreferences("location",MODE_PRIVATE);
         prefs = getSharedPreferences("goeat",MODE_PRIVATE);
         editor = prefs.edit();
         //select_place.setText(sharedPreferences.getString("loc",""));
         // clickCheck[] 초기화
-        clickCheck[0]=1;
-        clickCheck[1]=1;
+        for(int i=0;i<2;i++)
+            clickCheck[i]=1;    // 칼로리 관련
+        for(int i=0;i<5;i++)
+            clickCheck_1[i]=1;  //누구랑 먹는지? 관련
+        for(int i=0;i<2;i++)
+            clickCheck_2[i]=1;  // 위치 관련
+        for(int i=0;i<6;i++)
+            clickCheck_3[i]=1;  // 오늘의 감정? 관련
 
-        btn_1.setOnClickListener(this);
-        btn_2.setOnClickListener(this);
+        cal_low.setOnClickListener(this);
+        cal_nomatter.setOnClickListener(this);
+        who_1.setOnClickListener(this);
+        who_2.setOnClickListener(this);
+        who_3.setOnClickListener(this);
+        who_4.setOnClickListener(this);
+        who_5.setOnClickListener(this);
+        loc1.setOnClickListener(this);
+        loc2.setOnClickListener(this);
+        emo_1.setOnClickListener(this);
+        emo_2.setOnClickListener(this);
+        emo_3.setOnClickListener(this);
+        emo_4.setOnClickListener(this);
+        emo_5.setOnClickListener(this);
+        emo_6.setOnClickListener(this);
 
 //        select_place.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -120,7 +166,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
               //  System.out.println(select_place.getText().toString()+"---------"+(String) spinner_who.getSelectedItem());
 //                editor.putString("location",select_place.getText().toString());
              //   editor.putString("companion",(String) spinner_who.getSelectedItem());
-                editor.commit();
+//                editor.commit();
                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
                 if(clickCheck[0]==1)
                     intent.putExtra("calo","high");
@@ -133,43 +179,277 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         });
     }
 
+
     public void onClick(View view){
         switch(view.getId())
         {
-            case R.id.btn_1:
+            // loc1, loc2 -> 건대 신촌인 경우
+            case R.id.loc1:
+                if(clickCheck_2[1]==-1)
+                {
+                    clickCheck_2[1]=1;
+                    reChangeBtnBackground(loc2);
+                    changeBtnBackground(loc1);
+                    clickCheck_2[0]=-1;
+                }
+                else{
+                    if (clickCheck_2[0] == 1) {
+                        changeBtnBackground(loc1);
+                        clickCheck_2[0] = -1;
+                    } else {
+                        reChangeBtnBackground(loc1);
+                        clickCheck_2[0] = 1;
+                    }
+                }
+                break;
+            case R.id.loc2:
+                if(clickCheck_2[0]==-1)
+                {   //두 개 골랐을 때
+                    clickCheck_2[0]=1;
+                    reChangeBtnBackground(loc1);
+                    changeBtnBackground(loc2);
+                    clickCheck_2[1]=-1;
+                }
+                else{
+                    if (clickCheck_2[1] == 1) {
+                        changeBtnBackground(loc2);
+                        clickCheck_2[1] = -1;
+                    } else {
+                        reChangeBtnBackground(loc2);
+                        clickCheck_2[1] = 1;
+                    }
+                }
+                break;
+            //칼로리 낮은, 상관없는 경우
+            case R.id.cal_low:
                 if(clickCheck[1]==-1)
                 {
                     clickCheck[1]=1;
-                    reChangeBtnBackground(btn_2);
-                    changeBtnBackground(btn_1);
+                    reChangeBtnBackground(cal_nomatter);
+                    changeBtnBackground(cal_low);
                     clickCheck[0]=-1;
                 }
                 else{
                     if (clickCheck[0] == 1) {
-                        changeBtnBackground(btn_1);
+                        changeBtnBackground(cal_low);
                         clickCheck[0] = -1;
                     } else {
-                        reChangeBtnBackground(btn_1);
+                        reChangeBtnBackground(cal_low);
                         clickCheck[0] = 1;
                     }
                 }
                 break;
-            case R.id.btn_2:
+            case R.id.cal_nomatter:
                 if(clickCheck[0]==-1)
                 {   //두 개 골랐을 때
                     clickCheck[0]=1;
-                    reChangeBtnBackground(btn_1);
-                    changeBtnBackground(btn_2);
+                    reChangeBtnBackground(cal_low);
+                    changeBtnBackground(cal_nomatter);
                     clickCheck[1]=-1;
                 }
                 else{
                     if (clickCheck[1] == 1) {
-                        changeBtnBackground(btn_2);
+                        changeBtnBackground(cal_nomatter);
                         clickCheck[1] = -1;
                     } else {
-                        reChangeBtnBackground(btn_2);
+                        reChangeBtnBackground(cal_nomatter);
                         clickCheck[1] = 1;
                     }
+                }
+                break;
+            case R.id.who_1:
+                //혼자 버튼이 클릭됐을 때
+                if(reference==1)
+                {
+                    if(clickCheck_1[0]==-1)
+                    {//예전에 클릭 된 것이 혼자 버튼 일때
+                        reChangeBtnBackground(who_1);
+                        reference=0;
+                        clickCheck_1[0]=1;
+                    }
+                }
+                else
+                {
+                    reference=1;
+                    changeBtnBackground(who_1);
+                    clickCheck_1[0]=-1;
+                }
+                break;
+            case R.id.who_2:
+                //애인 버튼이 클릭됐을 때
+                if(reference==1)
+                {
+                    if(clickCheck_1[1]==-1)
+                    {//예전에 클릭 된 것이 애인 버튼 일때
+                        reChangeBtnBackground(who_2);
+                        reference=0;
+                        clickCheck_1[1]=1;
+                    }
+                }
+                else
+                {
+                    reference=1;
+                    changeBtnBackground(who_2);
+                    clickCheck_1[1]=-1;
+                }
+                break;
+            case R.id.who_3:
+                //친구 버튼이 클릭됐을 때
+                if(reference==1)
+                {
+                    if(clickCheck_1[2]==-1)
+                    {//예전에 클릭 된 것이 친구 버튼 일때
+                        reChangeBtnBackground(who_3);
+                        reference=0;
+                        clickCheck_1[2]=1;
+                    }
+                }
+                else
+                {
+                    reference=1;
+                    changeBtnBackground(who_3);
+                    clickCheck_1[2]=-1;
+                }
+                break;
+            case R.id.who_4:
+                //회식 버튼이 클릭됐을 때
+                if(reference==1)
+                {
+                    if(clickCheck_1[3]==-1)
+                    {//예전에 클릭 된 것이 회식 버튼 일때
+                        reChangeBtnBackground(who_4);
+                        reference=0;
+                        clickCheck_1[3]=1;
+                    }
+                }
+                else
+                {
+                    reference=1;
+                    changeBtnBackground(who_4);
+                    clickCheck_1[3]=-1;
+                }
+                break;
+            case R.id.who_5:
+                //가족 버튼이 클릭됐을 때
+                if(reference==1)
+                {
+                    if(clickCheck_1[4]==-1) {//예전에 클릭 된 것이 가족 버튼 일때
+                        reChangeBtnBackground(who_5);
+                        reference = 0;
+                        clickCheck_1[4]=1;
+                    }
+                }
+                else
+                {
+                    reference=1;
+                    changeBtnBackground(who_5);
+                    clickCheck_1[4]=-1;
+                }
+                break;
+            case R.id.emo_1:
+                //설레는 버튼이 클릭됐을 때
+                if(reference_1==1)
+                {
+                    if(clickCheck_3[0]==-1)
+                    {//예전에 클릭 된 것이 설레는 버튼 일때
+                        reChangeBtnBackground(emo_1);
+                        reference_1=0;
+                        clickCheck_3[0]=1;
+                    }
+                }
+                else
+                {
+                    reference_1=1;
+                    changeBtnBackground(emo_1);
+                    clickCheck_3[0]=-1;
+                }
+                break;
+            case R.id.emo_2:
+                //축하하는 버튼이 클릭됐을 때
+                if(reference_1==1)
+                {
+                    if(clickCheck_3[1]==-1)
+                    {//예전에 클릭 된 것이 축하하는 버튼 일때
+                        reChangeBtnBackground(emo_2);
+                        reference_1=0;
+                        clickCheck_3[1]=1;
+                    }
+                }
+                else
+                {
+                    reference_1=1;
+                    changeBtnBackground(emo_2);
+                    clickCheck_3[1]=-1;
+                }
+                break;
+            case R.id.emo_3:
+                //우울한 버튼이 클릭됐을 때
+                if(reference_1==1)
+                {
+                    if(clickCheck_3[2]==-1)
+                    {//예전에 클릭 된 것이 우울한 버튼 일때
+                        reChangeBtnBackground(emo_3);
+                        reference_1=0;
+                        clickCheck_3[2]=1;
+                    }
+                }
+                else
+                {
+                    reference_1=1;
+                    changeBtnBackground(emo_3);
+                    clickCheck_3[2]=-1;
+                }
+                break;
+            case R.id.emo_4:
+                //평범한 버튼이 클릭됐을 때
+                if(reference_1==1)
+                {
+                    if(clickCheck_3[3]==-1)
+                    {//예전에 클릭 된 것이 평범한 버튼 일때
+                        reChangeBtnBackground(emo_4);
+                        reference_1=0;
+                        clickCheck_3[3]=1;
+                    }
+                }
+                else
+                {
+                    reference_1=1;
+                    changeBtnBackground(emo_4);
+                    clickCheck_3[3]=-1;
+                }
+                break;
+            case R.id.emo_5:
+                //스트레스 버튼이 클릭됐을 때
+                if(reference_1==1)
+                {
+                    if(clickCheck_3[4]==-1) {//예전에 클릭 된 것이 스트레스 버튼 일때
+                        reChangeBtnBackground(emo_5);
+                        reference_1 = 0;
+                        clickCheck_3[4]=1;
+                    }
+                }
+                else
+                {
+                    reference_1=1;
+                    changeBtnBackground(emo_5);
+                    clickCheck_3[4]=-1;
+                }
+                break;
+            case R.id.emo_6:
+                //행복한 버튼이 클릭됐을 때
+                if(reference_1==1)
+                {
+                    if(clickCheck_3[5]==-1) {//예전에 클릭 된 것이 행복한 버튼 일때
+                        reChangeBtnBackground(emo_6);
+                        reference_1 = 0;
+                        clickCheck_3[5]=1;
+                    }
+                }
+                else
+                {
+                    reference_1=1;
+                    changeBtnBackground(emo_6);
+                    clickCheck_3[5]=-1;
                 }
                 break;
         }
@@ -186,6 +466,19 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
         btn.setBackgroundResource(R.drawable.after_background);
 
     }
+
+    private void reChangeBtnBackground(LinearLayout btn) {
+
+        btn.setBackgroundResource(R.drawable.shadow_button);
+
+
+    }
+
+    private void changeBtnBackground(LinearLayout btn) {
+        btn.setBackgroundResource(R.drawable.after_background);
+
+    }
+
 
     class WeatherAsynTask extends AsyncTask<String, Void, String> {
 
@@ -215,6 +508,8 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                     if (E1.equals("span.todaytemp")) {
                         temperature = str[0];
                         Log.e("temperature", temperature);
+                        //2020-11-23 김정천 몇 도 인지 화면에 출력
+                        temperature_id.setText(temperature+"도");
                     } else {
                         weather = str[0];
                         Log.e("weather", weather);
