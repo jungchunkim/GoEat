@@ -23,14 +23,19 @@ import com.GOEAT.Go_Eat.DataType.FoodPic;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.GOEAT.Go_Eat.Server_Request.get_restaurantdetail;
 import com.GOEAT.Go_Eat.Server_Request.save_UserSituFlavor;
+import com.GOEAT.Go_Eat.Server_Request.setFlavorFoodList;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -58,7 +63,8 @@ public class AnalysisFragment1 extends Fragment {
     private String[] foodFirst = new String[10];
     private String[] foodKind = new String[10];
     private FoodPic foodPic = new FoodPic();
-
+    public List<Integer> list = new ArrayList<>();
+    int item_cnt = 0;
 
     @Nullable
     @Override
@@ -80,6 +86,7 @@ public class AnalysisFragment1 extends Fragment {
         iv_calroie = v.findViewById(R.id.iv_calorie);
 
         // name, place, emotion, calorie 받아오는 코드
+
 
 
         // 위치 설정
@@ -187,11 +194,11 @@ public class AnalysisFragment1 extends Fragment {
 
         // 칼로리 설정
         switch (calorie){
-            case "낮게":
+            case "low":
                 iv_calroie.setImageResource(R.drawable.analysishome_lowcal);
                 tv_calorie.setText("칼로리 낮게");
                 break;
-            case "상관없이":
+            case "high":
                 iv_calroie.setImageResource(R.drawable.analysishome_cal);
                 tv_calorie.setText("칼로리 무관");
                 break;
@@ -207,11 +214,15 @@ public class AnalysisFragment1 extends Fragment {
         final List<AnalysisItem> items = new ArrayList<>();
         final AnalysisItem[] item = new AnalysisItem[ITEM_SIZE];
         //Log.d("foodArray", foodFirst[list.get(0)] + foodFirst.toString());
-        item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-        item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-        item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-        item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "그냥파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-        //item[4] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+        //오류부분
+//        item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+//        item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+//        item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+//        item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
+          item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+          item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+          item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+          item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
@@ -256,8 +267,8 @@ public class AnalysisFragment1 extends Fragment {
 
                     }
                 };
-                //임시 데이터로 확인
-                save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email,"친구","토마토파스타",responselistener);
+                //임시 데이터로 확인-염상희
+                save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email,who,"토마토파스타",responselistener);
                 RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
                 queue.add(save_UserSituFlavor);
 
@@ -265,8 +276,11 @@ public class AnalysisFragment1 extends Fragment {
                 analysisHomeRecyclerAdapter.notifyDataSetChanged();
 
                 //새로운 음식 추천
-                items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "그냥파스타(새로추천)", "양식 > 파스타", "11개 음식점, 8000원부터"));
-
+                if(item_cnt<10) {
+                    //오류
+//                    items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터"));
+                    items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "추가한 음식","양식>파스타", "11개 음식점, 8000원부터"));
+                }
             }
         };
 
@@ -283,4 +297,22 @@ public class AnalysisFragment1 extends Fragment {
     public void setEmail(String email){
         this.email = email;
     }
+    public void setSitu(String loc, String who, String emo, String calo){
+        this.place = loc;
+        this.who=who;
+        this.emotion = emo;
+        this.calorie = calo;
+    }
+
+    public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, List<Integer> list){
+        this.foodFirst = foodFirst.clone();
+        this.foodSecond = foodSecond.clone();
+        this.foodKind = foodKind.clone();
+        this.foodPic = foodPic;
+        this.list = list;
+        for(int i=0;i<9;i++){
+            System.out.println(this.foodFirst[i] + this.foodSecond[i] + this.foodKind[i] + list.get(i));
+        }
+    }
+
 }
