@@ -137,21 +137,24 @@ public class Fragment_home_after_1 extends Fragment {
                                                     intent.putExtra("text_food", jsonObject.getString("explain"));
                                                     intent.putExtra("food_name_1", jsonObject.getString("category"));
                                                     intent.putExtra("imageview1", jsonObject.getString("image"));
-                                                    intent.putExtra("restaurant_img_1", jsonObject.getString("menuimage1"));
-                                                    intent.putExtra("restaurant_img_2", jsonObject.getString("menuimage2"));
-                                                    intent.putExtra("restaurant_img_3", jsonObject.getString("menuimage3"));
-                                                    intent.putExtra("restaurant_img_4", jsonObject.getString("menuimage4"));
-                                                    intent.putExtra("restaurant_img_5", jsonObject.getString("menuimage5"));
+
                                                     intent.putExtra("restaurant_link", jsonObject.getString("restaurant_link"));
                                                     intent.putExtra("deliver", jsonObject.getString("deliver"));
 
                                                     intent.putExtra("menulist", jsonObject.getString("menulist"));
                                                     intent.putExtra("pricelist", jsonObject.getString("pricelist"));
-
                                                     String []tokensmenu = jsonObject.getString("menulist").split(", ");
                                                     Log.d("menulist",jsonObject.getString("menulist"));
-
                                                     String []tokensprice = jsonObject.getString("pricelist").split(", ");
+                                                    int i;
+                                                    for(i = 0; i<tokensmenu.length;i++){
+                                                        try {
+                                                            intent.putExtra("menu_img_"+i, jsonObject.getString("menuimage"+i));
+                                                        }catch (Exception e){
+                                                            e.printStackTrace();
+                                                        }
+                                                    }
+                                                    intent.putExtra("menu_length", i);
 
                                                     intent.putExtra("restaurant_txt_1", tokensmenu[0]);
                                                     intent.putExtra("food_price_1", tokensprice[0]);

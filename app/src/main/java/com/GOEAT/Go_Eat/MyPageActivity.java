@@ -41,12 +41,12 @@ public class MyPageActivity extends AppCompatActivity {
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        layout_sns = findViewById(R.id.layout_sns);
+//        layout_sns = findViewById(R.id.layout_sns);
         tv_nickname = findViewById(R.id.tv_nickname);
         tv_email = findViewById(R.id.tv_email);
         iv_profile = findViewById(R.id.iv_profile);
-        go_btn_2=findViewById(R.id.go_btn_2);
-        home_btn_2=findViewById(R.id.home_btn_2);
+//        go_btn_2=findViewById(R.id.go_btn_2);
+//        home_btn_2=findViewById(R.id.home_btn_2);
 
         go_btn_2.setOnClickListener(new View.OnClickListener() {
             @Override

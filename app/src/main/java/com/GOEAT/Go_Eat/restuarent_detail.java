@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -61,6 +62,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
     Button bt_phone_num,naver_order,View_more,show_all_menu;
     private MapView mapView;
 
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,26 +116,63 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         menulist = intent.getExtras().getString("menulist");
         pricelist = intent.getExtras().getString("pricelist");
 
-        Log.d("restaurant_img_1",intent.getExtras().getString("restaurant_img_1"));
-        Log.d("restaurant_img_2",intent.getExtras().getString("restaurant_img_2"));
-        Log.d("restaurant_img_3",intent.getExtras().getString("restaurant_img_3"));
-        try {
-            Picasso.get().load(intent.getExtras().getString("restaurant_img_1")).error(R.drawable.go).into(restaurant_img_1);
+        //최소 최대 가격 계산 하여 넣는 부분 방진혁
+        String []tokensprice = pricelist.split(", ");
+        String maxprice, minprice;
+        for(int i = 0;i<tokensprice.length; i++ ){
+            tokensprice[i] = tokensprice[i].replace(",","");
+            tokensprice[i] = tokensprice[i].replace(" ","");
+            tokensprice[i] = tokensprice[i].replace("원","");
+        }
+        if(tokensprice.length == 0){
+            price_num.setText("메뉴 정보 없음");
+        }else if(tokensprice.length == 1){
+            price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[0])));
+        }else if(tokensprice.length == 2){
+            if(Integer.parseInt(tokensprice[0]) < Integer.parseInt(tokensprice[1])){
+                price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[0]))+" - "+String.format("%,d",Integer.parseInt(tokensprice[1])));
+            }else{
+                price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[1]))+" - "+String.format("%,d",Integer.parseInt(tokensprice[0])));
+            }
+        }else{
+            if(Integer.parseInt(tokensprice[0]) < Integer.parseInt(tokensprice[1])){
+                maxprice = tokensprice[1];
+                minprice =  tokensprice[0];
+            }else{
+                maxprice = tokensprice[0];
+                minprice =  tokensprice[1];
+            }
+            for(int i = 2 ; i<tokensprice.length; i++){
+                if(Integer.parseInt(maxprice) < Integer.parseInt(tokensprice[i])){
+                    maxprice = tokensprice[i];
+                }
+                if(Integer.parseInt(minprice) > Integer.parseInt(tokensprice[i])){
+                    minprice = tokensprice[i];
+                }
+            }
+            price_num.setText(String.format("%,d",Integer.parseInt(minprice))+" - "+String.format("%,d",Integer.parseInt(maxprice)));
 
+        }
+//        Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_1"));
+//        Log.d("restaurant_img_2",intent.getExtras().getString("menu_img_2"));
+//        Log.d("restaurant_img_3",intent.getExtras().getString("menu_img_3"));
+        try {
+            Picasso.get().load(intent.getExtras().getString("menu_img_1")).error(R.drawable.go).into(restaurant_img_1);
+            Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_1"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_1.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
-            Picasso.get().load(intent.getExtras().getString("restaurant_img_2")).error(R.drawable.go).into(restaurant_img_2);
-
+            Picasso.get().load(intent.getExtras().getString("menu_img_2")).error(R.drawable.go).into(restaurant_img_2);
+            Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_2"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_2.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
-            Picasso.get().load(intent.getExtras().getString("restaurant_img_3")).error(R.drawable.go).into(restaurant_img_3);
-
+            Picasso.get().load(intent.getExtras().getString("menu_img_3")).error(R.drawable.go).into(restaurant_img_3);
+            Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_3"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_3.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
@@ -175,6 +214,9 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
                 intent2.putExtra("menulist",menulist);
                 intent2.putExtra("pricelist",pricelist);
                 intent2.putExtra("restaurant_name",restaurant_name);
+                for(int i = 0; i<intent.getExtras().getInt("menu_length")+1; i++){
+                    intent2.putExtra("menu_img_"+i,intent.getExtras().getString("menu_img_"+i));
+                }
                 startActivity(intent2);
             }
         });

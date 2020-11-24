@@ -55,6 +55,8 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     private FoodPic foodPic = new FoodPic();
     public List<Integer> list = new ArrayList<>();
 
+    private String calo, loc, who, emo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +64,25 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
 
 
         //조사홈에서 정보 가져오기 - 염상희
+        //로그인화면에서 이동시 상황조사 정보가 없기에 shared preference에서 정보 가져오기  방진혁
         Intent intent = getIntent();
-        String calo = intent.getExtras().getString("calo");
-        String loc = intent.getExtras().getString("loc");
-        String who = intent.getExtras().getString("who");
-        String emo = intent.getExtras().getString("emo");
+        try {
+            calo = intent.getExtras().getString("calo");
+            loc = intent.getExtras().getString("loc");
+            who = intent.getExtras().getString("who");
+            emo = intent.getExtras().getString("emo");
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            SharedPreferences prefs = getSharedPreferences("investigation_result",MODE_PRIVATE);
+            calo = prefs.getString("calo","");
+            loc = prefs.getString("loc","");
+            who = prefs.getString("who","");
+            emo = prefs.getString("emo","");
+        }
+        Log.d("calo->->", calo);
+        Log.d("loc->->", loc);
+        Log.d("who->->", who);
+        Log.d("emo->->", emo);
 
         System.out.println(calo + loc+ who + emo);
 

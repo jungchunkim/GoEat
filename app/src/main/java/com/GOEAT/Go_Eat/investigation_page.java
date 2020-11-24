@@ -213,6 +213,14 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                     intent.putExtra("emo","행복한");
                 else
                     intent.putExtra("emo","null");
+                //조사 저장한것 shared preference에도 저장: 로그인화면-> 분석홈 이동을 위한 과정 방진혁
+                SharedPreferences prefs = getSharedPreferences("investigation_result",MODE_PRIVATE);
+                SharedPreferences.Editor editors = prefs.edit();
+                editors.putString("calo",intent.getExtras().getString("calo"));
+                editors.putString("loc",intent.getExtras().getString("loc"));
+                editors.putString("who",intent.getExtras().getString("who"));
+                editors.putString("emo",intent.getExtras().getString("emo"));
+                editors.commit();
 
                 startActivity(intent);
             }

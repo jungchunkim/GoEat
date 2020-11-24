@@ -14,8 +14,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="7dp"
+        android:paddingLeft="8dp"
+        android:paddingBottom="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:background="@drawable/shadow_button_4"
         card_view:cardBackgroundColor="@color/cardview_light_background"
         card_view:cardCornerRadius="7dp"
         card_view:cardElevation="4dp"
@@ -37,8 +42,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
                 >
 
 
@@ -50,7 +55,7 @@
                     android:fontFamily="@font/pureunjeonnambold"
                     android:text="육개장"
                     android:textColor="#222B45"
-                    android:textSize="25sp" />
+                    android:textSize="21dp" />
 
                 <TextView
                     android:id="@+id/tv_menu_info"
@@ -59,7 +64,7 @@
                     android:layout_below="@+id/tvName"
                     android:layout_marginTop="5dp"
                     android:text="7000원"
-                    android:textSize="17sp"
+                    android:textSize="15sp"
                     android:fontFamily="@font/pureunjeonnam"
                     android:textColor="#80000000"
                     />

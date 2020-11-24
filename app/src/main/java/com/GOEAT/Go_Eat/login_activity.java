@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -175,7 +176,18 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
 
 
-
+        cb_login_auto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (cb_login_auto.isChecked()){ //자동 로그인 클릭시 정보 저장
+                    Log.d("login_auto_save", "yes!");
+                }else{
+                    editor.putString("check","0");
+                    editor.commit();
+                    Log.d("login_auto_delete", "yes!");
+                }
+            }
+        });
 
 
 
@@ -227,8 +239,31 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                                 SharedPreferences.Editor editors = prefs.edit();
                                 editors.putString("email",email);
                                 editors.commit();
-                                Intent intent = new Intent(getApplicationContext(), SetCharActivity.class);
-                                startActivity(intent);
+                                if(jsonObject.getString("register_profile_done").equals("true")){ //취향 조사 했는지 1차 판단 후 상황조사 2차 판단=> 화면 이동 방진혁
+                                    Log.d("register_profile_done", " yes! ");
+                                    SharedPreferences prefs_invest = getSharedPreferences("investigation_result",MODE_PRIVATE);
+                                    String calo = prefs_invest.getString("calo","");
+                                    String loc = prefs_invest.getString("loc","");
+                                    String who = prefs_invest.getString("who","");
+                                    String emo = prefs_invest.getString("emo","");
+                                    Log.d("calo->", ""+calo.equals(""));
+                                    Log.d("loc->", ""+loc.equals(""));
+                                    Log.d("who->", ""+who.equals(""));
+                                    Log.d("emo->", ""+emo.equals(""));
+                                    if(calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")){
+                                        Intent intent = new Intent(getApplicationContext(), investigation_page.class);
+                                        //Intent intent = new Intent(getApplicationContext(), SetCharActivity.class);  //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다
+                                        startActivity(intent);
+                                    }else{
+                                        Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
+                                        //Intent intent = new Intent(getApplicationContext(), SetCharActivity.class); //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다.
+                                        startActivity(intent);
+                                    }
+                                }else{
+                                    Intent intent = new Intent(getApplicationContext(), SetCharActivity.class);
+                                    startActivity(intent);
+                                }
+
                             }else if(success.equals("almost_true")){
                                 et_login_email.setTextColor(Color.parseColor("#E01D4A"));
                                 et_login_password.setTextColor(Color.parseColor("#E01D4A"));
@@ -250,15 +285,17 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                 RequestQueue queue = Volley.newRequestQueue(login_activity.this);
                 queue.add(login_request);
 
-                if (cb_login_auto.isChecked()){ //자동 로그인 클릭시 정보 저장
+                if (cb_login_auto.isChecked()){ //자동 로그인 클릭시 정보 저장 수정 방진혁
 
                     editor.putString("email",email);
                     editor.putString("password",password);
                     editor.putString("check","1");
                     editor.commit();
+                    Log.d("login_auto_save", "yes!");
                 }else{
                     editor.putString("check","0");
                     editor.commit();
+                    Log.d("login_auto_delete", "yes!");
                 }
 
 

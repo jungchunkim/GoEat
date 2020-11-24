@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/btn_back_menulist"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
@@ -42,7 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:textSize="27dp"
+                android:layout_marginTop="2dp"
+                android:textSize="23dp"
                 android:text="메뉴판"
                 android:fontFamily="@font/pureunjeonnambold"
                 android:textColor="#FFFFFF"

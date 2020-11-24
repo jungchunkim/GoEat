@@ -52,10 +52,11 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
         for(i = 0 ;i<arraylength; i++){ //아이템에 넣어주는 부분 => 사진 부분 수정 해야함
             System.out.println(i);
             if(tokensprice[i].contains("원")) {
-                item[i] = new Analysis_menu_Item("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", tokensmenu[i], tokensprice[i]);
+                item[i] = new Analysis_menu_Item(intent.getExtras().getString("menu_img_"+(i+1)), tokensmenu[i], tokensprice[i]);
             }else{
-                item[i] = new Analysis_menu_Item("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", tokensmenu[i], tokensprice[i]+"원");
+                item[i] = new Analysis_menu_Item(intent.getExtras().getString("menu_img_"+(i+1)), tokensmenu[i], tokensprice[i]+"원");
             }
+
 
         }
 //        //recyclerView.scrollToPosition(items.size() - 1);
@@ -63,6 +64,7 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
         for (j = 0; j < i ; j++) {
             items.add(item[j]);
         }
+        Log.d("item_length", ""+j);
 
         final menulistRecyclerAdapter menulistRecyclerAdapter = new menulistRecyclerAdapter(this, items, 0);
 
