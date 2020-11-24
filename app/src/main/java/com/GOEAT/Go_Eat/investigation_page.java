@@ -561,6 +561,32 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                     } else {
                         weather = str[0];
                         Log.e("weather", weather);
+                        /*
+                        if(weather.equals("맑음"))
+                        {
+                            weather_id.setImageResource(R.drawable.sunny);
+                        }
+                        else if(weather.equals("비"))
+                        {
+                            weather_id.setImageResource(R.drawable.rain);
+                        }
+                        else if(weather.equals("눈"))
+                        {
+                            weather_id.setImageResource(R.drawable.snow);
+                        }
+                        else if(weather.equals("흐림"))
+                        {
+                            weather_id.setImageResource(R.drawable.blur);
+                        }
+                        else if(weather.equals("구름많음"))
+                        {
+                            weather_id.setImageResource(R.drawable.cloud_many);
+                        }
+                        else
+                        {
+                            weather_id.setImageResource(R.drawable.sunny);
+                        }
+                        */
                     }
                 }
             } catch (IOException e) {

@@ -102,7 +102,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                     SharedPreferences.Editor editors = prefs.edit();
                     editors.putString("email",useremail);
                     editors.commit();
-                    Intent intent = new Intent(login_activity.this,SetCharActivity.class);
+                    Intent intent = new Intent(login_activity.this,CheckHateFood.class);
                     startActivity(intent);
                 }else{
 
@@ -260,7 +260,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                                         startActivity(intent);
                                     }
                                 }else{
-                                    Intent intent = new Intent(getApplicationContext(), SetCharActivity.class);
+                                    Intent intent = new Intent(getApplicationContext(), CheckHateFood.class);
                                     startActivity(intent);
                                 }
 
