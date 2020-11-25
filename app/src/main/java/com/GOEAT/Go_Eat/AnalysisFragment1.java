@@ -56,6 +56,7 @@ public class AnalysisFragment1 extends Fragment {
     String temperature=" ";
     String email ="";
     UserDB userDB = new UserDB();
+    int add_item_index = 0;
     public SharedPreferences prefs;
 
     //음식관련 가져와서 저장할 변수 - 염상희
@@ -96,38 +97,43 @@ public class AnalysisFragment1 extends Fragment {
         tv_recommend_info.setText(who + "와 함께 하는 " + name + "님에게 추천!");
 
         // 날씨 설정
-        switch (weather){
-            case "흐림":
-                iv_weather.setImageResource(R.drawable.analysishome_cloudy);
-                tv_weather.setText("흐림");
-                break;
-            case "비" :
-                iv_weather.setImageResource(R.drawable.analysishome_rain);
-                tv_weather.setText("비");
-                break;
-            case "눈":
-                iv_weather.setImageResource(R.drawable.analysishome_snow);
-                tv_weather.setText("눈");
-                break;
-            case "폭우":
-                iv_weather.setImageResource(R.drawable.analysishome_heavyrain);
-                tv_weather.setText("폭우");
-                break;
-            case "맑음":
-                iv_weather.setImageResource(R.drawable.analysishome_sunny);
-                tv_weather.setText("맑음");
-                break;
-            case "조금 흐림":
-                iv_weather.setImageResource(R.drawable.analysishome_littlecloudy);
-                tv_weather.setText("조금 흐림");
-                break;
-            case "바람":
-                iv_weather.setImageResource(R.drawable.analysishome_wind);
-                tv_weather.setText("바람");
-                break;
-            default:
-                tv_weather.setText("--");
-                break;
+        if(weather == null){
+            tv_weather.setText("--");
+        }
+        else {
+            switch (weather) {
+                case "흐림":
+                    iv_weather.setImageResource(R.drawable.analysishome_cloudy);
+                    tv_weather.setText("흐림");
+                    break;
+                case "비":
+                    iv_weather.setImageResource(R.drawable.analysishome_rain);
+                    tv_weather.setText("비");
+                    break;
+                case "눈":
+                    iv_weather.setImageResource(R.drawable.analysishome_snow);
+                    tv_weather.setText("눈");
+                    break;
+                case "폭우":
+                    iv_weather.setImageResource(R.drawable.analysishome_heavyrain);
+                    tv_weather.setText("폭우");
+                    break;
+                case "맑음":
+                    iv_weather.setImageResource(R.drawable.analysishome_sunny);
+                    tv_weather.setText("맑음");
+                    break;
+                case "조금 흐림":
+                    iv_weather.setImageResource(R.drawable.analysishome_littlecloudy);
+                    tv_weather.setText("조금 흐림");
+                    break;
+                case "바람":
+                    iv_weather.setImageResource(R.drawable.analysishome_wind);
+                    tv_weather.setText("바람");
+                    break;
+                default:
+                    tv_weather.setText("--");
+                    break;
+            }
         }
 
 
@@ -215,19 +221,26 @@ public class AnalysisFragment1 extends Fragment {
         final AnalysisItem[] item = new AnalysisItem[ITEM_SIZE];
         //Log.d("foodArray", foodFirst[list.get(0)] + foodFirst.toString());
         //오류부분
-        //item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-        //item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-        //item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-        //item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터");
-          item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-          item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-          item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
-          item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+        int able_item_size = -1;
+
+        for(int i=0;i<ITEM_SIZE;i++) {
+            if(item_cnt+i<10) {
+                item[i] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt + i)], foodKind[list.get(item_cnt + i)] + ">" + foodFirst[list.get(item_cnt + i)], "11개 음식점, 8000원부터");
+                able_item_size = i;
+                add_item_index++;
+                Log.e("ggggggggggg_new" , item_cnt+i + "," + able_item_size + "," + add_item_index);
+            }
+            else break;
+        }
+//            item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+//          item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+//          item[2] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
+//          item[3] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
 
 
         //recyclerView.scrollToPosition(items.size() - 1);
 
-        for (int i = 0; i < ITEM_SIZE; i++) {
+        for (int i = 0; i <= able_item_size; i++) {
             items.add(item[i]);
         }
 
@@ -276,10 +289,11 @@ public class AnalysisFragment1 extends Fragment {
                 analysisHomeRecyclerAdapter.notifyDataSetChanged();
 
                 //새로운 음식 추천
-                if(item_cnt<10) {
+                item_cnt++;
+                if(add_item_index<10) {
                     //오류
-                    //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt)], foodKind[list.get(item_cnt)]+">"+foodFirst[list.get(item_cnt++)], "11개 음식점, 8000원부터"));
-                    items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "추가한 음식","양식>파스타", "11개 음식점, 8000원부터"));
+                    items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(add_item_index)], foodKind[list.get(add_item_index)]+">"+foodFirst[list.get(add_item_index++)], "11개 음식점, 8000원부터"));
+                    //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "추가한 음식","양식>파스타", "11개 음식점, 8000원부터"));
                 }
             }
         };
@@ -297,11 +311,12 @@ public class AnalysisFragment1 extends Fragment {
     public void setEmail(String email){
         this.email = email;
     }
-    public void setSitu(String loc, String who, String emo, String calo){
+    public void setSitu(String loc, String who, String emo, String calo, String weather){
         this.place = loc;
         this.who=who;
         this.emotion = emo;
         this.calorie = calo;
+        this.weather = weather;
     }
 
     public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, List<Integer> list){

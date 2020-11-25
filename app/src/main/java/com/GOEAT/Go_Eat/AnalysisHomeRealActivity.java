@@ -54,7 +54,6 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     private String[] foodKind = new String[10];
     private FoodPic foodPic = new FoodPic();
     public List<Integer> list = new ArrayList<>();
-
     private String calo, loc, who, emo;
 
     @Override
@@ -112,7 +111,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         String email = prefs.getString("email","");
         fragment1.setEmail(email);
         fragment1.setName(prefs.getString("name",""));
-        fragment1.setSitu(loc,who,emo,calo);
+        fragment1.setSitu(loc,who,emo,calo,"");
 
 
         //2020-11-23 음식 취향대로 가져오기 - 염상희
@@ -148,13 +147,40 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                     }
 
                     list = ShuffleOrder();
-                    //putRecommendFood(order); //고잇(0~3), 비슷한 취향(4~6), 신천
-                    //goeatRecommend(order); //고잇 음식 추천
-                    //similarRecommend(order); //비슷한 취향 음식 추천
-                    //famousRecommend(order); //신촌 음식 추천
-                    //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
                     fragment1.setFood(foodFirst, foodSecond, foodKind, foodPic, list);
 
+
+                    meo=findViewById(R.id.bottom_nav);
+                    meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
+                    meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
+                    meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
+
+                    meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+                        @Override
+                        public void onClickItem(MeowBottomNavigation.Model item) {
+
+                        }
+                    });
+                    meo.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+                        @Override
+                        public void onShowItem(MeowBottomNavigation.Model item) {
+                            Fragment select_fragment = fragment1;
+                            switch (item.getId()){
+                                case ID_HOME:
+                                    select_fragment = fragment1;
+                                    break;
+                                case ID_GO:
+                                    select_fragment = fragment2;
+                                    break;
+                                case ID_MYPAGE:
+                                    select_fragment = fragment3;
+                                    break;
+                            }
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
+                        }
+                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -165,40 +191,40 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         userDB.setFlavorFoodList(email,calo,responselistener2,AnalysisHomeRealActivity.this);
 
 
-
-
-
-        meo=findViewById(R.id.bottom_nav);
-        meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
-        meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
-        meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
-
-        meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
-            @Override
-            public void onClickItem(MeowBottomNavigation.Model item) {
-
-            }
-        });
-        meo.setOnShowListener(new MeowBottomNavigation.ShowListener() {
-            @Override
-            public void onShowItem(MeowBottomNavigation.Model item) {
-                Fragment select_fragment = fragment1;
-                switch (item.getId()){
-                    case ID_HOME:
-                        select_fragment = fragment1;
-                        break;
-                    case ID_GO:
-                        select_fragment = fragment2;
-                        break;
-                    case ID_MYPAGE:
-                        select_fragment = fragment3;
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
-            }
-        });
+//
+//
+//
+//        meo=findViewById(R.id.bottom_nav);
+//        meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
+//        meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
+//        meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
+//
+//        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
+//
+//        meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+//            @Override
+//            public void onClickItem(MeowBottomNavigation.Model item) {
+//
+//            }
+//        });
+//        meo.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+//            @Override
+//            public void onShowItem(MeowBottomNavigation.Model item) {
+//                Fragment select_fragment = fragment1;
+//                switch (item.getId()){
+//                    case ID_HOME:
+//                        select_fragment = fragment1;
+//                        break;
+//                    case ID_GO:
+//                        select_fragment = fragment2;
+//                        break;
+//                    case ID_MYPAGE:
+//                        select_fragment = fragment3;
+//                        break;
+//                }
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
+//            }
+//        });
 
 
     }

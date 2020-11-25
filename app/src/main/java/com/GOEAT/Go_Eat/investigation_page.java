@@ -156,7 +156,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
 //            }
 //        };
 //        userDB.setFlavorFoodList(email,responselistener,investigation_page.this);
-        //userDB.saveFoodFlavor(email,result,responselistener2,before_emotion_check.this);
+//        userDB.saveFoodFlavor(email,result,responselistener2,before_emotion_check.this);
 
         //spinner 안써서 다 지움
 
@@ -221,6 +221,9 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                 editors.putString("who",intent.getExtras().getString("who"));
                 editors.putString("emo",intent.getExtras().getString("emo"));
                 editors.commit();
+
+                //날씨
+                intent.putExtra("weather",weather);
 
                 startActivity(intent);
             }
