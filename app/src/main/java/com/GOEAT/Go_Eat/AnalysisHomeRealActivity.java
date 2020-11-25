@@ -66,37 +66,18 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         fragment2 = new AnalysisFragment2();
         fragment3 = new AnalysisFragment3();
 
-        meo=findViewById(R.id.bottom_nav);
-        meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
-        meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
-        meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
-
-        meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
-            @Override
-            public void onClickItem(MeowBottomNavigation.Model item) {
-
-            }
-        });
-        meo.setOnShowListener(new MeowBottomNavigation.ShowListener() {
-            @Override
-            public void onShowItem(MeowBottomNavigation.Model item) {
-                Fragment select_fragment = fragment1;
-                switch (item.getId()){
-                    case ID_HOME:
-                        select_fragment = fragment1;
-                        break;
-                    case ID_GO:
-                        select_fragment = fragment2;
-                        break;
-                    case ID_MYPAGE:
-                        select_fragment = fragment3;
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
-            }
-        });
+        // 앱 첫 실행때만 Gudie 띄우기 - 임민영
+        SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
+        boolean first = pref.getBoolean("isFirst", false);
+        if(first==false){
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putBoolean("isFirst",true);
+            editor.commit();
+            //앱 최초 실행시 하고 싶은 작업
+            Intent intent2 = new Intent(getApplicationContext(), AnalysishomeGuideActivity.class);
+            startActivity(intent2);
+        }
 
         //조사홈에서 정보 가져오기 - 염상희
         //로그인화면에서 이동시 상황조사 정보가 없기에 shared preference에서 정보 가져오기  방진혁
@@ -184,20 +165,40 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         userDB.setFlavorFoodList(email,calo,responselistener2,AnalysisHomeRealActivity.this);
 
 
-        // 앱 첫 실행때만 Gudie 띄우기
-        SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
-        boolean first = pref.getBoolean("isFirst", false);
-        if(first==false){
-            SharedPreferences.Editor editor = pref.edit();
-            editor.putBoolean("isFirst",true);
-            editor.commit();
-            //앱 최초 실행시 하고 싶은 작업
-            Intent intent2 = new Intent(getApplicationContext(), AnalysishomeGuideActivity.class);
-            startActivity(intent2);
-        }
 
 
 
+        meo=findViewById(R.id.bottom_nav);
+        meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
+        meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
+        meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
+
+        meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+            @Override
+            public void onClickItem(MeowBottomNavigation.Model item) {
+
+            }
+        });
+        meo.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+            @Override
+            public void onShowItem(MeowBottomNavigation.Model item) {
+                Fragment select_fragment = fragment1;
+                switch (item.getId()){
+                    case ID_HOME:
+                        select_fragment = fragment1;
+                        break;
+                    case ID_GO:
+                        select_fragment = fragment2;
+                        break;
+                    case ID_MYPAGE:
+                        select_fragment = fragment3;
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
+            }
+        });
 
 
     }
