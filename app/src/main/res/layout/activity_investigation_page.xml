@@ -133,7 +133,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="2"
                     android:scaleType="fitXY"
-                    android:background="@drawable/fresh" />
+                    android:src="@drawable/fresh" />
 
                 <TextView
                     android:layout_width="0dp"
