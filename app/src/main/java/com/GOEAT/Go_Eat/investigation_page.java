@@ -564,7 +564,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                     } else {
                         weather = str[0];
                         Log.e("weather", weather);
-                        /*
+                        //weather을 받아오면 된다.
                         if(weather.equals("맑음"))
                         {
                             weather_id.setImageResource(R.drawable.sunny);
@@ -589,15 +589,16 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                         {
                             weather_id.setImageResource(R.drawable.sunny);
                         }
-                        */
+
                     }
                 }
+                return result;
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
 
-            return result;
+            return null;
         }
 
         @Override
