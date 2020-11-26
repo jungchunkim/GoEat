@@ -157,6 +157,13 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
 
+                    meo.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
+                        @Override
+                        public void onReselectItem(MeowBottomNavigation.Model item) {
+
+                        }
+                    });
+
                     meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
                         @Override
                         public void onClickItem(MeowBottomNavigation.Model item) {

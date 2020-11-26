@@ -85,7 +85,7 @@ public class UserDB implements Serializable {
                     String character = jsonObject.getString("Character");
                     System.out.println(jsonObject);
                     if (success) {
-                        userChar = Integer.parseInt(character);
+                        userChar = 0;
                         switch (userChar) {
                             case 0:
                                 img.setImageResource(R.drawable.mouse);
