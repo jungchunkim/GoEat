@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
     final int DIALOG_DATE = 1;
-    EditText et_name, et_email, et_pwd1, et_pwd2, et_phoneNum;
+    EditText et_name, et_email, et_pwd1, et_pwd2, et_phoneNum, nick_name;   //2020-11-29 김정천 닉네임 추가
     Button btn_female, btn_male, btn_send;
     TextView tv_birth;
     private String usergender = "";
@@ -45,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        //2020-11-29 김정천 닉네임 추가
+        nick_name=findViewById(R.id.nick_name);
         et_name = findViewById(R.id.et_name);
         et_email = findViewById(R.id.et_email);
         et_pwd1 = findViewById(R.id.et_pwd1);
