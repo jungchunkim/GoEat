@@ -64,6 +64,7 @@ public class AnalysisFragment1 extends Fragment {
     private String[] foodFirst = new String[10];
     private String[] foodKind = new String[10];
     private FoodPic foodPic = new FoodPic();
+    private int food_list_size = 0;
     public List<Integer> list = new ArrayList<>();
     int item_cnt = 0;
 
@@ -224,8 +225,11 @@ public class AnalysisFragment1 extends Fragment {
         int able_item_size = -1;
 
         for(int i=0;i<ITEM_SIZE;i++) {
-            if(item_cnt+i<10) {
-                item[i] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt + i)], foodKind[list.get(item_cnt + i)] + ">" + foodFirst[list.get(item_cnt + i)], "11개 음식점, 8000원부터");
+            if(item_cnt+i<food_list_size) {
+                //list 섞지 않았을 때
+                item[i] = new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[item_cnt + i], foodKind[item_cnt + i] + ">" + foodFirst[item_cnt + i], "11개 음식점, 8000원부터");
+                //list 섞었을 때
+                //item[i] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt + i)], foodKind[list.get(item_cnt + i)] + ">" + foodFirst[list.get(item_cnt + i)], "11개 음식점, 8000원부터");
                 able_item_size = i;
                 add_item_index++;
                 Log.e("ggggggggggg_new" , item_cnt+i + "," + able_item_size + "," + add_item_index);
@@ -259,7 +263,7 @@ public class AnalysisFragment1 extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 //스와이프한 음식 이름 가져오기 - 염상희
-                String item_title = item[viewHolder.getAdapterPosition()].getTitle();
+                String item_title = items.get(viewHolder.getAdapterPosition()).getTitle();
 
                 Response.Listener<String> responselistener = new Response.Listener<String>() {
                     @Override
@@ -277,7 +281,7 @@ public class AnalysisFragment1 extends Fragment {
 
                     }
                 };
-                //임시 데이터로 확인-염상희
+
                 save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email,who,item_title,responselistener);
                 RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
                 queue.add(save_UserSituFlavor);
@@ -287,9 +291,11 @@ public class AnalysisFragment1 extends Fragment {
 
                 //새로운 음식 추천
                 item_cnt++;
-                if(add_item_index<10) {
-                    //오류
-                    items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(add_item_index)], foodKind[list.get(add_item_index)]+">"+foodFirst[list.get(add_item_index++)], "11개 음식점, 8000원부터"));
+                if(add_item_index<food_list_size) {
+                    //list 섞지 않았을 경우
+                    items.add(new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[add_item_index], foodKind[add_item_index]+">"+foodFirst[add_item_index++], "11개 음식점, 8000원부터"));
+                    //list 섞은 경우
+                    //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(add_item_index)], foodKind[list.get(add_item_index)]+">"+foodFirst[list.get(add_item_index++)], "11개 음식점, 8000원부터"));
                     //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "추가한 음식","양식>파스타", "11개 음식점, 8000원부터"));
                 }
             }
@@ -324,6 +330,18 @@ public class AnalysisFragment1 extends Fragment {
         this.list = list;
         for(int i=0;i<9;i++){
             System.out.println(this.foodFirst[i] + this.foodSecond[i] + this.foodKind[i] + list.get(i));
+        }
+    }
+
+
+    public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, int food_list_size){
+        this.foodFirst = foodFirst.clone();
+        this.foodSecond = foodSecond.clone();
+        this.foodKind = foodKind.clone();
+        this.foodPic = foodPic;
+        this.food_list_size = food_list_size;
+        for(int i=0;i< food_list_size;i++){
+            System.out.println(this.foodFirst[i] + this.foodSecond[i] + this.foodKind[i]);
         }
     }
 

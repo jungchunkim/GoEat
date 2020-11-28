@@ -144,7 +144,7 @@ public class AnalysisHomeActivity extends AppCompatActivity {
                 }
             }
         };
-        userDB.setFlavorFoodList(email,calo,responselistener2,AnalysisHomeActivity.this);
+        userDB.setFlavorFoodList(email,calo,"가족",responselistener2,AnalysisHomeActivity.this);
 
 
         // Event Fragment로 넘길 Image Resource

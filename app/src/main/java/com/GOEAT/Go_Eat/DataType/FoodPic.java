@@ -162,7 +162,7 @@ public class FoodPic {
         mKeys = map.keySet().toArray(new String[map.size()]);
     }
     public String getFoodSrc(String foodName){
-        return map.get(foodName);
+        return map.get(foodName) == null? "":map.get(foodName);
 
         //이미지 테스트 코드
         //Log.d("src","foodName:" + mKeys[cn*9 + cnt] + "," + (cn*9+cnt) + "\n" + "foodSrc:"+map.get(mKeys[cn*9 + cnt]));

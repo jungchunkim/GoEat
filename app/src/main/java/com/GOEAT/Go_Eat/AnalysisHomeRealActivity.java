@@ -55,6 +55,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     private FoodPic foodPic = new FoodPic();
     public List<Integer> list = new ArrayList<>();
     private String calo, loc, who, emo;
+    private int food_list_size = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,7 +121,6 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부분
                 try {
-                    Log.e("************analysis", response);
                     JSONObject json = new JSONObject(response);
                     JSONArray foodArray = json.getJSONArray("result");
 
@@ -133,21 +133,24 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                             foodFirst[j] = jsonObject.getString("Food_First_Name");
                             foodSecond[j] = jsonObject.getString("Food_Second_Name");
                             foodKind[j++] = jsonObject.getString("Food_Kind");
-
+                            food_list_size = j;
 
                         }
                     }
-                    //1차 군집의 수가 모자를 경우, 뒤에서부터 1차 군집 설정
+                                        //1차 군집의 수가 모자를 경우, 뒤에서부터 1차 군집 설정
                     int index = foodArray.length()-1;
                     for(;j<10;j++) {
                         JSONObject jsonObject = foodArray.getJSONObject(index); //i번째 Json데이터를 가져옴
-                        foodFirst[j] = jsonObject.getString("Food_First_Name");
-                        foodSecond[j] = jsonObject.getString("Food_Second_Name");
-                        foodKind[j] = jsonObject.getString("Food_Kind");
+                        if(j<10&&!Arrays.asList(foodSecond).contains(jsonObject.getString("Food_Second_Name"))){
+                            foodFirst[j] = jsonObject.getString("Food_First_Name");
+                            foodSecond[j] = jsonObject.getString("Food_Second_Name");
+                            foodKind[j] = jsonObject.getString("Food_Kind");
+                            food_list_size = j;
+                        }
                     }
-
-                    list = ShuffleOrder();
-                    fragment1.setFood(foodFirst, foodSecond, foodKind, foodPic, list);
+                    Log.e("food_list_size!!!!",Integer.toString(food_list_size));
+//                    list = ShuffleOrder();
+                    fragment1.setFood(foodFirst, foodSecond, foodKind, foodPic, food_list_size);
 
 
                     meo=findViewById(R.id.bottom_nav);
@@ -195,7 +198,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
             }
         };
 
-        userDB.setFlavorFoodList(email,calo,responselistener2,AnalysisHomeRealActivity.this);
+        userDB.setFlavorFoodList(email,calo,who,responselistener2,AnalysisHomeRealActivity.this);
 
 
 //
@@ -240,6 +243,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         //추천 음식 넣는 순서 셔플 2020-09-29 염상희
         List<Integer> list = new ArrayList<Integer>();
 
+
         list.add(0); list.add(1); list.add(2); list.add(3); list.add(4);
         list.add(5); list.add(6); list.add(7); list.add(8); list.add(9);
 
@@ -247,4 +251,17 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
 
         return list;
     }
+
+//    public List<Integer> foodList_order(){
+//        //추천 음식 넣는 순서 셔플 2020-09-29 염상희
+//        List<Integer> list = new ArrayList<Integer>();
+//
+//
+//        list.add(0); list.add(1); list.add(2); list.add(3); list.add(4);
+//        list.add(5); list.add(6); list.add(7); list.add(8); list.add(9);
+//
+//        Collections.shuffle(list);
+//
+//        return list;
+//    }
 }
