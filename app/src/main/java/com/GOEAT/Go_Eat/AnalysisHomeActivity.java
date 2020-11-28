@@ -71,8 +71,8 @@ public class AnalysisHomeActivity extends AppCompatActivity {
         example.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
-                startActivity(intent);
+              //  Intent intent = new Intent(getApplicationContext(), Analysis_home_after.class);
+              //  startActivity(intent);
             }
         });
         tv_similar = findViewById(R.id.tv_similar);

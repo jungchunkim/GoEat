@@ -259,10 +259,7 @@ public class AnalysisFragment1 extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 //스와이프한 음식 이름 가져오기 - 염상희
-                String item_title = item[viewHolder.getLayoutPosition()].getTitle();
-                String item_title2 = item[viewHolder.getAdapterPosition()].getTitle();
-
-                Log.e("item_swiped ***********", item_title + item_title2);
+                String item_title = item[viewHolder.getAdapterPosition()].getTitle();
 
                 Response.Listener<String> responselistener = new Response.Listener<String>() {
                     @Override
@@ -281,7 +278,7 @@ public class AnalysisFragment1 extends Fragment {
                     }
                 };
                 //임시 데이터로 확인-염상희
-                save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email,who,"토마토파스타",responselistener);
+                save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email,who,item_title,responselistener);
                 RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
                 queue.add(save_UserSituFlavor);
 

@@ -58,12 +58,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 //Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, Analysis_home_after.class);
+          //      Intent intent = new Intent(context, Analysis_home_after.class);
                 // 탭정보 (메뉴1, 메뉴2, 메뉴3 구분)전송
-                intent.putExtra("position", position);
+          //      intent.putExtra("position", position);
                 // 고잇추천인지, 비슷한사람 추천인지, 핫한 음식인기 구분 전송 (num : 0,1,2)
-                intent.putExtra("recommendType", num);
-                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
+         //       intent.putExtra("recommendType", num);
+         //       context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }
