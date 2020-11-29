@@ -211,27 +211,36 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 }
             };
 
+            Hatefoodlists = "";
+            for (int i = 0; i < 24; i++) {
+                if (Hatefoodlists=="" && prefer_food[i] == -2) {
+                    Hatefoodlists = foodlist[i];
+                } else if (prefer_food[i] == -2) {
+                    Hatefoodlists = Hatefoodlists + "," + foodlist[i];
+                    count++;
+                }
+            }
 
-//            Sosofoodlists = null;
-//            for (int i = 0; i < 24; i++) {
-//                if (Sosofoodlists==null && prefer_food[i] == -2) {
-//                    Sosofoodlists = foodlist[i];
-//                } else if (prefer_food[i] == -2) {
-//                    Sosofoodlists = Sosofoodlists + "," + foodlist[i];
-//                    count++;
-//                }
-//            }
-//
-//            Likefoodlists = null;
-//            for (int i = 0; i < 24; i++) {
-//                if (Likefoodlists==null && prefer_food[i] == -2) {
-//                    Likefoodlists = foodlist[i];
-//                } else if (prefer_food[i] == -2) {
-//                    Likefoodlists = Likefoodlists + "," + foodlist[i];
-//                    count++;
-//                }
-//            }
-            userDB.saveUserHateFood(email, Hatefoodlists, /*Sosofoodlists, Likefoodlists,*/ responselistener, FoodPreference.this);       // 서버에 사용자가 싫어하는 음식 저장
+            Sosofoodlists = "";
+            for (int i = 0; i < 24; i++) {
+                if (Sosofoodlists == "" && prefer_food[i] == -1) {
+                    Sosofoodlists = foodlist[i];
+                } else if (prefer_food[i] == -1) {
+                    Sosofoodlists = Sosofoodlists + "," + foodlist[i];
+                    count++;
+                }
+            }
+
+            Likefoodlists = "";
+            for (int i = 0; i < 24; i++) {
+                if (Likefoodlists==""&& prefer_food[i] == 1) {
+                    Likefoodlists = foodlist[i];
+                } else if (prefer_food[i] == 1) {
+                    Likefoodlists = Likefoodlists + "," + foodlist[i];
+                    count++;
+                }
+            }
+            userDB.saveUserHateFood(email, Hatefoodlists, Sosofoodlists, Likefoodlists, responselistener, FoodPreference.this);       // 서버에 사용자가 싫어하는 음식 저장
             Hatefoodlists = null;
         }
     }

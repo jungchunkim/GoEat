@@ -82,7 +82,7 @@ public class ChooseHateFood extends AppCompatActivity implements View.OnClickLis
                         Hatefoodlists = Hatefoodlists + "," +foodlist[i];
                     }
                 }
-                userDB.saveUserHateFood(email,Hatefoodlists,responselistener,ChooseHateFood.this);       // 서버에 사용자가 싫어하는 음식 저장
+                //userDB.saveUserHateFood(email,Hatefoodlists,responselistener,ChooseHateFood.this);       // 서버에 사용자가 싫어하는 음식 저장
             }
         });
 

@@ -198,7 +198,7 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
                         }
                     }
 
-                    userDB.saveUserHateFood(email, Hatefoodlists, responselistener, CheckHateFood2.this);       // 서버에 사용자가 싫어하는 음식 저장
+//                    userDB.saveUserHateFood(email, Hatefoodlists, responselistener, CheckHateFood2.this);       // 서버에 사용자가 싫어하는 음식 저장
                     Hatefoodlists = null;
                 }
             }

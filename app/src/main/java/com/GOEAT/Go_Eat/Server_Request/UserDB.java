@@ -207,14 +207,14 @@ public class UserDB implements Serializable {
 
 
     }
-    public void saveUserHateFood(String useremail, String HateFoodLists, /*String SosoFoodLists, String LikeFoodLists,*/ Response.Listener<String> listener, Activity activity) { //싫어하는 음식 서버 전달
+    public void saveUserHateFood(String useremail, String HateFoodLists, String SosoFoodLists, String LikeFoodLists, Response.Listener<String> listener, Activity activity) { //싫어하는 음식 서버 전달
         Log.d("~~~~", HateFoodLists);
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail", useremail);
         map.put("HateFoodLists", HateFoodLists);
-//        map.put("SosoFoodLists", SosoFoodLists);
-//        map.put("LikeFoodLists", LikeFoodLists);
+        map.put("SosoFoodLists", SosoFoodLists);
+        map.put("LikeFoodLists", LikeFoodLists);
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL6,
