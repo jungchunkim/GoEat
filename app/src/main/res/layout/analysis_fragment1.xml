@@ -20,6 +20,7 @@
            android:layout_height="match_parent"
            android:layout_gravity="left">
            <ImageView
+               android:id="@+id/location_move"
                android:layout_width="25dp"
                android:layout_height="25dp"
                android:layout_gravity="center"

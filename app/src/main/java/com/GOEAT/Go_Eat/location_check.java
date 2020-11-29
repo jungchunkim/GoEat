@@ -87,7 +87,7 @@ public class location_check extends AppCompatActivity {
                     editor.commit();
                 }
 
-                Intent intent = new Intent(getApplicationContext(), investigation_page.class);
+                Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
                 startActivity(intent);
             }
         });
