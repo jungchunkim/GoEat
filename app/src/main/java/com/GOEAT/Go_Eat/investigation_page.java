@@ -169,10 +169,10 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
 //                editor.commit();
                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
                 //칼로리
-                if(clickCheck[0]==-1) {
+                if(clickCheck[0]==1) {
                     intent.putExtra("calo", "high");
                 }
-                else if(clickCheck[1]==-1) {
+                else if(clickCheck[1]==1) {
                     intent.putExtra("calo", "low");
                 }
 
