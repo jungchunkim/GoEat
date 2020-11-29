@@ -175,7 +175,7 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
                                 JSONObject jsonObject = new JSONObject(response);
                                 Boolean success = jsonObject.getBoolean("success");
                                 if (success) {
-                                    Intent intent = new Intent(getApplicationContext(), before_emotion_check.class);
+                                    Intent intent = new Intent(getApplicationContext(), FoodPreference.class);
                                     startActivity(intent);
                                 } else {
                                     Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();

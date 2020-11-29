@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:src="@drawable/food_mouse"/>
+            android:src="@drawable/ic_hi"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -85,7 +85,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="12"/>
                     <Button
-                        android:background="@drawable/shadow_button2"
+                        android:id="@+id/btn_no"
+                        android:background="@drawable/btn__1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:translationZ="25dp"
@@ -97,7 +98,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="8"/>
                     <Button
-                        android:background="@drawable/shadow_button2"
+                        android:id="@+id/btn_nomatter"
+                        android:background="@drawable/btn__2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:translationZ="25dp"
@@ -110,7 +112,8 @@
                         android:layout_weight="8"/>
 
                     <Button
-                        android:background="@drawable/shadow_button2"
+                        android:id="@+id/btn_like"
+                        android:background="@drawable/btn__3"
                         android:layout_width="0dp"
                         android:translationZ="25dp"
                         android:elevation="25dp"
@@ -158,7 +161,7 @@
                 android:gravity="center"
                 android:background="@drawable/button_background"
                 android:textColor="#ffffff"
-                android:fontFamily="@font/pureunjeonnam"
+                android:fontFamily="@font/pureunjeonnambold"
                 android:text="1/24"/>
 
 
