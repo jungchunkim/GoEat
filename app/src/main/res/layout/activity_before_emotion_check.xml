@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="38"
-            android:src="@drawable/mouse" />
+            android:layout_marginRight="60dp"
+            android:src="@drawable/ic_hi" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -31,8 +32,8 @@
             android:gravity="center"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"
-            android:textSize="30dp"
-            android:text="고마워요 이제\n마지막으로 감정에 대한\n조사를 마쳐주세요"/>
+            android:textSize="26dp"
+            android:text="조사를 모두 마쳐주셔서\n 감사합니다. 더 많은 조사를\n 하고 싶으시면 내 정보에서\n 취향조사 다시하기를\n 눌러주세요"/>
     </LinearLayout>
 
     <LinearLayout
@@ -44,7 +45,7 @@
         <Button
             android:id="@+id/btn_home"
             android:layout_width="match_parent"
-            android:text="홈화면으로 이동"
+            android:text="다음"
             android:layout_gravity="center"
             android:layout_height="45dp"
             android:layout_marginLeft="28dp"
