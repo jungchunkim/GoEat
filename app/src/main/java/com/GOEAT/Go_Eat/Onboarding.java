@@ -24,6 +24,12 @@ public class Onboarding extends AppCompatActivity {
     private Button button_2;
 
     @Override
+    public void onBackPressed()
+    {
+        //super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
