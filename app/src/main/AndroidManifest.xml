@@ -19,6 +19,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
+        <activity android:name=".TermsOfServices"></activity>
+        <activity android:name=".menu_detail_list" />
         <activity android:name=".FoodPreference" />
         <activity android:name=".menu_detail_list" />
         <activity
@@ -46,7 +48,9 @@
         <activity android:name=".EmailAuthNumberActivity" />
         <activity android:name=".FindEmailActivity" />
         <activity android:name=".MainActivity_after" />
+
         <activity android:name=".login_activity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

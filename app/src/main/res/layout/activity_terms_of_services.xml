@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Trash.register_activity"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:weightSum="100"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:src="@drawable/arrow"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="서비스를 위한 약관동의"
+            android:textSize="26dp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전체동의"
+            android:textSize="14.5sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <CheckBox
+            android:id="@+id/cp_all"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:layout_gravity="right"
+            android:button="@null"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#979797"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Eat 이용약관 동의"
+            android:textSize="14.5sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보기"
+            android:textSize="12sp"
+            android:textColor="#AFB8C9"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:layout_marginLeft="5dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <CheckBox
+            android:id="@+id/cp_1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:layout_gravity="right"
+            android:button="@null"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전자금융거래 이용약관 동의"
+            android:textSize="14.5sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보기"
+            android:textSize="12sp"
+            android:textColor="#AFB8C9"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:layout_marginLeft="5dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <CheckBox
+            android:id="@+id/cp_2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:layout_gravity="right"
+            android:button="@null"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개인정보 수집이용 동의"
+            android:textSize="14.5sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보기"
+            android:textSize="12sp"
+            android:textColor="#AFB8C9"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:layout_marginLeft="5dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <CheckBox
+            android:id="@+id/cp_3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:layout_gravity="right"
+            android:button="@null"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="개인정보 제 3자 제공 동의 (선택)"
+            android:textSize="14.5sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보기"
+            android:textSize="12sp"
+            android:textColor="#AFB8C9"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:layout_marginLeft="5dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <CheckBox
+            android:id="@+id/cp_4"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:layout_gravity="right"
+            android:button="@null"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="마케팅 정보 메일, SMS 수신동의 (선택)"
+            android:textSize="14.5sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보기"
+            android:textSize="12sp"
+            android:textColor="#AFB8C9"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:layout_marginLeft="5dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <CheckBox
+            android:id="@+id/cp_5"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:layout_gravity="right"
+            android:button="@null"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="#979797"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="본인은 만 14세 이상입니다."
+            android:textSize="14.5sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <CheckBox
+            android:id="@+id/cp_up14"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/custom_checkbox"
+            android:layout_gravity="right"
+            android:button="@null"
+            android:layout_marginRight="30dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="개인정보보호법에 의해 만 14세 이상부터 Go eat 이용이 가능합니다. \n첫 주문시 본인인증을 받고 있으며 만 14세 미만인 경우 개인정보가 삭제됩니다."
+            android:textSize="11sp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:lineSpacingExtra="5dp"
+            />
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        >
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/button_background"
+            android:text="다음으로"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
