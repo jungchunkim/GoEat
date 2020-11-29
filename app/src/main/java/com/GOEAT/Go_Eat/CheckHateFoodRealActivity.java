@@ -33,6 +33,11 @@ public class CheckHateFoodRealActivity extends AppCompatActivity implements View
 
     String name = "";
 
+    //2020-11-29 염상희
+    //싫어하는 재료 저장 부분 추가
+    private ArrayList<String> hateFoodArr = new ArrayList<>();
+    private String HateFoodCategory = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,23 +85,67 @@ public class CheckHateFoodRealActivity extends AppCompatActivity implements View
         layout_18.setOnClickListener(this);
 
         // 서버에서 name받아오기
+        // 2020-11-29-염상희
+        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        name = prefs.getString("name","");
+        final String email = prefs.getString("email","");
 
 
         // name 설정
         tv_txtWithName.setText(name + "님이 못먹는 음식의 \n재료를 모두 골라주세요!");
 
+        final String foodIngre[] = {"밀가루", "생선", "버섯", "해산물", "양고기", "소고기", "돼지고기", "콩", "계란",
+                "유제품", "회", "마늘", "치즈", "조개류", "갑각류", "오이", "견과류"};
+
         // 다음버튼 눌렀을때
         btn_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 취향조사화면으로 이동
-                Intent intent = new Intent(getApplicationContext(), FoodPreference.class);
-                startActivity(intent);
+        int count = 0;
+        @Override
+        public void onClick(View view) {
+            hateFoodArr.clear();
+            String temp = "";
+            for(int i=1;i<clickCheck.length;i++){
+                if (clickCheck[i] == 1) {
+                    hateFoodArr.add(foodIngre[i-1]);
+                    count++;
+                    temp += (foodIngre[i-1] + ",");
+                }
             }
-        });
+            Log.e("싫어하는 재료: ", temp);
+
+            Response.Listener<String> responseListener = new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) { // 서버 응답 받아오는 부분
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        boolean success = jsonObject.getBoolean("success");
+                        System.out.println(success);
+                        if (success) {
+                            Intent intent = new Intent(getApplicationContext(), FoodPreference.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "다시 시도해 주세요", Toast.LENGTH_LONG).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            for (int i = 0; i < hateFoodArr.size(); i++) {
+                if(i==0) HateFoodCategory = hateFoodArr.get(i);
+                else HateFoodCategory += ("," + hateFoodArr.get(i));
+            }
 
 
-    }
+            UserDB userDB = new UserDB();
+            userDB.saveUserHateCategory(email, HateFoodCategory, responseListener, CheckHateFoodRealActivity.this);
+        }
+    });
+
+
+
+}
 
 
 

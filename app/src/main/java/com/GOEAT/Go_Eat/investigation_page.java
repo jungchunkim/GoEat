@@ -169,68 +169,51 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
 //                editor.commit();
                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
                 //칼로리
-                if(clickCheck[0]==1) {
-                    Log.e("******", "high");
+                if(clickCheck[0]==-1) {
                     intent.putExtra("calo", "high");
                 }
-                else if(clickCheck[1]==1) {
-                    Log.e("******", "low");
+                else if(clickCheck[1]==-1) {
                     intent.putExtra("calo", "low");
                 }
-                else
-                    intent.putExtra("calo","null");
 
                 //위치
-                if(clickCheck_2[0]==1)
+                if(clickCheck_2[0]==-1)
                     intent.putExtra("loc","건대");
-                else if(clickCheck_2[1]==1)
+                else if(clickCheck_2[1]==-1)
                     intent.putExtra("loc","신촌");
-                else
-                    intent.putExtra("loc","null");
 
                 //who
-                if(clickCheck_1[0]==1){
-                    Log.e("******","혼자");
+                if(clickCheck_1[0]==-1){
                     intent.putExtra("who","혼자");
                 }
-                else if(clickCheck_1[1]==1){
-                    Log.e("******","애인");
+                else if(clickCheck_1[1]==-1){
                     intent.putExtra("who","애인");
                 }
-                else if(clickCheck_1[2]==1) {
+                else if(clickCheck_1[2]==-1) {
                     intent.putExtra("who", "친구");
-                    Log.e("******","친구");
                 }
-                else if(clickCheck_1[3]==1){
+                else if(clickCheck_1[3]==-1){
                     intent.putExtra("who", "회식");
-                    Log.e("******","회식");
                 }
-                else if(clickCheck_1[4]==1){
+                else if(clickCheck_1[4]==-1){
                     intent.putExtra("who", "가족");
-                    Log.e("******","가족");
                 }
-                else
-                    intent.putExtra("who","null");
 
                 //감정
-                if(clickCheck_3[0]==1) {
-                    Log.e("******", "설레는");
+                if(clickCheck_3[0]==-1) {
                     intent.putExtra("emo", "설레는");
                 }
-                else if(clickCheck_3[1]==1){
-                    Log.e("******","축하하는");
+                else if(clickCheck_3[1]==-1){
                     intent.putExtra("emo","축하하는");
                 }
-                else if(clickCheck_3[2]==1)
+                else if(clickCheck_3[2]==-1)
                     intent.putExtra("emo","우울한");
-                else if(clickCheck_3[3]==1)
+                else if(clickCheck_3[3]==-1)
                     intent.putExtra("emo","평범한");
-                else if(clickCheck_3[4]==1)
+                else if(clickCheck_3[4]==-1)
                     intent.putExtra("emo","스트레스");
-                else if(clickCheck_3[5]==1)
+                else if(clickCheck_3[5]==-1)
                     intent.putExtra("emo","행복한");
-                else
-                    intent.putExtra("emo","null");
 
                 //조사 저장한것 shared preference에도 저장: 로그인화면-> 분석홈 이동을 위한 과정 방진혁
                 SharedPreferences prefs = getSharedPreferences("investigation_result",MODE_PRIVATE);

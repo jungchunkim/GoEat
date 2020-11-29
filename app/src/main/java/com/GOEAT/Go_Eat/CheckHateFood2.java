@@ -155,8 +155,8 @@ public class CheckHateFood2 extends AppCompatActivity implements View.OnClickLis
                 }
             }
         };
-        userDB.setImageToUserChar(img_char,email,CheckHateFood2.this);        // 서버에서 사용자캐릭터가져와서 세팅
-        userDB.getFoodListHate(email,responseListener,CheckHateFood2.this);     //음식 리스트 index 불러오는 부분
+     //   userDB.setImageToUserChar(img_char,email,CheckHateFood2.this);        // 서버에서 사용자캐릭터가져와서 세팅
+     //   userDB.getFoodListHate(email,responseListener,FoodPreference.this);     //음식 리스트 index 불러오는 부분
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
