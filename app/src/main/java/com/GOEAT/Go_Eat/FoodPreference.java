@@ -2,11 +2,16 @@ package com.GOEAT.Go_Eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class FoodPreference extends AppCompatActivity implements View.OnClickListener {
@@ -33,12 +38,41 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
         btn_nomatter.setOnClickListener(this);
         btn_like.setOnClickListener(this);
 
+
         //처음 나오는 그림, text이름, num_count
         food_img.setImageResource(R.drawable.p_food1);
         food_name.setText("떡볶이");
         num_count.setText(reference+"/24");
         reference++;
+
+        //레이아웃을 위에 겹쳐서 올리는 부분
+        LayoutInflater inflater = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //레이아웃 객체생성
+        LinearLayout ll = (LinearLayout)inflater.inflate(R.layout.food_preference_up, null);
+        //레이아웃 배경 투명도 주기
+        ll.setBackgroundColor(Color.parseColor("#99000000"));
+        //레이아웃 위에 겹치기
+        LinearLayout.LayoutParams paramll = new LinearLayout.LayoutParams
+                (LinearLayout.LayoutParams.FILL_PARENT,LinearLayout.LayoutParams.FILL_PARENT);
+        addContentView(ll, paramll);
+
+        ll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LinearLayout lk = (LinearLayout)findViewById(R.id.ll_writeChoice);
+                ((ViewManager) lk.getParent()).removeView(lk);
+            }
+        });
+
+
     }
+
+
+
+
+
+
+
     public void onClick(View view) {
         switch (view.getId())
         {

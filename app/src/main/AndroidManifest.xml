@@ -19,7 +19,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".FoodPreference"></activity>
+        <activity android:name=".FoodPreference" />
         <activity android:name=".menu_detail_list" />
         <activity
             android:name=".AnalysishomeGuideActivity"
