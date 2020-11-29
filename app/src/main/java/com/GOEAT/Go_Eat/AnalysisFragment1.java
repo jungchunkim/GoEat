@@ -418,6 +418,7 @@ public class AnalysisFragment1 extends Fragment {
     public void changeTextView(final String ttext){
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
+                weather = ttext;
                 tv_weather.setText(ttext);
             }
         });

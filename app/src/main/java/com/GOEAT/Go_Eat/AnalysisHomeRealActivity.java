@@ -54,7 +54,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     private String[] foodKind = new String[10];
     private FoodPic foodPic = new FoodPic();
     public List<Integer> list = new ArrayList<>();
-    private String calo, loc, who, emo;
+    private String calo, loc, who, emo, weather = "";
     private int food_list_size = 0;
 
     @Override
@@ -100,7 +100,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         Log.d("who->->", who);
         Log.d("emo->->", emo);
 
-        System.out.println(calo + loc+ who + emo);
+        System.out.println(calo + loc+ who + emo + weather);
 
 
 
