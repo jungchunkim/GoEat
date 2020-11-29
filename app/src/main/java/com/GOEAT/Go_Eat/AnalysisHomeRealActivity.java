@@ -170,6 +170,19 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                     meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
                         @Override
                         public void onClickItem(MeowBottomNavigation.Model item) {
+                            switch(item.getId()){
+                                case ID_HOME:
+                                    //홈 버튼 클릭했을 경우
+                                    break;
+                                case ID_GO:
+                                    //GO 조사 버튼 클릭했을 경우
+                                    Intent intent = new Intent(getApplicationContext(), investigation_page.class);
+                                    startActivity(intent);
+                                    break;
+                                case ID_MYPAGE:
+                                    //MYPAGE 클릭했을 경우
+                                    break;
+                            }
 
                         }
                     });

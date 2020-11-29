@@ -1,5 +1,6 @@
 package com.GOEAT.Go_Eat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,5 +20,7 @@ public class AnalysisFragment2 extends Fragment {
 
         viewGroup = (ViewGroup) inflater.inflate(R.layout.analysis_fragment2, container, false);
         return viewGroup;
+
+
     }
 }
