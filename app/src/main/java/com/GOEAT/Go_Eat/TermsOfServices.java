@@ -2,6 +2,7 @@ package com.GOEAT.Go_Eat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -77,6 +78,9 @@ public class TermsOfServices extends AppCompatActivity {
 
                 Log.e("동의 여부", Arrays.toString(agreement));
                 Log.e("14세이상 여부", String.valueOf(up14));
+
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
 
             }
         });
