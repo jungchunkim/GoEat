@@ -52,7 +52,7 @@ public class AnalysisFragment1 extends Fragment {
     final int ITEM_SIZE = 4;
     ViewGroup v;
     TextView tv_recommend_info, tv_place, tv_weather, tv_temperature, tv_who, tv_emotion, tv_calorie;
-    ImageView iv_weather, iv_who, iv_emotion, iv_calroie;
+    ImageView iv_weather, iv_who, iv_emotion, iv_calroie, location_move;
     String who=" "; //(친구, 애인 등등)
     String emotion=" ";
     String place="신촌";
@@ -92,9 +92,18 @@ public class AnalysisFragment1 extends Fragment {
         iv_who = v.findViewById(R.id.iv_who);
         iv_emotion = v.findViewById(R.id.iv_emotion);
         iv_calroie = v.findViewById(R.id.iv_calorie);
+        location_move=v.findViewById(R.id.location_move);
 
-        // name, place, emotion, calorie 받아오는 코드
 
+
+        //위치 설정으로 이동하는 코드
+        location_move.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),location_check.class);
+                startActivity(intent);
+            }
+        });
 
         // 2020-09-02 임민영
         // 날씨 불러오는 부분 (기온은 temperature, 날씨는 weather에 저장됨!)
@@ -102,6 +111,8 @@ public class AnalysisFragment1 extends Fragment {
         new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
 
 
+
+        // name, place, emotion, calorie 받아오는 코드
         // 위치 설정
         tv_place.setText(place);
 

@@ -22,21 +22,6 @@
             android:layout_weight="6"
             android:orientation="horizontal"
             android:weightSum="10">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="7.8"/>
-
-            <Button
-                android:id="@+id/x_button"
-                android:background="@drawable/x__button"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.2"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.1"/>
 
         </LinearLayout>
         <LinearLayout
@@ -54,8 +39,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="30"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
         android:orientation="horizontal"
         android:weightSum="10">
         <ImageView
