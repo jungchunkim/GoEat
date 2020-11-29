@@ -3,7 +3,10 @@ package com.GOEAT.Go_Eat;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +34,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -90,6 +96,11 @@ public class AnalysisFragment1 extends Fragment {
         // name, place, emotion, calorie 받아오는 코드
 
 
+        // 2020-09-02 임민영
+        // 날씨 불러오는 부분 (기온은 temperature, 날씨는 weather에 저장됨!)
+        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "span.todaytemp");
+        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
+
 
         // 위치 설정
         tv_place.setText(place);
@@ -97,45 +108,7 @@ public class AnalysisFragment1 extends Fragment {
         // 메인 메시지 설정
         tv_recommend_info.setText(who + "와 함께 하는 " + name + "님에게 추천!");
 
-        // 날씨 설정
-        if(weather == null){
-            tv_weather.setText("--");
-        }
-        else {
-            switch (weather) {
-                case "흐림":
-                    iv_weather.setImageResource(R.drawable.analysishome_cloudy);
-                    tv_weather.setText("흐림");
-                    break;
-                case "비":
-                    iv_weather.setImageResource(R.drawable.analysishome_rain);
-                    tv_weather.setText("비");
-                    break;
-                case "눈":
-                    iv_weather.setImageResource(R.drawable.analysishome_snow);
-                    tv_weather.setText("눈");
-                    break;
-                case "폭우":
-                    iv_weather.setImageResource(R.drawable.analysishome_heavyrain);
-                    tv_weather.setText("폭우");
-                    break;
-                case "맑음":
-                    iv_weather.setImageResource(R.drawable.analysishome_sunny);
-                    tv_weather.setText("맑음");
-                    break;
-                case "조금 흐림":
-                    iv_weather.setImageResource(R.drawable.analysishome_littlecloudy);
-                    tv_weather.setText("조금 흐림");
-                    break;
-                case "바람":
-                    iv_weather.setImageResource(R.drawable.analysishome_wind);
-                    tv_weather.setText("바람");
-                    break;
-                default:
-                    tv_weather.setText("--");
-                    break;
-            }
-        }
+
 
 
         // 기온 설정
@@ -314,12 +287,11 @@ public class AnalysisFragment1 extends Fragment {
     public void setEmail(String email){
         this.email = email;
     }
-    public void setSitu(String loc, String who, String emo, String calo, String weather){
+    public void setSitu(String loc, String who, String emo, String calo){
         this.place = loc;
         this.who=who;
         this.emotion = emo;
         this.calorie = calo;
-        this.weather = weather;
     }
 
     public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, List<Integer> list){
@@ -344,5 +316,113 @@ public class AnalysisFragment1 extends Fragment {
             System.out.println(this.foodFirst[i] + this.foodSecond[i] + this.foodKind[i]);
         }
     }
+
+    class WeatherAsynTask extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            String URL = params[0];
+            String E1 = params[1];
+            String result = "";
+
+            Document doc = null;
+            try {
+                doc = Jsoup.connect(URL).get();
+                Element temp = doc.select(E1).first();
+
+                if(temp==null){
+                    Log.e("result" ,"fail to get weather");
+                }
+
+                else {
+                    result = temp.text();
+
+                    Log.e("result", result);
+
+                    String str[] = result.split(",");
+
+
+
+                    if (E1.equals("span.todaytemp")) {
+                        temperature = str[0];
+                        Log.e("temperature", temperature);
+                        //2020-11-23 김정천 몇 도 인지 화면에 출력
+                        tv_temperature.setText(temperature+"도");
+                    } else {
+                        weather = str[0];
+                        Log.e("weather", weather);
+                        //weather을 받아오면 된다.
+
+
+                        if(weather == null){
+                            tv_weather.setText("--");
+                        }
+                        else {
+                            switch (weather) {
+                                case "흐림":
+                                    iv_weather.setImageResource(R.drawable.blur);
+                                    changeTextView("흐림");
+                                    break;
+                                case "비":
+                                    iv_weather.setImageResource(R.drawable.analysishome_rain);
+                                    changeTextView("비");
+                                    break;
+                                case "눈":
+                                    iv_weather.setImageResource(R.drawable.analysishome_snow);
+                                    changeTextView("눈");
+                                    break;
+                                case "맑음":
+                                    iv_weather.setImageResource(R.drawable.analysishome_sunny);
+                                    changeTextView("맑음");
+                                    break;
+                                case "구름많음":
+                                    iv_weather.setImageResource(R.drawable.cloud_many);
+                                    changeTextView("구름많음");
+                                    break;
+                                default:
+                                    changeTextView("--");
+                                    break;
+                            }
+                        }
+
+                    }
+                }
+                return result;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            String[] str = s.split(",");
+
+            //textView.setText(str[0]);
+            //Log.e("날씨", str[0]);
+
+
+
+        }
+
+
+
+
+    }
+
+    public void changeTextView(final String ttext){
+        getActivity().runOnUiThread(new Runnable() {
+            public void run() {
+                tv_weather.setText(ttext);
+            }
+        });
+    }
+
+
 
 }

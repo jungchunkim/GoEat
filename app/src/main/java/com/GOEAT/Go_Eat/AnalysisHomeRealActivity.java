@@ -112,7 +112,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         String email = prefs.getString("email","");
         fragment1.setEmail(email);
         fragment1.setName(prefs.getString("name",""));
-        fragment1.setSitu(loc,who,emo,calo,"");
+        fragment1.setSitu(loc,who,emo,calo);
 
 
         //2020-11-23 음식 취향대로 가져오기 - 염상희

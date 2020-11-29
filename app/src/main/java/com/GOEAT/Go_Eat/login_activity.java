@@ -234,7 +234,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             System.out.println(success);
-                            /*if (success.equals("true")){
+                            if (success.equals("true")){
                                 SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
                                 SharedPreferences.Editor editors = prefs.edit();
                                 editors.putString("email",email);
@@ -274,12 +274,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                                 et_login_password.setTextColor(Color.parseColor("#E01D4A"));
                                 err_text.setText("이메일 주소와 비밀번호가 맞지 않습니다.");
                                 err_text.setTextColor(Color.parseColor("#E01D4A"));
-                            }*/
-
-
-                            Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);
-                            startActivity(intent);
-
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
