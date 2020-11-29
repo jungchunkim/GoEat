@@ -58,6 +58,12 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     private int food_list_size = 0;
 
     @Override
+    public void onBackPressed()
+    {
+        //super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_home_real);
@@ -214,6 +220,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         userDB.setFlavorFoodList(email,calo,who,responselistener2,AnalysisHomeRealActivity.this);
 
 
+
 //
 //
 //
@@ -251,6 +258,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
 
 
     }
+
 
     public List<Integer> ShuffleOrder(){
         //추천 음식 넣는 순서 셔플 2020-09-29 염상희
