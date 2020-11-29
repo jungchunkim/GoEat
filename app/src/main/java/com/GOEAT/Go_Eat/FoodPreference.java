@@ -40,6 +40,9 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
     private String[] foodlist = new String[24]; //음식이름 저장하는 배열
     ImageView img_char;
     private String Hatefoodlists = "N";
+    private String Sosofoodlists = "N";
+    private String Likefoodlists = "N";
+
     public String email = "";
 
     @Override
@@ -209,17 +212,26 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
             };
 
 
-            Hatefoodlists = null;
-            for (int i = 0; i < 24; i++) {
-                if (Hatefoodlists==null && prefer_food[i] == -2) {
-                    Hatefoodlists = foodlist[i];
-                } else if (prefer_food[i] == -2) {
-                    Hatefoodlists = Hatefoodlists + "," + foodlist[i];
-                    count++;
-                }
-            }
-
-            userDB.saveUserHateFood(email, Hatefoodlists, responselistener, FoodPreference.this);       // 서버에 사용자가 싫어하는 음식 저장
+//            Sosofoodlists = null;
+//            for (int i = 0; i < 24; i++) {
+//                if (Sosofoodlists==null && prefer_food[i] == -2) {
+//                    Sosofoodlists = foodlist[i];
+//                } else if (prefer_food[i] == -2) {
+//                    Sosofoodlists = Sosofoodlists + "," + foodlist[i];
+//                    count++;
+//                }
+//            }
+//
+//            Likefoodlists = null;
+//            for (int i = 0; i < 24; i++) {
+//                if (Likefoodlists==null && prefer_food[i] == -2) {
+//                    Likefoodlists = foodlist[i];
+//                } else if (prefer_food[i] == -2) {
+//                    Likefoodlists = Likefoodlists + "," + foodlist[i];
+//                    count++;
+//                }
+//            }
+            userDB.saveUserHateFood(email, Hatefoodlists, /*Sosofoodlists, Likefoodlists,*/ responselistener, FoodPreference.this);       // 서버에 사용자가 싫어하는 음식 저장
             Hatefoodlists = null;
         }
     }
