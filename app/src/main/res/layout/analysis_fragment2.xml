@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Fragment2"
+        android:text="Loading..."
         android:textColor="@android:color/secondary_text_light"
         android:textSize="30sp"
         android:textStyle="bold" />
