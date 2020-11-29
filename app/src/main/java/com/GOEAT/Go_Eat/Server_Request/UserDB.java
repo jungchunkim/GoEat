@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.GOEAT.Go_Eat.AnalysisFragment1;
 import com.GOEAT.Go_Eat.CheckHateFood2;
+import com.GOEAT.Go_Eat.FoodPreference;
 import com.GOEAT.Go_Eat.R;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -180,7 +181,7 @@ public class UserDB implements Serializable {
         queue.add(request);
     }
 
-    public void getFoodListHate(String useremail, Response.Listener<String> listener, CheckHateFood2 activity) { //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
+    public void getFoodListHate(String useremail, Response.Listener<String> listener, FoodPreference activity) { //싫어하는 음식을 고르기위한 음식들 랜덤으로 서버로 부터 받아오는 부분
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail", useremail);
@@ -206,13 +207,14 @@ public class UserDB implements Serializable {
 
 
     }
-
-    public void saveUserHateFood(String useremail, String HateFoodLists, Response.Listener<String> listener, Activity activity) { //싫어하는 음식 서버 전달
+    public void saveUserHateFood(String useremail, String HateFoodLists, String SosoFoodLists, String LikeFoodLists, Response.Listener<String> listener, Activity activity) { //싫어하는 음식 서버 전달
         Log.d("~~~~", HateFoodLists);
         queue = Volley.newRequestQueue(activity);
         map = new HashMap<>();
         map.put("useremail", useremail);
         map.put("HateFoodLists", HateFoodLists);
+        map.put("SosoFoodLists", SosoFoodLists);
+        map.put("LikeFoodLists", LikeFoodLists);
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL6,

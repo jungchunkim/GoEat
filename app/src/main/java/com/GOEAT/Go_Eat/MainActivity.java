@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(MainActivity.this,Onboarding.class);
+
                 startActivity(intent);
                 overridePendingTransition(R.anim.fadein,R.anim.fadeout);
             }
