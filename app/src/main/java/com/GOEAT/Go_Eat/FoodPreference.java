@@ -19,6 +19,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
     ImageView food_img;
     Button btn_no, btn_nomatter,btn_like;
     TextView food_name, num_count;
+    private int[] prefer_food = new int[24];    //싫어요 그냥그래요 좋아요 담은 것
     private int reference=1;
     private int full_count=24;
 
@@ -81,6 +82,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 //싫어요 클릭했을 때
                 if(reference<=full_count)
                 {
+                    prefer_food[reference-1]=-2;
                     food_img.setImageResource(R.drawable.p_food1);
                     food_name.setText("음식이름");
                     num_count.setText(reference+"/24");
@@ -96,6 +98,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 //그냥 그래요 클릭했을 때
                 if(reference<=full_count)
                 {
+                    prefer_food[reference-1]=-1;
                     food_img.setImageResource(R.drawable.p_food1);
                     food_name.setText("음식이름");
                     num_count.setText(reference+"/24");
@@ -111,6 +114,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 //좋아요 클릭했을 때
                 if(reference<=full_count)
                 {
+                    prefer_food[reference-1]=1;
                     food_img.setImageResource(R.drawable.p_food1);
                     food_name.setText("음식이름");
                     num_count.setText(reference+"/24");
