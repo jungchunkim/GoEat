@@ -1,0 +1,685 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".SetCharActivity"
+    android:orientation="vertical"
+    android:weightSum="100"
+    android:background="@color/background"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:src="@drawable/arrow"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="17"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <ImageView
+            android:id="@+id/img_char"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/mouse_hi"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_txtWithName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:textColor="@color/font"
+            android:fontFamily="@font/pureunjeonnam"
+            android:text="--님이 못먹는 음식의 \n재료를 모두 골라주세요!"/>
+
+
+    </LinearLayout>
+
+
+d    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="73"
+        android:scrollbarDefaultDelayBeforeFade="500000"
+        android:scrollbarThumbVertical="@color/mainPink"
+     >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="73"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layout_1"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center"
+                        android:text="없음"
+                        android:textColor="#E61673"
+                        android:textSize="22dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_2"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:shadowColor="#80000000">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        android:src="@drawable/hate_flour" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="밀가루"
+                        android:textColor="@color/font" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_3"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_fish"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생선"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_4"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_mushroom"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="버섯"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_5"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_seafood"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        />
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="해산물"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_6"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        android:src="@drawable/hate_sheep"
+
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="양고기"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_7"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_beef"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="12dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="소고기"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="15dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_8"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_pig"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="12dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="돼지고기"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="15dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_9"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_been"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="콩"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_10"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_egg"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="10dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="계란"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="17dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_11"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_milk"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="17dp"
+                        android:layout_marginRight="2dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="유제품"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_12"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_raw"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="회"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_13"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_onion"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="마늘"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_14"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_cheese"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="1.5dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="치즈"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_15"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_clam"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="조개류"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_16"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_shellfish"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="갑각류"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:id="@+id/layout_17"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    android:layout_marginRight="30dp"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_cucumber"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="오이"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_18"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:background="@drawable/shadow_button_check_hate"
+                    android:elevation="4dp"
+                    android:gravity="center"
+                    android:shadowColor="#80000000"
+                    android:orientation="vertical"
+                    >
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/hate_nuts"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="1.2dp"
+                        android:layout_marginTop="17dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="견과류"
+                        android:textColor="@color/font"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:layout_marginTop="10dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <Button
+                    android:id="@+id/btn_next"
+                    android:gravity="center"
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginRight="28dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_background"
+                    android:text="다음"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+</LinearLayout>
+
+

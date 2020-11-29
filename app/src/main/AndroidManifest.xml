@@ -22,13 +22,11 @@
         <activity android:name=".TermsOfServices"></activity>
         <activity android:name=".menu_detail_list" />
         <activity android:name=".FoodPreference" />
-        <activity android:name=".menu_detail_list" />
         <activity
             android:name=".AnalysishomeGuideActivity"
             android:theme="@style/Transparent" />
         <activity android:name=".AnalysisHomeRealActivity" />
         <activity android:name=".restuarent_detail" />
-        <activity android:name=".Analysis_home_after" />
         <activity android:name=".LinkSnsActivity" />
         <activity android:name=".MyPageActivity" />
         <activity android:name=".location_check" />
@@ -37,6 +35,7 @@
         <activity android:name=".before_emotion_check" />
         <activity android:name=".CheckHateFood2" />
         <activity android:name=".CheckHateFood" />
+        <activity android:name=".CheckHateFoodRealActivity" />
         <activity android:name=".SetCharActivity" />
         <activity android:name=".Onboarding" />
         <activity android:name=".RegAuthActivity" />
