@@ -95,6 +95,14 @@ public class AnalysisFragment3 extends Fragment {
             }
         });
 
+        layout_notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NoticeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         return viewGroup;
