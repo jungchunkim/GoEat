@@ -19,7 +19,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
-        <activity android:name=".NoticeActivity"></activity>
+        <activity android:name=".Service_Detail_4"></activity>
+        <activity android:name=".Service_Detail_2" />
+        <activity android:name=".Service_Detail_3" />
+        <activity android:name=".Service_Detatil_2" />
+        <activity android:name=".NoticeActivity" />
         <activity android:name=".TermsOfServices" />
         <activity android:name=".menu_detail_list" />
         <activity android:name=".FoodPreference" />
