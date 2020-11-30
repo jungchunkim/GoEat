@@ -43,13 +43,6 @@ public class SecondFragment  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_second, container, false);
-        TextView tvLabel = (TextView) view.findViewById(R.id.textview);
-        tvLabel.setText("회원가입을 하시고,\n취향 분석을 한번만\n해주시면");
-        tvLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 28);
-        tvLabel.setGravity(Gravity.CENTER_HORIZONTAL);
-        tvLabel.setTextColor(Color.parseColor("#222B45"));
-        Typeface typeface = getResources().getFont(R.font.pureunjeonnam);
-        tvLabel.setTypeface(typeface);
         return view;
     }
 }

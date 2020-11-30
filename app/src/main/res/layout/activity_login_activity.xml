@@ -64,6 +64,7 @@
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_text_background"
         android:fontFamily="@font/pureunjeonnam"
+        android:textColor="#222B45"
         android:textColorHint="#C5CEE0"
         android:textSize="16dp"
         android:hint="이메일주소"/>
@@ -82,6 +83,7 @@
         android:textSize="16dp"
         android:textColorHint="#C5CEE0"
         android:inputType="textPassword"
+        android:textColor="#222B45"
         />
 
     <LinearLayout

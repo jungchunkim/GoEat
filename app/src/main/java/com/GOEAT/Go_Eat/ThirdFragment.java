@@ -45,14 +45,7 @@ public class ThirdFragment  extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_second, container, false);
-        TextView tvLabel = (TextView) view.findViewById(R.id.textview);
-        tvLabel.setText("당신의 취향에 맞는\n음식을 매일 다르게\n추천해드릴게요!");
-        tvLabel.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 28);
-        tvLabel.setGravity(Gravity.CENTER_HORIZONTAL);
-        tvLabel.setTextColor(Color.parseColor("#222B45"));
-        Typeface typeface = getResources().getFont(R.font.pureunjeonnam);
-        tvLabel.setTypeface(typeface);
+        View view = inflater.inflate(R.layout.fragment_third, container, false);
         return view;
     }
 }
