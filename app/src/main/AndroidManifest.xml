@@ -49,6 +49,7 @@
         <activity android:name=".FindEmailActivity" />
         <activity android:name=".MainActivity_after" />
         <activity android:name=".login_activity" />
+        <activity android:name=".Analysis_home_after" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

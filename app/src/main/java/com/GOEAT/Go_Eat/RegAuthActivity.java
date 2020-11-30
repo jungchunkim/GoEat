@@ -65,6 +65,7 @@ public class RegAuthActivity extends AppCompatActivity {
                 SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
                 String randnum = prefs.getString("randnum","");
                 String username = prefs.getString("name","");
+                String nickname = prefs.getString("nickname","");
                 String useremail = prefs.getString("email","");
                 String userphonenum = prefs.getString("phonenum","");
                 String userpassword =  prefs.getString("password","");
@@ -90,7 +91,7 @@ public class RegAuthActivity extends AppCompatActivity {
                             }
                         }
                     };
-                    register_request register_request = new register_request(username,useremail,userpassword,usergender,userbirth,userage,userphonenum,responseListener);
+                    register_request register_request = new register_request(nickname,username,useremail,userpassword,usergender,userbirth,userage,userphonenum,responseListener);
                     RequestQueue queue = Volley.newRequestQueue(RegAuthActivity.this);
                     queue.add(register_request);
 

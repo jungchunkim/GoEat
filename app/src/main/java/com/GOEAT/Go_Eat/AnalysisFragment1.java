@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.GOEAT.Go_Eat.DataType.FoodPic;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.GOEAT.Go_Eat.Server_Request.get_restaurantdetail;
+import com.GOEAT.Go_Eat.Server_Request.get_restaurantlist;
 import com.GOEAT.Go_Eat.Server_Request.save_UserSituFlavor;
 import com.GOEAT.Go_Eat.Server_Request.setFlavorFoodList;
 import com.android.volley.RequestQueue;
@@ -211,7 +212,8 @@ public class AnalysisFragment1 extends Fragment {
         for(int i=0;i<ITEM_SIZE;i++) {
             if(item_cnt+i<food_list_size) {
                 //list 섞지 않았을 때
-                item[i] = new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[item_cnt + i], foodKind[item_cnt + i] + ">" + foodFirst[item_cnt + i], "11개 음식점, 8000원부터");
+
+                item[i] = new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[item_cnt + i], foodKind[item_cnt + i] + ">" + foodFirst[item_cnt + i], "11개 음식점, 8000원부터",place, who, name, weather,temperature, emotion, calorie);
                 //list 섞었을 때
                 //item[i] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt + i)], foodKind[list.get(item_cnt + i)] + ">" + foodFirst[list.get(item_cnt + i)], "11개 음식점, 8000원부터");
                 able_item_size = i;
@@ -277,7 +279,7 @@ public class AnalysisFragment1 extends Fragment {
                 item_cnt++;
                 if(add_item_index<food_list_size) {
                     //list 섞지 않았을 경우
-                    items.add(new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[add_item_index], foodKind[add_item_index]+">"+foodFirst[add_item_index++], "11개 음식점, 8000원부터"));
+                    items.add(new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[add_item_index], foodKind[add_item_index]+">"+foodFirst[add_item_index++], "11개 음식점, 8000원부터",place, who, name, weather,temperature, emotion, calorie));
                     //list 섞은 경우
                     //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(add_item_index)], foodKind[list.get(add_item_index)]+">"+foodFirst[list.get(add_item_index++)], "11개 음식점, 8000원부터"));
                     //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "추가한 음식","양식>파스타", "11개 음식점, 8000원부터"));

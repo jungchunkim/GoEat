@@ -171,6 +171,7 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
         });*/
 
 
+
         cb_login_auto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -295,7 +296,12 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
 
             }
         });
-
+        if(pref.getString("check","").equals("1")){
+            et_login_email.setText(pref.getString("email",""));
+            et_login_password.setText(pref.getString("password",""));
+            cb_login_auto.performClick();
+            btn_login.performClick();
+        }
 
         cb_login_auto.setOnClickListener(new View.OnClickListener() {
             @Override

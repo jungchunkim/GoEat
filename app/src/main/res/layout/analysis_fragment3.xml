@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
                     android:fontFamily="@font/pureunjeonnam"
+                    android:textColor="@color/black"
                     android:text="asdf@gmail.com"
                     android:textSize="16sp" />
             </LinearLayout>

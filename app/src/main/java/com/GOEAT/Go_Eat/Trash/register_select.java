@@ -121,9 +121,9 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
             SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
             String media = pref.getString("register_media","");
 
-            register_request register_request = new register_request(username, useremail, useremail, usergender, userbirth, userage, media, responseListener);
-            RequestQueue queue = Volley.newRequestQueue(register_select.this);
-            queue.add(register_request);
+//            register_request register_request = new register_request(username, useremail, useremail, usergender, userbirth, userage, media, responseListener);
+//            RequestQueue queue = Volley.newRequestQueue(register_select.this);
+//            queue.add(register_request);
 
         }
     };
@@ -365,9 +365,9 @@ public class register_select extends AppCompatActivity implements GoogleApiClien
                             activity.setUseremail(result.getJSONObject("response").getString("email"));
                             activity.setUsergender(result.getJSONObject("response").getString("gender"));
                             activity.setUsername(result.getJSONObject("response").getString("name"));
-                            register_request register_request = new register_request(activity.getUsername(), activity.getUseremail(),activity. getUseremail(), activity.getUsergender(), activity.getUserbirth(),activity.getUserage(), "Naver", activity.responseListener);
-                            RequestQueue queue = Volley.newRequestQueue(activity);
-                            queue.add(register_request);
+//                            register_request register_request = new register_request(activity.getUsername(), activity.getUseremail(),activity. getUseremail(), activity.getUsergender(), activity.getUserbirth(),activity.getUserage(), "Naver", activity.responseListener);
+//                            RequestQueue queue = Volley.newRequestQueue(activity);
+//                            queue.add(register_request);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

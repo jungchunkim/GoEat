@@ -32,7 +32,7 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
         menulist = intent.getExtras().getString("menulist");
         pricelist = intent.getExtras().getString("pricelist");
         final List<Analysis_menu_Item> items = new ArrayList<>();
-        final Analysis_menu_Item[] item = new Analysis_menu_Item[15];
+        final Analysis_menu_Item[] item = new Analysis_menu_Item[50];
         Log.d("menulist", menulist);
         Log.d("pricelist", pricelist);
         String []tokensmenu = menulist.split(", ");
@@ -49,7 +49,7 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
             arraylength = tokensmenu.length;
         }
 
-        for(i = 0 ;i<arraylength; i++){ //아이템에 넣어주는 부분 => 사진 부분 수정 해야함
+        for(i = 0 ;i<arraylength; i++){ //아이템에 넣어주는 부분 => 사진 부분 수정 해야함 //완료
             System.out.println(i);
             if(tokensprice[i].contains("원")) {
                 item[i] = new Analysis_menu_Item(intent.getExtras().getString("menu_img_"+(i+1)), tokensmenu[i], tokensprice[i]);

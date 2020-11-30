@@ -194,9 +194,9 @@ public class register_activity extends AppCompatActivity {
                             }
                         }
                     };
-                    register_request register_request = new register_request(username,useremail,userpassword,usergender,userbirth,userage,"goeat",responseListener);
+//                    register_request register_request = new register_request(username,useremail,userpassword,usergender,userbirth,userage,"goeat",responseListener);
                     RequestQueue queue = Volley.newRequestQueue(register_activity.this);
-                    queue.add(register_request);
+//                    queue.add(register_request);
                 }
             }
         });

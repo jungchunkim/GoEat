@@ -88,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Calendar calendar = Calendar.getInstance();
+                final String nickname = nick_name.getText().toString();
                 final String username = et_name.getText().toString();
                 final String useremail = et_email.getText().toString();
                 final String userpassword = et_pwd1.getText().toString();
@@ -114,6 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
                         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
                         SharedPreferences.Editor editors = prefs.edit();
                         editors.putString("name",username);
+                        editors.putString("nickname",username);
                         editors.putString("email",useremail);
                         editors.putString("phonenum",userphonenum);
                         editors.putString("password",userpassword);

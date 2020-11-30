@@ -39,16 +39,16 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         //holder.Image_1.setImageResource(arrayList.get(position).getImage_1());
         try {
             if(arrayList.get(position).getImage_1() != null && arrayList.get(position).getImage_1().length() > 0) { //java.lang.IllegalArgumentException: Path must not be empty.
-                Picasso.get().load(arrayList.get(position).getImage_1()).error(R.drawable.go).into(holder.Image_1);
+                Picasso.get().load(arrayList.get(position).getImage_1()).error(R.drawable.go_logo1).into(holder.Image_1);
             }
         } catch (Exception e){ //[200210] fix: IllegalStateException: Unrecognized type of request
             e.printStackTrace();
         }
 
         holder.shop_name_1.setText(arrayList.get(position).getShop_name_1());
-        holder.exp_1.setText(arrayList.get(position).getExp_1());
-        holder.price_1.setText(arrayList.get(position).getPrice_1());
-        holder.place_1.setText(arrayList.get(position).getPlace_1());
+//        holder.exp_1.setText(arrayList.get(position).getExp_1());
+//        holder.price_1.setText(arrayList.get(position).getPrice_1());
+        holder.place_1.setText(arrayList.get(position).getPlace_1()+", "+arrayList.get(position).getExp_1()+" "+arrayList.get(position).getPrice_1());
 
     }
 
@@ -77,8 +77,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
             super(itemView);
             this.Image_1=(ImageView)itemView.findViewById(R.id.Image_1);
             this.shop_name_1=(TextView)itemView.findViewById(R.id.shop_name_1);
-            this.exp_1=(TextView)itemView.findViewById(R.id.exp_1);
-            this.price_1=(TextView)itemView.findViewById(R.id.price_1);
+//            this.exp_1=(TextView)itemView.findViewById(R.id.exp_1);
+//            this.price_1=(TextView)itemView.findViewById(R.id.price_1);
             this.place_1=(TextView)itemView.findViewById(R.id.place_1);
 
 

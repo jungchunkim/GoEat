@@ -44,7 +44,7 @@ public class menulistRecyclerAdapter extends RecyclerView.Adapter<menulistRecycl
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) { //마지막 사진 입력 오류 해결 필요
         final Analysis_menu_Item item = items.get(position);
         //Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
         //holder.image.setBackground(item.getDrawable());
@@ -54,9 +54,9 @@ public class menulistRecyclerAdapter extends RecyclerView.Adapter<menulistRecycl
 //                .into(holder.image);
         Log.d("item put in ", "yes!");
         try {
-            Picasso.get().load(item.url).into(holder.image);
+            Picasso.get().load(item.url).error(R.drawable.go_logo1).into(holder.image);
             Log.d("image put in ", "yes!");
-            Log.d("image url is.. ", item.url);
+//            Log.d("image url is.. ", item.url);
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             holder.image.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();

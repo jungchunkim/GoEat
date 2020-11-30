@@ -28,7 +28,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
 
     ImageView food_img;
     Button btn_no, btn_nomatter,btn_like;
-    TextView food_name, num_count;
+    TextView food_name, num_count,tv_name_notice;
     private int[] prefer_food = new int[24];    //싫어요 그냥그래요 좋아요 담은 것
 
     private int reference=0; //reference 0부터 시작으로 변경
@@ -49,6 +49,9 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_preference);
+        SharedPreferences pref = getSharedPreferences("loginauto", MODE_PRIVATE);
+        tv_name_notice=findViewById(R.id.tv_name_notice);
+        tv_name_notice.setText(pref.getString("nickname","")+"님의 음식 취향을 \n 저희한테 알려주세요");
 
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
         email = prefs.getString("email","");

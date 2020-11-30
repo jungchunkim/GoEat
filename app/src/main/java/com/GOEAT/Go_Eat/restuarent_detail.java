@@ -59,7 +59,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
     ImageView restaurant_img_1, restaurant_img_2, restaurant_img_3;
     String restaurant_name, FirstFood, AssociateFood,menulist,pricelist;
     String restaurant_main_image;
-    Button bt_phone_num,naver_order,View_more,show_all_menu;
+    Button bt_phone_num,naver_order,View_more,show_all_menu,bt_share;
     private MapView mapView;
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
@@ -89,6 +89,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         bt_phone_num = (Button) findViewById(R.id.bt_phone_num);
         View_more =  (Button) findViewById(R.id.View_more);
         show_all_menu = (Button) findViewById(R.id.show_all_menu);
+        bt_share = (Button) findViewById(R.id.bt_share);
         final Intent intent = getIntent();
 
         mapView = findViewById(R.id.map_view);
@@ -116,6 +117,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         menulist = intent.getExtras().getString("menulist");
         pricelist = intent.getExtras().getString("pricelist");
 
+        Log.d("restaurant_link", intent.getExtras().getString("restaurant_link"));
         //최소 최대 가격 계산 하여 넣는 부분 방진혁
         String []tokensprice = pricelist.split(", ");
         String maxprice, minprice;
@@ -157,21 +159,21 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
 //        Log.d("restaurant_img_2",intent.getExtras().getString("menu_img_2"));
 //        Log.d("restaurant_img_3",intent.getExtras().getString("menu_img_3"));
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_1")).error(R.drawable.go).into(restaurant_img_1);
+            Picasso.get().load(intent.getExtras().getString("menu_img_1")).error(R.drawable.go_logo1).into(restaurant_img_1);
             Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_1"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_1.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_2")).error(R.drawable.go).into(restaurant_img_2);
+            Picasso.get().load(intent.getExtras().getString("menu_img_2")).error(R.drawable.go_logo1).into(restaurant_img_2);
             Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_2"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_2.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_3")).error(R.drawable.go).into(restaurant_img_3);
+            Picasso.get().load(intent.getExtras().getString("menu_img_3")).error(R.drawable.go_logo1).into(restaurant_img_3);
             Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_3"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_3.setImageResource(R.drawable.go_logo1);
@@ -198,6 +200,16 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
 //               startActivity(intent1);
 //            }
 //        });
+        bt_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/html");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, intent.getExtras().getString("restaurant_link"));
+                startActivity(Intent.createChooser(sharingIntent,"Share using text"));
+
+            }
+        });
         naver_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -214,7 +226,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
                 intent2.putExtra("menulist",menulist);
                 intent2.putExtra("pricelist",pricelist);
                 intent2.putExtra("restaurant_name",restaurant_name);
-                for(int i = 0; i<intent.getExtras().getInt("menu_length")+1; i++){
+                for(int i = 0; i<(intent.getExtras().getInt("menu_length")+2); i++){
                     intent2.putExtra("menu_img_"+i,intent.getExtras().getString("menu_img_"+i));
                 }
                 startActivity(intent2);

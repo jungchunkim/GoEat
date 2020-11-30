@@ -37,6 +37,7 @@ public class AnalysisFragment3 extends Fragment {
     String name="";
     String email="";
     String chracter="";
+    String nickname="";
     ImageView home_btn_2,go_btn_2;
     LinearLayout layout_notice, layout_investigation;
 
@@ -61,7 +62,8 @@ public class AnalysisFragment3 extends Fragment {
         layout_notice = viewGroup.findViewById(R.id.layout_notice);
 
         final UserDB userDB = new UserDB();
-        final SharedPreferences prefs = getActivity().getSharedPreferences("Account",MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("loginauto", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = prefs.edit();
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부
@@ -69,11 +71,15 @@ public class AnalysisFragment3 extends Fragment {
                     JSONObject jsonObject = new JSONObject(response);
                     boolean success = jsonObject.getBoolean("success");
                     System.out.println(success);
+                    nickname = jsonObject.getString("nickname");
+                    editor.putString("nickname",nickname);
+                    editor.commit();
                     name = jsonObject.getString("name");
                     chracter = jsonObject.getString("chracter");
                     if (success){
                         // 가져온 이름을 세팅하기
-                        tv_nickname.setText(name);
+                        tv_nickname.setText(nickname);
+                        tv_email.setText(email);
                     }else {
 
                     }

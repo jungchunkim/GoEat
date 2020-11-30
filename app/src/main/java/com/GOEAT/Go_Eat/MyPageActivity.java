@@ -25,13 +25,14 @@ public class MyPageActivity extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
     LinearLayout layout_sns;
-    TextView tv_nickname;
-    TextView tv_email;
-    CircleImageView iv_profile;
+    private TextView tv_nickname;
+    private TextView tv_email;
+    private CircleImageView iv_profile;
     String name="";
     String email="";
     String chracter="";
-    ImageView home_btn_2,go_btn_2;
+    private String nickname="";
+    private ImageView home_btn_2,go_btn_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class MyPageActivity extends AppCompatActivity {
         */
 
         final UserDB userDB = new UserDB();
-        final SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("loginauto", MODE_PRIVATE);
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부
@@ -75,6 +76,7 @@ public class MyPageActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     boolean success = jsonObject.getBoolean("success");
                     System.out.println(success);
+                    nickname = jsonObject.getString("nickname");
                     name = jsonObject.getString("name");
                     chracter = jsonObject.getString("chracter");
                     if (success){
@@ -98,7 +100,7 @@ public class MyPageActivity extends AppCompatActivity {
                 // 서버에서 이름 가져와서 name에 저장하는 코드 작성해야 함
 
                 // 가져온 이름을 세팅하기
-                tv_nickname.setText(name);
+                tv_nickname.setText(nickname);
 
             }
         });
@@ -125,15 +127,15 @@ public class MyPageActivity extends AppCompatActivity {
         });
 
         // sns 계정 연동 눌렀을 때
-        layout_sns.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), LinkSnsActivity.class);
-                startActivity(intent);
-
-            }
-        });
+//        layout_sns.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent = new Intent(getApplicationContext(), LinkSnsActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
 
     }
 }

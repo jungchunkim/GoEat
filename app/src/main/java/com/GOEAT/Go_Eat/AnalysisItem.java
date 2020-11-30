@@ -13,6 +13,14 @@ public class AnalysisItem {
     String title;
     String kinds;
     String info;
+    String place;
+    String who;
+    String name;
+    String weather;
+    String emotion;
+    String calorie;
+    String temperature;
+
 
     String getUrl(){return this.url;}
 
@@ -28,19 +36,61 @@ public class AnalysisItem {
         return this.info;
     }
 
+    String getplace(){
+        return this.place;
+    }
+
+    String getwho() {
+        return this.who;
+    }
+
+    String getweather(){
+        return this.weather;
+    }
+
+    String gettemperature(){
+        return this.temperature;
+    }
+
+    String getname(){
+        return this.name;
+    }
+
+    String getemotion() {
+        return this.emotion;
+    }
+
+    String getcalorie(){
+        return this.calorie;
+    }
 
 
-    AnalysisItem(String url, String title, String kinds, String info) {
+
+    AnalysisItem(String url, String title, String kinds, String info,String place, String who, String name, String weather,String temperature,String emotion, String calorie) {
         this.url = url;
         this.title = title;
         this.kinds = kinds;
         this.info = info;
+        this.place = place;
+        this.who = who;
+        this.weather = weather;
+        this.temperature = temperature;
+        this.name = name;
+        this.emotion = emotion;
+        this.calorie = calorie;
     }
 
-    AnalysisItem(String title, String kinds, String info) {
+    AnalysisItem(String title, String kinds, String info,String place, String who, String name, String weather,String temperature,String emotion, String calorie) {
         this.title = title;
         this.kinds = kinds;
         this.info = info;
+        this.place = place;
+        this.who = who;
+        this.weather = weather;
+        this.temperature = temperature;
+        this.name = name;
+        this.emotion = emotion;
+        this.calorie = calorie;
     }
 
 
