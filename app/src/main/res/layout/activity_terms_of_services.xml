@@ -339,7 +339,7 @@
             android:textColor="@color/font"
             android:fontFamily="@font/pureunjeonnam"
             android:layout_marginLeft="30dp"
-            android:layout_marginBottom="20dp"
+
             />
 
         <View
@@ -397,7 +397,7 @@
             android:layout_marginBottom="40dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/button_background"
+            android:background="@drawable/button_background2"
             android:text="다음으로"
             android:fontFamily="@font/pureunjeonnambold"
             android:textColor="#FFFFFF"

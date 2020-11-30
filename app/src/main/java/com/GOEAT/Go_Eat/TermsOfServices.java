@@ -8,16 +8,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import java.util.Arrays;
 
 public class TermsOfServices extends AppCompatActivity {
 
     CheckBox cp_1, cp_2 ,cp_3 ,cp_4 ,cp_5 ,cp_up14 ,cp_all;
-    int checkAll = 0;
+    int checkAll = 0;  // 전체동의 클릭 여부 담은 변수
     int[] agreement = {0, 0, 0, 0, 0};  //5개의 약관 동의 여부 담은 배열
     int up14 = 0;  // 만14세 이상 체크여부
     Button btn_next;
+    int checkEssential = 0;  // 필수약관 동의 확인
 
 
     @Override
@@ -58,33 +60,127 @@ public class TermsOfServices extends AppCompatActivity {
             }
         });
 
+        cp_1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    agreement[0]=1;
+                    checkEssential();
+                }
+                else{
+                    agreement[0]=0;
+                    checkEssential();
+                }
+            }
+        });
+
+        cp_2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    agreement[1]=1;
+                    checkEssential();
+                }
+                else{
+                    agreement[1]=0;
+                    checkEssential();
+                }
+            }
+        });
+
+        cp_3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    agreement[2]=1;
+                    checkEssential();
+                }
+                else{
+                    agreement[2]=0;
+                    checkEssential();
+                }
+            }
+        });
+
+        cp_4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    agreement[3]=1;
+                    checkEssential();
+                }
+                else{
+                    agreement[3]=0;
+                    checkEssential();
+                }
+            }
+        });
+
+        cp_5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    agreement[4]=1;
+                    checkEssential();
+                }
+                else{
+                    agreement[4]=0;
+                    checkEssential();
+                }
+            }
+        });
+
+        cp_up14.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    up14=1;
+                    checkEssential();
+                }
+                else{
+                    up14=0;
+                    checkEssential();
+                }
+            }
+        });
+
+
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(cp_1.isChecked())
-                    agreement[0]=1;
-                if(cp_2.isChecked())
-                    agreement[1]=1;
-                if(cp_3.isChecked())
-                    agreement[2]=1;
-                if(cp_4.isChecked())
-                    agreement[3]=1;
-                if(cp_5.isChecked())
-                    agreement[4]=1;
-
-                if(cp_up14.isChecked())
-                    up14=1;
-
                 Log.e("동의 여부", Arrays.toString(agreement));
                 Log.e("14세이상 여부", String.valueOf(up14));
 
-                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(intent);
+                if(checkEssential==1){
+                    Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                    startActivity(intent);
+                }
+
 
             }
+
+
+
+
         });
 
+
+    }
+
+    //필수약관 동의여부 확인
+    private void checkEssential() {
+        // 3가지 약관에 모두 동의하고 14세 이상이라면
+        if(agreement[0]==1&&agreement[1]==1&agreement[2]==1&&up14==1){
+            // 다음 버튼 background 변경
+            btn_next.setBackgroundResource(R.drawable.button_background);
+            Log.e("필수약관 동의", "true");
+            checkEssential = 1;
+        }
+        else{
+            checkEssential=0;
+            btn_next.setBackgroundResource(R.drawable.button_background2);
+        }
     }
 
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="#E01D4A"
+    android:background="#FF4081"
     >
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="뭐 먹을지\n고민할 시간에"
+        android:text="뭐 먹을지\n고민할 시간에는"
         android:fontFamily="@font/pureunjeonnambold"
         android:textColor="#ffffffff"
         android:textSize="46dp"

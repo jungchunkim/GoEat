@@ -29,8 +29,10 @@
             <ImageView
                 android:id="@+id/iv_image"
                 android:layout_width="97dp"
-                android:layout_height="match_parent"
-                android:src="@color/mainPink" />
+                android:layout_height="97dp"
+                android:src="@color/mainPink"
+                android:scaleType="centerCrop"
+                />
 
             <LinearLayout
                 android:layout_width="220dp"

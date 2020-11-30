@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".login_activity"
     android:weightSum="110"
     android:background="@color/background"
@@ -14,11 +14,21 @@
         android:layout_height="0dp"
         android:layout_weight="7"/>
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="30"
-        android:src="@drawable/mouse"/>
+        android:gravity="center"
+        >
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_hi"
+            android:layout_marginRight="40dp"
+            android:layout_gravity="top"
+            />
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -48,12 +58,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8"
-        android:paddingLeft="10dp"
+        android:paddingLeft="20dp"
         android:layout_marginLeft="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_text_background"
         android:fontFamily="@font/pureunjeonnam"
+        android:textColorHint="#C5CEE0"
+        android:textSize="16dp"
         android:hint="이메일주소"/>
 
     <EditText
@@ -63,79 +75,105 @@
         android:layout_weight="8"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:paddingLeft="10dp"
+        android:paddingLeft="20dp"
         android:layout_marginRight="40dp"
         android:background="@drawable/edit_text_background"
         android:hint=" 비밀번호"
+        android:textSize="16dp"
+        android:textColorHint="#C5CEE0"
         android:inputType="textPassword"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="horizontal">
+        android:layout_weight="8"
+        android:orientation="horizontal"
+        android:weightSum="10">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:text="로그인 유지  "
-            android:fontFamily="@font/pureunjeonnam"
-            android:textColor="#8F9BB3"
-            android:gravity="right"/>
-        <CheckBox
-            android:id="@+id/cb_login_auto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.4"
-            android:button="@drawable/custom_checkbox"
-            android:textColor="#8F9BB3" />
-
-        <TextView
-            android:id="@+id/tv_find_id"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/pureunjeonnam"
-            android:gravity="center"
-            android:textColor="#8F9BB3"
-            android:text="이메일 찾기"/>
+            android:layout_weight="4"
+android:gravity="center"            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로그인 유지  "
+                android:fontFamily="@font/pureunjeonnam"
+                android:textColor="#8F9BB3"
+                android:layout_marginLeft="40dp"
+                />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="17dp"
-            android:layout_gravity="center"
-            android:background="#8F9BB3"/>
+            <CheckBox
+                android:id="@+id/cb_login_auto"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:button="@drawable/custom_checkbox"
+                android:scaleX="0.5"
+                android:scaleY="0.5"
+                android:textColor="#8F9BB3"
+                />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_find_pwd"
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="#8F9BB3"
-            android:fontFamily="@font/pureunjeonnam"
-            android:text="비밀번호 찾기"/>
+            android:layout_weight="6"
+            android:gravity="right"
+            >
+
+            <TextView
+                android:id="@+id/tv_find_id"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/pureunjeonnam"
+                android:gravity="center"
+                android:textColor="#8F9BB3"
+                android:text="이메일 찾기"
+                android:layout_marginRight="6dp"
+                />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:background="#8F9BB3"
+                android:layout_marginRight="6dp"/>
+
+            <TextView
+                android:id="@+id/tv_find_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="#8F9BB3"
+                android:fontFamily="@font/pureunjeonnam"
+                android:text="비밀번호 찾기"
+                android:layout_marginRight="40dp"
+                />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="6">
     </LinearLayout>
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:text="확인"
+        android:text="로그인"
+        android:fontFamily="@font/pureunjeonnambold"
         android:textColor="#ffffff"
         android:textSize="15dp"
         android:background="@drawable/button_background"
-        android:layout_weight="8"/>
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -143,39 +181,7 @@
         android:layout_weight="15"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="3"/>
 
-        <ImageView
-            android:id="@+id/iv_google_login"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="3"
-            android:layout_gravity="center"
-            android:src="@drawable/google_btn"/>
-
-        <ImageView
-            android:id="@+id/iv_kakao_login"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="3"
-            android:src="@drawable/kakao_btn"/>
-
-        <ImageView
-            android:id="@+id/iv_naver_login"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_weight="3"
-            android:src="@drawable/naver_btn"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="3"/>
 
     </LinearLayout>
 
@@ -193,7 +199,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3.5"/>
+            android:layout_weight="5"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -212,6 +218,11 @@
             android:textSize="16dp"
             android:textColor="#E01D4A"
             android:text="회원가입"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"/>
 
     </LinearLayout>
 

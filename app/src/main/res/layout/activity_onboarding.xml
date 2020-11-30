@@ -57,45 +57,47 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="25"
-        android:background="#E01D4A">
+        android:background="#FF4081">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
+
         <Button
             android:id="@+id/button_1"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_weight="10"
             android:layout_gravity="center"
-            android:textSize="17dp"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/pureunjeonnambold"
+            android:layout_weight="10"
             android:background="@drawable/onboarding_button_background1"
-            android:text="회원가입"/>
+            android:fontFamily="@font/pureunjeonnambold"
+            android:text="회원가입"
+            android:textColor="#ffffff"
+            android:textSize="17dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
+
         <Button
             android:id="@+id/button_2"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_weight="10"
-            android:textSize="17dp"
-            android:textColor="#E01D4A"
-            android:background="@drawable/onboarding_button_background2"
             android:layout_gravity="center"
+            android:layout_weight="10"
+            android:background="@drawable/onboarding_button_background2"
             android:fontFamily="@font/pureunjeonnambold"
-            android:text="로그인"/>
+            android:text="로그인"
+            android:textColor="#E01D4A"
+            android:textSize="17dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
     </LinearLayout>
-
-
 
 
 </LinearLayout>

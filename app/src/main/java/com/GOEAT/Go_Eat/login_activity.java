@@ -61,11 +61,13 @@ import java.lang.ref.WeakReference;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class login_activity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{ // 로그인 화면
+public class login_activity extends AppCompatActivity { // 로그인 화면
+
+    //implements GoogleApiClient.OnConnectionFailedListener
 
     private FirebaseAnalytics mFirebaseAnalytics;
     private Button btn_login;
-    private TextView tv_find_pwd, tv_find_id,tv_sign_up,err_text;
+    private TextView tv_find_pwd, tv_find_id, tv_sign_up, err_text;
     private EditText et_login_email, et_login_password;
     private CheckBox cb_login_auto;
     private long backBtnTime = 0;
@@ -75,7 +77,6 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
     private ImageView iv_kakao_login;
     private ImageView iv_naver_login;
     public static OAuthLogin mOAuthLoginModule;
-
 
 
     private String useremail;
@@ -89,31 +90,28 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
     Session session;
 
 
-
-
     Response.Listener<String> responseListener = new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
             try {
                 JSONObject jsonObject = new JSONObject(response);
                 boolean success = jsonObject.getBoolean("success");
-                if(success){
-                    SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                if (success) {
+                    SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
                     SharedPreferences.Editor editors = prefs.edit();
-                    editors.putString("email",useremail);
+                    editors.putString("email", useremail);
                     editors.commit();
-                    Intent intent = new Intent(login_activity.this,CheckHateFood.class);
+                    Intent intent = new Intent(login_activity.this, CheckHateFood.class);
                     startActivity(intent);
-                }else{
+                } else {
 
-                    Toast.makeText(getApplicationContext(),"가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     };
-
 
 
     @Override
@@ -124,18 +122,17 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        SharedPreferences pref = getSharedPreferences("loginauto",MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("loginauto", MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
 
         tv_sign_up = (TextView) findViewById(R.id.tv_sign_up);
-        btn_login = (Button)findViewById(R.id.btn_login);
+        btn_login = (Button) findViewById(R.id.btn_login);
         et_login_email = (EditText) findViewById(R.id.et_login_email);
         et_login_password = (EditText) findViewById(R.id.et_login_password);
         cb_login_auto = (CheckBox) findViewById(R.id.cb_login_auto);
         tv_find_id = findViewById(R.id.tv_find_id);
         tv_find_pwd = findViewById(R.id.tv_find_pwd);
-        err_text=findViewById(R.id.err_text);
-        iv_naver_login = (ImageView) findViewById(R.id.iv_naver_login);
+        err_text = findViewById(R.id.err_text);
 
         mOAuthLoginModule = OAuthLogin.getInstance();
         mOAuthLoginModule.init(  //네이버 클라인트 api 정보
@@ -144,7 +141,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                 "no99zztS1T",
                 "Go Eat"
         );
-        final OAuthLoginHandler mOAuthLoginHandler = new login_activity.NaverLoginHandler(this);
+       // final OAuthLoginHandler mOAuthLoginHandler = new login_activity.NaverLoginHandler(this);
 
 
         tv_find_id.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +160,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             }
         });
 
-        iv_naver_login.setOnClickListener(new View.OnClickListener() {
+        /*iv_naver_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mOAuthLoginModule.startOauthLoginActivity(login_activity.this, mOAuthLoginHandler);
@@ -171,18 +168,16 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
 
             }
-        });
-
-
+        });*/
 
 
         cb_login_auto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (cb_login_auto.isChecked()){ //자동 로그인 클릭시 정보 저장
+                if (cb_login_auto.isChecked()) { //자동 로그인 클릭시 정보 저장
                     Log.d("login_auto_save", "yes!");
-                }else{
-                    editor.putString("check","0");
+                } else {
+                    editor.putString("check", "0");
                     editor.commit();
                     Log.d("login_auto_delete", "yes!");
                 }
@@ -190,12 +185,11 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         });
 
 
-
         et_login_email.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) { // 엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow( et_login_email.getWindowToken(), 0);
+                    imm.hideSoftInputFromWindow(et_login_email.getWindowToken(), 0);
                     return true;
                 }
                 return false;
@@ -205,7 +199,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
             public boolean onKey(View v, int keyCode, KeyEvent event) {  //엔터시 키보드 내리는 부분
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow( et_login_password.getWindowToken(), 0);
+                    imm.hideSoftInputFromWindow(et_login_password.getWindowToken(), 0);
                     return true;
                 }
                 return false;
@@ -234,42 +228,42 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             System.out.println(success);
-                            if (success.equals("true")){
-                                SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
+                            if (success.equals("true")) {
+                                SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
                                 SharedPreferences.Editor editors = prefs.edit();
-                                editors.putString("email",email);
+                                editors.putString("email", email);
                                 editors.commit();
-                                if(jsonObject.getString("register_profile_done").equals("true")){ //취향 조사 했는지 1차 판단 후 상황조사 2차 판단=> 화면 이동 방진혁
+                                if (jsonObject.getString("register_profile_done").equals("true")) { //취향 조사 했는지 1차 판단 후 상황조사 2차 판단=> 화면 이동 방진혁
                                     Log.d("register_profile_done", " yes! ");
-                                    SharedPreferences prefs_invest = getSharedPreferences("investigation_result",MODE_PRIVATE);
-                                    String calo = prefs_invest.getString("calo","");
-                                    String loc = prefs_invest.getString("loc","");
-                                    String who = prefs_invest.getString("who","");
-                                    String emo = prefs_invest.getString("emo","");
-                                    Log.d("calo->", ""+calo.equals(""));
-                                    Log.d("loc->", ""+loc.equals(""));
-                                    Log.d("who->", ""+who.equals(""));
-                                    Log.d("emo->", ""+emo.equals(""));
-                                    if(calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")){
+                                    SharedPreferences prefs_invest = getSharedPreferences("investigation_result", MODE_PRIVATE);
+                                    String calo = prefs_invest.getString("calo", "");
+                                    String loc = prefs_invest.getString("loc", "");
+                                    String who = prefs_invest.getString("who", "");
+                                    String emo = prefs_invest.getString("emo", "");
+                                    Log.d("calo->", "" + calo.equals(""));
+                                    Log.d("loc->", "" + loc.equals(""));
+                                    Log.d("who->", "" + who.equals(""));
+                                    Log.d("emo->", "" + emo.equals(""));
+                                    if (calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")) {
                                         Intent intent = new Intent(getApplicationContext(), investigation_page.class);
                                         //Intent intent = new Intent(getApplicationContext(), SetCharActivity.class);  //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다
                                         startActivity(intent);
-                                    }else{
+                                    } else {
                                         Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
                                         //Intent intent = new Intent(getApplicationContext(), SetCharActivity.class); //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다.
                                         startActivity(intent);
                                     }
-                                }else{
+                                } else {
                                     Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);
                                     startActivity(intent);
                                 }
 
-                            }else if(success.equals("almost_true")){
+                            } else if (success.equals("almost_true")) {
                                 et_login_email.setTextColor(Color.parseColor("#E01D4A"));
                                 et_login_password.setTextColor(Color.parseColor("#E01D4A"));
                                 err_text.setText("이메일 주소와 비밀번호가 맞지 않습니다.");
                                 err_text.setTextColor(Color.parseColor("#E01D4A"));
-                            }else{
+                            } else {
                                 et_login_email.setTextColor(Color.parseColor("#E01D4A"));
                                 et_login_password.setTextColor(Color.parseColor("#E01D4A"));
                                 err_text.setText("이메일 주소와 비밀번호가 맞지 않습니다.");
@@ -281,28 +275,26 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
                     }
                 };
-                login_request login_request = new login_request(email,password,responselistener);
+                login_request login_request = new login_request(email, password, responselistener);
                 RequestQueue queue = Volley.newRequestQueue(login_activity.this);
                 queue.add(login_request);
 
-                if (cb_login_auto.isChecked()){ //자동 로그인 클릭시 정보 저장 수정 방진혁
+                if (cb_login_auto.isChecked()) { //자동 로그인 클릭시 정보 저장 수정 방진혁
 
-                    editor.putString("email",email);
-                    editor.putString("password",password);
-                    editor.putString("check","1");
+                    editor.putString("email", email);
+                    editor.putString("password", password);
+                    editor.putString("check", "1");
                     editor.commit();
                     Log.d("login_auto_save", "yes!");
-                }else{
-                    editor.putString("check","0");
+                } else {
+                    editor.putString("check", "0");
                     editor.commit();
                     Log.d("login_auto_delete", "yes!");
                 }
 
 
-
             }
         });
-
 
 
         cb_login_auto.setOnClickListener(new View.OnClickListener() {
@@ -314,7 +306,7 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
 
 
 
-
+/*
         //새로운 앱 추가할 때 해쉬키 추가 필요
         getHashKey();
         // findViewById
@@ -567,5 +559,6 @@ public class login_activity extends AppCompatActivity implements GoogleApiClient
         }
     }
 
-
+*/
+    }
 }
