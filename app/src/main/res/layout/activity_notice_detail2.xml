@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.GOEAT.Go_Eat.Notice_detail2"
+    android:weightSum="100"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:background="@drawable/analysishome_top_bar"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/arrow_white"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="46dp"
+            android:layout_marginRight="40dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:textColor="@color/white"
+            android:text="공지사항"
+            android:textSize="24dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="2020.12.02"
+            android:fontFamily="@font/pureunjeonnam"
+            android:textSize="20dp"
+            android:textColor="@color/mainPink"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:layout_marginTop="30dp"
+            android:text="안녕하세요 Go Eat입니다.\n이번에 저희 어플의 투게더 매칭은\n1월 중순에 활성화 예정입니다.\n많은 기대 부탁드려요!"
+            android:textSize="20dp"
+            android:fontFamily="@font/pureunjeonnam"
+            android:textColor="@color/font"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
