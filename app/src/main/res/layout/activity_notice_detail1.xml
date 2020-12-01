@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.GOEAT.Go_Eat.Notice_detail1"
+    android:weightSum="100"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:background="@drawable/analysishome_top_bar"
+        android:weightSum="10">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/arrow"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginBottom="46dp"
+            android:layout_marginRight="40dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:textColor="@color/white"
+            android:text="공지사항"
+            android:textSize="24dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="2020.12.01"
+            android:fontFamily="@font/pureunjeonnam"
+            android:textSize="20dp"
+            android:textColor="@color/mainPink"
+            android:gravity="center_vertical"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:layout_marginTop="30dp"
+            android:text="안녕하세요 Go Eat입니다.\n저희 어플을 다운해주셔서 감사합니다.\n앞으로 더 발전하겠습니다.\n고민하지말고 Go Eat!"
+            android:textSize="20dp"
+            android:fontFamily="@font/pureunjeonnam"
+            android:textColor="@color/font"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

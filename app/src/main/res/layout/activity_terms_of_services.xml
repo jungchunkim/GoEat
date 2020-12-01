@@ -205,16 +205,7 @@
             />
 
 
-        <TextView
-            android:id="@+id/click_see_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="보기"
-            android:textSize="12sp"
-            android:textColor="#AFB8C9"
-            android:fontFamily="@font/pureunjeonnambold"
-            android:layout_marginLeft="5dp"
-            />
+
 
         <View
             android:layout_width="0dp"
