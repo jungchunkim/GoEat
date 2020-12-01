@@ -147,7 +147,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                     int index = foodArray.length()-1;
                     for(;j<10;j++) {
                         JSONObject jsonObject = foodArray.getJSONObject(index); //i번째 Json데이터를 가져옴
-                        if(j<10&&!Arrays.asList(foodSecond).contains(jsonObject.getString("Food_Second_Name"))){
+                        if(j<20&&!Arrays.asList(foodSecond).contains(jsonObject.getString("Food_Second_Name"))){
                             foodFirst[j] = jsonObject.getString("Food_First_Name");
                             foodSecond[j] = jsonObject.getString("Food_Second_Name");
                             foodKind[j] = jsonObject.getString("Food_Kind");

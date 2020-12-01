@@ -192,9 +192,9 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
         for (int i : prefer_food)
             if (i == -2) count++;
 
-        if (count == 0) {
-            Toast.makeText(getApplicationContext(), "싫어하는 음식을 선택해주세요", Toast.LENGTH_LONG).show();
-        } else {
+//        if (count == 0) {
+//            Toast.makeText(getApplicationContext(), "싫어하는 음식을 선택해주세요", Toast.LENGTH_LONG).show();
+//        } else {
             Response.Listener<String> responselistener = new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) { // 서버 응답 받아오는 부분
@@ -245,7 +245,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
             }
             userDB.saveUserHateFood(email, Hatefoodlists, Sosofoodlists, Likefoodlists, responselistener, FoodPreference.this);       // 서버에 사용자가 싫어하는 음식 저장
             Hatefoodlists = null;
-        }
+//        }
     }
 
 }

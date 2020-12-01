@@ -94,7 +94,7 @@ public class AnalysisHomeRecyclerAdapter extends RecyclerView.Adapter<AnalysisHo
         queue.add(get_restaurantlist);
 
 
-        Picasso.get().load(item.url).into(holder.image);
+        if(item.url != null) Picasso.get().load(item.url).into(holder.image);
         holder.title.setText(item.getTitle());
         holder.kinds.setText(item.getKinds());
 

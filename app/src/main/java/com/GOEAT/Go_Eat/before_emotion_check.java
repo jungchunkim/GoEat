@@ -31,9 +31,11 @@ public class before_emotion_check extends AppCompatActivity {
 
     private int listCnt = 0;
     private Vector<Integer> HatefoodIndex = new Vector<>();
+    private Vector<String> HateFoodIngre = new Vector<>();
+
     private int foodSoup[] = {0,0,0};
-    Map<String, Integer> foodType = new HashMap<String,Integer>(); // key : 음식 재료, value : 싫음으로 선택한 수
-    Map<String, Integer> foodKind = new HashMap<String,Integer>(); // key : 음식 종류, value : 싫음으로 선택한 수
+    Map<String, Integer> foodType = new HashMap<String,Integer>(); // key : 음식 종류, value : 싫음으로 선택한 수
+    Map<String, Integer> foodIngre = new HashMap<String,Integer>(); // key : 음식 재료, value : 싫음으로 선택한 수
 
     private int foodTemp[] = {0,0,0};
     private int foodTexture[] = {0,0,0,0}; //보통 액체 바삭 물렁
@@ -41,7 +43,7 @@ public class before_emotion_check extends AppCompatActivity {
     JSONObject userType = new JSONObject();
     JSONObject result = new JSONObject();
 
-    String strResult[] = {"foodKind","foodType","foodSoup","foodTemp","foodTexture"};
+    String strResult[] = {"foodIngre","foodType","foodSoup","foodTemp","foodTexture"};
     String strSoup[] = {"0","1"};
     String strTemp[] = {"c","n","h"};
     String strTexture[] = {"보통", "액체", "바삭", "물렁"};
@@ -76,7 +78,23 @@ public class before_emotion_check extends AppCompatActivity {
                     for (int i = 0; i < listCnt; i++) {
                         JSONObject jsonObject = foodArray.getJSONObject(i); //i번째 Json데이터를 가져옴
                         FoodInfo foodInfo = new FoodInfo(jsonObject);
-                        analysisHateFood(foodInfo);
+                        analysisHateFood(foodInfo,-2);
+                    }
+                    JSONArray foodArray2 = json.getJSONArray("SosoFoodInfo");
+                    listCnt = foodArray.length();
+
+                    for (int i = 0; i < listCnt; i++) {
+                        JSONObject jsonObject = foodArray2.getJSONObject(i); //i번째 Json데이터를 가져옴
+                        FoodInfo foodInfo = new FoodInfo(jsonObject);
+                        analysisHateFood(foodInfo,-1);
+                    }
+                    JSONArray foodArray3 = json.getJSONArray("LikeFoodInfo");
+                    listCnt = foodArray3.length();
+
+                    for (int i = 0; i < listCnt; i++) {
+                        JSONObject jsonObject = foodArray3.getJSONObject(i); //i번째 Json데이터를 가져옴
+                        FoodInfo foodInfo = new FoodInfo(jsonObject);
+                        analysisHateFood(foodInfo,1);
                     }
                     LogUserFlavor();
                     result = makeSendFoodFlavor();
@@ -118,23 +136,34 @@ public class before_emotion_check extends AppCompatActivity {
         });
 
     }
-    public void analysisHateFood(FoodInfo foodInfo){
-        HatefoodIndex.add(foodInfo.getIndex());
-        foodSoup[Integer.parseInt(foodInfo.getSoup())]++;
+    public void analysisHateFood(FoodInfo foodInfo, int score){ //싫음 -2, 보통 -1, 좋음 +1
+        //나중에 이름 foodIndex로 변경
+        if(!HatefoodIndex.contains(foodInfo.getIndex()))
+            HatefoodIndex.add(foodInfo.getIndex());
+
+        String ingre[] = foodInfo.getKind().split(",");
+        for(int i=0;i<ingre.length;i++){
+//            if(!HateFoodIngre.contains(ingre[i]))
+//                HateFoodIngre.add(ingre[i]);
+            if(ingre[i]!=null && !ingre[i].equals("null")) {
+                foodIngre.put(ingre[i], foodIngre.containsKey(ingre[i]) ? foodIngre.get(ingre[i]) + (score * -1) : score * -1);
+                Log.e("!~!!!!!", String.valueOf(foodIngre.get(ingre[i])) + ingre[i]);
+            }
+        }
+        foodSoup[Integer.parseInt(foodInfo.getSoup())] += (score*-1);
 
         if(foodInfo.tempToInt()!=-1 && foodInfo.textureToInt()!= -1){
-            foodTemp[foodInfo.tempToInt()]++;
-            foodTexture[foodInfo.textureToInt()]++;
+            foodTemp[foodInfo.tempToInt()]+=(score*-1);
+            foodTexture[foodInfo.textureToInt()]+=(score*-1);
         }
         else Log.e("wrong content",foodInfo.getTemp()+","+foodInfo.getTexture());
 
-        foodType.put(foodInfo.getType(), foodType.containsKey(foodInfo.getType())? foodType.get(foodInfo.getType())+1 : 1);
-        //foodKind.put(foodInfo.getKind(), foodKind.containsKey(foodInfo.getKind())? foodKind.get(foodInfo.getKind())+1 : 1);
+        foodType.put(foodInfo.getType(), foodType.containsKey(foodInfo.getType())? foodType.get(foodInfo.getType())+(score*-1) : score*-1);
 
     }
 
     public void LogUserFlavor(){
-        //Log.d("foodKind", foodKind.toString());
+        Log.d("foodIngre", foodIngre.toString());
         Log.d("foodType", foodType.toString());
         Log.d("HatefoodIndex", HatefoodIndex.toString());
         Log.d("foodSoup", "0->"+foodSoup[0]+", 1->" + foodSoup[1]);
@@ -157,7 +186,7 @@ public class before_emotion_check extends AppCompatActivity {
             resultArr[i] = new JSONArray();
 
         FoodInfo foodInfo = new FoodInfo();
-        // foodInfo.MapToJSONArray(foodKind,resultArr[0]);
+        foodInfo.MapToJSONArray(foodIngre,resultArr[0]);
         foodInfo.MapToJSONArray(foodType,resultArr[1]);
         foodInfo.ArrayToJSONArray(foodSoup,strSoup,resultArr[2]);
         foodInfo.ArrayToJSONArray(foodTemp,strTemp,resultArr[3]);
