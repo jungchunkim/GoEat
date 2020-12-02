@@ -219,7 +219,7 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
             @Override
             public void onClick(View view) { // 로그인 버튼 클릭 시 정보확인 부분
                 final String email = et_login_email.getText().toString();
-                String password = et_login_password.getText().toString();
+                final String password = et_login_password.getText().toString();
 
                 Response.Listener<String> responselistener = new Response.Listener<String>() {
                     @Override
@@ -234,6 +234,8 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
                                 SharedPreferences.Editor editors = prefs.edit();
                                 editors.putString("email", email);
                                 editors.commit();
+                                editor.putString("email", email);
+                                editor.putString("password", password);
                                 if (jsonObject.getString("register_profile_done").equals("true")) { //취향 조사 했는지 1차 판단 후 상황조사 2차 판단=> 화면 이동 방진혁
                                     Log.d("register_profile_done", " yes! ");
                                     SharedPreferences prefs_invest = getSharedPreferences("investigation_result", MODE_PRIVATE);
@@ -246,12 +248,12 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
                                     Log.d("who->", "" + who.equals(""));
                                     Log.d("emo->", "" + emo.equals(""));
                                     if (calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")) {
-                                        //Intent intent = new Intent(getApplicationContext(), investigation_page.class);
-                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);  //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다
+                                        Intent intent = new Intent(getApplicationContext(), investigation_page.class);
+//                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);  //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다
                                         startActivity(intent);
                                     } else {
-                                        //Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
-                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class); //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다.
+                                        Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
+//                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class); //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다.
                                         startActivity(intent);
                                     }
                                 } else {
