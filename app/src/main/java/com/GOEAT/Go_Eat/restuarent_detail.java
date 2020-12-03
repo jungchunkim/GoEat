@@ -205,7 +205,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             public void onClick(View view) {
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/html");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, intent.getExtras().getString("restaurant_link"));
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "GoEat이 추천한 음식점!\n"+intent.getExtras().getString("restaurant_link"));
                 startActivity(Intent.createChooser(sharingIntent,"Share using text"));
 
             }
