@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
 import com.android.volley.Response;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +39,8 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
     //음식 선호도 조사
     final private UserDB userDB = new UserDB();
     private String[] foodlist = new String[24]; //음식이름 저장하는 배열
+    private String[] foodurl = new String[24]; //음식이름 저장하는 배열
+
     ImageView img_char;
     private String Hatefoodlists = "N";
     private String Sosofoodlists = "N";
@@ -75,16 +78,30 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부분
                 try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    System.out.println(jsonArray);
-                    if (!jsonArray.getString(0).equals("false")){
-                        for(int i = 0; i<foodlist.length ; i++){
-                            setFoodlist(i,jsonArray.getString(i));
-                            System.out.println(jsonArray.getString(i));
+                    Log.e("음식 받아오기", response);
+                    JSONObject json = new JSONObject(response);
+                    System.out.println(json.toString());
+                    if (true){
+                        JSONObject foodArray = json.getJSONObject("food_name");
+                        for (int i = 0; i < foodArray.length(); i++) {
+                            setFoodlist(i, foodArray.getString(String.valueOf(i*2)));
+                            System.out.println(foodArray.getString(String.valueOf(i*2)));
+                        }
+                        JSONObject foodURLArray = json.getJSONObject("food_image");
+                        for (int i = 0; i < foodURLArray.length(); i++) {
+                            foodurl[i] = foodURLArray.getString(String.valueOf(i*2+1));
+                            System.out.println(foodURLArray.getString(String.valueOf(i*2+1)));
                         }
 
                         //처음 나오는 그림, text이름, num_count
-                        food_img.setImageResource(R.drawable.p_food1);
+                        //*******이미지 url 설정 필요
+                        //가져올 이미지 url index -> foodurl[reference]
+                        //아래 R.drawable.p_food1을 가져온 이미지로 변경하면 됨
+
+                        if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
+                        else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
+                        else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                        else Picasso.get().load(foodurl[reference]).into(food_img);
                         food_name.setText(foodlist[reference]);
                         num_count.setText(reference+1+"/24");
                         reference++;
@@ -131,7 +148,10 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 if(reference<=full_count)
                 {
                     prefer_food[reference-1]=-2;
-                    food_img.setImageResource(R.drawable.p_food1);
+                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
+                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
+                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                    else Picasso.get().load(foodurl[reference]).into(food_img);
                     food_name.setText(foodlist[reference]);
                     num_count.setText(reference+1+"/24");
                     reference++;
@@ -148,7 +168,11 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 if(reference<= full_count)
                 {
                     prefer_food[reference-1]=-1;
-                    food_img.setImageResource(R.drawable.p_food1);
+                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
+                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
+                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                    else Picasso.get().load(foodurl[reference]).into(food_img);
+//                    food_img.setImageResource(R.drawable.p_food1);
                     food_name.setText(foodlist[reference]);
                     num_count.setText(reference+1+"/24");
                     reference++;
@@ -165,7 +189,11 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 if(reference<=full_count)
                 {
                     prefer_food[reference-1]=1;
-                    food_img.setImageResource(R.drawable.p_food1);
+                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
+                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
+                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                    else Picasso.get().load(foodurl[reference]).into(food_img);
+//                    food_img.setImageResource(R.drawable.p_food1);
                     food_name.setText(foodlist[reference]);
                     num_count.setText(reference+1+"/24");
                     reference++;

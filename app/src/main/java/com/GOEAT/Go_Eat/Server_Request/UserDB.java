@@ -193,6 +193,7 @@ public class UserDB implements Serializable {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        Log.e("음식 받아오기", "error");
                         Log.e("response", error.getMessage());
 
                     }
