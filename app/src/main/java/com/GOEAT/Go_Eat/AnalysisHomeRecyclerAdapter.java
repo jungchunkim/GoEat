@@ -93,8 +93,7 @@ public class AnalysisHomeRecyclerAdapter extends RecyclerView.Adapter<AnalysisHo
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(get_restaurantlist);
 
-
-        if(item.url != null) Picasso.get().load(item.url).into(holder.image);
+        if(item.url != null && !item.url.isEmpty()) Picasso.get().load(item.url).into(holder.image);
         holder.title.setText(item.getTitle());
         holder.kinds.setText(item.getKinds());
 
