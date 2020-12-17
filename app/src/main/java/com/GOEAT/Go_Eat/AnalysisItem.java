@@ -22,21 +22,23 @@ public class AnalysisItem {
     String temperature;
 
 
-    String getUrl(){return this.url;}
+    String getUrl() {
+        return this.url;
+    }
 
     String getTitle() {
         return this.title;
     }
 
-    String getKinds(){
+    String getKinds() {
         return this.kinds;
     }
 
-    String getInfo(){
+    String getInfo() {
         return this.info;
     }
 
-    String getplace(){
+    String getplace() {
         return this.place;
     }
 
@@ -44,15 +46,15 @@ public class AnalysisItem {
         return this.who;
     }
 
-    String getweather(){
+    String getweather() {
         return this.weather;
     }
 
-    String gettemperature(){
+    String gettemperature() {
         return this.temperature;
     }
 
-    String getname(){
+    String getname() {
         return this.name;
     }
 
@@ -60,13 +62,12 @@ public class AnalysisItem {
         return this.emotion;
     }
 
-    String getcalorie(){
+    String getcalorie() {
         return this.calorie;
     }
 
 
-
-    AnalysisItem(String url, String title, String kinds, String info,String place, String who, String name, String weather,String temperature,String emotion, String calorie) {
+    AnalysisItem(String url, String title, String kinds, String info, String place, String who, String name, String weather, String temperature, String emotion, String calorie) {
         this.url = url;
         this.title = title;
         this.kinds = kinds;
@@ -80,7 +81,7 @@ public class AnalysisItem {
         this.calorie = calorie;
     }
 
-    AnalysisItem(String title, String kinds, String info,String place, String who, String name, String weather,String temperature,String emotion, String calorie) {
+    AnalysisItem(String title, String kinds, String info, String place, String who, String name, String weather, String temperature, String emotion, String calorie) {
         this.title = title;
         this.kinds = kinds;
         this.info = info;
@@ -95,7 +96,6 @@ public class AnalysisItem {
 
 
     // Get Image From URL
-
 
 
     public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -121,6 +121,23 @@ public class AnalysisItem {
         public void onPostExecute(Bitmap result) {
             imageViewURLProfile.setImageBitmap(result);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "AnalysisItem{" +
+                "url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                ", kinds='" + kinds + '\'' +
+                ", info='" + info + '\'' +
+                ", place='" + place + '\'' +
+                ", who='" + who + '\'' +
+                ", name='" + name + '\'' +
+                ", weather='" + weather + '\'' +
+                ", emotion='" + emotion + '\'' +
+                ", calorie='" + calorie + '\'' +
+                ", temperature='" + temperature + '\'' +
+                '}';
     }
 }
 
