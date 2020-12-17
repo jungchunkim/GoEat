@@ -1,32 +1,19 @@
 package com.GOEAT.Go_Eat;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.GOEAT.Go_Eat.DataType.FoodPic;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import eu.long1.spacetablayout.SpaceTabLayout;
-
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,9 +32,9 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     AnalysisFragment3 fragment3;
     public SharedPreferences prefs;
     MeowBottomNavigation meo;
-    private final static int ID_HOME=1;
-    private final static int ID_GO=2;
-    private final static int ID_MYPAGE=3;
+    private final static int ID_HOME = 1;
+    private final static int ID_GO = 2;
+    private final static int ID_MYPAGE = 3;
 
     private String[] foodSecond = new String[10];
     private String[] foodFirst = new String[10];
@@ -58,8 +45,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     private int food_list_size = 0;
 
     @Override
-    public void onBackPressed()
-    {
+    public void onBackPressed() {
         //super.onBackPressed();
     }
 
@@ -76,9 +62,9 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         // 앱 첫 실행때만 Gudie 띄우기 - 임민영
         SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
         boolean first = pref.getBoolean("isFirst", false);
-        if(first==false){
+        if (first == false) {
             SharedPreferences.Editor editor = pref.edit();
-            editor.putBoolean("isFirst",true);
+            editor.putBoolean("isFirst", true);
             editor.commit();
             //앱 최초 실행시 하고 싶은 작업
             Intent intent2 = new Intent(getApplicationContext(), AnalysishomeGuideActivity.class);
@@ -93,32 +79,30 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
             loc = intent.getExtras().getString("loc");
             who = intent.getExtras().getString("who");
             emo = intent.getExtras().getString("emo");
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.printStackTrace();
-            SharedPreferences prefs = getSharedPreferences("investigation_result",MODE_PRIVATE);
-            calo = prefs.getString("calo","");
-            loc = prefs.getString("loc","");
-            who = prefs.getString("who","");
-            emo = prefs.getString("emo","");
+            SharedPreferences prefs = getSharedPreferences("investigation_result", MODE_PRIVATE);
+            calo = prefs.getString("calo", "");
+            loc = prefs.getString("loc", "");
+            who = prefs.getString("who", "");
+            emo = prefs.getString("emo", "");
         }
         Log.d("calo->->", calo);
         Log.d("loc->->", loc);
         Log.d("who->->", who);
         Log.d("emo->->", emo);
 
-        System.out.println(calo + loc+ who + emo + weather);
-
-
+        System.out.println(calo + loc + who + emo + weather);
 
 
         //염상희 - 데이터 fragment로 넘겨주기
         //이메일, 이름, 상황 등등 넘겨주기
         //name, place, emotion, calorie 받아오는 코드 추가하기---------
-        SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
-        String email = prefs.getString("email","");
+        SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
+        String email = prefs.getString("email", "");
         fragment1.setEmail(email);
-        fragment1.setName(prefs.getString("name",""));
-        fragment1.setSitu(loc,who,emo,calo);
+        fragment1.setName(prefs.getString("name", ""));
+        fragment1.setSitu(loc, who, emo, calo);
 
 
         //2020-11-23 음식 취향대로 가져오기 - 염상희
@@ -127,15 +111,16 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부분
                 try {
+                    Log.e("pistolcaffe", "URL9 response: " + response);
                     JSONObject json = new JSONObject(response);
                     JSONArray foodArray = json.getJSONArray("result");
 
-                    Log.d("foodArray",Integer.toString(foodArray.length()));
-                    int j=0;
+                    Log.d("foodArray", Integer.toString(foodArray.length()));
+                    int j = 0;
                     //중복되지 않게 1차 군집 설정
                     for (int i = 0; i < foodArray.length(); i++) {
                         JSONObject jsonObject = foodArray.getJSONObject(i); //i번째 Json데이터를 가져옴
-                        if(j<10&&!Arrays.asList(foodFirst).contains(jsonObject.getString("Food_First_Name"))){
+                        if (j < 10 && !Arrays.asList(foodFirst).contains(jsonObject.getString("Food_First_Name"))) {
                             foodFirst[j] = jsonObject.getString("Food_First_Name");
                             foodSecond[j] = jsonObject.getString("Food_Second_Name");
                             foodKind[j++] = jsonObject.getString("Food_Kind");
@@ -143,28 +128,26 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
 
                         }
                     }
-                                        //1차 군집의 수가 모자를 경우, 뒤에서부터 1차 군집 설정
-                    int index = foodArray.length()-1;
-                    for(;j<10;j++) {
+                    //1차 군집의 수가 모자를 경우, 뒤에서부터 1차 군집 설정
+                    int index = foodArray.length() - 1;
+                    for (; j < 10; j++) {
                         JSONObject jsonObject = foodArray.getJSONObject(index); //i번째 Json데이터를 가져옴
-                        if(j<20&&!Arrays.asList(foodSecond).contains(jsonObject.getString("Food_Second_Name"))){
+                        if (j < 20 && !Arrays.asList(foodSecond).contains(jsonObject.getString("Food_Second_Name"))) {
                             foodFirst[j] = jsonObject.getString("Food_First_Name");
                             foodSecond[j] = jsonObject.getString("Food_Second_Name");
                             foodKind[j] = jsonObject.getString("Food_Kind");
                             food_list_size = j;
                         }
                     }
-                    Log.e("food_list_size!!!!",Integer.toString(food_list_size));
+                    Log.e("food_list_size!!!!", Integer.toString(food_list_size));
 //                    list = ShuffleOrder();
                     fragment1.setFood(foodFirst, foodSecond, foodKind, foodPic, food_list_size);
 
 
-                    meo=findViewById(R.id.bottom_nav);
+                    meo = findViewById(R.id.bottom_nav);
                     meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
                     meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
                     meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment1).commit();
 
                     meo.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
                         @Override
@@ -176,7 +159,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                     meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
                         @Override
                         public void onClickItem(MeowBottomNavigation.Model item) {
-                            switch(item.getId()){
+                            switch (item.getId()) {
                                 case ID_HOME:
                                     //홈 버튼 클릭했을 경우
                                     break;
@@ -196,7 +179,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                         @Override
                         public void onShowItem(MeowBottomNavigation.Model item) {
                             Fragment select_fragment = fragment1;
-                            switch (item.getId()){
+                            switch (item.getId()) {
                                 case ID_HOME:
                                     select_fragment = fragment1;
                                     break;
@@ -210,15 +193,14 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
                         }
                     });
-
+                    meo.show(1, false);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         };
 
-        userDB.setFlavorFoodList(email,calo,who,responselistener2,AnalysisHomeRealActivity.this);
-
+        userDB.setFlavorFoodList(email, calo, who, responselistener2, AnalysisHomeRealActivity.this);
 
 
 //
@@ -260,13 +242,21 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     }
 
 
-    public List<Integer> ShuffleOrder(){
+    public List<Integer> ShuffleOrder() {
         //추천 음식 넣는 순서 셔플 2020-09-29 염상희
         List<Integer> list = new ArrayList<Integer>();
 
 
-        list.add(0); list.add(1); list.add(2); list.add(3); list.add(4);
-        list.add(5); list.add(6); list.add(7); list.add(8); list.add(9);
+        list.add(0);
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.add(9);
 
         Collections.shuffle(list);
 
