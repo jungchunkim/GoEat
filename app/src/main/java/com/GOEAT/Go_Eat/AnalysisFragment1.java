@@ -1,19 +1,15 @@
 package com.GOEAT.Go_Eat;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,16 +19,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.GOEAT.Go_Eat.DataType.FoodPic;
+import com.GOEAT.Go_Eat.DataType.Weather;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
-import com.GOEAT.Go_Eat.Server_Request.get_restaurantdetail;
-import com.GOEAT.Go_Eat.Server_Request.get_restaurantlist;
 import com.GOEAT.Go_Eat.Server_Request.save_UserSituFlavor;
-import com.GOEAT.Go_Eat.Server_Request.setFlavorFoodList;
+import com.GOEAT.Go_Eat.common.Values;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -41,12 +35,7 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class AnalysisFragment1 extends Fragment {
 
@@ -54,14 +43,14 @@ public class AnalysisFragment1 extends Fragment {
     ViewGroup v;
     TextView tv_recommend_info, tv_place, tv_weather, tv_temperature, tv_who, tv_emotion, tv_calorie;
     ImageView iv_weather, iv_who, iv_emotion, iv_calroie, location_move;
-    String who=" "; //(친구, 애인 등등)
-    String emotion=" ";
-    String place="신촌";
-    String calorie=" ";
-    String name=" "; // 사용자이름
-    String weather=" ";
-    String temperature=" ";
-    String email ="";
+    String who = " "; //(친구, 애인 등등)
+    String emotion = " ";
+    String place = "신촌";
+    String calorie = " ";
+    String name = " "; // 사용자이름
+    String weather = " ";
+    String temperature = " ";
+    String email = "";
     UserDB userDB = new UserDB();
     int add_item_index = 0;
     public SharedPreferences prefs;
@@ -93,24 +82,22 @@ public class AnalysisFragment1 extends Fragment {
         iv_who = v.findViewById(R.id.iv_who);
         iv_emotion = v.findViewById(R.id.iv_emotion);
         iv_calroie = v.findViewById(R.id.iv_calorie);
-        location_move=v.findViewById(R.id.location_move);
-
+        location_move = v.findViewById(R.id.location_move);
 
 
         //위치 설정으로 이동하는 코드
         location_move.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),location_check.class);
+                Intent intent = new Intent(getActivity(), location_check.class);
                 startActivity(intent);
             }
         });
 
         // 2020-09-02 임민영
         // 날씨 불러오는 부분 (기온은 temperature, 날씨는 weather에 저장됨!)
-        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "span.todaytemp");
-        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
-
+        new WeatherAsynTask().execute(Weather.TEMPERATURE.name());
+        new WeatherAsynTask().execute(Weather.DESCRIPTION.name());
 
 
         // name, place, emotion, calorie 받아오는 코드
@@ -121,13 +108,11 @@ public class AnalysisFragment1 extends Fragment {
         tv_recommend_info.setText(who + "와 함께 하는 " + name + "님에게 추천!");
 
 
-
-
         // 기온 설정
 
 
         // 함께 먹는 사람 설정
-        switch (who){
+        switch (who) {
             case "혼자":
                 iv_who.setImageResource(R.drawable.analysishome_alone);
                 tv_who.setText("혼자");
@@ -154,7 +139,7 @@ public class AnalysisFragment1 extends Fragment {
         }
 
         // 감정 설정
-        switch (emotion){
+        switch (emotion) {
             case "설레는":
                 iv_emotion.setImageResource(R.drawable.analysishome_flutter);
                 tv_emotion.setText("설레는");
@@ -185,7 +170,7 @@ public class AnalysisFragment1 extends Fragment {
         }
 
         // 칼로리 설정
-        switch (calorie){
+        switch (calorie) {
             case "low":
                 iv_calroie.setImageResource(R.drawable.analysishome_lowcal);
                 tv_calorie.setText("칼로리 낮게");
@@ -209,18 +194,17 @@ public class AnalysisFragment1 extends Fragment {
         //오류부분
         int able_item_size = -1;
 
-        for(int i=0;i<ITEM_SIZE;i++) {
-            if(item_cnt+i<food_list_size) {
+        for (int i = 0; i < ITEM_SIZE; i++) {
+            if (item_cnt + i < food_list_size) {
                 //list 섞지 않았을 때
 
-                item[i] = new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[item_cnt + i], foodKind[item_cnt + i] + ">" + foodFirst[item_cnt + i], "11개 음식점, 8000원부터",place, who, name, weather,temperature, emotion, calorie);
+                item[i] = new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[item_cnt + i], foodKind[item_cnt + i] + ">" + foodFirst[item_cnt + i], "11개 음식점, 8000원부터", place, who, name, weather, temperature, emotion, calorie);
                 //list 섞었을 때
                 //item[i] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(item_cnt + i)], foodKind[list.get(item_cnt + i)] + ">" + foodFirst[list.get(item_cnt + i)], "11개 음식점, 8000원부터");
                 able_item_size = i;
                 add_item_index++;
-                Log.e("ggggggggggg_new" , item_cnt+i + "," + able_item_size + "," + add_item_index);
-            }
-            else break;
+                Log.e("ggggggggggg_new", item_cnt + i + "," + able_item_size + "," + add_item_index);
+            } else break;
         }
 //            item[0] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
 //          item[1] = new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "토마토파스타", "양식 > 파스타", "11개 음식점, 8000원부터");
@@ -258,7 +242,7 @@ public class AnalysisFragment1 extends Fragment {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             System.out.println(success);
-                            if (!success.equals("true")){
+                            if (!success.equals("true")) {
                                 Log.e("AnalysisFragment1", "싫어하는 음식 저장 오류");
                             }
                         } catch (JSONException e) {
@@ -268,7 +252,7 @@ public class AnalysisFragment1 extends Fragment {
                     }
                 };
 
-                save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email,who,item_title,responselistener);
+                save_UserSituFlavor save_UserSituFlavor = new save_UserSituFlavor(email, who, item_title, responselistener);
                 RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
                 queue.add(save_UserSituFlavor);
 
@@ -277,9 +261,9 @@ public class AnalysisFragment1 extends Fragment {
 
                 //새로운 음식 추천
                 item_cnt++;
-                if(add_item_index<food_list_size) {
+                if (add_item_index < food_list_size) {
                     //list 섞지 않았을 경우
-                    items.add(new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[add_item_index], foodKind[add_item_index]+">"+foodFirst[add_item_index++], "11개 음식점, 8000원부터",place, who, name, weather,temperature, emotion, calorie));
+                    items.add(new AnalysisItem(foodPic.getFoodSrc(foodFirst[add_item_index]), foodSecond[add_item_index], foodKind[add_item_index] + ">" + foodFirst[add_item_index++], "11개 음식점, 8000원부터", place, who, name, weather, temperature, emotion, calorie));
                     //list 섞은 경우
                     //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", foodSecond[list.get(add_item_index)], foodKind[list.get(add_item_index)]+">"+foodFirst[list.get(add_item_index++)], "11개 음식점, 8000원부터"));
                     //items.add(new AnalysisItem("https://i.pinimg.com/originals/48/01/a7/4801a73cdbf6c59e6cad5c7033104be8.png", "추가한 음식","양식>파스타", "11개 음식점, 8000원부터"));
@@ -290,153 +274,122 @@ public class AnalysisFragment1 extends Fragment {
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
 
 
-
         return v;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
-    public void setEmail(String email){
+
+    public void setEmail(String email) {
         this.email = email;
     }
-    public void setSitu(String loc, String who, String emo, String calo){
+
+    public void setSitu(String loc, String who, String emo, String calo) {
         this.place = loc;
-        this.who=who;
+        this.who = who;
         this.emotion = emo;
         this.calorie = calo;
     }
 
-    public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, List<Integer> list){
+    public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, List<Integer> list) {
         this.foodFirst = foodFirst.clone();
         this.foodSecond = foodSecond.clone();
         this.foodKind = foodKind.clone();
         this.foodPic = foodPic;
         this.list = list;
-        for(int i=0;i<9;i++){
+        for (int i = 0; i < 9; i++) {
             System.out.println(this.foodFirst[i] + this.foodSecond[i] + this.foodKind[i] + list.get(i));
         }
     }
 
-
-    public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, int food_list_size){
+    public void setFood(String[] foodFirst, String[] foodSecond, String[] foodKind, FoodPic foodPic, int food_list_size) {
         this.foodFirst = foodFirst.clone();
         this.foodSecond = foodSecond.clone();
         this.foodKind = foodKind.clone();
         this.foodPic = foodPic;
         this.food_list_size = food_list_size;
-        for(int i=0;i< food_list_size;i++){
+        for (int i = 0; i < food_list_size; i++) {
             System.out.println(this.foodFirst[i] + this.foodSecond[i] + this.foodKind[i]);
         }
     }
 
-    class WeatherAsynTask extends AsyncTask<String, Void, String> {
-
+    private class WeatherAsynTask extends AsyncTask<String, Void, Weather> {
 
         @Override
-        protected String doInBackground(String... params) {
-            String URL = params[0];
-            String E1 = params[1];
-            String result = "";
+        protected Weather doInBackground(String... params) {
+            final Weather type = Weather.valueOf(params[0]);
 
-            Document doc = null;
             try {
-                doc = Jsoup.connect(URL).get();
-                Element temp = doc.select(E1).first();
+                final Document doc = Jsoup.connect(Values.URL_WEATHER_INFO).get();
+                final Element temp = doc.select(type.getElement()).first();
 
-                if(temp==null){
-                    Log.e("result" ,"fail to get weather");
-                }
+                if (temp == null) {
+                    Log.e("result", "fail to get weather");
+                } else {
+                    Log.e("result", temp.text());
 
-                else {
-                    result = temp.text();
+                    final String[] str = temp.text().split(",");
 
-                    Log.e("result", result);
-
-                    String str[] = result.split(",");
-
-
-
-                    if (E1.equals("span.todaytemp")) {
+                    if (type == Weather.TEMPERATURE) {
                         temperature = str[0];
                         Log.e("temperature", temperature);
-                        //2020-11-23 김정천 몇 도 인지 화면에 출력
-                        tv_temperature.setText(temperature+"도");
-                    } else {
+                    } else if (type == Weather.DESCRIPTION) {
                         weather = str[0];
                         Log.e("weather", weather);
-                        //weather을 받아오면 된다.
-
-
-                        if(weather == null){
-                            tv_weather.setText("--");
-                        }
-                        else {
-                            switch (weather) {
-                                case "흐림":
-                                    iv_weather.setImageResource(R.drawable.blur);
-                                    changeTextView("흐림");
-                                    break;
-                                case "비":
-                                    iv_weather.setImageResource(R.drawable.analysishome_rain);
-                                    changeTextView("비");
-                                    break;
-                                case "눈":
-                                    iv_weather.setImageResource(R.drawable.analysishome_snow);
-                                    changeTextView("눈");
-                                    break;
-                                case "맑음":
-                                    iv_weather.setImageResource(R.drawable.analysishome_sunny);
-                                    changeTextView("맑음");
-                                    break;
-                                case "구름많음":
-                                    iv_weather.setImageResource(R.drawable.cloud_many);
-                                    changeTextView("구름많음");
-                                    break;
-                                default:
-                                    changeTextView("--");
-                                    break;
-                            }
-                        }
-
                     }
+                    type.setValue(str[0]);
                 }
-                return result;
+                return type;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
             return null;
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+        protected void onPostExecute(Weather w) {
+            super.onPostExecute(w);
+            if (w == null) return;
 
-            String[] str = s.split(",");
-
-            //textView.setText(str[0]);
-            //Log.e("날씨", str[0]);
-
-
-
-        }
-
-
-
-
-    }
-
-    public void changeTextView(final String ttext){
-        getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-                weather = ttext;
-                tv_weather.setText(ttext);
+            if (w == Weather.TEMPERATURE) {
+                tv_temperature.setText(temperature + "\u2103");
+            } else if (w == Weather.DESCRIPTION) {
+                if (weather == null) {
+                    tv_weather.setText("--");
+                } else {
+                    switch (weather) {
+                        case "흐림":
+                            iv_weather.setImageResource(R.drawable.blur);
+                            changeTextView("흐림");
+                            break;
+                        case "비":
+                            iv_weather.setImageResource(R.drawable.analysishome_rain);
+                            changeTextView("비");
+                            break;
+                        case "눈":
+                            iv_weather.setImageResource(R.drawable.analysishome_snow);
+                            changeTextView("눈");
+                            break;
+                        case "맑음":
+                            iv_weather.setImageResource(R.drawable.analysishome_sunny);
+                            changeTextView("맑음");
+                            break;
+                        case "구름많음":
+                            iv_weather.setImageResource(R.drawable.cloud_many);
+                            changeTextView("구름많음");
+                            break;
+                        default:
+                            changeTextView("--");
+                            break;
+                    }
+                }
             }
-        });
+        }
     }
 
-
-
+    private void changeTextView(final String ttext) {
+        weather = ttext;
+        tv_weather.setText(ttext);
+    }
 }
