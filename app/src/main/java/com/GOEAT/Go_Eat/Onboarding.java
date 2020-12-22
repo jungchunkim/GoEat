@@ -35,11 +35,6 @@ public class Onboarding extends AppCompatActivity {
     private String email;
     private String password;
     private String check;
-    @Override
-    public void onBackPressed()
-    {
-        //super.onBackPressed();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
