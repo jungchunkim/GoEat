@@ -1,182 +1,197 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.GOEAT.Go_Eat.NoticeActivity"
     android:background="@color/background"
-    android:orientation="vertical"
-    >
+    tools:context="com.GOEAT.Go_Eat.NoticeActivity">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleSection"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/analysishome_top_bar"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleSectionStartGl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="공지사항"
-            android:fontFamily="@font/pureunjeonnambold"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            />
-       <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleSectionEndGl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".98" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="center"
             android:src="@drawable/arrow_white"
-            android:layout_centerVertical="true"
-           android:layout_alignParentLeft="true"
-           android:layout_marginLeft="20dp"
-            />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent=".60"
+            app:layout_constraintStart_toStartOf="@id/titleSectionStartGl"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/noticeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pureunjeonnambold"
+            android:text="공지사항"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#E5E5E5"
-        />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:background="#F7F9FC"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleSection">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:background="#E5E5E5" />
+
         <LinearLayout
             android:id="@+id/layout_notice2"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:orientation="horizontal"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/tv_notice2"
                     android:layout_width="200dp"
                     android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:gravity="bottom"
+                    android:paddingBottom="3dp"
                     android:text="공지사항2"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="18sp"
-                    android:gravity="bottom"
-                    android:layout_marginLeft="20dp"
-                    android:paddingBottom="3dp"
-                    />
+                    android:textSize="18sp" />
+
                 <TextView
                     android:layout_width="200dp"
                     android:layout_height="25dp"
-                    android:text="2020.12.02"
-                    android:textColor="#73000000"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textSize="12sp"
-                    android:gravity="top"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="3dp"
-                    />
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:gravity="top"
+                    android:text="2020.12.02"
+                    android:textColor="#73000000"
+                    android:textSize="12sp" />
             </LinearLayout>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="right">
+
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/mypage_arrow"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginRight="15dp"/>
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/mypage_arrow" />
             </LinearLayout>
 
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="#E5E5E5"
-            />
+            android:layout_height="0.8dp"
+            android:background="#E5E5E5" />
 
         <LinearLayout
             android:id="@+id/layout_investigation"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:orientation="horizontal"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/layout_notice1"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:orientation="horizontal"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/tv_notice1"
                         android:layout_width="200dp"
                         android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="bottom"
+                        android:paddingBottom="3dp"
                         android:text="공지사항1"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/pureunjeonnam"
-                        android:textSize="18sp"
-                        android:gravity="bottom"
-                        android:layout_marginLeft="20dp"
-                        android:paddingBottom="3dp"
-                        />
+                        android:textSize="18sp" />
+
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="20dp"
-                        android:text="2020.12.01"
-                        android:textColor="#73000000"
-                        android:fontFamily="@font/pureunjeonnam"
-                        android:textSize="12sp"
-                        android:gravity="top"
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="3dp"
-                        />
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="top"
+                        android:text="2020.12.01"
+                        android:textColor="#73000000"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="right"
-                android:background="@color/white"
-                >
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/mypage_arrow"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="15dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="15dp"
+                        android:src="@drawable/mypage_arrow" />
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
 
-
-
-</LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="#E5E5E5"
-            />
-</LinearLayout>
-</LinearLayout>
+            android:layout_height="0.8dp"
+            android:background="#E5E5E5" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
