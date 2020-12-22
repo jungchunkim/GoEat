@@ -45,11 +45,6 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
     private int food_list_size = 0;
 
     @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_home_real);
