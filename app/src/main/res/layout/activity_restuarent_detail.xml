@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.GOEAT.Go_Eat.restuarent_detail"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.GOEAT.Go_Eat.restuarent_detail">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,8 +17,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/shadow_button_4"
             android:layout_marginBottom="15dp"
+            android:background="@drawable/shadow_button_4"
             android:orientation="vertical">
 
 
@@ -31,13 +30,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:paddingBottom="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="8dp"
-                android:orientation="vertical"
                 android:layout_weight="20"
-                android:background="@drawable/one_coner_round_layout">
+                android:background="@drawable/one_coner_round_layout"
+                android:orientation="vertical"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
                     android:id="@+id/food_name_1"
@@ -46,30 +45,32 @@
                     android:layout_marginLeft="14dp"
                     android:layout_marginRight="14dp"
 
-                    android:textColor="@color/exp_name"
-                    android:text=""/>
+                    android:text=""
+                    android:textColor="@color/exp_name" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginLeft="14dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginRight="14dp"
                     android:orientation="horizontal"
                     android:weightSum="10">
+
                     <TextView
                         android:id="@+id/food_name_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:fontFamily="@font/pureunjeonnambold"
-                        android:textColor="#ffffff"
                         android:text=""
-                        android:textSize="28dp"
-                        android:layout_weight="1"/>
+                        android:textColor="#ffffff"
+                        android:textSize="28dp" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="8"/>
+                        android:layout_weight="8" />
                     <!-- 깃발 이미지-->
                 </LinearLayout>
 
@@ -77,8 +78,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="14dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="14dp"
                     android:orientation="horizontal"
                     android:weightSum="10">
                     <!--별 이미지 넣기 -->
@@ -86,101 +87,95 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:src="@drawable/ic_star_img"/>
+                        android:src="@drawable/ic_star_img" />
+
                     <TextView
                         android:id="@+id/star_pt"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:textColor="#ffffff"
-                        android:gravity="center"
-                        android:fontFamily="@font/pureunjeonnam"
                         android:layout_weight="1"
-                        android:text=""/>
-
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="#ffffff" />
 
                 </LinearLayout>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="14dp"
-                    android:layout_marginRight="14dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal"
-                    android:weightSum="10">
+                    android:layout_marginTop="20dp">
 
-                    <LinearLayout
+                    <ImageView
+                        android:id="@+id/bt_phone_num"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="vertical">
-                        <Button
-                            android:id="@+id/bt_phone_num"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginRight="12dp"
-                            android:background="@drawable/ic_call"
-                            android:layout_weight="0.8" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/pureunjeonnam"
-                            android:layout_marginTop="5dp"
-                            android:textSize="10dp"
-                            android:gravity="center"
-                            android:textColor="#ffffff"
-                            android:text="전화하기" />
-                    </LinearLayout>
+                        android:layout_height="0dp"
+                        android:background="@drawable/ic_call"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="@+id/bt_phone_num_text"
+                        app:layout_constraintStart_toStartOf="@+id/bt_phone_num_text"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/bt_phone_num_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="전화하기"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/bt_phone_num" />
+
+                    <ImageView
+                        android:id="@+id/bt_share"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:orientation="vertical">
-                        <Button
-                            android:id="@+id/bt_share"
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginLeft="12dp"
-                            android:layout_marginRight="12dp"
-                            android:background="@drawable/ic_share"
-                            android:layout_weight="0.8" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="10dp"
-                            android:layout_marginTop="5dp"
-                            android:gravity="center"
-                            android:textColor="#ffffff"
-                            android:fontFamily="@font/pureunjeonnam"
-                            android:text="공유하기" />
-                    </LinearLayout>
+                        android:layout_height="0dp"
+                        android:background="@drawable/ic_share"
+                        app:layout_constraintBottom_toBottomOf="@id/bt_phone_num"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="@+id/bt_share_text"
+                        app:layout_constraintTop_toTopOf="@id/bt_phone_num" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/bt_share_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/pureunjeonnam"
+                        android:text="공유하기"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toEndOf="@id/bt_phone_num"
+                        app:layout_constraintTop_toBottomOf="@id/bt_share" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:orientation="horizontal"
                     android:weightSum="30">
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:orientation="vertical">
-                       />
+
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="28"
                         android:orientation="vertical">
+
                         <Button
                             android:id="@+id/naver_order"
                             android:layout_width="match_parent"
@@ -188,14 +183,15 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:onClick="naver_order_Clicked"
-                            android:gravity="center"
-                            android:textSize="18dp"
-                            android:textColor="#FF4081"
+                            android:background="@drawable/round_button_background"
                             android:fontFamily="@font/pureunjeonnambold"
+                            android:gravity="center"
+                            android:onClick="naver_order_Clicked"
                             android:text="NAVER에서 주문하기"
-                            android:background="@drawable/round_button_background" />/>
+                            android:textColor="#FF4081"
+                            android:textSize="18dp" />/>
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -219,7 +215,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"/>
+                    android:layout_height="20dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -230,23 +226,23 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
-                        android:src="@drawable/ic_icon_phone"/>
+                        android:src="@drawable/ic_icon_phone" />
 
                     <TextView
                         android:id="@+id/phone_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
-                        android:textSize="12dp"
-                        android:textColor="#80000000"
-                        android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text=""/>
+                        android:gravity="center_vertical"
+                        android:text=""
+                        android:textColor="#80000000"
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"/>
+                    android:layout_height="15dp" />
                 <!--위치 버튼 입력-->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -257,22 +253,23 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
-                        android:src="@drawable/ic_icon_pin"/>
+                        android:src="@drawable/ic_icon_pin" />
 
                     <TextView
                         android:id="@+id/position_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
-                        android:textSize="12dp"
-                        android:textColor="#80000000"
-                        android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text=""/>
+                        android:gravity="center_vertical"
+                        android:text=""
+                        android:textColor="#80000000"
+                        android:textSize="12dp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"/>
+                    android:layout_height="15dp" />
                 <!-- 시계 그림 넣기 -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -283,23 +280,24 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
-                        android:src="@drawable/ic_icon_clock"/>
+                        android:src="@drawable/ic_icon_clock" />
 
                     <TextView
                         android:id="@+id/time"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
-                        android:textSize="12dp"
-                        android:textColor="#80000000"
                         android:fontFamily="@font/pureunjeonnam"
                         android:gravity="center_vertical"
-                        android:text=""/>
+                        android:text=""
+                        android:textColor="#80000000"
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="15dp"/>
+                    android:layout_height="15dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
@@ -309,23 +307,23 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1.5"
-                        android:src="@drawable/icon_price"/>
+                        android:src="@drawable/icon_price" />
 
                     <TextView
                         android:id="@+id/price_num"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="8.5"
-                        android:textSize="12dp"
-                        android:textColor="#80000000"
-                        android:gravity="center_vertical"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text=""/>
+                        android:gravity="center_vertical"
+                        android:text=""
+                        android:textColor="#80000000"
+                        android:textSize="12dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"/>
+                    android:layout_height="20dp" />
 
                 <LinearLayout
                     android:id="@+id/linearLayout2"
@@ -338,20 +336,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:ellipsize="end"
-                        android:textSize="12dp"
-                        android:textColor="#80000000"
                         android:fontFamily="@font/pureunjeonnam"
-                        android:text=""/>
+                        android:text=""
+                        android:textColor="#80000000"
+                        android:textSize="12dp" />
+
                     <Button
                         android:id="@+id/View_more"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:textColor="#1E1E1E"
                         android:background="#00ff0000"
-                        android:gravity="left"
                         android:fontFamily="@font/pureunjeonnambold"
-                        android:textSize="12dp"
-                        android:text="더보기>"/>
+                        android:gravity="left"
+                        android:text="더보기 >"
+                        android:textColor="#1E1E1E"
+                        android:textSize="12dp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -361,17 +360,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="320dp"
-            android:orientation="vertical"
-            >
-            <com.naver.maps.map.MapView
+            android:orientation="vertical">
+
+            <com.GOEAT.Go_Eat.widget.GoEatMapView
                 android:id="@+id/map_view"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </com.naver.maps.map.MapView>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -393,7 +391,7 @@
             </LinearLayout>
         </LinearLayout>
 
-    <!-- 대표메뉴 창들-->
+        <!-- 대표메뉴 창들-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -406,38 +404,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:textSize="24dp"
-                    android:textColor="#1E1E1E"
                     android:fontFamily="@font/pureunjeonnambold"
-                    android:text="대표 메뉴"/>
+                    android:text="대표 메뉴"
+                    android:textColor="#1E1E1E"
+                    android:textSize="24dp" />
+
                 <Button
                     android:id="@+id/show_all_menu"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="9"
                     android:background="#00ff0000"
-                    android:textSize="12dp"
-                    android:gravity="right|bottom"
                     android:fontFamily="@font/pureunjeonnam"
+                    android:gravity="right|bottom"
+                    android:text="모든 메뉴 >"
                     android:textColor="@color/exp_name"
-                    android:text="모든 메뉴 >"/>
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <!-- 음식 버튼 만들기 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
-                android:paddingLeft="8dp"
-                android:paddingBottom="8dp"
-                android:paddingRight="8dp"
-                android:paddingTop="8dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingTop="8dp"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
                 android:weightSum="4">
 
                 <ImageView
@@ -445,48 +445,49 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
                     android:layout_marginLeft="25dp"
-                    android:weightSum="9"
-                    android:orientation="vertical">
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:weightSum="9">
+
                     <TextView
                         android:id="@+id/restaurant_txt_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:layout_marginTop="30dp"
                         android:layout_marginLeft="10dp"
-                        android:textColor="#1E1E1E"
-                        android:textSize="23dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_weight="2"
                         android:fontFamily="@font/pureunjeonnambold"
-                        android:text=""/>
+                        android:text=""
+                        android:textColor="#1E1E1E"
+                        android:textSize="23dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
                         android:layout_marginBottom="10dp"
+                        android:layout_weight="3"
                         android:orientation="horizontal"
                         android:weightSum="10">
+
                         <TextView
                             android:id="@+id/food_price_1"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="4"
                             android:layout_marginLeft="10dp"
-                            android:textColor="#611E1E1E"
-                            android:textSize="16dp"
+                            android:layout_weight="4"
                             android:fontFamily="@font/pureunjeonnam"
-                            android:text=""/>
+                            android:text=""
+                            android:textColor="#611E1E1E"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
                 </LinearLayout>
-
 
 
             </LinearLayout>
@@ -504,26 +505,27 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
                     android:layout_marginLeft="25dp"
-                    android:weightSum="9"
-                    android:orientation="vertical">
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:weightSum="9">
+
                     <TextView
                         android:id="@+id/restaurant_txt_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
                         android:layout_marginLeft="10dp"
-                        android:textColor="#1E1E1E"
-                        android:textSize="23dp"
                         android:layout_marginTop="30dp"
+                        android:layout_weight="2"
                         android:fontFamily="@font/pureunjeonnambold"
-                        android:text=""/>
+                        android:text=""
+                        android:textColor="#1E1E1E"
+                        android:textSize="23dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -531,24 +533,24 @@
                         android:layout_weight="3"
                         android:orientation="horizontal"
                         android:weightSum="10">
+
                         <TextView
                             android:id="@+id/food_price_2"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="4"
                             android:layout_marginLeft="10dp"
-                            android:textColor="#611E1E1E"
-                            android:textSize="16dp"
+                            android:layout_weight="4"
                             android:fontFamily="@font/pureunjeonnam"
-                            android:text=""/>
+                            android:text=""
+                            android:textColor="#611E1E1E"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
                 </LinearLayout>
 
 
-
-
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
@@ -562,43 +564,46 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="3"
                     android:layout_marginLeft="25dp"
-                    android:weightSum="9"
-                    android:orientation="vertical">
+                    android:layout_weight="3"
+                    android:orientation="vertical"
+                    android:weightSum="9">
+
                     <TextView
                         android:id="@+id/restaurant_txt_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:textColor="#1E1E1E"
-                        android:textSize="23dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="30dp"
+                        android:layout_weight="2"
                         android:fontFamily="@font/pureunjeonnambold"
-                        android:text=""/>
+                        android:text=""
+                        android:textColor="#1E1E1E"
+                        android:textSize="23dp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
                         android:layout_marginBottom="10dp"
+                        android:layout_weight="3"
                         android:orientation="horizontal"
                         android:weightSum="10">
+
                         <TextView
                             android:id="@+id/food_price_3"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="4"
-                            android:textColor="#611E1E1E"
                             android:layout_marginLeft="10dp"
-                            android:textSize="16dp"
+                            android:layout_weight="4"
                             android:fontFamily="@font/pureunjeonnam"
-                            android:text=""/>
+                            android:text=""
+                            android:textColor="#611E1E1E"
+                            android:textSize="16dp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -606,14 +611,14 @@
         </LinearLayout>
 
         <TextView
-            android:layout_marginTop="80dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:fontFamily="@font/pureunjeonnam"
-            android:textColor="@color/exp_name"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="Go Eat은 통신판매의 당사자가 아닙니다. 따라서 Go Eat은 상품거래정보 및 거래에 대한 책임을 지지 않습니다."/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/pureunjeonnam"
+            android:text="Go Eat은 통신판매의 당사자가 아닙니다. 따라서 Go Eat은 상품거래정보 및 거래에 대한 책임을 지지 않습니다."
+            android:textColor="@color/exp_name" />
 
     </LinearLayout>
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
