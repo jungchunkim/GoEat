@@ -98,6 +98,7 @@ public class Onboarding extends AppCompatActivity {
                                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
 //                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class); //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다.
                                 startActivity(intent);
+                                finish();
                             }
                         }
                     }
