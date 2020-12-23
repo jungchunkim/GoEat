@@ -215,6 +215,7 @@ public class investigation_page extends AppCompatActivity implements View.OnClic
                 intent.putExtra("weather", weather);
 
                 startActivity(intent);
+                finish();
             }
         });
     }

@@ -34,13 +34,13 @@ public class AnalysisFragment3 extends Fragment {
     public TextView tv_nickname;
     TextView tv_email;
     CircleImageView iv_profile;
-    String name="";
-    String email="";
-    String chracter="";
-    String nickname="";
-    ImageView home_btn_2,go_btn_2;
+    String name = "";
+    String email = "";
+    String chracter = "";
+    String nickname = "";
+    ImageView home_btn_2, go_btn_2;
     LinearLayout layout_notice, layout_investigation;
-
+    private View logoutBtn;
 
 
     @Override
@@ -60,9 +60,12 @@ public class AnalysisFragment3 extends Fragment {
         iv_profile = viewGroup.findViewById(R.id.iv_profile);
         layout_investigation = viewGroup.findViewById(R.id.layout_investigation);
         layout_notice = viewGroup.findViewById(R.id.layout_notice);
+        logoutBtn = viewGroup.findViewById(R.id.logout);
+
+        logoutBtn.setOnClickListener(logoutBtnClickListener);
 
         final UserDB userDB = new UserDB();
-        SharedPreferences prefs = getActivity().getSharedPreferences("loginauto", MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Account", MODE_PRIVATE);
         final SharedPreferences.Editor editor = prefs.edit();
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -72,15 +75,15 @@ public class AnalysisFragment3 extends Fragment {
                     boolean success = jsonObject.getBoolean("success");
                     System.out.println(success);
                     nickname = jsonObject.getString("nickname");
-                    editor.putString("nickname",nickname);
+                    editor.putString("nickname", nickname);
                     editor.commit();
                     name = jsonObject.getString("name");
                     chracter = jsonObject.getString("chracter");
-                    if (success){
+                    if (success) {
                         // 가져온 이름을 세팅하기
                         tv_nickname.setText(nickname);
                         tv_email.setText(email);
-                    }else {
+                    } else {
 
                     }
                 } catch (JSONException e) {
@@ -88,8 +91,8 @@ public class AnalysisFragment3 extends Fragment {
                 }
             }
         };
-        email = prefs.getString("email","");
-        userDB.getuserdata(email,responseListener,getActivity());
+        email = prefs.getString("email", "");
+        userDB.getuserdata(email, responseListener, getActivity());
 
         tv_email.setText(email);
 
@@ -108,11 +111,22 @@ public class AnalysisFragment3 extends Fragment {
                 startActivity(intent);
             }
         });
-
-
-
         return viewGroup;
-
     }
 
+    private final View.OnClickListener logoutBtnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            requireContext().getSharedPreferences("investigation_result", MODE_PRIVATE).edit().clear().apply();
+            requireContext().getSharedPreferences("Account", MODE_PRIVATE).edit().clear().apply();
+            requireContext().getSharedPreferences("loginauto", MODE_PRIVATE).edit().clear().apply();
+            requireContext().getSharedPreferences("location", MODE_PRIVATE).edit().clear().apply();
+            requireContext().getSharedPreferences("goeat", MODE_PRIVATE).edit().clear().apply();
+
+            final Intent intent = new Intent(requireContext(), Onboarding.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            requireActivity().finish();
+        }
+    };
 }
