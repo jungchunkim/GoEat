@@ -129,23 +129,23 @@ public class AnalysisFragment1 extends Fragment {
         // 함께 먹는 사람 설정
         switch (who) {
             case "혼자":
-                iv_who.setImageResource(R.drawable.analysishome_alone);
+                iv_who.setImageResource(R.drawable.ic_who_alone_white);
                 tv_who.setText("혼자");
                 break;
             case "애인":
-                iv_who.setImageResource(R.drawable.analysishome_couple);
+                iv_who.setImageResource(R.drawable.ic_who_couple_white);
                 tv_who.setText("애인");
                 break;
             case "친구":
-                iv_who.setImageResource(R.drawable.analysishome_friend);
+                iv_who.setImageResource(R.drawable.ic_who_friends_white);
                 tv_who.setText("친구");
                 break;
             case "가족":
-                iv_who.setImageResource(R.drawable.analysishome_family);
+                iv_who.setImageResource(R.drawable.ic_who_family_white);
                 tv_who.setText("가족");
                 break;
             case "회식":
-                iv_who.setImageResource(R.drawable.analysishome_company);
+                iv_who.setImageResource(R.drawable.ic_who_dining_together_white);
                 tv_who.setText("회식");
                 break;
             default:
@@ -156,27 +156,27 @@ public class AnalysisFragment1 extends Fragment {
         // 감정 설정
         switch (emotion) {
             case "설레는":
-                iv_emotion.setImageResource(R.drawable.analysishome_flutter);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_flutter_white);
                 tv_emotion.setText("설레는");
                 break;
             case "축하하는":
-                iv_emotion.setImageResource(R.drawable.analysishome_congratulation);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_celebration_white);
                 tv_emotion.setText("축하하는");
                 break;
             case "우울한":
-                iv_emotion.setImageResource(R.drawable.analysishome_gloomy);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_gloomy_white);
                 tv_emotion.setText("우울한");
                 break;
             case "평범한":
-                iv_emotion.setImageResource(R.drawable.analysishome_normal);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_normal_white);
                 tv_emotion.setText("평범한");
                 break;
             case "스트레스":
-                iv_emotion.setImageResource(R.drawable.analysishome_stress);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_stress_white);
                 tv_emotion.setText("스트레스");
                 break;
             case "행복한":
-                iv_emotion.setImageResource(R.drawable.analysishome_happy);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_happy_white);
                 tv_emotion.setText("행복한");
                 break;
             default:
@@ -375,23 +375,23 @@ public class AnalysisFragment1 extends Fragment {
                 } else {
                     switch (weather) {
                         case "흐림":
-                            iv_weather.setImageResource(R.drawable.blur);
+                            iv_weather.setImageResource(R.drawable.ic_weather_cloudy_white);
                             changeTextView("흐림");
                             break;
                         case "비":
-                            iv_weather.setImageResource(R.drawable.analysishome_rain);
+                            iv_weather.setImageResource(R.drawable.ic_weather_rainy_white);
                             changeTextView("비");
                             break;
                         case "눈":
-                            iv_weather.setImageResource(R.drawable.analysishome_snow);
+                            iv_weather.setImageResource(R.drawable.ic_weather_snow_white);
                             changeTextView("눈");
                             break;
                         case "맑음":
-                            iv_weather.setImageResource(R.drawable.analysishome_sunny);
+                            iv_weather.setImageResource(R.drawable.ic_weather_sunny_white);
                             changeTextView("맑음");
                             break;
                         case "구름많음":
-                            iv_weather.setImageResource(R.drawable.cloud_many);
+                            iv_weather.setImageResource(R.drawable.ic_weather_cloudy_many_white);
                             changeTextView("구름많음");
                             break;
                         default:
