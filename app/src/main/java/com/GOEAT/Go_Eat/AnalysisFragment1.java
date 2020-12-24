@@ -105,9 +105,24 @@ public class AnalysisFragment1 extends Fragment {
         tv_place.setText(place);
 
         // 메인 메시지 설정
-        tv_recommend_info.setText(who + "와 함께 하는 " + name + "님에게 추천!");
-
-
+        Log.e("pistolcaffe","name: " + name);
+        switch (who) {
+            case "애인":
+                tv_recommend_info.setText("애인이랑 먹는 " + name + "님에게 추천!");
+                break;
+            case "친구":
+                tv_recommend_info.setText("친구랑 먹는 " + name + "님에게 추천!");
+                break;
+            case "가족":
+                tv_recommend_info.setText("가족과 먹는 " + name + "님에게 추천!");
+                break;
+            case "회식":
+                tv_recommend_info.setText("회식을 하는 " + name + "님에게 추천!");
+                break;
+            default:
+                tv_recommend_info.setText("혼자 먹는 " + name + "님에게 추천!");
+                break;
+        }
         // 기온 설정
 
 
@@ -172,11 +187,11 @@ public class AnalysisFragment1 extends Fragment {
         // 칼로리 설정
         switch (calorie) {
             case "low":
-                iv_calroie.setImageResource(R.drawable.analysishome_lowcal);
+                iv_calroie.setImageResource(R.drawable.calorie_low);
                 tv_calorie.setText("칼로리 낮게");
                 break;
             case "high":
-                iv_calroie.setImageResource(R.drawable.analysishome_cal);
+                iv_calroie.setImageResource(R.drawable.calorie_none);
                 tv_calorie.setText("칼로리 무관");
                 break;
             default:

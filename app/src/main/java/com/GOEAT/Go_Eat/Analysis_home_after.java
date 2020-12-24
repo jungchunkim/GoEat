@@ -207,11 +207,11 @@ public class Analysis_home_after extends AppCompatActivity {
         // 칼로리 설정
         switch (calorie) {
             case "low":
-                iv_calroie.setImageResource(R.drawable.analysishome_lowcal);
+                iv_calroie.setImageResource(R.drawable.calorie_low);
                 tv_calorie.setText("칼로리 낮게");
                 break;
             case "high":
-                iv_calroie.setImageResource(R.drawable.analysishome_cal);
+                iv_calroie.setImageResource(R.drawable.calorie_none);
                 tv_calorie.setText("칼로리 무관");
                 break;
             default:

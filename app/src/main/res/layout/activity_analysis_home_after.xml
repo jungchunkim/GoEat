@@ -1,198 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="#F7F9FC"
+    android:gravity="center"
+    android:orientation="vertical"
     android:weightSum="1">
 
-    <LinearLayout
+    <include
+        android:id="@+id/topStatusSection"
+        layout="@layout/top_status_section"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.15"
-        android:background="@drawable/analysishome_top_bar"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="left">
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:src="@drawable/analysishome_place"
-                android:layout_marginLeft="20dp"
-                />
-
-            <TextView
-                android:id="@+id/tv_place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:text="신촌"
-                android:fontFamily="@font/pureunjeonnam"
-                android:textColor="#FFFFFF"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="right"
-            android:paddingTop="15dp">
-
-            <LinearLayout
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="3dp">
-
-                <ImageView
-                    android:id="@+id/iv_weather"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/analysishome_littlecloudy"
-                    android:tint="@color/white"
-                    android:layout_marginBottom="5dp"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_weather"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="흐림"
-                    android:gravity="center"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="#FFFFFF"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="3dp">
-
-                <TextView
-                    android:id="@+id/tv_temperature"
-                    android:layout_width="35dp"
-                    android:layout_height="30dp"
-                    android:text="36'C"
-                    android:gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="#FFFFFF"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="기온"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="#FFFFFF"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="3dp">
-
-                <ImageView
-                    android:id="@+id/iv_who"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/analysishome_friend"
-                    android:layout_marginBottom="5dp"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_who"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="친구랑"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="#FFFFFF"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="3dp">
-
-                <ImageView
-                    android:id="@+id/iv_emotion"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/analysishome_stress"
-                    android:layout_marginBottom="5dp"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_emotion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="스트레스"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="#FFFFFF"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="65dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginRight="10dp">
-
-                <ImageView
-                    android:id="@+id/iv_calorie"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/analysishome_cal"
-                    android:tint="@color/white"
-                    android:layout_marginBottom="5dp"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_calorie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="칼로리 무관"
-                    android:textSize="12sp"
-                    android:fontFamily="@font/pureunjeonnam"
-                    android:textColor="#FFFFFF"/>
-
-            </LinearLayout>
-
-
-
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
+        android:layout_weight=".15"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -202,16 +22,15 @@
 
         <TextView
             android:id="@+id/tv_recommend_restaurant_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="13dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GO EAT이 엄선한 맛집"
-            android:textSize="20sp"
             android:fontFamily="@font/pureunjeonnambold"
+            android:text="GO EAT이 엄선한 맛집"
             android:textColor="#222B45"
-            />
+            android:textSize="20sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -219,8 +38,5 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="5dp" />
 
-
     </LinearLayout>
-
 </LinearLayout>
-
