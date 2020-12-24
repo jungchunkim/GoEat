@@ -11,9 +11,10 @@ import androidx.fragment.app.Fragment;
 
 import com.GOEAT.Go_Eat.DataType.FoodPic;
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
+import com.GOEAT.Go_Eat.common.Values;
+import com.GOEAT.Go_Eat.widget.MeowBottomNavigationWrapper;
 import com.android.volley.Response;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,17 +25,17 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static com.GOEAT.Go_Eat.common.Values.ID_GO;
+import static com.GOEAT.Go_Eat.common.Values.ID_HOME;
+import static com.GOEAT.Go_Eat.common.Values.ID_MYPAGE;
+
 public class AnalysisHomeRealActivity extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
-    AnalysisFragment1 fragment1;
-    AnalysisFragment2 fragment2;
-    AnalysisFragment3 fragment3;
-    public SharedPreferences prefs;
-    MeowBottomNavigation meo;
-    private final static int ID_HOME = 1;
-    private final static int ID_GO = 2;
-    private final static int ID_MYPAGE = 3;
+    private AnalysisFragment1 fragment1;
+    private AnalysisFragment2 fragment2;
+    private AnalysisFragment3 fragment3;
+    private SharedPreferences prefs;
+    private MeowBottomNavigationWrapper meoWrapper;
 
     private String[] foodSecond = new String[10];
     private String[] foodFirst = new String[10];
@@ -95,6 +96,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
         //name, place, emotion, calorie 받아오는 코드 추가하기---------
         SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
         String email = prefs.getString("email", "");
+        Log.e("pistolcaffe", "name: " + prefs.getString("name", ""));
         fragment1.setEmail(email);
         fragment1.setName(prefs.getString("name", ""));
         fragment1.setSitu(loc, who, emo, calo);
@@ -138,20 +140,9 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
 //                    list = ShuffleOrder();
                     fragment1.setFood(foodFirst, foodSecond, foodKind, foodPic, food_list_size);
 
+                    meoWrapper = findViewById(R.id.bottom_nav_wrapper);
 
-                    meo = findViewById(R.id.bottom_nav);
-                    meo.add(new MeowBottomNavigation.Model(1, R.drawable.tablayout_home_white));
-                    meo.add(new MeowBottomNavigation.Model(2, R.drawable.go));
-                    meo.add(new MeowBottomNavigation.Model(3, R.drawable.tablayout_mypage_gray));
-
-                    meo.setOnReselectListener(new MeowBottomNavigation.ReselectListener() {
-                        @Override
-                        public void onReselectItem(MeowBottomNavigation.Model item) {
-
-                        }
-                    });
-
-                    meo.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
+                    meoWrapper.setOnClickMenuListener(new MeowBottomNavigation.ClickListener() {
                         @Override
                         public void onClickItem(MeowBottomNavigation.Model item) {
                             switch (item.getId()) {
@@ -167,10 +158,10 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                                     //MYPAGE 클릭했을 경우
                                     break;
                             }
-
                         }
                     });
-                    meo.setOnShowListener(new MeowBottomNavigation.ShowListener() {
+
+                    meoWrapper.setOnShowListener(new MeowBottomNavigation.ShowListener() {
                         @Override
                         public void onShowItem(MeowBottomNavigation.Model item) {
                             Fragment select_fragment = fragment1;
@@ -188,7 +179,8 @@ public class AnalysisHomeRealActivity extends AppCompatActivity {
                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, select_fragment).commit();
                         }
                     });
-                    meo.show(1, false);
+
+                    meoWrapper.show(1, false);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
