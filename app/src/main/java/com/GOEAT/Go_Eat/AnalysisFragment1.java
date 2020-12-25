@@ -231,6 +231,9 @@ public class AnalysisFragment1 extends Fragment {
                 final ArrayList<SimpleFoodInfo> beautifiedFoodInfoList = new ArrayList<>();
 
                 for (int i = 0; i < foodInfoList.size(); i++) {
+                    // 만약 제한 개수만큼 데이터가 쌓이면 loop 종료
+                    if (beautifiedFoodInfoList.size() == ALL_FOOD_ITEM_COUNT) break;
+
                     boolean isContain = false;
                     final String firstName = foodInfoList.get(i).firstName;
 
@@ -247,9 +250,6 @@ public class AnalysisFragment1 extends Fragment {
                         beautifiedFoodInfoList.add(swapItem);
                         i--;
                     }
-
-                    // 만약 제한 개수만큼 데이터가 쌓이면 loop 종료
-                    if (beautifiedFoodInfoList.size() == ALL_FOOD_ITEM_COUNT) break;
                 }
 
                 /**
