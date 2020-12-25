@@ -63,7 +63,6 @@ public class MeowBottomNavigationWrapper extends FrameLayout implements ViewGrou
 
     @Override
     public void onChildViewAdded(View view, View view1) {
-        Log.e("pistolcaffe", "view: " + view + " view1: " + view1);
         if (view1 instanceof RelativeLayout) {
             final RelativeLayout cell = (RelativeLayout) view1;
             final TextView tabTitleTextView = cell.findViewById(R.id.tab_title);
@@ -100,7 +99,9 @@ public class MeowBottomNavigationWrapper extends FrameLayout implements ViewGrou
 
     @Override
     public void onClickItem(MeowBottomNavigation.Model item) {
-        menuClickListener.onClickItem(item);
+        if(menuClickListener != null) {
+            menuClickListener.onClickItem(item);
+        }
     }
 
     public void setOnClickMenuListener(MeowBottomNavigation.ClickListener listener) {

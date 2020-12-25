@@ -220,8 +220,9 @@ public class Analysis_home_after extends AppCompatActivity {
         }
         kind = intent1.getExtras().getString("kinds");
         main_menu = intent1.getExtras().getString("title");
-        String[] tokenskind = kind.split(">");
-        menu = tokenskind[1];
+        //String[] tokenskind = kind.split(">");
+        //menu = tokenskind[1];
+        menu = kind;
         Log.d("main_menu", main_menu);
         Log.d("menu", menu);
         tv_recommend_restaurant_info = (TextView) findViewById(R.id.tv_recommend_restaurant_info);
