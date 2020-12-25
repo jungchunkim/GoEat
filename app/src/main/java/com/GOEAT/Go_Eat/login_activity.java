@@ -206,12 +206,15 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
 
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
+                            Log.e("pistolcaffe", "response:" + response);
                             System.out.println(success);
                             if (success.equals("true")) {
                                 SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
                                 SharedPreferences.Editor editors = prefs.edit();
+                                final String nickname = jsonObject.getString("nickname");
                                 editors.putString("email", email);
-                                editors.commit();
+                                editors.putString("name", nickname);
+                                editors.apply();
                                 editor.putString("email", email);
                                 editor.putString("password", password);
                                 if (jsonObject.getString("register_profile_done").equals("true")) { //취향 조사 했는지 1차 판단 후 상황조사 2차 판단=> 화면 이동 방진혁
