@@ -1,19 +1,10 @@
 package com.GOEAT.Go_Eat;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,40 +17,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.GOEAT.Go_Eat.Server_Request.login_request;
 import com.GOEAT.Go_Eat.Trash.SessionCallback;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthProvider;
-import com.kakao.auth.AuthType;
 import com.kakao.auth.Session;
-import com.kakao.network.ErrorResult;
-import com.kakao.usermgmt.UserManagement;
-import com.kakao.usermgmt.callback.MeV2ResponseCallback;
-import com.kakao.usermgmt.response.MeV2Response;
-import com.kakao.usermgmt.response.model.UserAccount;
 import com.nhn.android.naverlogin.OAuthLogin;
-import com.nhn.android.naverlogin.OAuthLoginHandler;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.ref.WeakReference;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class login_activity extends AppCompatActivity { // 로그인 화면
 
@@ -141,7 +113,7 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
                 "no99zztS1T",
                 "Go Eat"
         );
-       // final OAuthLoginHandler mOAuthLoginHandler = new login_activity.NaverLoginHandler(this);
+        // final OAuthLoginHandler mOAuthLoginHandler = new login_activity.NaverLoginHandler(this);
 
 
         tv_find_id.setOnClickListener(new View.OnClickListener() {
@@ -171,7 +143,6 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
         });*/
 
 
-
         cb_login_auto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -182,6 +153,13 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
                     editor.commit();
                     Log.d("login_auto_delete", "yes!");
                 }
+            }
+        });
+
+        findViewById(R.id.cbLoginAutoSection).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cb_login_auto.setChecked(!cb_login_auto.isChecked());
             }
         });
 
@@ -228,12 +206,15 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
 
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
+                            Log.e("pistolcaffe", "response:" + response);
                             System.out.println(success);
                             if (success.equals("true")) {
                                 SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
                                 SharedPreferences.Editor editors = prefs.edit();
+                                final String nickname = jsonObject.getString("nickname");
                                 editors.putString("email", email);
-                                editors.commit();
+                                editors.putString("name", nickname);
+                                editors.apply();
                                 editor.putString("email", email);
                                 editor.putString("password", password);
                                 if (jsonObject.getString("register_profile_done").equals("true")) { //취향 조사 했는지 1차 판단 후 상황조사 2차 판단=> 화면 이동 방진혁
@@ -248,13 +229,15 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
                                     Log.d("who->", "" + who.equals(""));
                                     Log.d("emo->", "" + emo.equals(""));
                                     if (calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")) {
-                                        Intent intent = new Intent(getApplicationContext(), investigation_page.class);
+                                        Intent intent = new Intent(getApplicationContext(), StatusSettingActivity.class);
 //                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);  //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다
                                         startActivity(intent);
+                                        finish();
                                     } else {
                                         Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
 //                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class); //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다.
                                         startActivity(intent);
+                                        finish();
                                     }
                                 } else {
                                     Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);
@@ -298,9 +281,9 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
 
             }
         });
-        if(pref.getString("check","").equals("1")){
-            et_login_email.setText(pref.getString("email",""));
-            et_login_password.setText(pref.getString("password",""));
+        if (pref.getString("check", "").equals("1")) {
+            et_login_email.setText(pref.getString("email", ""));
+            et_login_password.setText(pref.getString("password", ""));
             cb_login_auto.performClick();
             btn_login.performClick();
         }

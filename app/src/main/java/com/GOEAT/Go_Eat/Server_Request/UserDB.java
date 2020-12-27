@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.GOEAT.Go_Eat.AnalysisFragment1;
-import com.GOEAT.Go_Eat.CheckHateFood2;
 import com.GOEAT.Go_Eat.FoodPreference;
 import com.GOEAT.Go_Eat.R;
 import com.android.volley.AuthFailureError;

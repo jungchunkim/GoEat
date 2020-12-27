@@ -1,18 +1,9 @@
 package com.GOEAT.Go_Eat;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.graphics.PointF;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
@@ -24,16 +15,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.GOEAT.Go_Eat.Server_Request.get_restaurantdetail;
-import com.GOEAT.Go_Eat.Server_Request.login_request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.MapView;
@@ -43,23 +31,19 @@ import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.overlay.Marker;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import me.relex.circleindicator.CircleIndicator;
-
 public class restuarent_detail extends AppCompatActivity implements OnMapReadyCallback {
-    ImageView booktag;
-    int number = 0;
-    TextView food_name_1, food_name_2, star_pt, phone_num, position_num, price_num, text_food, restaurant_txt_1, food_price_1, restaurant_txt_2, food_price_2, restaurant_txt_3, food_price_3, map_address;
-    ImageView restaurant_img_1, restaurant_img_2, restaurant_img_3;
-    String restaurant_name, FirstFood, AssociateFood,menulist,pricelist;
-    String restaurant_main_image;
-    Button bt_phone_num,naver_order,View_more,show_all_menu,bt_share;
+    private ImageView booktag;
+    private int number = 0;
+    private TextView food_name_1, food_name_2, star_pt, phone_num, position_num, price_num, text_food, restaurant_txt_1, food_price_1, restaurant_txt_2, food_price_2, restaurant_txt_3, food_price_3, map_address;
+    private ImageView restaurant_img_1, restaurant_img_2, restaurant_img_3, bt_phone_num, bt_share;
+    private String restaurant_name, FirstFood, AssociateFood, menulist, pricelist;
+    private String restaurant_main_image;
+    private String restaurantLink;
+    private Button naver_order, View_more, show_all_menu;
     private MapView mapView;
 
     @SuppressLint({"SetTextI18n", "DefaultLocale"})
@@ -86,16 +70,16 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         map_address = (TextView) findViewById(R.id.map_address);
         restaurant_img_3 = (ImageView) findViewById(R.id.restaurant_img_3);
         naver_order = (Button) findViewById(R.id.naver_order);
-        bt_phone_num = (Button) findViewById(R.id.bt_phone_num);
-        View_more =  (Button) findViewById(R.id.View_more);
+        bt_phone_num = (ImageView) findViewById(R.id.bt_phone_num);
+        View_more = (Button) findViewById(R.id.View_more);
         show_all_menu = (Button) findViewById(R.id.show_all_menu);
-        bt_share = (Button) findViewById(R.id.bt_share);
+        bt_share = (ImageView) findViewById(R.id.bt_share);
         final Intent intent = getIntent();
 
         mapView = findViewById(R.id.map_view);
+
         mapView.onCreate(savedInstanceState);
         naverMapBasicSettings();
-
 
         restaurant_name = intent.getExtras().getString("restaurant_name");
         FirstFood = intent.getExtras().getString("FirstFood");
@@ -116,65 +100,69 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         restaurant_main_image = intent.getExtras().getString("imageview1");
         menulist = intent.getExtras().getString("menulist");
         pricelist = intent.getExtras().getString("pricelist");
+        restaurantLink = intent.getExtras().getString("restaurant_link");
 
         Log.d("restaurant_link", intent.getExtras().getString("restaurant_link"));
-        //최소 최대 가격 계산 하여 넣는 부분 방진혁
-        String []tokensprice = pricelist.split(", ");
-        String maxprice, minprice;
-        for(int i = 0;i<tokensprice.length; i++ ){
-            tokensprice[i] = tokensprice[i].replace(",","");
-            tokensprice[i] = tokensprice[i].replace(" ","");
-            tokensprice[i] = tokensprice[i].replace("원","");
-        }
-        if(tokensprice.length == 0){
-            price_num.setText("메뉴 정보 없음");
-        }else if(tokensprice.length == 1){
-            price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[0])));
-        }else if(tokensprice.length == 2){
-            if(Integer.parseInt(tokensprice[0]) < Integer.parseInt(tokensprice[1])){
-                price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[0]))+" - "+String.format("%,d",Integer.parseInt(tokensprice[1])));
-            }else{
-                price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[1]))+" - "+String.format("%,d",Integer.parseInt(tokensprice[0])));
-            }
-        }else{
-            if(Integer.parseInt(tokensprice[0]) < Integer.parseInt(tokensprice[1])){
-                maxprice = tokensprice[1];
-                minprice =  tokensprice[0];
-            }else{
-                maxprice = tokensprice[0];
-                minprice =  tokensprice[1];
-            }
-            for(int i = 2 ; i<tokensprice.length; i++){
-                if(Integer.parseInt(maxprice) < Integer.parseInt(tokensprice[i])){
-                    maxprice = tokensprice[i];
-                }
-                if(Integer.parseInt(minprice) > Integer.parseInt(tokensprice[i])){
-                    minprice = tokensprice[i];
-                }
-            }
-            price_num.setText(String.format("%,d",Integer.parseInt(minprice))+" - "+String.format("%,d",Integer.parseInt(maxprice)));
 
-        }
+        final String priceRange = intent.getExtras().getString("price_num");
+        price_num.setText(priceRange);
+
+        //최소 최대 가격 계산 하여 넣는 부분 방진혁
+//        String []tokensprice = pricelist.split(", ");
+//        String maxprice, minprice;
+//        for(int i = 0;i<tokensprice.length; i++ ){
+//            tokensprice[i] = tokensprice[i].replace(",","");
+//            tokensprice[i] = tokensprice[i].replace(" ","");
+//            tokensprice[i] = tokensprice[i].replace("원","");
+//        }
+//        if(tokensprice.length == 0){
+//            price_num.setText("메뉴 정보 없음");
+//        }else if(tokensprice.length == 1){
+//            price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[0])));
+//        }else if(tokensprice.length == 2){
+//            if(Integer.parseInt(tokensprice[0]) < Integer.parseInt(tokensprice[1])){
+//                price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[0]))+" - "+String.format("%,d",Integer.parseInt(tokensprice[1])));
+//            }else{
+//                price_num.setText(String.format("%,d",Integer.parseInt(tokensprice[1]))+" - "+String.format("%,d",Integer.parseInt(tokensprice[0])));
+//            }
+//        }else{
+//            if(Integer.parseInt(tokensprice[0]) < Integer.parseInt(tokensprice[1])){
+//                maxprice = tokensprice[1];
+//                minprice =  tokensprice[0];
+//            }else{
+//                maxprice = tokensprice[0];
+//                minprice =  tokensprice[1];
+//            }
+//            for(int i = 2 ; i<tokensprice.length; i++){
+//                if(Integer.parseInt(maxprice) < Integer.parseInt(tokensprice[i])){
+//                    maxprice = tokensprice[i];
+//                }
+//                if(Integer.parseInt(minprice) > Integer.parseInt(tokensprice[i])){
+//                    minprice = tokensprice[i];
+//                }
+//            }
+//            price_num.setText(String.format("%,d",Integer.parseInt(minprice))+" - "+String.format("%,d",Integer.parseInt(maxprice)));
+//        }
 //        Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_1"));
 //        Log.d("restaurant_img_2",intent.getExtras().getString("menu_img_2"));
 //        Log.d("restaurant_img_3",intent.getExtras().getString("menu_img_3"));
         try {
             Picasso.get().load(intent.getExtras().getString("menu_img_1")).error(R.drawable.go_logo1).into(restaurant_img_1);
-            Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_1"));
+            Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_1"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_1.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
             Picasso.get().load(intent.getExtras().getString("menu_img_2")).error(R.drawable.go_logo1).into(restaurant_img_2);
-            Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_2"));
+            Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_2"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_2.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
             Picasso.get().load(intent.getExtras().getString("menu_img_3")).error(R.drawable.go_logo1).into(restaurant_img_3);
-            Log.d("restaurant_img_1",intent.getExtras().getString("menu_img_3"));
+            Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_3"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_3.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
@@ -205,8 +193,8 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             public void onClick(View view) {
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/html");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, "GoEat이 추천한 음식점!\n"+intent.getExtras().getString("restaurant_link"));
-                startActivity(Intent.createChooser(sharingIntent,"Share using text"));
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, "GoEat이 추천한 음식점!\n" + intent.getExtras().getString("restaurant_link"));
+                startActivity(Intent.createChooser(sharingIntent, "Share using text"));
 
             }
         });
@@ -214,7 +202,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onClick(View view) {
                 //네이버 주문클릭시 사이트 이동
-                Intent intent1 = new Intent(Intent.ACTION_VIEW,Uri.parse(intent.getExtras().getString("restaurant_link")));
+                Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(intent.getExtras().getString("restaurant_link")));
                 startActivity(intent1);
             }
         });
@@ -223,11 +211,11 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             public void onClick(View view) {
                 //메뉴 더보기 클릭시 화면 전환
                 Intent intent2 = new Intent(getApplicationContext(), menu_detail_list.class);
-                intent2.putExtra("menulist",menulist);
-                intent2.putExtra("pricelist",pricelist);
-                intent2.putExtra("restaurant_name",restaurant_name);
-                for(int i = 0; i<(intent.getExtras().getInt("menu_length")+2); i++){
-                    intent2.putExtra("menu_img_"+i,intent.getExtras().getString("menu_img_"+i));
+                intent2.putExtra("menulist", menulist);
+                intent2.putExtra("pricelist", pricelist);
+                intent2.putExtra("restaurant_name", restaurant_name);
+                for (int i = 0; i < (intent.getExtras().getInt("menu_length") + 2); i++) {
+                    intent2.putExtra("menu_img_" + i, intent.getExtras().getString("menu_img_" + i));
                 }
                 startActivity(intent2);
             }
@@ -236,13 +224,13 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onClick(View view) { // 더보기 클릭시 확인하여 음식점 설명 레이아웃 크기 증가
                 if (text_food.getLayout() != null) {
-                    if(text_food.getLayout().getEllipsisCount(text_food.getLineCount()-1) > 0){
+                    if (text_food.getLayout().getEllipsisCount(text_food.getLineCount() - 1) > 0) {
                         LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
                         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT, linearLayout2.getHeight());
                         int d = 90;
                         float mScale = getResources().getDisplayMetrics().density;
-                        int calHeight = (int)(d*mScale);
+                        int calHeight = (int) (d * mScale);
                         params1.height = calHeight;
                         linearLayout2.setLayoutParams(params1);
 
@@ -251,7 +239,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
                                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
                         d = 60;
                         mScale = getResources().getDisplayMetrics().density;
-                        calHeight = (int)(d*mScale);
+                        calHeight = (int) (d * mScale);
                         params2.height = calHeight;
                         text_food.setLayoutParams(params2);
                     }
@@ -292,6 +280,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
     public void naverMapBasicSettings() {
         mapView.getMapAsync(this);
     }
+
     // 네이버 지도 주소값 받아와서 지정
     @Override
     public void onMapReady(@NonNull final NaverMap naverMap) {
@@ -302,12 +291,12 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
 
         String str = map_address.getText().toString();
         try {
-            List<Address> addrList = geocoder.getFromLocationName(str,3);
+            List<Address> addrList = geocoder.getFromLocationName(str, 3);
             Iterator<Address> addrs = addrList.iterator();
 
             String infoAddr = "";
 
-            while(addrs.hasNext()) {
+            while (addrs.hasNext()) {
                 Address loc = addrs.next();
                 infoAddr += String.format("Coord : %f, %f", loc.getLatitude(), loc.getLongitude());
                 lat = loc.getLatitude();
@@ -352,15 +341,19 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         //Toast.makeText(this,"위도: " + coord.latitude + ", 경도: " + coord.longitude,Toast.LENGTH_SHORT).show();
         // 현재 위치 버튼 안보이게 설정
         UiSettings uiSettings = naverMap.getUiSettings();
-
         uiSettings.setLocationButtonEnabled(false);
 
+        naverMap.setOnMapClickListener(new NaverMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull PointF pointF, @NonNull LatLng latLng) {
+                Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(restaurantLink));
+                startActivity(intent1);
+            }
+        });
 
         // 지도 유형 위성사진으로 설정
         naverMap.setMapType(NaverMap.MapType.Basic);
-
     }
-
 
     public class MyPageAdapter extends PagerAdapter {
         int[] images = {R.drawable.steak, R.drawable.bread, R.drawable.bread2};

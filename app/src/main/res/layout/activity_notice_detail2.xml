@@ -1,78 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.GOEAT.Go_Eat.Notice_detail2"
-    android:weightSum="100"
-    android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
+    android:background="#F7F9FC"
+    tools:context="com.GOEAT.Go_Eat.Notice_detail2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/titleSection"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="15"
         android:background="@drawable/analysishome_top_bar"
-        android:weightSum="10">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".13"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleSectionStartGl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/titleSectionEndGl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".98" />
 
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:scaleType="center"
             android:src="@drawable/arrow_white"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="46dp"
-            android:layout_marginRight="40dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent=".60"
+            app:layout_constraintStart_toStartOf="@id/titleSectionStartGl"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/noticeTitle"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/pureunjeonnambold"
-            android:textColor="@color/white"
             android:text="공지사항"
-            android:textSize="24dp"
-            android:gravity="center" />
-    </LinearLayout>
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/noticeDate"
+            app:layout_constraintEnd_toEndOf="@id/titleSectionEndGl"
+            app:layout_constraintStart_toEndOf="@id/iv_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical"
-        android:weightSum="10">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:id="@+id/noticeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/pureunjeonnam"
             android:text="2020.12.02"
-            android:fontFamily="@font/pureunjeonnam"
-            android:textSize="20dp"
-            android:textColor="@color/mainPink"
-            android:gravity="center_vertical"
-            />
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/noticeTitle"
+            app:layout_constraintTop_toBottomOf="@id/noticeTitle" />
 
-        <TextView
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleSection">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="9"
-            android:layout_marginTop="30dp"
-            android:text="안녕하세요 Go Eat입니다.\n이번에 저희 어플의 투게더 매칭은\n1월 중순에 활성화 예정입니다.\n많은 기대 부탁드려요!"
-            android:textSize="20dp"
-            android:fontFamily="@font/pureunjeonnam"
-            android:textColor="@color/font"/>
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/pureunjeonnam"
+                android:text="안녕하세요 Go Eat입니다.\n이번에 저희 어플의 투게더 매칭은\n1월 중순에 활성화 예정입니다.\n많은 기대 부탁드려요!"
+                android:textColor="@color/font"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".90" />
 
-    </LinearLayout>
-
-
-</LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

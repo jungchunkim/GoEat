@@ -1,153 +1,90 @@
 package com.GOEAT.Go_Eat;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.GOEAT.Go_Eat.Server_Request.get_restaurantlist;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
+import com.GOEAT.Go_Eat.DataType.SimpleFoodInfo;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+import static com.GOEAT.Go_Eat.common.Values.SHOWING_FOOD_ITEM_COUNT;
 
 public class AnalysisHomeRecyclerAdapter extends RecyclerView.Adapter<AnalysisHomeRecyclerAdapter.ViewHolder> {
-    Context context;
-    List<AnalysisItem> items;
-    //int item_layout;
-    int num;
 
-    /*public AnalysisHomeRecyclerAdapter(Context context, List<AnalysisItem> items, int item_layout, int num) {
-        this.context = context;
-        this.items = items;
-        this.item_layout = item_layout;
-        this.num = num;
-    }*/
+    private final List<SimpleFoodInfo> dataSet;
+    private ItemClickListener listener;
 
-    public AnalysisHomeRecyclerAdapter(Context context, List<AnalysisItem> items,  int num) {
-        this.context = context;
-        this.items = items;
-        this.num = num;
+    public AnalysisHomeRecyclerAdapter(List<SimpleFoodInfo> dataSet) {
+        this.dataSet = dataSet;
+    }
+
+    public void setOnItemClickListener(ItemClickListener listener) {
+        this.listener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.analysis_cardview, null);
-        return new ViewHolder(v);
+        // analysis_cardview.xml 에서의 CardView Top,Bottom Margin 값
+        final int offset = parent.getResources().getDimensionPixelSize(R.dimen.food_list_top_bottom_margin);
+        final int itemHeight = (parent.getHeight() / SHOWING_FOOD_ITEM_COUNT) - offset;
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.analysis_cardview, parent, false);
+        return new ViewHolder(v, itemHeight);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        final AnalysisItem item = items.get(position);
-        //Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
-        //holder.image.setBackground(item.getDrawable());
+        final SimpleFoodInfo item = dataSet.get(position);
+        final Context context = holder.itemView.getContext();
 
-//        Glide.with(holder.itemView.getContext())
-//                .load(item.getUrl())
-//                .into(holder.image);
+        if (item.imageUrl != null && !item.imageUrl.isEmpty()) {
+            Picasso.get().load(item.imageUrl).into(holder.image);
+        }
 
-        Response.Listener<String> responselistener1 = new Response.Listener<String>() {
+        // TODO: description 미구현
+        holder.info.setText("");
+        holder.title.setText(item.secondName);
+        holder.kinds.setText(context.getString(R.string.food_kind_format, item.kind, item.firstName));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    String success = jsonObject.getString("success0");
-                    System.out.println(success);
-                    if (success.equals("true")){
-                        int number = 20;
-                        for(int i=0;i<number;i++)
-                        {
-                            String name = "name"+i;
-                            if (jsonObject.getString(name).length()>1) {
-                                Log.d(position+"res_name", jsonObject.getString(name));
-                            }else{
-                                number = i;
-                                break;
-                            }
-                        }
-                        holder.info.setText("");
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            public void onClick(View view) {
+                if (listener != null) {
+                    listener.onItemClick(dataSet.get(holder.getAdapterPosition()));
                 }
-            }
-        };
-        get_restaurantlist get_restaurantlist = new get_restaurantlist(item.getTitle(),item.getKinds(), item.getwho(),responselistener1) ;
-        RequestQueue queue = Volley.newRequestQueue(context);
-        queue.add(get_restaurantlist);
-
-
-        if(item.url != null) Picasso.get().load(item.url).into(holder.image);
-        holder.title.setText(item.getTitle());
-        holder.kinds.setText(item.getKinds());
-
-        holder.cardview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(context, item.getTitle(), Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, Analysis_home_after.class);
-                // 탭정보 (메뉴1, 메뉴2, 메뉴3 구분)전송 // 없어졌으므로 무의미
-                intent.putExtra("position", position);
-                //음식 종류 전송
-                intent.putExtra("kinds", item.getKinds());
-                intent.putExtra("title", item.getTitle());
-
-                intent.putExtra("place", item.getplace());
-                intent.putExtra("who", item.getwho());
-                intent.putExtra("weather", item.getweather());
-                intent.putExtra("name", item.getname());
-                intent.putExtra("emotion", item.getemotion());
-                intent.putExtra("calorie", item.getcalorie());
-                // 고잇추천인지, 비슷한사람 추천인지, 핫한 음식인기 구분 전송 (num : 0,1,2) // 없어졌으므로 무의미
-                intent.putExtra("recommendType", num);
-                context.startActivity(intent.addFlags(FLAG_ACTIVITY_NEW_TASK));
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return this.items.size();
+        return Math.min(SHOWING_FOOD_ITEM_COUNT, dataSet.size());
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView image;
-        TextView title;
-        TextView kinds;
-        TextView info;
-        CardView cardview;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView image;
+        private final TextView title;
+        private final TextView kinds;
+        private final TextView info;
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, int recommendHeight) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.iv_image);
-            title = (TextView) itemView.findViewById(R.id.tv_title);
-            kinds = (TextView) itemView.findViewById(R.id.tv_kinds);
-            info =  (TextView) itemView.findViewById(R.id.tv_info);
-            cardview = (CardView) itemView.findViewById(R.id.card_view);
+            image = itemView.findViewById(R.id.iv_image);
+            title = itemView.findViewById(R.id.tv_title);
+            kinds = itemView.findViewById(R.id.tv_kinds);
+            info = itemView.findViewById(R.id.tv_info);
 
+            itemView.setLayoutParams(new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, recommendHeight));
         }
     }
 
-
-
-
-
-
+    public interface ItemClickListener {
+        void onItemClick(SimpleFoodInfo info);
+    }
 }

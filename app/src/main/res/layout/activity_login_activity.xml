@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login_activity"
-    android:weightSum="110"
     android:background="@color/background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="110"
+    tools:context=".login_activity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"/>
+        android:layout_weight="7" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="30"
-        android:gravity="center"
-        >
+        android:gravity="center">
+
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/ic_hi"
-            android:layout_marginRight="40dp"
             android:layout_gravity="top"
-            />
+            android:layout_marginRight="40dp"
+            android:src="@drawable/ic_hi" />
     </LinearLayout>
 
 
@@ -34,57 +32,55 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="7"
-        android:textSize="30dp"
         android:fontFamily="@font/pureunjeonnam"
-        android:textColor="#222B45"
         android:gravity="center"
-        android:text="로그인"/>
+        android:text="로그인"
+        android:textColor="#222B45"
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/err_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
         android:layout_marginLeft="33dp"
         android:layout_marginRight="40dp"
-        android:textSize="18dp"
+        android:layout_weight="5"
         android:fontFamily="@font/pureunjeonnam"
-        android:textColor="#222B45"
         android:gravity=""
-        />
+        android:textColor="#222B45"
+        android:textSize="18dp" />
 
     <EditText
         android:id="@+id/et_login_email"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
-        android:paddingLeft="20dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="8"
         android:background="@drawable/edit_text_background"
         android:fontFamily="@font/pureunjeonnam"
+        android:hint="이메일주소"
+        android:paddingLeft="20dp"
         android:textColor="#222B45"
         android:textColorHint="#C5CEE0"
-        android:textSize="16dp"
-        android:hint="이메일주소"/>
+        android:textSize="16dp" />
 
     <EditText
         android:id="@+id/et_login_password"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="8dp"
-        android:paddingLeft="20dp"
         android:layout_marginRight="40dp"
+        android:layout_weight="8"
         android:background="@drawable/edit_text_background"
         android:hint=" 비밀번호"
-        android:textSize="16dp"
-        android:textColorHint="#C5CEE0"
         android:inputType="textPassword"
+        android:paddingLeft="20dp"
         android:textColor="#222B45"
-        />
+        android:textColorHint="#C5CEE0"
+        android:textSize="16dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,18 +90,19 @@
         android:weightSum="10">
 
         <LinearLayout
+            android:id="@+id/cbLoginAutoSection"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-android:gravity="center"            >
+            android:gravity="center">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="로그인 유지  "
-                android:fontFamily="@font/pureunjeonnam"
-                android:textColor="#8F9BB3"
                 android:layout_marginLeft="40dp"
-                />
+                android:fontFamily="@font/pureunjeonnam"
+                android:text="로그인 유지  "
+                android:textColor="#8F9BB3" />
 
             <CheckBox
                 android:id="@+id/cb_login_auto"
@@ -114,8 +111,7 @@ android:gravity="center"            >
                 android:button="@drawable/custom_checkbox"
                 android:scaleX="0.5"
                 android:scaleY="0.5"
-                android:textColor="#8F9BB3"
-                />
+                android:textColor="#8F9BB3" />
         </LinearLayout>
 
 
@@ -123,37 +119,34 @@ android:gravity="center"            >
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"
-            android:gravity="right"
-            >
+            android:gravity="right">
 
             <TextView
                 android:id="@+id/tv_find_id"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginRight="6dp"
                 android:fontFamily="@font/pureunjeonnam"
                 android:gravity="center"
-                android:textColor="#8F9BB3"
                 android:text="이메일 찾기"
-                android:layout_marginRight="6dp"
-                />
+                android:textColor="#8F9BB3" />
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="13dp"
                 android:layout_gravity="center"
-                android:background="#8F9BB3"
-                android:layout_marginRight="6dp"/>
+                android:layout_marginRight="6dp"
+                android:background="#8F9BB3" />
 
             <TextView
                 android:id="@+id/tv_find_pwd"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:textColor="#8F9BB3"
-                android:fontFamily="@font/pureunjeonnam"
-                android:text="비밀번호 찾기"
                 android:layout_marginRight="40dp"
-                />
+                android:fontFamily="@font/pureunjeonnam"
+                android:gravity="center"
+                android:text="비밀번호 찾기"
+                android:textColor="#8F9BB3" />
         </LinearLayout>
 
     </LinearLayout>
@@ -161,8 +154,7 @@ android:gravity="center"            >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6">
-    </LinearLayout>
+        android:layout_weight="6"></LinearLayout>
 
     <Button
         android:id="@+id/btn_login"
@@ -170,12 +162,11 @@ android:gravity="center"            >
         android:layout_height="50dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:text="로그인"
-        android:fontFamily="@font/pureunjeonnambold"
-        android:textColor="#ffffff"
-        android:textSize="15dp"
         android:background="@drawable/button_background"
-        />
+        android:fontFamily="@font/pureunjeonnambold"
+        android:text="로그인"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -184,14 +175,13 @@ android:gravity="center"            >
         android:orientation="horizontal">
 
 
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8">
-    </LinearLayout>
+        android:layout_weight="8"></LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -201,15 +191,16 @@ android:gravity="center"            >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="5"/>
+            android:layout_weight="5" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
             android:layout_weight="0.3"
             android:fontFamily="@font/pureunjeonnam"
+            android:text="아직 아이디가 없으세요?"
             android:textColor="#222B45"
-            android:text="아직 아이디가 없으세요?"/>
+            android:textSize="16dp" />
 
         <TextView
             android:id="@+id/tv_sign_up"
@@ -217,14 +208,14 @@ android:gravity="center"            >
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:fontFamily="@font/pureunjeonnam"
-            android:textSize="16dp"
+            android:text="회원가입"
             android:textColor="#E01D4A"
-            android:text="회원가입"/>
+            android:textSize="16dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3"/>
+            android:layout_weight="3" />
 
     </LinearLayout>
 

@@ -1,13 +1,5 @@
 package com.GOEAT.Go_Eat;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -15,17 +7,20 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.GOEAT.Go_Eat.DataType.Weather;
 import com.GOEAT.Go_Eat.Server_Request.get_restaurantdetail;
 import com.GOEAT.Go_Eat.Server_Request.get_restaurantlist;
+import com.GOEAT.Go_Eat.common.Values;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
@@ -36,14 +31,13 @@ import org.jsoup.nodes.Element;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class Analysis_home_after extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
     ImageView btn_back;
-    String menu, main_menu,companion, kind;
-//    StringTokenizer menu1tk;
+    String menu, main_menu, companion, kind;
+    //    StringTokenizer menu1tk;
 //    StringTokenizer menu2tk;
 //    StringTokenizer menu3tk;
 //    ImageView go_btn_1,my_btn_1;
@@ -54,7 +48,7 @@ public class Analysis_home_after extends AppCompatActivity {
     private String place;
     private String who;
     private String name;
-    private String weather,temperature;
+    private String weather, temperature;
     private String emotion;
     private String calorie;
     private MainAdapter mainAdapter;    //만들어줄 어뎁터
@@ -71,8 +65,8 @@ public class Analysis_home_after extends AppCompatActivity {
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        SharedPreferences preferences = getSharedPreferences("goeat",MODE_PRIVATE);
-        companion = preferences.getString("companion","");
+        SharedPreferences preferences = getSharedPreferences("goeat", MODE_PRIVATE);
+        companion = preferences.getString("companion", "");
         Intent intent1 = getIntent();
 
         place = intent1.getExtras().getString("place");
@@ -102,19 +96,17 @@ public class Analysis_home_after extends AppCompatActivity {
         iv_calroie = findViewById(R.id.iv_calorie);
 
         // name, place, emotion, calorie 받아오는 코드
-
-        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "span.todaytemp");
-        new WeatherAsynTask().execute("https://search.naver.com/search.naver?query=날씨", "p.cast_txt");
+        new WeatherAsynTask().execute(Weather.TEMPERATURE.name());
+        new WeatherAsynTask().execute(Weather.DESCRIPTION.name());
 
         // 위치 설정
         tv_place.setText(place);
 
 
         // 날씨 설정
-        if(weather == null){
+        if (weather == null) {
             tv_weather.setText("--");
-        }
-        else {
+        } else {
             switch (weather) {
                 case "흐림":
                     iv_weather.setImageResource(R.drawable.analysishome_cloudy);
@@ -155,25 +147,25 @@ public class Analysis_home_after extends AppCompatActivity {
 
 
         // 함께 먹는 사람 설정
-        switch (who){
+        switch (who) {
             case "혼자":
-                iv_who.setImageResource(R.drawable.analysishome_alone);
+                iv_who.setImageResource(R.drawable.ic_who_alone_white);
                 tv_who.setText("혼자");
                 break;
             case "애인":
-                iv_who.setImageResource(R.drawable.analysishome_couple);
+                iv_who.setImageResource(R.drawable.ic_who_couple_white);
                 tv_who.setText("애인");
                 break;
             case "친구":
-                iv_who.setImageResource(R.drawable.analysishome_friend);
+                iv_who.setImageResource(R.drawable.ic_who_friends_white);
                 tv_who.setText("친구");
                 break;
             case "가족":
-                iv_who.setImageResource(R.drawable.analysishome_family);
+                iv_who.setImageResource(R.drawable.ic_who_family_white);
                 tv_who.setText("가족");
                 break;
             case "회식":
-                iv_who.setImageResource(R.drawable.analysishome_company);
+                iv_who.setImageResource(R.drawable.ic_who_dining_together_white);
                 tv_who.setText("회식");
                 break;
             default:
@@ -182,29 +174,29 @@ public class Analysis_home_after extends AppCompatActivity {
         }
 
         // 감정 설정
-        switch (emotion){
+        switch (emotion) {
             case "설레는":
-                iv_emotion.setImageResource(R.drawable.analysishome_flutter);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_flutter_white);
                 tv_emotion.setText("설레는");
                 break;
             case "축하하는":
-                iv_emotion.setImageResource(R.drawable.analysishome_congratulation);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_celebration_white);
                 tv_emotion.setText("축하하는");
                 break;
             case "우울한":
-                iv_emotion.setImageResource(R.drawable.analysishome_gloomy);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_gloomy_white);
                 tv_emotion.setText("우울한");
                 break;
             case "평범한":
-                iv_emotion.setImageResource(R.drawable.analysishome_normal);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_normal_white);
                 tv_emotion.setText("평범한");
                 break;
             case "스트레스":
-                iv_emotion.setImageResource(R.drawable.analysishome_stress);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_stress_white);
                 tv_emotion.setText("스트레스");
                 break;
             case "행복한":
-                iv_emotion.setImageResource(R.drawable.analysishome_happy);
+                iv_emotion.setImageResource(R.drawable.ic_emotion_happy_white);
                 tv_emotion.setText("행복한");
                 break;
             default:
@@ -213,13 +205,13 @@ public class Analysis_home_after extends AppCompatActivity {
         }
 
         // 칼로리 설정
-        switch (calorie){
+        switch (calorie) {
             case "low":
-                iv_calroie.setImageResource(R.drawable.analysishome_lowcal);
+                iv_calroie.setImageResource(R.drawable.calorie_low);
                 tv_calorie.setText("칼로리 낮게");
                 break;
             case "high":
-                iv_calroie.setImageResource(R.drawable.analysishome_cal);
+                iv_calroie.setImageResource(R.drawable.calorie_none);
                 tv_calorie.setText("칼로리 무관");
                 break;
             default:
@@ -228,15 +220,16 @@ public class Analysis_home_after extends AppCompatActivity {
         }
         kind = intent1.getExtras().getString("kinds");
         main_menu = intent1.getExtras().getString("title");
-        String []tokenskind = kind.split(">");
-        menu = tokenskind[1];
+        //String[] tokenskind = kind.split(">");
+        //menu = tokenskind[1];
+        menu = kind;
         Log.d("main_menu", main_menu);
         Log.d("menu", menu);
-        tv_recommend_restaurant_info = (TextView)findViewById(R.id.tv_recommend_restaurant_info);
-        recyclerView=(RecyclerView)findViewById(R.id.recyclerview);
+        tv_recommend_restaurant_info = (TextView) findViewById(R.id.tv_recommend_restaurant_info);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        tv_recommend_restaurant_info.setText("GO EAT이 엄선한 "+ menu +" 맛집");
+        tv_recommend_restaurant_info.setText("GO EAT이 엄선한 " + menu + " 맛집");
         //서버에서 받은 Data 정보들 넣어주는 곳 2020-11-26 방진혁
         Response.Listener<String> responselistener1 = new Response.Listener<String>() {
             @Override
@@ -246,11 +239,11 @@ public class Analysis_home_after extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success0");
                     System.out.println(success);
-                    if (success.equals("true")){
-                        System.out.println( jsonObject.getString("name8"));
+                    if (success.equals("true")) {
+                        System.out.println(jsonObject.getString("name8"));
 
-                        arrayList=new ArrayList<>();
-                        MainData[] Data_1= new MainData[number];
+                        arrayList = new ArrayList<>();
+                        MainData[] Data_1 = new MainData[number];
                         String[] url_1 = new String[10];
                         url_1[0] = jsonObject.getString("image0");
                         url_1[1] = jsonObject.getString("image1");
@@ -264,26 +257,24 @@ public class Analysis_home_after extends AppCompatActivity {
                         url_1[9] = jsonObject.getString("image9");
 
 
-                        for(int i=0;i<number;i++)
-                        {
-                            String name = "name"+i;
-                            String recommendmenu = "recommendmenu"+i;
-                            String recommendprice = "recommendprice"+i;
-                            String address = "address"+i;
-                            if (jsonObject.getString(name).length()>1) {
+                        for (int i = 0; i < number; i++) {
+                            String name = "name" + i;
+                            String recommendmenu = "recommendmenu" + i;
+                            String recommendprice = "recommendprice" + i;
+                            String address = "address" + i;
+                            if (jsonObject.getString(name).length() > 1) {
                                 Data_1[i] = new MainData(url_1[i], jsonObject.getString(name), jsonObject.getString(recommendmenu), jsonObject.getString(recommendprice), jsonObject.getString(address));
-                            }else{
+                            } else {
                                 number = i;
                                 break;
 
                             }
                         }
-                        for(int i=0;i<number;i++)
-                        {
+                        for (int i = 0; i < number; i++) {
                             arrayList.add(Data_1[i]);
                         }
 
-                        mainAdapter=new MainAdapter(arrayList);
+                        mainAdapter = new MainAdapter(arrayList);
                         recyclerView.setAdapter(mainAdapter);
                         mainAdapter.setOnItemClickListener(
                                 new MainAdapter.OnItemClickListener() {
@@ -292,9 +283,9 @@ public class Analysis_home_after extends AppCompatActivity {
                                         final Intent intent = new Intent(getApplicationContext(), restuarent_detail.class);
                                         //음식점에 맞는 정보를 여기에 입력해주면됨!, id값에 맞게 정보 입력!
                                         intent.putExtra("restaurant_name", mainAdapter.get_shop_name(position)); /*송신*/
-                                        intent.putExtra("FirstFood",menu);
-                                        intent.putExtra("AssociateFood",main_menu);
-                                        Log.d("shop_name",mainAdapter.get_shop_name(position));
+                                        intent.putExtra("FirstFood", menu);
+                                        intent.putExtra("AssociateFood", main_menu);
+                                        Log.d("shop_name", mainAdapter.get_shop_name(position));
                                         Response.Listener<String> responselistener = new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -302,7 +293,7 @@ public class Analysis_home_after extends AppCompatActivity {
                                                     JSONObject jsonObject = new JSONObject(response);
                                                     String success = jsonObject.getString("success");
                                                     System.out.println(success);
-                                                    if (success.equals("true")){
+                                                    if (success.equals("true")) {
                                                         intent.putExtra("food_name_2", jsonObject.getString("name"));
                                                         intent.putExtra("star_pt", jsonObject.getString("score"));
                                                         intent.putExtra("phone_num", jsonObject.getString("telephone"));
@@ -316,14 +307,14 @@ public class Analysis_home_after extends AppCompatActivity {
 
                                                         intent.putExtra("menulist", jsonObject.getString("menulist"));
                                                         intent.putExtra("pricelist", jsonObject.getString("pricelist"));
-                                                        String []tokensmenu = jsonObject.getString("menulist").split(", ");
-                                                        Log.d("menulist",jsonObject.getString("menulist"));
-                                                        String []tokensprice = jsonObject.getString("pricelist").split(", ");
+                                                        String[] tokensmenu = jsonObject.getString("menulist").split(", ");
+                                                        Log.d("menulist", jsonObject.getString("menulist"));
+                                                        String[] tokensprice = jsonObject.getString("pricelist").split(", ");
                                                         int i;
-                                                        for(i = 0; i<tokensmenu.length+1;i++){
+                                                        for (i = 0; i < tokensmenu.length + 1; i++) {
                                                             try {
-                                                                intent.putExtra("menu_img_"+i, jsonObject.getString("menuimage"+i));
-                                                            }catch (Exception e){
+                                                                intent.putExtra("menu_img_" + i, jsonObject.getString("menuimage" + i));
+                                                            } catch (Exception e) {
                                                                 e.printStackTrace();
                                                             }
                                                         }
@@ -344,7 +335,7 @@ public class Analysis_home_after extends AppCompatActivity {
 
                                             }
                                         };
-                                        get_restaurantdetail get_restaurantdetail = new get_restaurantdetail(mainAdapter.get_shop_name(position),menu,main_menu,responselistener);
+                                        get_restaurantdetail get_restaurantdetail = new get_restaurantdetail(mainAdapter.get_shop_name(position), menu, main_menu, responselistener);
                                         RequestQueue queue = Volley.newRequestQueue(getApplicationContext().getApplicationContext());
                                         queue.add(get_restaurantdetail);
 
@@ -358,7 +349,7 @@ public class Analysis_home_after extends AppCompatActivity {
             }
         };
 
-        get_restaurantlist get_restaurantlist = new get_restaurantlist(main_menu,menu,companion,responselistener1) ;
+        get_restaurantlist get_restaurantlist = new get_restaurantlist(main_menu, menu, companion, responselistener1);
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext().getApplicationContext());
         queue.add(get_restaurantlist);
 
@@ -467,12 +458,9 @@ public class Analysis_home_after extends AppCompatActivity {
 //        System.out.println(menu1+main_menu1+companion);
 
 
-
-
-
     }
 
-//    class MyPagerAdapter_1 extends FragmentPagerAdapter {
+    //    class MyPagerAdapter_1 extends FragmentPagerAdapter {
 //
 //        int NumOfTabs; //탭의 갯수
 //
@@ -504,114 +492,82 @@ public class Analysis_home_after extends AppCompatActivity {
 //            return NumOfTabs;
 //        }
 //    }
-class WeatherAsynTask extends AsyncTask<String, Void, String> {
+    private class WeatherAsynTask extends AsyncTask<String, Void, Weather> {
 
+        @Override
+        protected Weather doInBackground(String... params) {
+            final Weather type = Weather.valueOf(params[0]);
 
-    @Override
-    protected String doInBackground(String... params) {
-        String URL = params[0];
-        String E1 = params[1];
-        String result = "";
+            try {
+                final Document doc = Jsoup.connect(Values.URL_WEATHER_INFO).get();
+                final Element temp = doc.select(type.getElement()).first();
 
-        Document doc = null;
-        try {
-            doc = Jsoup.connect(URL).get();
-            Element temp = doc.select(E1).first();
-
-            if(temp==null){
-                Log.e("result" ,"fail to get weather");
-            }
-
-            else {
-                result = temp.text();
-
-                Log.e("result", result);
-
-                String str[] = result.split(",");
-
-
-
-                if (E1.equals("span.todaytemp")) {
-                    temperature = str[0];
-                    Log.e("temperature", temperature);
-                    //2020-11-23 김정천 몇 도 인지 화면에 출력
-                    tv_temperature.setText(temperature+"도");
+                if (temp == null) {
+                    Log.e("result", "fail to get weather");
                 } else {
-                    weather = str[0];
-                    Log.e("weather", weather);
-                    //weather을 받아오면 된다.
+                    Log.e("result", temp.text());
 
+                    final String[] str = temp.text().split(",");
 
-                    if(weather == null){
-                        tv_weather.setText("--");
+                    if (type == Weather.TEMPERATURE) {
+                        temperature = str[0];
+                        Log.e("temperature", temperature);
+                    } else if (type == Weather.DESCRIPTION) {
+                        weather = str[0];
+                        Log.e("weather", weather);
                     }
-                    else {
-                        switch (weather) {
-                            case "흐림":
-                                iv_weather.setImageResource(R.drawable.blur);
-                                changeTextView("흐림");
-                                break;
-                            case "비":
-                                iv_weather.setImageResource(R.drawable.analysishome_rain);
-                                changeTextView("비");
-                                break;
-                            case "눈":
-                                iv_weather.setImageResource(R.drawable.analysishome_snow);
-                                changeTextView("눈");
-                                break;
-                            case "맑음":
-                                iv_weather.setImageResource(R.drawable.analysishome_sunny);
-                                changeTextView("맑음");
-                                break;
-                            case "구름많음":
-                                iv_weather.setImageResource(R.drawable.cloud_many);
-                                changeTextView("구름많음");
-                                break;
-                            default:
-                                changeTextView("--");
-                                break;
-                        }
-                    }
-
+                    type.setValue(str[0]);
                 }
+                return type;
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            return result;
-        } catch (IOException e) {
-            e.printStackTrace();
+            return null;
         }
 
+        @Override
+        protected void onPostExecute(Weather w) {
+            super.onPostExecute(w);
+            if (w == null) return;
 
-        return null;
-    }
-
-    @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
-
-        String[] str = s.split(",");
-
-        //textView.setText(str[0]);
-        //Log.e("날씨", str[0]);
-
-
-
-    }
-
-
-
-
-}
-
-    public void changeTextView(final String ttext){
-        this.runOnUiThread(new Runnable() {
-            public void run() {
-                weather = ttext;
-                tv_weather.setText(ttext);
+            if (w == Weather.TEMPERATURE) {
+                tv_temperature.setText(temperature + "\u2103");
+            } else if (w == Weather.DESCRIPTION) {
+                if (weather == null) {
+                    tv_weather.setText("--");
+                } else {
+                    switch (weather) {
+                        case "흐림":
+                            iv_weather.setImageResource(R.drawable.ic_weather_cloudy_white);
+                            changeTextView("흐림");
+                            break;
+                        case "비":
+                            iv_weather.setImageResource(R.drawable.ic_weather_rainy_white);
+                            changeTextView("비");
+                            break;
+                        case "눈":
+                            iv_weather.setImageResource(R.drawable.ic_weather_snow_white);
+                            changeTextView("눈");
+                            break;
+                        case "맑음":
+                            iv_weather.setImageResource(R.drawable.ic_weather_sunny_white);
+                            changeTextView("맑음");
+                            break;
+                        case "구름많음":
+                            iv_weather.setImageResource(R.drawable.ic_weather_cloudy_many_white);
+                            changeTextView("구름많음");
+                            break;
+                        default:
+                            changeTextView("--");
+                            break;
+                    }
+                }
             }
-        });
+        }
     }
 
-
-
+    private void changeTextView(final String ttext) {
+        weather = ttext;
+        tv_weather.setText(ttext);
+    }
 }
-

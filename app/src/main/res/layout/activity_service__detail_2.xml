@@ -32,7 +32,7 @@
             android:layout_weight="9"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"
-            android:text="개인정보처리방침"
+            android:text="Go Eat 이용약관"
             android:textSize="30dp"
             android:gravity="center_vertical" />
     </LinearLayout>

@@ -1,18 +1,17 @@
 package com.GOEAT.Go_Eat;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.GOEAT.Go_Eat.Server_Request.login_request;
 import com.android.volley.RequestQueue;
@@ -35,11 +34,6 @@ public class Onboarding extends AppCompatActivity {
     private String email;
     private String password;
     private String check;
-    @Override
-    public void onBackPressed()
-    {
-        //super.onBackPressed();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +43,13 @@ public class Onboarding extends AppCompatActivity {
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
-        button_1=findViewById(R.id.button_1);
-        button_2=findViewById(R.id.button_2);
+        button_1 = findViewById(R.id.button_1);
+        button_2 = findViewById(R.id.button_2);
 
         button_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),TermsOfServices.class);
+                Intent intent = new Intent(getApplicationContext(), TermsOfServices.class);
                 startActivity(intent);
             }
         });
@@ -63,15 +57,15 @@ public class Onboarding extends AppCompatActivity {
         button_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),login_activity.class);
+                Intent intent = new Intent(getApplicationContext(), login_activity.class);
                 startActivity(intent);
             }
         });
         SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
         SharedPreferences pref = getSharedPreferences("loginauto", MODE_PRIVATE);
-        email = pref.getString("email","");
-        password = pref.getString("password","");
-        check = pref.getString("check","");
+        email = pref.getString("email", "");
+        password = pref.getString("password", "");
+        check = pref.getString("check", "");
         Log.d("email", email);
         Log.d("password", password);
         Log.d("check", check);
@@ -95,14 +89,16 @@ public class Onboarding extends AppCompatActivity {
                             Log.d("loc->", "" + loc.equals(""));
                             Log.d("who->", "" + who.equals(""));
                             Log.d("emo->", "" + emo.equals(""));
-                            if (check.equals("1")&&calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")) {
-                                Intent intent = new Intent(getApplicationContext(), investigation_page.class);
+                            if (check.equals("1") && calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")) {
+                                Intent intent = new Intent(getApplicationContext(), StatusSettingActivity.class);
 //                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);  //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다
                                 startActivity(intent);
-                            } else if(check.equals("1")){
+                                finish();
+                            } else if (check.equals("1")) {
                                 Intent intent = new Intent(getApplicationContext(), AnalysisHomeRealActivity.class);
 //                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class); //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다.
                                 startActivity(intent);
+                                finish();
                             }
                         }
                     }
