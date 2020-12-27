@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:overScrollMode="never"
+    android:paddingStart="30dp"
+    android:paddingEnd="30dp"
+    android:scrollbars="none">
+
+    <com.GOEAT.Go_Eat.widget.CheckableItemGroup
+        android:id="@+id/whoItemGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.GOEAT.Go_Eat.widget.StatusItemCardView
+            android:id="@+id/who_1"
+            style="@style/StatusItemCardViewStyle"
+            android:tag="혼자"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/status_item_bg_selector"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:src="@drawable/alone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="혼자"
+                    android:textColor="@color/font"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </com.GOEAT.Go_Eat.widget.StatusItemCardView>
+
+        <com.GOEAT.Go_Eat.widget.StatusItemCardView
+            android:id="@+id/who_2"
+            style="@style/StatusItemCardViewStyle"
+            android:tag="애인"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/who_1"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/status_item_bg_selector"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:src="@drawable/n_friend" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="애인"
+                    android:textColor="@color/font"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </com.GOEAT.Go_Eat.widget.StatusItemCardView>
+
+        <com.GOEAT.Go_Eat.widget.StatusItemCardView
+            android:id="@+id/who_3"
+            style="@style/StatusItemCardViewStyle"
+            android:tag="친구"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/who_2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/status_item_bg_selector"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:src="@drawable/friend" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="친구"
+                    android:textColor="@color/font"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </com.GOEAT.Go_Eat.widget.StatusItemCardView>
+
+        <com.GOEAT.Go_Eat.widget.StatusItemCardView
+            android:id="@+id/who_4"
+            style="@style/StatusItemCardViewStyle"
+            android:tag="회식"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/who_3"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/status_item_bg_selector"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:src="@drawable/group" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="회식"
+                    android:textColor="@color/font"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </com.GOEAT.Go_Eat.widget.StatusItemCardView>
+
+        <com.GOEAT.Go_Eat.widget.StatusItemCardView
+            android:id="@+id/who_5"
+            style="@style/StatusItemCardViewStyle"
+            android:tag="가족"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/who_4"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/status_item_bg_selector"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:src="@drawable/family" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/pureunjeonnam"
+                    android:text="가족"
+                    android:textColor="@color/font"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </com.GOEAT.Go_Eat.widget.StatusItemCardView>
+
+    </com.GOEAT.Go_Eat.widget.CheckableItemGroup>
+</HorizontalScrollView>

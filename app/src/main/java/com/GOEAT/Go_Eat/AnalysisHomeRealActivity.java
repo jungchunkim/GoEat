@@ -20,10 +20,12 @@ import static com.GOEAT.Go_Eat.common.Values.ID_MYPAGE;
 
 public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowBottomNavigation.ShowListener {
 
-    private AnalysisFragment1 homeFragment;
-    private AnalysisFragment2 investigationFragment;
-    private AnalysisFragment3 myPageFragment;
+    private HomeFragment homeFragment;
+    private StatusSettingFragment investigationFragment;
+    private MyProfileFragment myPageFragment;
     private Fragment currentFragment;
+
+    private MeowBottomNavigationWrapper meoWrapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
             who = intent.getExtras().getString("who");
             emotion = intent.getExtras().getString("emo");
         } catch (NullPointerException e) {
-            SharedPreferences prefs = getSharedPreferences("investigation_result", MODE_PRIVATE);
+            final SharedPreferences prefs = getSharedPreferences("investigation_result", MODE_PRIVATE);
             calorie = prefs.getString("calo", "");
             location = prefs.getString("loc", "");
             who = prefs.getString("who", "");
@@ -67,12 +69,20 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
         final Bundle arguments = new Bundle();
         arguments.putSerializable(EXTRA_STATUS, retrieveGoEatStatus());
 
-        homeFragment = new AnalysisFragment1();
+        homeFragment = new HomeFragment();
         homeFragment.setArguments(arguments);
 
-        final MeowBottomNavigationWrapper meoWrapper = findViewById(R.id.bottom_nav_wrapper);
+        meoWrapper = findViewById(R.id.bottom_nav_wrapper);
         meoWrapper.setOnShowListener(this);
         meoWrapper.show(ID_HOME, false);
+    }
+
+    public void show(int id, boolean enableAnimation) {
+        meoWrapper.show(id, enableAnimation);
+    }
+
+    public void delegateStatusChangeEvent() {
+        homeFragment.onStatusChanged();
     }
 
     @Override
@@ -84,13 +94,17 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
                 break;
             case ID_GO:
                 if (investigationFragment == null) {
-                    investigationFragment = new AnalysisFragment2();
+                    final Bundle arguments = new Bundle();
+                    arguments.putBoolean("isEditMode", true);
+
+                    investigationFragment = new StatusSettingFragment();
+                    investigationFragment.setArguments(arguments);
                 }
                 futureFragment = investigationFragment;
                 break;
             case ID_MYPAGE:
                 if (myPageFragment == null) {
-                    myPageFragment = new AnalysisFragment3();
+                    myPageFragment = new MyProfileFragment();
                 }
                 futureFragment = myPageFragment;
                 break;

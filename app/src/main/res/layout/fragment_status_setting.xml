@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".03" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".09" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".91" />
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="center"
+        android:src="@drawable/ic_baseline_arrow_back"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topGl"
+        app:layout_constraintWidth_percent=".13" />
+
+    <ImageView
+        android:id="@+id/character"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_hi"
+        app:layout_constraintStart_toStartOf="@id/startGl"
+        app:layout_constraintTop_toBottomOf="@id/back_btn"
+        app:layout_constraintWidth_percent=".18" />
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/pureunjeonnam"
+        android:text="오늘은 어떤 식사를 하실 예정이신가요?"
+        android:textColor="@color/font"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="@id/character"
+        app:layout_constraintEnd_toEndOf="@id/endGl"
+        app:layout_constraintStart_toEndOf="@id/character"
+        app:layout_constraintTop_toTopOf="@id/character" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="70dp"
+        android:scrollbarThumbVertical="@color/mainPink"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/character">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/contentStartGl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".09" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/contentEndGl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".91" />
+
+            <TextView
+                android:id="@+id/weatherSectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="날씨 / 온도"
+                android:textColor="@color/font"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/contentStartGl"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/weatherSection"
+                layout="@layout/status_weather_section"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/weatherSectionTitle"
+                app:layout_constraintWidth_percent=".85" />
+
+            <TextView
+                android:id="@+id/locationSectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="위치"
+                android:textColor="@color/font"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/contentStartGl"
+                app:layout_constraintTop_toBottomOf="@id/weatherSection" />
+
+            <include
+                android:id="@+id/locationSection"
+                layout="@layout/status_location_section"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/locationSectionTitle" />
+
+            <TextView
+                android:id="@+id/whoSectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="누구랑 먹는지?"
+                android:textColor="@color/font"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/contentStartGl"
+                app:layout_constraintTop_toBottomOf="@id/locationSection" />
+
+            <include
+                android:id="@+id/whoSection"
+                layout="@layout/status_who_section"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/whoSectionTitle" />
+
+            <TextView
+                android:id="@+id/emotionSectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="오늘의 감정?"
+                android:textColor="@color/font"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/contentStartGl"
+                app:layout_constraintTop_toBottomOf="@id/whoSection" />
+
+            <include
+                android:id="@+id/emotionSection"
+                layout="@layout/status_emotion_section"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/emotionSectionTitle" />
+
+            <TextView
+                android:id="@+id/calorieSectionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="칼로리 낮게 / 상관없이"
+                android:textColor="@color/font"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@id/contentStartGl"
+                app:layout_constraintTop_toBottomOf="@id/emotionSection" />
+
+            <include
+                android:id="@+id/calorieSection"
+                layout="@layout/status_calorie_section"
+                android:layout_width="0dp"
+                android:layout_height="75dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/calorieSectionTitle" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_background_selector"
+                android:enabled="false"
+                android:fontFamily="@font/pureunjeonnambold"
+                android:text="다음"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="@id/contentEndGl"
+                app:layout_constraintStart_toStartOf="@id/contentStartGl"
+                app:layout_constraintTop_toBottomOf="@id/calorieSection" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

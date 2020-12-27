@@ -229,7 +229,7 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
                                     Log.d("who->", "" + who.equals(""));
                                     Log.d("emo->", "" + emo.equals(""));
                                     if (calo.equals("") && loc.equals("") && who.equals("") && emo.equals("")) {
-                                        Intent intent = new Intent(getApplicationContext(), investigation_page.class);
+                                        Intent intent = new Intent(getApplicationContext(), StatusSettingActivity.class);
 //                                        Intent intent = new Intent(getApplicationContext(), CheckHateFoodRealActivity.class);  //테스트시 위의 중 주석 처리후 요기줄 주석 풀면 됩니다
                                         startActivity(intent);
                                         finish();

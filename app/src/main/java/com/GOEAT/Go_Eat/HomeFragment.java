@@ -1,6 +1,7 @@
 package com.GOEAT.Go_Eat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +49,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.GOEAT.Go_Eat.common.Values.ALL_FOOD_ITEM_COUNT;
 import static com.GOEAT.Go_Eat.common.Values.EXTRA_STATUS;
 
-public class AnalysisFragment1 extends Fragment {
+public class HomeFragment extends Fragment {
 
     private GoEatStatus status;
     private ImageView iv_weather, iv_who, iv_emotion, iv_calorie, location_move;
@@ -69,7 +70,7 @@ public class AnalysisFragment1 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.analysis_fragment1, container, false);
+        final View v = inflater.inflate(R.layout.fragment_home, container, false);
         tv_place = v.findViewById(R.id.tv_place);
         tv_weather = v.findViewById(R.id.tv_weather);
         tv_temperature = v.findViewById(R.id.tv_temperature);
@@ -218,6 +219,18 @@ public class AnalysisFragment1 extends Fragment {
         final String email = requireContext().getSharedPreferences("Account", MODE_PRIVATE).getString("email", "");
         final UserDB userDB = new UserDB();
         userDB.setFlavorFoodList(email, status.calorie, status.who, flavorFoodResponseListener, requireActivity());
+    }
+
+    public void onStatusChanged() {
+        final SharedPreferences prefs = requireContext().getSharedPreferences("investigation_result", MODE_PRIVATE);
+        status.location = prefs.getString("loc","");
+        status.who = prefs.getString("who","");
+        status.emotion = prefs.getString("emo", "");
+        status.calorie = prefs.getString("calo","");
+
+        requestFlavorFood();
+        configTitle();
+        configStatusUI();
     }
 
     private final Response.Listener<String> flavorFoodResponseListener = new Response.Listener<String>() {

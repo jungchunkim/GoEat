@@ -31,8 +31,8 @@ import static com.GOEAT.Go_Eat.common.Values.ID_MYPAGE;
 public class AnalysisHomeRealActivityBak extends AppCompatActivity {
 
     private AnalysisFragment1Bak fragment1;
-    private AnalysisFragment2 fragment2;
-    private AnalysisFragment3 fragment3;
+    private StatusSettingFragment fragment2;
+    private MyProfileFragment fragment3;
     private SharedPreferences prefs;
     private MeowBottomNavigationWrapper meoWrapper;
 
@@ -50,8 +50,8 @@ public class AnalysisHomeRealActivityBak extends AppCompatActivity {
         setContentView(R.layout.activity_analysis_home_real);
 
         fragment1 = new AnalysisFragment1Bak();
-        fragment2 = new AnalysisFragment2();
-        fragment3 = new AnalysisFragment3();
+        fragment2 = new StatusSettingFragment();
+        fragment3 = new MyProfileFragment();
 
 
         // 앱 첫 실행때만 Gudie 띄우기 - 임민영
@@ -137,8 +137,8 @@ public class AnalysisHomeRealActivityBak extends AppCompatActivity {
                     }
                     Log.e("food_list_size!!!!", Integer.toString(food_list_size));
 
-                    for(int i=0; i<foodFirst.length; i++) {
-                        Log.e("pistolcaffe","first: " + foodFirst[i] + " second: " + foodSecond[i] + " kind: " + foodKind[i]);
+                    for (int i = 0; i < foodFirst.length; i++) {
+                        Log.e("pistolcaffe", "first: " + foodFirst[i] + " second: " + foodSecond[i] + " kind: " + foodKind[i]);
                     }
 
 //                    list = ShuffleOrder();

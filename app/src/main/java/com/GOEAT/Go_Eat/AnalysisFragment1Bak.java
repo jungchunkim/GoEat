@@ -68,7 +68,7 @@ public class AnalysisFragment1Bak extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        v = (ViewGroup) inflater.inflate(R.layout.analysis_fragment1, container, false);
+        v = (ViewGroup) inflater.inflate(R.layout.fragment_home, container, false);
 
         RecyclerView recyclerView = v.findViewById(R.id.recyclerview);
         tv_recommend_info = v.findViewById(R.id.tv_recommend_info);

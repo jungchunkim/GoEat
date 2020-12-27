@@ -26,7 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class AnalysisFragment3 extends Fragment {
+public class MyProfileFragment extends Fragment {
 
     ViewGroup viewGroup;
     private FirebaseAnalytics mFirebaseAnalytics;
@@ -53,7 +53,7 @@ public class AnalysisFragment3 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        viewGroup = (ViewGroup) inflater.inflate(R.layout.analysis_fragment3, container, false);
+        viewGroup = (ViewGroup) inflater.inflate(R.layout.fragment_my_profile, container, false);
 
         tv_nickname = viewGroup.findViewById(R.id.tv_nickname);
         tv_email = viewGroup.findViewById(R.id.tv_email);
