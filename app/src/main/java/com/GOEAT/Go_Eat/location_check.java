@@ -19,6 +19,7 @@ public class location_check extends AppCompatActivity {
     private int num1, num2;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
