@@ -29,6 +29,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
 
     ImageView food_img;
     Button btn_no, btn_nomatter,btn_like;
+    ImageView iv_back;
     TextView food_name, num_count,tv_name_notice;
     private int[] prefer_food = new int[24];    //싫어요 그냥그래요 좋아요 담은 것
 
@@ -60,6 +61,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
         email = prefs.getString("email","");
         final String name = prefs.getString("name","");
 
+        iv_back = findViewById(R.id.iv_back);
         food_img=findViewById(R.id.food_img);
         btn_no=findViewById(R.id.btn_no);
         btn_nomatter=findViewById(R.id.btn_nomatter);
@@ -70,6 +72,13 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
         btn_no.setOnClickListener(this);
         btn_nomatter.setOnClickListener(this);
         btn_like.setOnClickListener(this);
+
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         //2020-11-29 염상희
         //음식 받아오는 부분 주는 데베로 변경 필요
@@ -137,6 +146,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
         userDB.getFoodListHate(email,responseListener,FoodPreference.this);     //음식 리스트 index 불러오는 부분
 
     }
+
 
 
     public void onClick(View view) {

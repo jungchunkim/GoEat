@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,7 @@ public class before_emotion_check extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
     private Button btn_home;
+    ImageView iv_back;
     String email;
 
     private int listCnt = 0;
@@ -56,12 +58,19 @@ public class before_emotion_check extends AppCompatActivity {
         setContentView(R.layout.activity_before_emotion_check);
 
         btn_home = findViewById(R.id.btn_home);
+        iv_back = findViewById(R.id.iv_back);
 
         SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
         email = prefs.getString("email", "");
 
         // userDB.setImageToUserChar(img_char, email,before_emotion_check.this);
 
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override

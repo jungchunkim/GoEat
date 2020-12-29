@@ -188,7 +188,7 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
         tv_sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { // 회원가입 선택 화면
-                Intent intent = new Intent(login_activity.this, RegisterActivity.class);
+                Intent intent = new Intent(login_activity.this, TermsOfServices.class);
                 startActivity(intent);
             }
         });
