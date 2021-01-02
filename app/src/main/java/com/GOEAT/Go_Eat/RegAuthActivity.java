@@ -83,6 +83,7 @@ public class RegAuthActivity extends AppCompatActivity {
                                 if (success){
                                     Intent intent = new Intent(getApplicationContext(), login_activity.class);
                                     startActivity(intent);
+                                    finish();
                                 }else {
                                     Toast.makeText(getApplicationContext(), "이미 가입된 이메일입니다", Toast.LENGTH_LONG).show();
                                 }

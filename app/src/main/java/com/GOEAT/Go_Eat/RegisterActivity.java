@@ -141,6 +141,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         editors.commit();
                                         Intent intent = new Intent(RegisterActivity.this, RegAuthActivity.class);
                                         startActivity(intent);
+                                        finish();
                                     }else {
                                         Toast.makeText(getApplicationContext(), "전화번호를 확인해주세요", Toast.LENGTH_LONG).show();
                                     }

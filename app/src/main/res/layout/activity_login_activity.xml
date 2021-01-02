@@ -42,13 +42,14 @@
         android:id="@+id/err_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginLeft="33dp"
+        android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:layout_weight="5"
         android:fontFamily="@font/pureunjeonnam"
-        android:gravity=""
+        android:gravity="center_vertical"
         android:textColor="#222B45"
-        android:textSize="18dp" />
+        android:textSize="14sp"
+        />
 
     <EditText
         android:id="@+id/et_login_email"
