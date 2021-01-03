@@ -202,7 +202,12 @@ public class StatusSettingFragment extends Fragment implements CheckableItemGrou
             if (w == Weather.TEMPERATURE) {
                 temperature_id.setText(temperature + "\u2103");
             } else {
-                if (weather.equals("맑음")) {
+                if(weather == null){
+                    //2021-01-03 염상희
+                    //날씨를 받아오지 못했을 경우 맑음을 기본값으로 설정
+                    weather_id.setImageResource(R.drawable.sunny);
+                }
+                else if (weather.equals("맑음")) {
                     weather_id.setImageResource(R.drawable.sunny);
                 } else if (weather.equals("비")) {
                     weather_id.setImageResource(R.drawable.rain);
