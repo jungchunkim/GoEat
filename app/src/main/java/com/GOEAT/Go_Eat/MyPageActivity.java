@@ -68,7 +68,7 @@ public class MyPageActivity extends AppCompatActivity {
         */
 
         final UserDB userDB = new UserDB();
-        SharedPreferences prefs = getSharedPreferences("loginauto", MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부

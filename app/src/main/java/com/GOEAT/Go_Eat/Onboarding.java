@@ -63,8 +63,8 @@ public class Onboarding extends AppCompatActivity {
         });
         SharedPreferences prefs = getSharedPreferences("Account", MODE_PRIVATE);
         SharedPreferences pref = getSharedPreferences("loginauto", MODE_PRIVATE);
-        email = pref.getString("email", "");
-        password = pref.getString("password", "");
+        email = prefs.getString("email", "");
+        password = prefs.getString("password", "");
         check = pref.getString("check", "");
         Log.d("email", email);
         Log.d("password", password);

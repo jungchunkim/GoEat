@@ -214,9 +214,10 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
                                 final String nickname = jsonObject.getString("nickname");
                                 editors.putString("email", email);
                                 editors.putString("name", nickname);
-                                editors.apply();
                                 editor.putString("email", email);
-                                editor.putString("password", password);
+                                editors.putString("password", password);
+                                editors.apply();
+                                editor.apply();
                                 if (jsonObject.getString("register_profile_done").equals("true")) { //취향 조사 했는지 1차 판단 후 상황조사 2차 판단=> 화면 이동 방진혁
                                     Log.d("register_profile_done", " yes! ");
                                     SharedPreferences prefs_invest = getSharedPreferences("investigation_result", MODE_PRIVATE);

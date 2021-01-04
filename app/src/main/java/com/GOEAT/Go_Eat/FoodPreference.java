@@ -53,7 +53,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_preference);
-        SharedPreferences pref = getSharedPreferences("loginauto", MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("Account", MODE_PRIVATE);
         tv_name_notice=findViewById(R.id.tv_name_notice);
         tv_name_notice.setText(pref.getString("nickname","")+"님의 음식 취향을 \n 저희한테 알려주세요");
 

@@ -93,29 +93,35 @@ public class RegisterActivity extends AppCompatActivity {
                 final String useremail = et_email.getText().toString();
                 final String userpassword = et_pwd1.getText().toString();
                 final String userphonenum = et_phoneNum.getText().toString();
+                String userbirth = "";
                 String userage = "40";
                 String[] birth = tv_birth.getText().toString().split("년 ");
-                final String userbirth = birth[1];
-                if(calendar.get(Calendar.YEAR)-Integer.parseInt(birth[0])< 20){
-                    userage = "10";
-                }else if(calendar.get(Calendar.YEAR)-Integer.parseInt(birth[0])< 30){
-                    userage = "20";
-                }else if(calendar.get(Calendar.YEAR)-Integer.parseInt(birth[0])< 40){
-                    userage = "30";
-                }
-                // 비밀번호 일치
-                if(et_pwd1.getText().toString().equals(et_pwd2.getText().toString())){
+                if(nickname.trim().isEmpty() || username.trim().isEmpty() || useremail.trim().isEmpty() || userpassword.trim().isEmpty()||userphonenum.trim().isEmpty()|| birth.length==0) {
+                    Toast.makeText(getApplicationContext(),"정보를 정확하게 입력해 주세요",Toast.LENGTH_LONG).show();
+                    // 비밀번호 일치
+                }else if(et_pwd1.getText().toString().equals(et_pwd2.getText().toString())){
 
                     // 비밀번호가 8자리 미만인 경우
-                    if (!(et_pwd1.getText().toString().length() >= 8))
+                    if (!(et_pwd1.getText().toString().length() >= 8)){
                         Toast.makeText(getApplicationContext(),"비밀번호는 8자 이상이어야 합니다",Toast.LENGTH_LONG).show();
+                    }
+                    if((!userphonenum.contains("010")) || userphonenum.trim().length()!=11){
+                        Toast.makeText(getApplicationContext(),"전화번호를 확인해 주세요",Toast.LENGTH_LONG).show();
+                    }
                     else{
-
+                        userbirth = birth[1];
+                        if (calendar.get(Calendar.YEAR) - Integer.parseInt(birth[0]) < 20) {
+                            userage = "10";
+                        } else if (calendar.get(Calendar.YEAR) - Integer.parseInt(birth[0]) < 30) {
+                            userage = "20";
+                        } else if (calendar.get(Calendar.YEAR) - Integer.parseInt(birth[0]) < 40) {
+                            userage = "30";
+                        }
                         // 서버에 저장하는 코드 (작성해야함!!)
                         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
                         SharedPreferences.Editor editors = prefs.edit();
                         editors.putString("name",username);
-                        editors.putString("nickname",username);
+                        editors.putString("nickname",nickname);
                         editors.putString("email",useremail);
                         editors.putString("phonenum",userphonenum);
                         editors.putString("password",userpassword);
