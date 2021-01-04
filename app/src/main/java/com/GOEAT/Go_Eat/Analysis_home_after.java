@@ -319,14 +319,11 @@ public class Analysis_home_after extends AppCompatActivity {
                                                             }
                                                         }
                                                         intent.putExtra("menu_length", i);
-
-                                                        intent.putExtra("restaurant_txt_1", tokensmenu[0]);
-                                                        intent.putExtra("food_price_1", tokensprice[0]);
-                                                        intent.putExtra("restaurant_txt_2", tokensmenu[1]);
-                                                        intent.putExtra("food_price_2", tokensprice[1]);
-                                                        intent.putExtra("restaurant_txt_3", tokensmenu[2]);
-                                                        intent.putExtra("food_price_3", tokensprice[2]);
-                                                        intent.putExtra("price_num", jsonObject.getString("up_down_price"));
+                                                        for(i = 0; i<tokensmenu.length-1|| i < 3;i++) {
+                                                            intent.putExtra("restaurant_txt_"+(i+1), tokensmenu[i]);
+                                                            intent.putExtra("food_price_"+(i+1), tokensprice[i]);
+                                                        }
+                                                            intent.putExtra("price_num", jsonObject.getString("up_down_price"));
                                                         startActivity(intent);
                                                     }
                                                 } catch (JSONException e) {
