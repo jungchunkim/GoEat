@@ -264,7 +264,7 @@ public class HomeFragment extends Fragment {
 
                         if (!isContain) {
                             final SimpleFoodInfo swapItem = foodInfoList.remove(i);
-                            swapItem.imageUrl = foodPic.getFoodSrc(swapItem.firstName);
+                            //swapItem.imageUrl = foodPic.getFoodSrc(swapItem.firstName);
                             beautifiedFoodInfoList.add(swapItem);
                             checkFirstName.add(swapItem.firstName);
                             i--;
@@ -281,9 +281,9 @@ public class HomeFragment extends Fragment {
                     Collections.shuffle(foodInfoList);
 
                     final List<SimpleFoodInfo> swapItems = foodInfoList.subList(0, Math.min(foodInfoList.size(), remainCount));
-                    for (SimpleFoodInfo i : swapItems) {
-                        i.imageUrl = foodPic.getFoodSrc(i.firstName);
-                    }
+//                    for (SimpleFoodInfo i : swapItems) {
+//                        i.imageUrl = foodPic.getFoodSrc(i.firstName);
+//                    }
                     beautifiedFoodInfoList.addAll(swapItems);
                 }
 

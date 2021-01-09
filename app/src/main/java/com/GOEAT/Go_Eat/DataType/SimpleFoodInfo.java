@@ -9,6 +9,7 @@ public class SimpleFoodInfo {
     public String secondName;
     @SerializedName("Food_Kind")
     public String kind;
+    @SerializedName("Food_Image")
     public String imageUrl;
 
     @Override
@@ -17,6 +18,7 @@ public class SimpleFoodInfo {
                 "firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", kind='" + kind + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
