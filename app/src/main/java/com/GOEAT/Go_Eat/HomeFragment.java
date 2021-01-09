@@ -242,31 +242,38 @@ public class HomeFragment extends Fragment {
                 }.getType());
 
                 final ArrayList<SimpleFoodInfo> beautifiedFoodInfoList = new ArrayList<>();
+                Log.e("***foodInfoList", "size : "+ foodInfoList.size());
 
-                for (int i = 0; i < foodInfoList.size(); i++) {
-                    // 만약 제한 개수만큼 데이터가 쌓이면 loop 종료
-                    if (beautifiedFoodInfoList.size() == ALL_FOOD_ITEM_COUNT) break;
+                while(foodInfoList.size()>0) {
+//                    Log.e("step2: beautifiedFood", "size : "+ beautifiedFoodInfoList.size());
+//                    Log.e("step2: foodInfoList", "size : "+ foodInfoList.size());
+                    ArrayList<String> checkFirstName = new ArrayList<>();
+                    checkFirstName.clear();
+                    for (int i = 0; i < foodInfoList.size(); i++) {
+                        // 만약 제한 개수만큼 데이터가 쌓이면 loop 종료
+                        //if (beautifiedFoodInfoList.size() == ALL_FOOD_ITEM_COUNT) break;
 
-                    boolean isContain = false;
-                    final String firstName = foodInfoList.get(i).firstName;
-
-                    for (int j = 0; j < beautifiedFoodInfoList.size(); j++) {
-                        if (firstName.equals(beautifiedFoodInfoList.get(j).firstName)) {
-                            isContain = true;
-                            break;
+                        boolean isContain = false;
+                        final String firstName = foodInfoList.get(i).firstName;
+                        for (int j = 0; j < checkFirstName.size(); j++) {
+                            if (firstName.equals(checkFirstName.get(j))) {
+                                isContain = true;
+                                break;
+                            }
                         }
-                    }
 
-                    if (!isContain) {
-                        final SimpleFoodInfo swapItem = foodInfoList.remove(i);
-                        swapItem.imageUrl = foodPic.getFoodSrc(swapItem.firstName);
-                        beautifiedFoodInfoList.add(swapItem);
-                        i--;
+                        if (!isContain) {
+                            final SimpleFoodInfo swapItem = foodInfoList.remove(i);
+                            swapItem.imageUrl = foodPic.getFoodSrc(swapItem.firstName);
+                            beautifiedFoodInfoList.add(swapItem);
+                            checkFirstName.add(swapItem.firstName);
+                            i--;
+                        }
                     }
                 }
 
                 /**
-                 * 데이터가 부족할 경우 남은 list 에서 shuffle 후 나머지 개수 만큼 add
+                 * 데이터가 부족할 경우 (20개 기준) 남은 list 에서 shuffle 후 나머지 개수 만큼 add
                  * 남은 리스트 (foodInfoList) 데이터가 부족하여 필요한 나머지 데이터 개수 만큼 채울 수 없을 경우 IndexOutOfBoundsException 방지를 위해 최소값 계산
                  */
                 if (beautifiedFoodInfoList.size() < ALL_FOOD_ITEM_COUNT) {
