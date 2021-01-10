@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.GOEAT.Go_Eat.Server_Request.UserDB;
+import com.GOEAT.Go_Eat.Server_Request.deleteAccount_request;
+import com.GOEAT.Go_Eat.Server_Request.get_restaurantlist;
+import com.GOEAT.Go_Eat.Server_Request.sms_request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import org.json.JSONException;
@@ -91,9 +97,29 @@ public class MyProfileFragment extends Fragment {
                             public void onClick(DialogInterface dialog, int which){
 
                                 // 이부분에 회원 탈퇴하는 코드 넣어야 함!
-
-
-
+                                Response.Listener<String> responselistener1 = new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+                                        try {
+                                            Log.e("deleteAccount: ", response);
+                                            JSONObject jsonObject = new JSONObject(response);
+                                            String success = jsonObject.getString("success");
+                                            System.out.println(success);
+                                            if (success.equals("true")){
+                                                Toast.makeText(getContext(), "회원 탈퇴에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                                                //처음 로그인 페이지로 이동하도록 추가
+                                            }
+                                            else{
+                                                Toast.makeText(getContext(), "회원 탈퇴에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                };
+                                deleteAccount_request deleteAccount_request = new deleteAccount_request(name,email,responselistener1) ;
+                                RequestQueue queue = Volley.newRequestQueue(getContext());
+                                queue.add(deleteAccount_request);
 
                                 //Toast.makeText(getContext(), "확인 누름", Toast.LENGTH_SHORT).show();
                             }
