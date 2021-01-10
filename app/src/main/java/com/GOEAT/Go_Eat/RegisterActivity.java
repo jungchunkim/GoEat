@@ -9,6 +9,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,6 +57,9 @@ public class RegisterActivity extends AppCompatActivity {
         btn_male = findViewById(R.id.btn_male);
         btn_send = findViewById(R.id.btn_send);
         tv_birth = findViewById(R.id.tv_birth);
+
+        et_pwd1.setTypeface( Typeface.DEFAULT );
+        et_pwd2.setTypeface( Typeface.DEFAULT );
 
         tv_birth.setOnClickListener(new View.OnClickListener() {
             @Override

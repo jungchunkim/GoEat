@@ -27,13 +27,15 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.crashlytics.CrashlyticsRegistrar;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.kakao.auth.Session;
 import com.nhn.android.naverlogin.OAuthLogin;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class login_activity extends AppCompatActivity { // 로그인 화면
+public class login_activity extends AppCompatActivity  { // 로그인 화면
 
     //implements GoogleApiClient.OnConnectionFailedListener
 
@@ -86,6 +88,7 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
     };
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +96,8 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true);
 
         SharedPreferences pref = getSharedPreferences("loginauto", MODE_PRIVATE);
         final SharedPreferences.Editor editor = pref.edit();
@@ -198,6 +203,7 @@ public class login_activity extends AppCompatActivity { // 로그인 화면
             public void onClick(View view) { // 로그인 버튼 클릭 시 정보확인 부분
                 final String email = et_login_email.getText().toString();
                 final String password = et_login_password.getText().toString();
+
 
                 Response.Listener<String> responselistener = new Response.Listener<String>() {
                     @Override

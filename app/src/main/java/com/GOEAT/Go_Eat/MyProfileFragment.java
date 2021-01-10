@@ -1,8 +1,11 @@
 package com.GOEAT.Go_Eat;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +29,7 @@ import org.json.JSONObject;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 public class MyProfileFragment extends Fragment {
 
@@ -32,6 +37,7 @@ public class MyProfileFragment extends Fragment {
     private FirebaseAnalytics mFirebaseAnalytics;
     LinearLayout layout_sns;
     public TextView tv_nickname;
+    TextView quit;
     TextView tv_email;
     CircleImageView iv_profile;
     String name = "";
@@ -61,8 +67,50 @@ public class MyProfileFragment extends Fragment {
         layout_investigation = viewGroup.findViewById(R.id.layout_investigation);
         layout_notice = viewGroup.findViewById(R.id.layout_notice);
         logoutBtn = viewGroup.findViewById(R.id.logout);
+        quit = viewGroup.findViewById(R.id.quit);
 
         logoutBtn.setOnClickListener(logoutBtnClickListener);
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        final AlertDialog dialog = builder.create();
+        dialog.setOnShowListener( new DialogInterface.OnShowListener()
+        {
+            @Override public void onShow(DialogInterface arg0) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.rgb(255, 64, 129));
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.rgb(255, 64, 129)); }
+        });
+
+        quit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                        builder
+                        .setTitle("회원 탈퇴")
+                        .setMessage("정말로 회원탈퇴를 하시겠습니까?")
+                        .setPositiveButton("예", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which){
+
+                                // 이부분에 회원 탈퇴하는 코드 넣어야 함!
+
+
+
+
+                                //Toast.makeText(getContext(), "확인 누름", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which){
+
+                            }
+                        })
+                        .show();
+
+
+
+
+
+            }
+        });
 
         final UserDB userDB = new UserDB();
         SharedPreferences prefs = getActivity().getSharedPreferences("Account", MODE_PRIVATE);
@@ -99,7 +147,8 @@ public class MyProfileFragment extends Fragment {
         layout_investigation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), FoodPreference.class);
+                //Intent intent = new Intent(getActivity(), FoodPreference.class);
+                Intent intent = new Intent(getActivity(), CheckHateFoodRealActivity.class);
                 startActivity(intent);
             }
         });
