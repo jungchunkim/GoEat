@@ -108,6 +108,8 @@ public class MyProfileFragment extends Fragment {
                                             if (success.equals("true")){
                                                 Toast.makeText(getContext(), "회원 탈퇴에 성공했습니다.", Toast.LENGTH_SHORT).show();
                                                 //처음 로그인 페이지로 이동하도록 추가
+                                                Intent intent = new Intent(getActivity(), Onboarding.class);
+                                                startActivity(intent);
                                             }
                                             else{
                                                 Toast.makeText(getContext(), "회원 탈퇴에 실패했습니다.", Toast.LENGTH_SHORT).show();
