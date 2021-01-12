@@ -27,6 +27,8 @@ public class CheckHateFoodRealActivity extends AppCompatActivity implements View
 
     TextView tv_txtWithName;
     Button btn_next;
+    //2021.01.13 김정천 백 버튼 추가
+    ImageView iv_back;
     LinearLayout layout_1, layout_2, layout_3, layout_4, layout_5, layout_6, layout_7, layout_8, layout_9, layout_10;
     LinearLayout layout_11, layout_12, layout_13, layout_14, layout_15, layout_16, layout_17, layout_18;
     private int[] clickCheck = new int[18];
@@ -84,6 +86,15 @@ public class CheckHateFoodRealActivity extends AppCompatActivity implements View
         layout_17.setOnClickListener(this);
         layout_18.setOnClickListener(this);
 
+        iv_back = findViewById(R.id.iv_back);
+
+        // 뒤로가기 버튼 클릭
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         // 서버에서 name받아오기
         // 2020-11-29-염상희
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);

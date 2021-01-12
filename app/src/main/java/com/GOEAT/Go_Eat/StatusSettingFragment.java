@@ -74,7 +74,7 @@ public class StatusSettingFragment extends Fragment implements CheckableItemGrou
         emotionItemGroup.setOnItemCheckedListener(this);
         calorieItemGroup.setOnItemCheckedListener(this);
 
-        v.findViewById(R.id.back_btn).setOnClickListener(backBtnClickListener);
+ //       v.findViewById(R.id.back_btn).setOnClickListener(backBtnClickListener);
 
         nextBtn = v.findViewById(R.id.btn_next);
         nextBtn.setOnClickListener(nextBtnClickListener);

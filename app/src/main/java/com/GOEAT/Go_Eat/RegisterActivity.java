@@ -61,11 +61,12 @@ public class RegisterActivity extends AppCompatActivity {
         et_pwd1.setTypeface( Typeface.DEFAULT );
         et_pwd2.setTypeface( Typeface.DEFAULT );
 
+        //2021.01.13 김정천 - 이거 지우고 입력받은 것을 년, 월, 일로 백엔드로 올리기 입력받는 형태는 2020.01.01 형태!
         tv_birth.setOnClickListener(new View.OnClickListener() {
-            @Override
+           @Override
             public void onClick(View view) {
                 showDialog(DIALOG_DATE);
-            }
+           }
         });
 
         btn_female.setOnClickListener(new View.OnClickListener() {

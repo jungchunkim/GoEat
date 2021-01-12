@@ -120,4 +120,13 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
         currentFragment = futureFragment;
         tr.commit();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        //super.onBackPressed();
+    }
+
+
+
 }
