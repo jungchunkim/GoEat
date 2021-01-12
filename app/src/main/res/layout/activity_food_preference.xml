@@ -73,10 +73,10 @@
             android:layout_weight="45">
             <ImageView
                 android:id="@+id/food_img"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="280dp"
+                android:background="@drawable/shadow_button_4_1"
                 android:scaleType="fitXY"
-                android:src="@drawable/p_food14"
                 />
             <LinearLayout
                 android:orientation="vertical"
