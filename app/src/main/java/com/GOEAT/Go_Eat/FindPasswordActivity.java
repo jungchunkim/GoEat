@@ -90,7 +90,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                                 Thread thread = new Thread(gMailSender);
                                 thread.start();
 //                              gMailSender.sendMail("제목입니다", "1234", et_email.getText().toString());
-//                                Toast.makeText(getApplicationContext(), "이메일을 성공적으로 보냈습니다.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "이메일을 성공적으로 보냈습니다.", Toast.LENGTH_SHORT).show();
                                 SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
                                 SharedPreferences.Editor editors = prefs.edit();
                                 editors.putString("randnum",randnum);
@@ -129,10 +129,12 @@ public class FindPasswordActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean success = jsonObject.getBoolean("success");
-                            System.out.println(phonenum);
+                            System.out.println(success);
+                            System.out.println(receive_email);
                             if (success){
                                 //휴대폰으로 인증번호 보내는 부분
                                 phonenum = jsonObject.getString("phonenum");
+                                System.out.println(phonenum);
                                 Response.Listener<String> responseListeners = new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
