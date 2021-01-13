@@ -147,14 +147,14 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
 //        Log.d("restaurant_img_2",intent.getExtras().getString("menu_img_2"));
 //        Log.d("restaurant_img_3",intent.getExtras().getString("menu_img_3"));
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_1")).error(R.drawable.go_logo1).into(restaurant_img_1);
+            Picasso.get().load(intent.getExtras().getString("menu_img_1")).fit().centerCrop().error(R.drawable.go_logo1).into(restaurant_img_1);
             Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_1"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_1.setImageResource(R.drawable.go_logo1);
             e.printStackTrace();
         }
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_2")).error(R.drawable.go_logo1).into(restaurant_img_2);
+            Picasso.get().load(intent.getExtras().getString("menu_img_2")).fit().centerCrop().error(R.drawable.go_logo1).into(restaurant_img_2);
             Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_2"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
             restaurant_img_2.setImageResource(R.drawable.go_logo1);
