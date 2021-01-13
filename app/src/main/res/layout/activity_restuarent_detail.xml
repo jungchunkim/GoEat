@@ -25,7 +25,8 @@
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/vpPager_1"
                 android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                android:layout_height="250dp"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -430,28 +431,25 @@
             <!-- 음식 버튼 만들기 -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="110dp"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/shadow_button_4"
                 android:orientation="horizontal"
-                android:paddingLeft="8dp"
-                android:paddingTop="8dp"
                 android:paddingRight="8dp"
-                android:paddingBottom="8dp"
-                android:weightSum="4">
+                >
 
                 <ImageView
                     android:id="@+id/restaurant_img_1"
-                    android:layout_width="0dp"
+                    android:layout_width="105dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
-                    android:layout_weight="1" />
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/main_menu_bg"
+                     />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="25dp"
-                    android:layout_weight="3"
+                    android:layout_marginLeft="5dp"
                     android:orientation="vertical"
                     android:weightSum="9">
 

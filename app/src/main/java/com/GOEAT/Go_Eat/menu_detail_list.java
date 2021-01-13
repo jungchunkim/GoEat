@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ import java.util.List;
 public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 리스트 클래스 방진혁
     String menulist, pricelist;
     TextView tv_res_name;
+    ImageView btn_back_menulist;
     int i, j;
 
     @Override
@@ -29,6 +32,7 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
         final Intent intent = getIntent();
         tv_res_name = findViewById(R.id.tv_res_name);
         tv_res_name.setText(intent.getExtras().getString("restaurant_name")+" 메뉴판");
+        btn_back_menulist = findViewById(R.id.btn_back_menulist);
         menulist = intent.getExtras().getString("menulist");
         pricelist = intent.getExtras().getString("pricelist");
         final List<Analysis_menu_Item> items = new ArrayList<>();
@@ -40,6 +44,13 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
         Log.d("menulist", tokensmenu[0]);
         Log.d("pricelist", tokensprice[2]);
         Log.d("foodArray", tokensmenu.length +"<>"+ tokensprice.length);
+
+        btn_back_menulist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //혹시모를 디비 개수 차이 확인
         int arraylength;
@@ -70,4 +81,11 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
 
         recyclerView.setAdapter(menulistRecyclerAdapter);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        //super.onBackPressed();
+    }
+
 }

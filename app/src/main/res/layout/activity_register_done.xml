@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context=".login_activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:src="@drawable/arrow"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pureunjeonnam"
+            android:gravity="center"
+            android:text="회원가입 완료"
+            android:textColor="#222B45"
+            android:textSize="25dp"
+            android:layout_marginLeft="40dp"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="top"
+            android:layout_marginRight="35dp"
+            android:src="@drawable/ic_hi"
+            android:layout_marginTop="45dp"
+            android:scaleType="fitXY"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="16"
+        android:fontFamily="@font/pureunjeonnam"
+        android:gravity="center"
+        android:text="지금 바로 \n Go Eat을 이용해보세요!"
+        android:textColor="#222B45"
+        android:textSize="27dp" />
+
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/pureunjeonnambold"
+        android:text="로그인 하기"
+        android:textColor="#ffffff"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

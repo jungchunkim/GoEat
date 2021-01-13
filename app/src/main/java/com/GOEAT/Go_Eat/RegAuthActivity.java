@@ -81,7 +81,7 @@ public class RegAuthActivity extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(response);
                                 boolean success = jsonObject.getBoolean("success");
                                 if (success){
-                                    Intent intent = new Intent(getApplicationContext(), login_activity.class);
+                                    Intent intent = new Intent(getApplicationContext(), RegisterDoneActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }else {

@@ -19,6 +19,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="29">
+        <activity android:name=".RegisterDoneActivity"></activity>
         <activity android:name=".StatusSettingActivity" />
         <activity android:name=".Notice_detail2" />
         <activity android:name=".Notice_detail1" />
