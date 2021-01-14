@@ -34,6 +34,7 @@ public class UserDB implements Serializable {
     final static private String URL9 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getFlavorFood.php";
     final static private String URL10 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getuserdata.php";
     final static private String URL11 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/getNotice.php";
+    final static private String URL12 = "http://bangjinhyuk.cafe24.com/goeatdb/doc/html/deleteAccount.php";
 
     private Map<String, String> map;
     private int userChar;

@@ -45,7 +45,11 @@ public class AnalysisHomeRecyclerAdapter extends RecyclerView.Adapter<AnalysisHo
         final Context context = holder.itemView.getContext();
 
         if (item.imageUrl != null && !item.imageUrl.isEmpty()) {
-            Picasso.get().load(item.imageUrl).into(holder.image);
+            Picasso.get()
+                    .load(item.imageUrl)
+                    .placeholder(R.drawable.loading)
+                    .error(R.drawable.error)
+                    .into(holder.image);
         }
 
         // TODO: description 미구현

@@ -110,7 +110,12 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                         if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
                         else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
                         else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
-                        else Picasso.get().load(foodurl[reference]).into(food_img);
+                        else Picasso.get()
+                                    .load(foodurl[reference])
+                                    .resize(500,500)
+                                    .placeholder(R.drawable.loading_up)
+                                    .error(R.drawable.error_up)
+                                    .into(food_img);
                         food_name.setText(foodlist[reference]);
                         num_count.setText(reference+1+"/24");
                         reference++;
@@ -161,7 +166,11 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
                     else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
-                    else Picasso.get().load(foodurl[reference]).into(food_img);
+                    else Picasso.get().load(foodurl[reference])
+                                .resize(500,500)
+                                .placeholder(R.drawable.loading_up)
+                                .error(R.drawable.error_up)
+                                .into(food_img);
                     food_name.setText(foodlist[reference]);
                     num_count.setText(reference+1+"/24");
                     reference++;
@@ -181,7 +190,11 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
                     else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
-                    else Picasso.get().load(foodurl[reference]).into(food_img);
+                    else Picasso.get().load(foodurl[reference])
+                                .resize(500,500)
+                                .placeholder(R.drawable.loading_up)
+                                .error(R.drawable.error_up)
+                                .into(food_img);
 //                    food_img.setImageResource(R.drawable.p_food1);
                     food_name.setText(foodlist[reference]);
                     num_count.setText(reference+1+"/24");
@@ -202,7 +215,11 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
                     else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
-                    else Picasso.get().load(foodurl[reference]).into(food_img);
+                    else Picasso.get().load(foodurl[reference])
+                                .resize(500,500)
+                                .placeholder(R.drawable.loading_up)
+                                .error(R.drawable.error_up)
+                                .into(food_img);
 //                    food_img.setImageResource(R.drawable.p_food1);
                     food_name.setText(foodlist[reference]);
                     num_count.setText(reference+1+"/24");
