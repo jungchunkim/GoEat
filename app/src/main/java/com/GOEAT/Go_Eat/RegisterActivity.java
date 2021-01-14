@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -61,14 +62,6 @@ public class RegisterActivity extends AppCompatActivity {
         et_pwd1.setTypeface( Typeface.DEFAULT );
         et_pwd2.setTypeface( Typeface.DEFAULT );
 
-        //2021.01.13 김정천 - 이거 지우고 입력받은 것을 년, 월, 일로 백엔드로 올리기 입력받는 형태는 2020.01.01 형태!
-        tv_birth.setOnClickListener(new View.OnClickListener() {
-           @Override
-            public void onClick(View view) {
-                showDialog(DIALOG_DATE);
-           }
-        });
-
         btn_female.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -100,10 +93,12 @@ public class RegisterActivity extends AppCompatActivity {
                 final String userphonenum = et_phoneNum.getText().toString();
                 String userbirth = "";
                 String userage = "40";
-                String[] birth = tv_birth.getText().toString().split("년 ");
-                if(nickname.trim().isEmpty() || username.trim().isEmpty() || useremail.trim().isEmpty() || userpassword.trim().isEmpty()||userphonenum.trim().isEmpty()|| birth.length==0) {
+                String[] birth = tv_birth.getText().toString().split("[.]");
+                if(nickname.trim().isEmpty() || username.trim().isEmpty() || useremail.trim().isEmpty() || userpassword.trim().isEmpty()||userphonenum.trim().isEmpty()) {
                     Toast.makeText(getApplicationContext(),"정보를 정확하게 입력해 주세요",Toast.LENGTH_LONG).show();
                     // 비밀번호 일치
+                }else if(birth.length < 3) {
+                    Toast.makeText(getApplicationContext(), "생년월일을 맞게 입력해 주세요", Toast.LENGTH_LONG).show();
                 }else if(et_pwd1.getText().toString().equals(et_pwd2.getText().toString())){
 
                     // 비밀번호가 8자리 미만인 경우
@@ -114,7 +109,8 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"전화번호를 확인해 주세요",Toast.LENGTH_LONG).show();
                     }
                     else{
-                        userbirth = birth[1];
+                        userbirth = birth[1]+"월 "+birth[2]+"일";
+                        Log.d("userbirth", userbirth);
                         if (calendar.get(Calendar.YEAR) - Integer.parseInt(birth[0]) < 20) {
                             userage = "10";
                         } else if (calendar.get(Calendar.YEAR) - Integer.parseInt(birth[0]) < 30) {

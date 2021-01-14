@@ -78,7 +78,6 @@ public class login_activity extends AppCompatActivity  { // 로그인 화면
                     Intent intent = new Intent(login_activity.this, CheckHateFood.class);
                     startActivity(intent);
                 } else {
-
                     Toast.makeText(getApplicationContext(), "가입되어 있지 않습니다", Toast.LENGTH_LONG).show();
                 }
             } catch (JSONException e) {
