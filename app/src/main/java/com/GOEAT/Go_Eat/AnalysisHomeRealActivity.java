@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -23,6 +24,8 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
     private HomeFragment homeFragment;
     private StatusSettingFragment investigationFragment;
     private MyProfileFragment myPageFragment;
+    private int back_index=0;
+
     private Fragment currentFragment;
 
     private MeowBottomNavigationWrapper meoWrapper;
@@ -96,7 +99,6 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
                 if (investigationFragment == null) {
                     final Bundle arguments = new Bundle();
                     arguments.putBoolean("isEditMode", true);
-
                     investigationFragment = new StatusSettingFragment();
                     investigationFragment.setArguments(arguments);
                 }
@@ -114,18 +116,32 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
 
         if (currentFragment != null) tr.hide(currentFragment);
 
-        if (futureFragment.isAdded()) tr.show(futureFragment);
-        else tr.add(R.id.fragment_container, futureFragment);
+        if (futureFragment.isAdded())
+            tr.show(futureFragment);
+        else
+            tr.add(R.id.fragment_container, futureFragment);
 
         currentFragment = futureFragment;
         tr.commit();
     }
 
+    //2020-01-14 김정천 - 뒤로 가기 두 번 눌렀을 때 앱 종료되게 한다.
     @Override
-    public void onBackPressed()
-    {
-        //super.onBackPressed();
+    public void onBackPressed() {
+        final FragmentTransaction tr = getSupportFragmentManager().beginTransaction();
+        if(currentFragment != homeFragment)
+        {
+            configUI();
+        }
+        else
+        {
+            super.onBackPressed();  // 앱 종료되는거
+        }
+
+
+
     }
+
 
 
 

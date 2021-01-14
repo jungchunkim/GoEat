@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -26,6 +27,7 @@ import java.util.List;
 public class NoticeActivity extends AppCompatActivity {
 
     ListView listview;
+    private ImageView iv_back;
     private UserDB userDB = new UserDB();
     private ArrayList<String> title = new ArrayList<>();
     private ArrayList<String> change_date = new ArrayList<>();
@@ -37,6 +39,7 @@ public class NoticeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notice_real);
 
         listview = (ListView) findViewById(R.id.list);
+        iv_back = findViewById(R.id.iv_back);
 
         final NoticeListViewAdapter adapter = new NoticeListViewAdapter();
 
@@ -68,6 +71,13 @@ public class NoticeActivity extends AppCompatActivity {
             }
         };
         userDB.getNotice(responseListener, NoticeActivity.this);     //음식 리스트 index 불러오는 부분
+
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
