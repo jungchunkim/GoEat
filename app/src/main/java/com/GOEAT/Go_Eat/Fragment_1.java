@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.GOEAT.Go_Eat.DataType.GoEatStatus;
+
+import static com.GOEAT.Go_Eat.common.Values.EXTRA_STATUS;
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 
@@ -42,6 +45,8 @@ public class Fragment_1 extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences("location", Context.MODE_PRIVATE);;
         editor = sharedPreferences.edit();
+
+
         final Button location_1 = (Button) view.findViewById(R.id.location_1);
         final Button location_2 = (Button) view.findViewById(R.id.location_2);
         /*
@@ -54,18 +59,13 @@ public class Fragment_1 extends Fragment {
         location_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(num==0) {
-                    num = 1;
-                    editor.putInt("num",1);
-                    editor.commit();
-                    changeBtnBackground(location_1);
-                }else if(num==1){
-                    num=0;
-                    reChangeBtnBackground(location_1);
-                }
-                else {
-                    Toast.makeText(context,"하나만 선택하세요",Toast.LENGTH_SHORT).show();
-                }
+
+                num = 1;
+                changeBtnBackground(location_1);
+                reChangeBtnBackground(location_2);
+
+                editor.putInt("num", 1);
+                editor.commit();
 
 
             }
@@ -73,18 +73,14 @@ public class Fragment_1 extends Fragment {
         location_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(num==0) {
-                    num = 2;
-                    editor.putInt("num",2);
-                    editor.commit();
-                    changeBtnBackground(location_2);
-                }else if(num==2){
-                    num=0;
-                    reChangeBtnBackground(location_2);
-                }
-                else{
-                    Toast.makeText(context,"하나만 선택하세요",Toast.LENGTH_SHORT).show();
-                }
+
+                num = 2;
+                changeBtnBackground(location_2);
+                reChangeBtnBackground(location_1);
+
+                editor.putInt("num", 2);
+                editor.commit();
+
             }
         });
 /*
