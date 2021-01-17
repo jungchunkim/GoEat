@@ -27,6 +27,7 @@
             android:id="@+id/location_1"
             android:layout_width="0dp"
             android:layout_weight="10"
+            android:visibility="invisible"
             android:layout_height="match_parent"
             android:text="건대"
             android:fontFamily="@font/pureunjeonnam"
