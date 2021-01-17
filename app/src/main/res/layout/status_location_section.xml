@@ -16,30 +16,10 @@
         android:orientation="horizontal">
 
         <com.GOEAT.Go_Eat.widget.StatusItemCardView
-            android:id="@+id/loc1"
-            style="@style/StatusItemCardViewStyle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:tag="건대"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/status_item_bg_selector"
-                android:duplicateParentState="true"
-                android:gravity="center"
-                android:text="건대"
-                android:textColor="@color/mainPink"
-                android:textSize="15sp" />
-
-        </com.GOEAT.Go_Eat.widget.StatusItemCardView>
-
-        <com.GOEAT.Go_Eat.widget.StatusItemCardView
             android:id="@+id/loc2"
             style="@style/StatusItemCardViewStyle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/loc1"
+            app:layout_constraintStart_toStartOf="parent"
             android:tag="신촌"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -54,5 +34,7 @@
                 android:textSize="15sp" />
 
         </com.GOEAT.Go_Eat.widget.StatusItemCardView>
+
+
     </com.GOEAT.Go_Eat.widget.CheckableItemGroup>
 </HorizontalScrollView>
