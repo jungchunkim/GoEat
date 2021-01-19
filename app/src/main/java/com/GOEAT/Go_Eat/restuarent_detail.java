@@ -380,7 +380,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             View view = LayoutInflater.from(context).inflate(R.layout.viewpager_childview, container, false);
             ImageView imageview1 = (ImageView) view.findViewById(R.id.img_viewpager_childimage);
             try {
-                Picasso.get().load(restaurant_main_image).error(R.drawable.go).into(imageview1);
+                Picasso.get().load(restaurant_main_image).error(R.drawable.go_logo1).into(imageview1);
 
             } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
                 e.printStackTrace();

@@ -54,11 +54,18 @@ public class menulistRecyclerAdapter extends RecyclerView.Adapter<menulistRecycl
 //                .into(holder.image);
         Log.d("item put in ", "yes!");
         try {
-            Picasso.get().load(item.url).error(R.drawable.go_logo1).into(holder.image);
+            if (item.url != null && !item.url.isEmpty()) {
+                Picasso.get()
+                        .load(item.url)
+                        .placeholder(R.drawable.loading)
+                        .error(R.drawable.go_logo1)
+                        .into(holder.image);
+            }
+//            Picasso.get().load(item.url).error(R.drawable.go_logo1).into(holder.image);
             Log.d("image put in ", "yes!");
 //            Log.d("image url is.. ", item.url);
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
-            holder.image.setImageResource(R.drawable.go_logo1);
+            holder.image.setImageResource(R.drawable.error);
             e.printStackTrace();
             Log.d("image put in ", "No!");
         }
