@@ -82,10 +82,11 @@ public class menu_detail_list extends AppCompatActivity { // 음식점 메뉴 �
         recyclerView.setAdapter(menulistRecyclerAdapter);
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        //super.onBackPressed();
-    }
+    //2020-01-20 김정천 뒤로가기 막기 해제
+//    @Override
+//    public void onBackPressed()
+//    {
+//        //super.onBackPressed();
+//    }
 
 }

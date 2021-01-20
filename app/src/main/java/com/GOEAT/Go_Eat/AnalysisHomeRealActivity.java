@@ -135,7 +135,12 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
         }
         else
         {
-            super.onBackPressed();  // 앱 종료되는거
+            moveTaskToBack(true);
+
+            finish();
+
+            android.os.Process.killProcess(android.os.Process.myPid());
+
         }
 
 
