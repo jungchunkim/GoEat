@@ -161,24 +161,38 @@
             android:layout_height="0dp"
             android:layout_weight="10"
             android:weightSum="30"
-            android:paddingRight="128dp"
-            android:paddingLeft="128dp"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="8"/>
+                android:layout_weight="8" />
 
-            <TextView
-                android:id="@+id/num_count"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="14"
-                android:gravity="center"
-                android:background="@drawable/button_background"
-                android:textColor="#ffffff"
-                android:fontFamily="@font/pureunjeonnambold"
-                android:text="1/24"/>
+                android:weightSum="10"
+                android:orientation="horizontal">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/num_count"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:background="@drawable/button_background"
+                    android:textColor="#ffffff"
+                    android:fontFamily="@font/pureunjeonnambold"
+                    android:text="1/24"/>
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="4"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
 
 
             <LinearLayout

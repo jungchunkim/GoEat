@@ -37,10 +37,10 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
 
         // 앱 첫 실행때만 Gudie 띄우기 - 임민영
         SharedPreferences pref = getSharedPreferences("isFirst", Activity.MODE_PRIVATE);
-        boolean first = pref.getBoolean("isFirst", false);
-        if (!first) {
+        boolean first = pref.getBoolean("isFirst", true);
+        if (first) {
             SharedPreferences.Editor editor = pref.edit();
-            editor.putBoolean("isFirst", true);
+            editor.putBoolean("isFirst", false);
             editor.apply();
             //앱 최초 실행시 하고 싶은 작업
             Intent intent2 = new Intent(getApplicationContext(), AnalysishomeGuideActivity.class);
