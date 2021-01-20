@@ -73,6 +73,7 @@
             android:fontFamily="@font/pureunjeonnambold"
             android:inputType="number"
             android:textSize="35dp"
+            android:maxLength="1"
 
 
             />
@@ -90,6 +91,8 @@
             android:fontFamily="@font/pureunjeonnambold"
             android:inputType="number"
             android:textSize="35dp"
+            android:maxLength="1"
+
             />
         <EditText
             android:id="@+id/et_3"
@@ -105,6 +108,8 @@
             android:fontFamily="@font/pureunjeonnambold"
             android:inputType="number"
             android:textSize="35dp"
+            android:maxLength="1"
+
             />
         <EditText
             android:id="@+id/et_4"
@@ -118,6 +123,8 @@
             android:fontFamily="@font/pureunjeonnambold"
             android:inputType="number"
             android:textSize="35dp"
+            android:maxLength="1"
+
             />
 
 

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,12 +28,14 @@ import org.json.JSONObject;
 public class EmailAuthNumberActivity extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
-    EditText et_1, et_2, et_3, et_4;
+    EditText et_1, et_2, et_3;
     ImageView iv_back;
     Button btn_ok;
     TextView tv_resend, tv_wrong;
     String AuthNum;
     LinearLayout layout;
+    EditText et_4;
+
 
 
     @Override
@@ -118,6 +121,8 @@ public class EmailAuthNumberActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(et_2.getText().toString().length()==1)
                     et_3.requestFocus();
+                if(i1 == 1)
+                    et_1.requestFocus();
             }
 
             @Override
@@ -136,6 +141,8 @@ public class EmailAuthNumberActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(et_3.getText().toString().length()==1)
                     et_4.requestFocus();
+                if(i1 == 1)
+                    et_2.requestFocus();
             }
 
             @Override
@@ -143,6 +150,26 @@ public class EmailAuthNumberActivity extends AppCompatActivity {
 
             }
         });
+        et_4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i1 == 1)
+                    et_3.requestFocus();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+
 
 
         // 재전송 버튼 눌렀을 때

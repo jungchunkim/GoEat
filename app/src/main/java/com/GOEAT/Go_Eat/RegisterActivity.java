@@ -11,6 +11,9 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,10 +37,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAnalytics mFirebaseAnalytics;
     final int DIALOG_DATE = 1;
-    EditText et_name, et_email, et_pwd1, et_pwd2, et_phoneNum, nick_name;   //2020-11-29 김정천 닉네임 추가
+    EditText et_name, et_email, et_pwd1, et_pwd2, et_phoneNum, nick_name,tv_birth;   //2020-11-29 김정천 닉네임 추가
     Button btn_female, btn_male, btn_send;
-    TextView tv_birth;
-    private String usergender = "";
+    private String usergender = "",preText;
+    int textlength;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +57,49 @@ public class RegisterActivity extends AppCompatActivity {
         et_pwd1 = findViewById(R.id.et_pwd1);
         et_pwd2 = findViewById(R.id.et_pwd2);
         et_phoneNum = findViewById(R.id.et_phoneNum);
+        et_phoneNum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         btn_female = findViewById(R.id.btn_female);
         btn_male = findViewById(R.id.btn_male);
         btn_send = findViewById(R.id.btn_send);
         tv_birth = findViewById(R.id.tv_birth);
+        tv_birth.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(tv_birth.isFocusable() && !s.toString().equals("")) {
+                    try{
+                        textlength = tv_birth.getText().toString().length();
+                    }catch (NumberFormatException e){
+                        e.printStackTrace();
+                        return;
+                    }
+
+                    if (textlength == 4 && before != 1) {
+                        tv_birth.setText(tv_birth.getText().toString()+".");
+                        tv_birth.setSelection(tv_birth.getText().length());
+                    }else if (textlength == 7&& before != 1){
+                        tv_birth.setText(tv_birth.getText().toString()+".");
+                        tv_birth.setSelection(tv_birth.getText().length());
+                    }else if(textlength == 5 && !tv_birth.getText().toString().contains(".")){
+                        tv_birth.setText(tv_birth.getText().toString().substring(0,4)+"."+tv_birth.getText().toString().substring(4));
+                        tv_birth.setSelection(tv_birth.getText().length());
+                    }else if(textlength == 8 && !tv_birth.getText().toString().substring(7,8).equals(".")){
+                        tv_birth.setText(tv_birth.getText().toString().substring(0,7)+"."+tv_birth.getText().toString().substring(7));
+                        tv_birth.setSelection(tv_birth.getText().length());
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         et_pwd1.setTypeface( Typeface.DEFAULT );
         et_pwd2.setTypeface( Typeface.DEFAULT );
@@ -105,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (!(et_pwd1.getText().toString().length() >= 8)){
                         Toast.makeText(getApplicationContext(),"비밀번호는 8자 이상이어야 합니다",Toast.LENGTH_LONG).show();
                     }
-                    if((!userphonenum.contains("010")) || userphonenum.trim().length()!=11){
+                    if((!userphonenum.contains("010")) || userphonenum.replaceAll("-","").trim().length()!=11){
                         Toast.makeText(getApplicationContext(),"전화번호를 확인해 주세요",Toast.LENGTH_LONG).show();
                     }
                     else{
@@ -124,7 +166,7 @@ public class RegisterActivity extends AppCompatActivity {
                         editors.putString("name",username);
                         editors.putString("nickname",nickname);
                         editors.putString("email",useremail);
-                        editors.putString("phonenum",userphonenum);
+                        editors.putString("phonenum",userphonenum.replaceAll("-","").trim());
                         editors.putString("password",userpassword);
                         editors.putString("age",userage);
                         editors.putString("birth",userbirth);

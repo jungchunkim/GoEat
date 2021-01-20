@@ -178,6 +178,8 @@ public class PwdAuthNumberActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(et_2.getText().toString().length()==1)
                     et_3.requestFocus();
+                if(i1 == 1)
+                    et_1.requestFocus();
             }
 
             @Override
@@ -196,6 +198,25 @@ public class PwdAuthNumberActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(et_3.getText().toString().length()==1)
                     et_4.requestFocus();
+                if(i1 == 1)
+                    et_2.requestFocus();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        et_4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(i1 == 1)
+                    et_3.requestFocus();
             }
 
             @Override

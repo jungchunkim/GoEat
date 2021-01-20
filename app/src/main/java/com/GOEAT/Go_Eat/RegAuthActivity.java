@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -175,8 +176,11 @@ public class RegAuthActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(et_2.getText().toString().length()==1)
+                if(et_2.getText().toString().length()==1) {
                     et_3.requestFocus();
+                }
+                if(i1 == 1)
+                    et_1.requestFocus();
             }
 
             @Override
@@ -193,8 +197,11 @@ public class RegAuthActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(et_3.getText().toString().length()==1)
+                if(et_3.getText().toString().length()==1) {
                     et_4.requestFocus();
+                }
+                if(i1 == 1)
+                    et_2.requestFocus();
             }
 
             @Override
@@ -215,6 +222,8 @@ public class RegAuthActivity extends AppCompatActivity {
                     btn_ok.performClick();
                     //Toast.makeText(getApplicationContext(), "자동OK", Toast.LENGTH_LONG).show();
                 }
+                if(before == 1)
+                    et_3.requestFocus();
 
             }
 
@@ -224,5 +233,7 @@ public class RegAuthActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
 }

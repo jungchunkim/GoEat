@@ -58,7 +58,8 @@
             android:background="@drawable/edit_text_background"
             android:fontFamily="@font/pureunjeonnam"
             android:paddingLeft="15dp"
-            android:inputType="number"
+            android:inputType="phone"
+            android:maxLength="13"
             />
 
 

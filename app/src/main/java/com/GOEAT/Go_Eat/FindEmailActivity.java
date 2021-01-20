@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class FindEmailActivity extends AppCompatActivity {
 
         btn_send = findViewById(R.id.btn_send);
         et_phoneNum = findViewById(R.id.et_phoneNum);
-
+        et_phoneNum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
