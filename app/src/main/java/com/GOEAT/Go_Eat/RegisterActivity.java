@@ -137,18 +137,18 @@ public class RegisterActivity extends AppCompatActivity {
                 String userage = "40";
                 String[] birth = tv_birth.getText().toString().split("[.]");
                 if(nickname.trim().isEmpty() || username.trim().isEmpty() || useremail.trim().isEmpty() || userpassword.trim().isEmpty()||userphonenum.trim().isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"정보를 정확하게 입력해 주세요",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"정보를 정확하게 입력해 주세요.",Toast.LENGTH_LONG).show();
                     // 비밀번호 일치
                 }else if(birth.length < 3) {
-                    Toast.makeText(getApplicationContext(), "생년월일을 맞게 입력해 주세요", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "생년월일을 맞게 입력해 주세요.", Toast.LENGTH_LONG).show();
                 }else if(et_pwd1.getText().toString().equals(et_pwd2.getText().toString())){
 
                     // 비밀번호가 8자리 미만인 경우
                     if (!(et_pwd1.getText().toString().length() >= 8)){
-                        Toast.makeText(getApplicationContext(),"비밀번호는 8자 이상이어야 합니다",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"비밀번호는 8자 이상이어야 합니다.",Toast.LENGTH_LONG).show();
                     }
                     if((!userphonenum.contains("010")) || userphonenum.replaceAll("-","").trim().length()!=11){
-                        Toast.makeText(getApplicationContext(),"전화번호를 확인해 주세요",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"전화번호를 확인해 주세요.",Toast.LENGTH_LONG).show();
                     }
                     else{
                         userbirth = birth[1]+"월 "+birth[2]+"일";
