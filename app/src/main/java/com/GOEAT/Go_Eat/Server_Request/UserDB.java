@@ -42,7 +42,7 @@ public class UserDB implements Serializable {
     private String email;
 
 
-    public void setUserChar(String useremail, int imgStr, Response.Listener<String> listener, Activity activity) { // 서버에 사용자 캐릭터 저장
+    public void setUserChar(String useremail, int imgStr, Response.Listener<String> listener, Activity activity) { // 서버에 사용자 캐릭터 저장.
         queue = Volley.newRequestQueue(activity);
 
 
