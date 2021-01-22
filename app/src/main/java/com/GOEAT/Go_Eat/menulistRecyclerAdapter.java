@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class menulistRecyclerAdapter extends RecyclerView.Adapter<menulistRecycl
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) { //마지막 사진 입력 오류 해결 필요
+    public void onBindViewHolder(final ViewHolder holder, final int position) { //마지막 사진 입력 오류 해결 필요
         final Analysis_menu_Item item = items.get(position);
         //Drawable drawable = ContextCompat.getDrawable(context, item.getImage());
         //holder.image.setBackground(item.getDrawable());
@@ -54,18 +55,27 @@ public class menulistRecyclerAdapter extends RecyclerView.Adapter<menulistRecycl
 //                .into(holder.image);
         Log.d("item put in ", "yes!");
         try {
-            if (item.url != null && !item.url.isEmpty()) {
                 Picasso.get()
                         .load(item.url)
-                        .placeholder(R.drawable.loading)
-                        .error(R.drawable.go_logo1)
-                        .into(holder.image);
-            }
+                        .fit()
+                        .centerCrop()
+                        .error(R.drawable.loading_fail)
+                        .into(holder.image,new Callback() {
+                @Override
+                public void onSuccess() {
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    holder.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                }
+            });
 //            Picasso.get().load(item.url).error(R.drawable.go_logo1).into(holder.image);
             Log.d("image put in ", "yes!");
 //            Log.d("image url is.. ", item.url);
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
-            holder.image.setImageResource(R.drawable.error);
+            holder.image.setImageResource(R.drawable.loading_fail);
+            holder.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             e.printStackTrace();
             Log.d("image put in ", "No!");
         }

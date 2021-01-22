@@ -29,6 +29,7 @@ import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.overlay.Marker;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -147,24 +148,54 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
 //        Log.d("restaurant_img_2",intent.getExtras().getString("menu_img_2"));
 //        Log.d("restaurant_img_3",intent.getExtras().getString("menu_img_3"));
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_1")).fit().centerCrop().error(R.drawable.go_logo1).into(restaurant_img_1);
+            Picasso.get().load(intent.getExtras().getString("menu_img_1")).fit().centerCrop().error(R.drawable.loading_fail).into(restaurant_img_1,new Callback() {
+                @Override
+                public void onSuccess() {
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    restaurant_img_1.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                }
+            });
             Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_1"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
-            restaurant_img_1.setImageResource(R.drawable.go_logo1);
+            restaurant_img_1.setImageResource(R.drawable.loading_fail);
+            restaurant_img_1.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             e.printStackTrace();
         }
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_2")).fit().centerCrop().error(R.drawable.go_logo1).into(restaurant_img_2);
+            Picasso.get().load(intent.getExtras().getString("menu_img_2")).fit().centerCrop().error(R.drawable.loading_fail).into(restaurant_img_2,new Callback() {
+                @Override
+                public void onSuccess() {
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    restaurant_img_2.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                }
+            });
             Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_2"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
-            restaurant_img_2.setImageResource(R.drawable.go_logo1);
+            restaurant_img_2.setImageResource(R.drawable.loading_fail);
+            restaurant_img_2.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             e.printStackTrace();
         }
         try {
-            Picasso.get().load(intent.getExtras().getString("menu_img_3")).error(R.drawable.go_logo1).into(restaurant_img_3);
+            Picasso.get().load(intent.getExtras().getString("menu_img_3")).error(R.drawable.loading_fail).into(restaurant_img_3,new Callback() {
+                @Override
+                public void onSuccess() {
+                }
+
+                @Override
+                public void onError(Exception e) {
+                    restaurant_img_3.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                }
+            });
             Log.d("restaurant_img_1", intent.getExtras().getString("menu_img_3"));
         } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
-            restaurant_img_3.setImageResource(R.drawable.go_logo1);
+            restaurant_img_3.setImageResource(R.drawable.loading_fail);
+            restaurant_img_3.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             e.printStackTrace();
         }
 //        Picasso.get().load(intent.getExtras().getString("restaurant_img_1")).error(R.drawable.go).into(restaurant_img_1);
@@ -380,7 +411,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             View view = LayoutInflater.from(context).inflate(R.layout.viewpager_childview, container, false);
             ImageView imageview1 = (ImageView) view.findViewById(R.id.img_viewpager_childimage);
             try {
-                Picasso.get().load(restaurant_main_image).error(R.drawable.go_logo1).into(imageview1);
+                Picasso.get().load(restaurant_main_image).fit().centerCrop().error(R.drawable.loadinf_fail_2).into(imageview1);
 
             } catch (Exception e) { //[200210] fix: IllegalStateException: Unrecognized type of request
                 e.printStackTrace();

@@ -39,7 +39,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.CustomViewHold
         //holder.Image_1.setImageResource(arrayList.get(position).getImage_1());
         try {
             if(arrayList.get(position).getImage_1() != null && arrayList.get(position).getImage_1().length() > 0) { //java.lang.IllegalArgumentException: Path must not be empty.
-                Picasso.get().load(arrayList.get(position).getImage_1()).fit().centerCrop().error(R.drawable.go_logo1).into(holder.Image_1);
+                Picasso.get().load(arrayList.get(position).getImage_1()).fit().centerCrop().error(R.drawable.loading_fail).into(holder.Image_1);
             }
         } catch (Exception e){ //[200210] fix: IllegalStateException: Unrecognized type of request
             e.printStackTrace();
