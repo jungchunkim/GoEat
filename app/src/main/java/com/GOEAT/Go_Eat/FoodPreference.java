@@ -107,9 +107,9 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                         //가져올 이미지 url index -> foodurl[reference]
                         //아래 R.drawable.p_food1을 가져온 이미지로 변경하면 됨
 
-                        if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
-                        else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
-                        else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                        if(foodurl[reference]==null) food_img.setImageResource(R.drawable.error_up);
+                        else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.error_up);
+                        else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                         else Picasso.get()
                                     .load(foodurl[reference])
                                     .resize(500,500)
@@ -163,9 +163,9 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 if(reference<=full_count)
                 {
                     prefer_food[reference-1]=-2;
-                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
-                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
-                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.error_up);
+                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.error_up);
+                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
                                 .placeholder(R.drawable.loading_up)
@@ -187,9 +187,9 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 if(reference<= full_count)
                 {
                     prefer_food[reference-1]=-1;
-                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
-                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
-                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.error_up);
+                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.error_up);
+                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
                                 .placeholder(R.drawable.loading_up)
@@ -212,9 +212,9 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                 if(reference<=full_count)
                 {
                     prefer_food[reference-1]=1;
-                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.p_food1);
-                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.p_food1);
-                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.p_food1);
+                    if(foodurl[reference]==null) food_img.setImageResource(R.drawable.error_up);
+                    else if(foodurl[reference].isEmpty()) food_img.setImageResource(R.drawable.error_up);
+                    else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
                                 .placeholder(R.drawable.loading_up)

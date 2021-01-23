@@ -47,7 +47,6 @@ public class AnalysisHomeRecyclerAdapter extends RecyclerView.Adapter<AnalysisHo
         if (item.imageUrl != null && !item.imageUrl.isEmpty()) {
             Picasso.get()
                     .load(item.imageUrl)
-                    .placeholder(R.drawable.loading)
                     .error(R.drawable.error)
                     .into(holder.image);
         }
