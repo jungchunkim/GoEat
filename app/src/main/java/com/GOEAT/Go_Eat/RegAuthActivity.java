@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -35,6 +36,7 @@ public class RegAuthActivity extends AppCompatActivity {
     TextView tv_resend;
     LinearLayout layout;
     private String AuthNum;
+    public int check=0;
 
 
     @Override
@@ -160,6 +162,7 @@ public class RegAuthActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(et_1.getText().toString().length()==1)
                     et_2.requestFocus();
+
             }
 
             @Override
@@ -179,8 +182,7 @@ public class RegAuthActivity extends AppCompatActivity {
                 if(et_2.getText().toString().length()==1) {
                     et_3.requestFocus();
                 }
-                if(i1 == 1)
-                    et_1.requestFocus();
+
             }
 
             @Override
@@ -200,8 +202,7 @@ public class RegAuthActivity extends AppCompatActivity {
                 if(et_3.getText().toString().length()==1) {
                     et_4.requestFocus();
                 }
-                if(i1 == 1)
-                    et_2.requestFocus();
+
             }
 
             @Override
@@ -222,8 +223,7 @@ public class RegAuthActivity extends AppCompatActivity {
                     btn_ok.performClick();
                     //Toast.makeText(getApplicationContext(), "자동OK", Toast.LENGTH_LONG).show();
                 }
-                if(before == 1)
-                    et_3.requestFocus();
+
 
             }
 
@@ -232,6 +232,82 @@ public class RegAuthActivity extends AppCompatActivity {
 
             }
         });
+
+        et_2.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //You can identify which key pressed buy checking keyCode value with KeyEvent.KEYCODE_
+                if(keyCode == KeyEvent.KEYCODE_DEL&& et_2.getText().toString().length()==0) {
+                    //this is for backspace
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            //딜레이 후 시작할 코드 작성
+                            et_1.requestFocus();
+                            et_1.setText("");
+                        }
+                    }, 150);
+                }
+                return false;
+            }
+        });
+
+        et_3.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //You can identify which key pressed buy checking keyCode value with KeyEvent.KEYCODE_
+                if(keyCode == KeyEvent.KEYCODE_DEL&& et_3.getText().toString().length()==0) {
+                    //this is for backspace
+                    new Handler().postDelayed(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            //딜레이 후 시작할 코드 작성
+                            et_2.requestFocus();
+                            et_2.setText("");
+                        }
+                    }, 150);
+                }
+                return false;
+            }
+        });
+
+            et_4.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    //You can identify which key pressed buy checking keyCode value with KeyEvent.KEYCODE_
+                    if(keyCode == KeyEvent.KEYCODE_DEL) {
+                        //this is for backspace
+
+                        check+=1;
+
+                        if(check==3){
+                            new Handler().postDelayed(new Runnable()
+                            {
+                                @Override
+                                public void run()
+                                {
+                                    //딜레이 후 시작할 코드 작성
+                                    et_3.requestFocus();
+                                    et_3.setText("");
+                                }
+                            }, 150);
+
+                            check=0;
+
+                        }
+
+
+
+                    }
+                    return false;
+                }
+            });
+
+
 
 
     }
