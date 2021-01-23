@@ -87,7 +87,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onResponse(String response) { // 서버 응답 받아오는 부분
                 try {
-                    Log.e("음식 받아오기", response);
+                    Log.e("foodpreference", response);
                     JSONObject json = new JSONObject(response);
                     System.out.println(json.toString());
                     if (true){
@@ -113,7 +113,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                         else Picasso.get()
                                     .load(foodurl[reference])
                                     .resize(500,500)
-                                    .placeholder(R.drawable.loading_up)
+                                    .placeholder(R.drawable.loading1)
                                     .error(R.drawable.error_up)
                                     .into(food_img);
                         food_name.setText(foodlist[reference]);
@@ -168,7 +168,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
-                                .placeholder(R.drawable.loading_up)
+                                .placeholder(R.drawable.loading4)
                                 .error(R.drawable.error_up)
                                 .into(food_img);
                     food_name.setText(foodlist[reference]);
@@ -192,7 +192,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
-                                .placeholder(R.drawable.loading_up)
+                                .placeholder(R.drawable.loading3)
                                 .error(R.drawable.error_up)
                                 .into(food_img);
 //                    food_img.setImageResource(R.drawable.p_food1);
@@ -217,7 +217,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
-                                .placeholder(R.drawable.loading_up)
+                                .placeholder(R.drawable.loading2)
                                 .error(R.drawable.error_up)
                                 .into(food_img);
 //                    food_img.setImageResource(R.drawable.p_food1);

@@ -18,6 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
+        android:hardwareAccelerated="false"
+
         tools:targetApi="29">
         <activity android:name=".RegisterDoneActivity"></activity>
         <activity android:name=".StatusSettingActivity" />

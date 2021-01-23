@@ -1,9 +1,17 @@
 package com.GOEAT.Go_Eat;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewManager;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +19,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.GOEAT.Go_Eat.DataType.GoEatStatus;
+import com.GOEAT.Go_Eat.DataType.Weather;
+import com.GOEAT.Go_Eat.Server_Request.UserDB;
+import com.GOEAT.Go_Eat.common.Values;
 import com.GOEAT.Go_Eat.widget.MeowBottomNavigationWrapper;
+import com.android.volley.Response;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+import java.io.IOException;
 
 import static com.GOEAT.Go_Eat.common.Values.EXTRA_STATUS;
 import static com.GOEAT.Go_Eat.common.Values.ID_GO;
@@ -25,9 +46,8 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
     private StatusSettingFragment investigationFragment;
     private MyProfileFragment myPageFragment;
     private int back_index=0;
-
     private Fragment currentFragment;
-
+    private UserDB userDB = new UserDB();
     private MeowBottomNavigationWrapper meoWrapper;
 
     @Override
@@ -65,7 +85,7 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
             who = prefs.getString("who", "");
             emotion = prefs.getString("emo", "");
         }
-        return new GoEatStatus(calorie, who, emotion, location);
+         return new GoEatStatus(calorie, who, emotion, location);
     }
 
     private void configUI() {
@@ -123,6 +143,16 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
 
         currentFragment = futureFragment;
         tr.commit();
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // 서버 응답 받아오는 부분
+                //왜인지 모르겠으니 php코드를 넣고나서부터 날씨가 받아와져서
+                //해당 php받아오는 코드 넣어놓음 (시간에 큰 영향은 안끼쳐서 그대로 두면 될 듯합니다.)
+                Log.e("getWeather",response);
+            }
+        };
+        userDB.getWeather(responseListener, AnalysisHomeRealActivity.this);     //음식 리스트 index 불러오는 부분
+
     }
 
     //2020-01-14 김정천 - 뒤로 가기 두 번 눌렀을 때 앱 종료되게 한다.
@@ -143,11 +173,6 @@ public class AnalysisHomeRealActivity extends AppCompatActivity implements MeowB
 
         }
 
-
-
     }
-
-
-
 
 }
