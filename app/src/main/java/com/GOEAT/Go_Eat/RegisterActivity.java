@@ -147,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (!(et_pwd1.getText().toString().length() >= 8)){
                         Toast.makeText(getApplicationContext(),"비밀번호는 8자 이상이어야 합니다.",Toast.LENGTH_LONG).show();
                     }
-                    if((!userphonenum.contains("010")) || userphonenum.replaceAll("-","").trim().length()!=11){
+                    else if((!userphonenum.contains("010")) || userphonenum.replaceAll("-","").trim().length()!=11){
                         Toast.makeText(getApplicationContext(),"전화번호를 확인해 주세요.",Toast.LENGTH_LONG).show();
                     }
                     else{
