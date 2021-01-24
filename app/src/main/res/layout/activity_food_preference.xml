@@ -71,13 +71,21 @@
             android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:layout_weight="45">
-            <ImageView
-                android:id="@+id/food_img"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:background="@drawable/shadow_button_4_1"
-                android:scaleType="fitXY"
-                />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="20">
+                <ImageView
+                    android:id="@+id/food_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="18"
+                    android:background="@drawable/shadow_button_4_1"
+                    android:scaleType="fitXY"
+                    />
+            </LinearLayout>
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"

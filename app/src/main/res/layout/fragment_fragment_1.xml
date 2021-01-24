@@ -24,12 +24,12 @@
             android:layout_height="0dp"
             android:layout_weight="1.5"/>
         <Button
-            android:id="@+id/location_1"
+            android:id="@+id/location_2"
             android:layout_width="0dp"
             android:layout_weight="10"
-            android:visibility="invisible"
+
             android:layout_height="match_parent"
-            android:text="건대"
+            android:text="신촌/이대"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"
             android:background="@drawable/location_button"
@@ -39,11 +39,12 @@
             android:layout_height="0dp"
             android:layout_weight="3"/>
         <Button
-            android:id="@+id/location_2"
+            android:id="@+id/location_1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="10"
-            android:text="신촌/이대"
+            android:text="건대"
+            android:visibility="invisible"
             android:fontFamily="@font/pureunjeonnam"
             android:textColor="@color/font"
             android:background="@drawable/location_button"/>
