@@ -374,7 +374,6 @@ public class UserDB implements Serializable {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.e("날씨 php로 받아오기", "error");
-                        Log.e("response", error.getMessage());
 
                     }
                 }

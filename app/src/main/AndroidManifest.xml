@@ -18,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        android:hardwareAccelerated="false"
 
         tools:targetApi="29">
         <activity android:name=".RegisterDoneActivity"></activity>
@@ -30,7 +29,9 @@
         <activity android:name=".NoticeActivity" />
         <activity android:name=".TermsOfServices" />
         <activity android:name=".menu_detail_list" />
-        <activity android:name=".FoodPreference" />
+        <activity android:name=".FoodPreference"
+            android:hardwareAccelerated="false"
+            />
         <activity
             android:name=".AnalysishomeGuideActivity"
             android:theme="@style/Transparent" />

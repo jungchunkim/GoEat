@@ -23,6 +23,7 @@
         android:background="@drawable/shadow_button_4"
         card_view:cardBackgroundColor="@color/cardview_light_background"
         card_view:cardCornerRadius="7dp"
+
         card_view:cardElevation="4dp"
         >
 

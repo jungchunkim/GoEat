@@ -113,7 +113,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                         else Picasso.get()
                                     .load(foodurl[reference])
                                     .resize(500,500)
-                                    .placeholder(R.drawable.loading1)
+                                    .placeholder(R.drawable.loading_small)
                                     .error(R.drawable.error_up)
                                     .into(food_img);
                         food_name.setText(foodlist[reference]);
@@ -168,7 +168,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
-                                .placeholder(R.drawable.loading4)
+                                .placeholder(R.drawable.loading_small)
                                 .error(R.drawable.error_up)
                                 .into(food_img);
                     food_name.setText(foodlist[reference]);
@@ -192,7 +192,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
-                                .placeholder(R.drawable.loading3)
+                                .placeholder(R.drawable.loading_small)
                                 .error(R.drawable.error_up)
                                 .into(food_img);
 //                    food_img.setImageResource(R.drawable.p_food1);
@@ -217,7 +217,7 @@ public class FoodPreference extends AppCompatActivity implements View.OnClickLis
                     else if(foodurl[reference].equals("")) food_img.setImageResource(R.drawable.error_up);
                     else Picasso.get().load(foodurl[reference])
                                 .resize(500,500)
-                                .placeholder(R.drawable.loading2)
+                                .placeholder(R.drawable.loading_small)
                                 .error(R.drawable.error_up)
                                 .into(food_img);
 //                    food_img.setImageResource(R.drawable.p_food1);
