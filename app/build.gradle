@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.0"
 
     defaultConfig {
-        applicationId "com.GOEAT.Go_Eat"
+        applicationId "com.example.testexam"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
