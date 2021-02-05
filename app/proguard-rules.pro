@@ -12,10 +12,14 @@
 #   public *;
 #}
 
-# Uncomment this to preserve the line number information for
+# Uncomment this to preserve the liate number information for
 # debugging stack traces.
 #-keepattributes SourceFile,LineNumberTable
 
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
-#-renamesourcefileattribute SourceFile
+
+-keep class com.GOEAT.Go_Eat.HomeFragment
+-keep class com.google.gson.*{*;}
+-keep class com.GOEAT.Go_Eat.DataType.*{*;}
+-keep class com.GOEAT.Go_Eat.DataType.SimpleFoodInfo

@@ -12,6 +12,7 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndkVersion "22.0.7026061"
     }
 
     buildTypes {
@@ -37,7 +38,7 @@ dependencies {
     implementation files('libs\\mail-1.4.7.jar')
     implementation files('libs\\activation.jar')
     //네이버 지도
-    implementation 'com.naver.maps:map-sdk:3.9.0'
+    implementation 'com.naver.maps:map-sdk:3.10.2'
     //구글 지도
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
