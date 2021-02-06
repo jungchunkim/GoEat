@@ -92,7 +92,9 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         phone_num.setText(intent.getExtras().getString("phone_num"));
         position_num.setText(intent.getExtras().getString("position_num"));
         map_address.setText(intent.getExtras().getString("position_num"));
-        text_food.setText(intent.getExtras().getString("text_food"));
+        if(!intent.getExtras().getString("text_food").equals("None")) {
+            text_food.setText(intent.getExtras().getString("text_food"));
+        }
         restaurant_txt_1.setText(intent.getExtras().getString("restaurant_txt_1"));
         food_price_1.setText(intent.getExtras().getString("food_price_1"));
         restaurant_txt_2.setText(intent.getExtras().getString("restaurant_txt_2"));
