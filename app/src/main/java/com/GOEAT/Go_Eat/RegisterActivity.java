@@ -149,6 +149,8 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                     else if((!userphonenum.contains("010")) || userphonenum.replaceAll("-","").trim().length()!=11){
                         Toast.makeText(getApplicationContext(),"전화번호를 확인해 주세요.",Toast.LENGTH_LONG).show();
+                    }else if(!useremail.contains("@")|| !useremail.contains(".")){
+                        Toast.makeText(getApplicationContext(),"이메일 형식을 확인해 주세요.",Toast.LENGTH_LONG).show();
                     }
                     else{
                         userbirth = birth[1]+"월 "+birth[2]+"일";

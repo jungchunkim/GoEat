@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -255,7 +256,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
             @Override
             public void onClick(View view) { // 더보기 클릭시 확인하여 음식점 설명 레이아웃 크기 증가
                 if (text_food.getLayout() != null) {
-                    if (text_food.getLayout().getEllipsisCount(text_food.getLineCount() - 1) > 0) {
+                    if (text_food.getLineCount() - 1>2) {
                         LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
                         LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(
                                 LinearLayout.LayoutParams.MATCH_PARENT, linearLayout2.getHeight());

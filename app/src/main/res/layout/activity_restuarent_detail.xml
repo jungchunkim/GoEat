@@ -28,6 +28,7 @@
                 android:layout_height="250dp"
                 />
 
+            <!-- 흰색부분으로 된 곳 정보 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -205,7 +206,6 @@
 
             </LinearLayout>
 
-            <!-- 흰색부분으로 된 곳 정보 -->
             <LinearLayout
                 android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
@@ -455,14 +455,15 @@
                     <TextView
                         android:id="@+id/restaurant_txt_1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="30dp"
                         android:layout_weight="2"
+                        android:autoSizeTextType="uniform"
+                        android:autoSizeMaxTextSize= "20sp"
                         android:fontFamily="@font/pureunjeonnambold"
                         android:text=""
-                        android:textColor="#1E1E1E"
-                        android:textSize="20dp" />
+                        android:textColor="#1E1E1E" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -515,14 +516,15 @@
                     <TextView
                         android:id="@+id/restaurant_txt_2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="30dp"
+                        android:autoSizeTextType="uniform"
                         android:layout_weight="2"
                         android:fontFamily="@font/pureunjeonnambold"
                         android:text=""
                         android:textColor="#1E1E1E"
-                        android:textSize="20dp" />
+                        android:autoSizeMaxTextSize= "20sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -575,14 +577,15 @@
                     <TextView
                         android:id="@+id/restaurant_txt_3"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="30dp"
                         android:layout_weight="2"
+                        android:autoSizeTextType="uniform"
                         android:fontFamily="@font/pureunjeonnambold"
                         android:text=""
                         android:textColor="#1E1E1E"
-                        android:textSize="20dp" />
+                        android:autoSizeMaxTextSize="20dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

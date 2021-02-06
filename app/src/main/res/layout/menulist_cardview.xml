@@ -57,8 +57,9 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/pureunjeonnambold"
                     android:text="육개장"
+                    android:autoSizeTextType="uniform"
                     android:textColor="#222B45"
-                    android:textSize="21dp" />
+                    android:autoSizeMaxTextSize="21dp" />
 
                 <TextView
                     android:id="@+id/tv_menu_info"
