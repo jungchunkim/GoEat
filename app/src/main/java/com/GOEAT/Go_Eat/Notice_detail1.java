@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,10 +39,7 @@ public class Notice_detail1 extends AppCompatActivity {
 
         noticeTitle.setText(title);
         noticeDate.setText(date);
-        tv_text.setText(text);
-
-
-
+        tv_text.setText(Html.fromHtml(text));
 
     }
 }
