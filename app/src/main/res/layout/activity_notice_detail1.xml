@@ -93,6 +93,8 @@
                 android:text="안녕하세요 Go Eat입니다.\n저희 어플을 다운해주셔서 감사합니다.\n앞으로 더 발전하겠습니다.\n고민하지말고 Go Eat!"
                 android:textColor="@color/font"
                 android:textSize="18sp"
+                android:autoLink="web|email"
+                android:linksClickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
