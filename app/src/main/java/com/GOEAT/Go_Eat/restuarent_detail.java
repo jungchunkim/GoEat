@@ -111,6 +111,7 @@ public class restuarent_detail extends AppCompatActivity implements OnMapReadyCa
         final String priceRange = intent.getExtras().getString("price_num");
         price_num.setText(priceRange);
 
+
         //최소 최대 가격 계산 하여 넣는 부분 방진혁
 //        String []tokensprice = pricelist.split(", ");
 //        String maxprice, minprice;

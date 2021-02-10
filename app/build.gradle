@@ -8,8 +8,8 @@ android {
         applicationId "com.GOEAT.Go_Eat"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 5
-        versionName "1.0.1"
+        versionCode 6
+        versionName "1.0.2"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndkVersion "22.0.7026061"

@@ -23,3 +23,8 @@
 -keep class com.google.gson.*{*;}
 -keep class com.GOEAT.Go_Eat.DataType.*{*;}
 -keep class com.GOEAT.Go_Eat.DataType.SimpleFoodInfo
+-keep class com.GOEAT.Go_Eat.FindPasswordActivity
+-keep class com.GOEAT.Go_Eat.Server_Request.GMailSender
+-keep class com.GOEAT.Go_Eat.PwdAuthNumberActivity
+-keep class javax.mail.*{*;}
+-keep class javax.mail.internet.MimeUtility

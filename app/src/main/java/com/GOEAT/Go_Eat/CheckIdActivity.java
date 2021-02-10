@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,8 +51,9 @@ public class CheckIdActivity extends AppCompatActivity {
 
         // 이메일 가져오는 코드 ( 작성해야함!!)
         SharedPreferences prefs = getSharedPreferences("Account",MODE_PRIVATE);
-        String userphonenum = prefs.getString("phonenum","");
+        String userphonenum = prefs.getString("phonenum","").replaceAll("-","");
 
+        Log.d("phonenum", userphonenum);
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

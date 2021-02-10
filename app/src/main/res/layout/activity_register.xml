@@ -151,7 +151,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="12"
                     android:inputType="textPassword"
-                    android:hint="비밀번호를 입력하세요."/>
+                    android:hint="비밀번호를 입력하세요.(8자리 이상)"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
